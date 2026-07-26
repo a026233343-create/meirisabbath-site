@@ -1,0 +1,1977 @@
+<!DOCTYPE html>
+
+
+
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>מאירי שבת |מאירי שבת, מצברים, סוללות, סולארי, מחשבון צריכה חשמל כשר</title>
+  <meta name="description" content="עמוד בחירה מעוצב וברור למחשבוני מאירי שבת: מחשבון מוסדות ובתי כנסת ומחשבון צריכה לפרטיים." />
+  <link rel="icon" href="https://content.vp4.me/ishabat/Content/%D7%9C%D7%95%D7%92%D7%95_%D7%9E%D7%90%D7%99%D7%A8%D7%99_%D7%A9%D7%91%D7%AA_-_%D7%9E%D7%A2%D7%95%D7%93%D7%9B%D7%9F_600x271-removebg-preview_600x271-r(1).png" type="image/png" />
+  <style>
+    :root{
+      --bg:#f4f8fb;
+      --bg-soft:#ecfdf5;
+      --card:#ffffff;
+      --ink:#102033;
+      --muted:#5f7185;
+      --line:#dfeaf2;
+      --brand:#0f766e;
+      --brand-2:#16a34a;
+      --brand-3:#0ea5e9;
+      --gold:#f59e0b;
+      --danger:#ef4444;
+      --shadow:0 22px 70px rgba(16,32,51,.12);
+      --shadow-soft:0 12px 32px rgba(16,32,51,.08);
+      --radius:28px;
+      --radius-sm:18px;
+      --max:1120px;
+    }
+
+    *{box-sizing:border-box}
+
+    html{scroll-behavior:smooth}
+
+    body{
+      min-height:100vh;
+      margin:0;
+      font-family:"Heebo","Rubik","Noto Sans Hebrew",Arial,sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(900px 520px at 92% -8%, rgba(22,163,74,.22), transparent 62%),
+        radial-gradient(850px 520px at -8% 18%, rgba(14,165,233,.18), transparent 64%),
+        linear-gradient(180deg,#fbfdff 0%,var(--bg) 44%,#eef7f1 100%);
+      overflow-x:hidden;
+    }
+
+    body:before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:.42;
+      background-image:
+        linear-gradient(rgba(15,118,110,.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(15,118,110,.05) 1px, transparent 1px);
+      background-size:42px 42px;
+      mask-image:linear-gradient(to bottom, #000 0%, transparent 76%);
+    }
+
+    a{color:inherit;text-decoration:none}
+
+    .page{position:relative;z-index:1}
+
+    .container{
+      width:min(var(--max), calc(100% - 32px));
+      margin-inline:auto;
+    }
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:20;
+      padding:7px 0;
+      backdrop-filter:blur(16px);
+    }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:7px 11px;
+      border:1px solid rgba(223,234,242,.92);
+      border-radius:999px;
+      background:rgba(255,255,255,.88);
+      box-shadow:0 10px 34px rgba(16,32,51,.07);
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:13px;
+      min-width:0;
+    }
+
+    .logo-wrap{
+      width:58px;
+      height:36px;
+      display:grid;
+      place-items:center;
+      flex:0 0 auto;
+      border-radius:14px;
+      background:linear-gradient(135deg,#fff,#effaf2);
+      border:1px solid #d8f3df;
+      box-shadow:0 8px 20px rgba(15,118,110,.08);
+      overflow:hidden;
+    }
+
+    .logo{
+      max-width:52px;
+      max-height:32px;
+      object-fit:contain;
+    }
+
+    .brand-name{
+      margin:0;
+      font-size:18px;
+      line-height:1;
+      font-weight:950;
+      letter-spacing:-.02em;
+    }
+
+    .brand-tagline{
+      margin-top:2px;
+      color:var(--muted);
+      font-size:11px;
+      font-weight:800;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .nav-actions{
+      display:flex;
+      align-items:center;
+      gap:9px;
+      flex-wrap:wrap;
+      justify-content:flex-start;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:7px;
+      min-height:32px;
+      padding:6px 11px;
+      border-radius:999px;
+      border:1px solid #d4ece5;
+      background:#f4fbf7;
+      color:#0f766e;
+      font-size:12px;
+      font-weight:900;
+      box-shadow:0 6px 16px rgba(16,32,51,.04);
+      transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    }
+
+    .pill:hover,.pill:focus-visible{
+      transform:translateY(-2px);
+      border-color:#9fe7b3;
+      box-shadow:0 10px 22px rgba(15,118,110,.11);
+      outline:none;
+    }
+
+    .pill.primary{
+      background:linear-gradient(135deg,var(--brand),var(--brand-2));
+      color:#fff;
+      border-color:transparent;
+    }
+
+    .hero{
+      padding:18px 0 10px;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      align-items:center;
+      gap:10px;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:5px 10px;
+      border-radius:999px;
+      border:1px solid #c7f0d0;
+      background:rgba(236,253,245,.9);
+      color:#0f766e;
+      font-size:12px;
+      font-weight:950;
+      box-shadow:0 10px 24px rgba(15,118,110,.08);
+    }
+
+    h1{
+      margin:8px 0 6px;
+      max-width:900px;
+      font-size:clamp(25px,3.2vw,38px);
+      line-height:1.12;
+      letter-spacing:-.045em;
+      font-weight:1000;
+    }
+
+    .gradient-text{
+      background:linear-gradient(135deg,#102033 0%,#0f766e 44%,#16a34a 100%);
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+
+    .lead{
+      max-width:760px;
+      margin:0;
+      color:#41566c;
+      font-size:clamp(14px,1.7vw,16px);
+      line-height:1.55;
+      font-weight:700;
+    }
+
+    .hero-buttons{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:12px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:9px;
+      min-height:40px;
+      padding:9px 14px;
+      border-radius:17px;
+      border:1px solid transparent;
+      font-weight:950;
+      font-size:13px;
+      text-align:center;
+      transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+
+    .btn:hover,.btn:focus-visible{
+      transform:translateY(-3px);
+      outline:none;
+    }
+
+    .btn-main{
+      background:linear-gradient(135deg,var(--brand),var(--brand-2));
+      color:#fff;
+      box-shadow:0 16px 34px rgba(15,118,110,.23);
+    }
+
+    .btn-alt{
+      background:#fff;
+      color:#123047;
+      border-color:#dfeaf2;
+      box-shadow:var(--shadow-soft);
+    }
+
+    .hero-card{
+      position:relative;
+      overflow:hidden;
+      min-height:340px;
+      border-radius:var(--radius);
+      background:
+        linear-gradient(145deg,rgba(255,255,255,.98),rgba(239,250,242,.92)),
+        #fff;
+      border:1px solid rgba(223,234,242,.95);
+      box-shadow:var(--shadow);
+      padding:24px;
+    }
+
+    .hero-card:before{
+      content:"";
+      position:absolute;
+      inset:auto -46px -50px auto;
+      width:180px;
+      height:180px;
+      border-radius:50%;
+      background:radial-gradient(circle,rgba(22,163,74,.22),transparent 68%);
+    }
+
+    .hero-card:after{
+      content:"";
+      position:absolute;
+      inset:-62px auto auto -64px;
+      width:174px;
+      height:174px;
+      border-radius:50%;
+      background:radial-gradient(circle,rgba(14,165,233,.18),transparent 70%);
+    }
+
+    .status-card{
+      position:relative;
+      z-index:1;
+      border-radius:24px;
+      padding:18px;
+      background:#fff;
+      border:1px solid #e2f0e6;
+      box-shadow:0 14px 36px rgba(16,32,51,.08);
+    }
+
+    .status-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:14px;
+    }
+
+    .status-title{
+      font-size:16px;
+      font-weight:950;
+    }
+
+    .status-badge{
+      padding:6px 10px;
+      border-radius:999px;
+      background:#ecfdf5;
+      color:#0f766e;
+      font-size:12px;
+      font-weight:950;
+      border:1px solid #bbf7d0;
+    }
+
+    .metric-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:11px;
+    }
+
+    .metric{
+      padding:14px;
+      border-radius:18px;
+      background:linear-gradient(180deg,#f8fbff,#ffffff);
+      border:1px solid #e8f0f6;
+    }
+
+    .metric-icon{
+      width:36px;
+      height:36px;
+      display:grid;
+      place-items:center;
+      margin-bottom:10px;
+      border-radius:13px;
+      background:#f0f9ff;
+      color:#0284c7;
+      font-size:20px;
+    }
+
+    .metric strong{
+      display:block;
+      font-size:19px;
+      line-height:1.15;
+      font-weight:1000;
+    }
+
+    .metric span{
+      display:block;
+      margin-top:4px;
+      color:var(--muted);
+      font-size:12px;
+      font-weight:800;
+      line-height:1.45;
+    }
+
+    .mini-chart{
+      position:relative;
+      z-index:1;
+      margin-top:16px;
+      padding:16px;
+      border-radius:22px;
+      background:linear-gradient(135deg,#0f766e,#16a34a);
+      color:#fff;
+      box-shadow:0 18px 36px rgba(15,118,110,.2);
+    }
+
+    .bar-row{
+      display:grid;
+      grid-template-columns:76px 1fr 42px;
+      align-items:center;
+      gap:10px;
+      margin:9px 0;
+      font-size:12px;
+      font-weight:900;
+    }
+
+    .bar-bg{
+      height:9px;
+      border-radius:99px;
+      background:rgba(255,255,255,.25);
+      overflow:hidden;
+    }
+
+    .bar{
+      height:100%;
+      border-radius:inherit;
+      background:#fff;
+      opacity:.95;
+    }
+
+    .section-head{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:18px;
+      margin:34px 0 16px;
+    }
+
+    .section-head h2{
+      margin:0;
+      font-size:clamp(25px,3vw,36px);
+      line-height:1.12;
+      letter-spacing:-.03em;
+      font-weight:1000;
+    }
+
+    .section-head p{
+      margin:0;
+      color:var(--muted);
+      font-weight:800;
+      line-height:1.6;
+      max-width:460px;
+    }
+
+    .choice-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:18px;
+      margin-top:16px;
+    }
+
+    .choice-card{
+      position:relative;
+      display:flex;
+      flex-direction:column;
+      min-height:390px;
+      overflow:hidden;
+      padding:24px;
+      border-radius:var(--radius);
+      background:rgba(255,255,255,.96);
+      border:1px solid rgba(223,234,242,.96);
+      box-shadow:var(--shadow-soft);
+      transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+
+    .choice-card:hover,.choice-card:focus-visible{
+      transform:translateY(-6px);
+      box-shadow:0 28px 78px rgba(15,118,110,.17);
+      border-color:#a7e7b7;
+      outline:none;
+    }
+
+    .choice-card .glow{
+      position:absolute;
+      inset:-90px -90px auto auto;
+      width:210px;
+      height:210px;
+      border-radius:50%;
+      background:rgba(14,165,233,.15);
+      pointer-events:none;
+    }
+
+    .choice-card.private .glow{
+      background:rgba(22,163,74,.18);
+    }
+
+    .card-top{
+      position:relative;
+      z-index:1;
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:18px;
+    }
+
+    .icon{
+      width:62px;
+      height:62px;
+      display:grid;
+      place-items:center;
+      border-radius:21px;
+      background:#f0f9ff;
+      border:1px solid #d6efff;
+      color:#0284c7;
+      font-size:30px;
+      box-shadow:0 12px 24px rgba(14,165,233,.12);
+    }
+
+    .choice-card.private .icon{
+      background:#ecfdf5;
+      border-color:#bbf7d0;
+      color:#16a34a;
+      box-shadow:0 12px 24px rgba(22,163,74,.12);
+    }
+
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      min-height:32px;
+      padding:6px 11px;
+      border-radius:999px;
+      background:#f8fafc;
+      border:1px solid #e5edf4;
+      color:#456277;
+      font-size:12px;
+      font-weight:950;
+      white-space:nowrap;
+    }
+
+    .choice-card h3{
+      position:relative;
+      z-index:1;
+      margin:0 0 10px;
+      font-size:26px;
+      line-height:1.14;
+      letter-spacing:-.025em;
+      font-weight:1000;
+    }
+
+    .choice-card p{
+      position:relative;
+      z-index:1;
+      margin:0;
+      color:#41566c;
+      font-size:15px;
+      line-height:1.75;
+      font-weight:750;
+    }
+
+    .details{
+      position:relative;
+      z-index:1;
+      display:grid;
+      gap:10px;
+      margin:18px 0 0;
+      padding:0;
+      list-style:none;
+    }
+
+    .details li{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      padding:10px 12px;
+      border-radius:15px;
+      background:#f8fbff;
+      border:1px solid #edf4f7;
+      color:#24384a;
+      font-size:14px;
+      line-height:1.45;
+      font-weight:800;
+    }
+
+    .details li:before{
+      content:"✓";
+      flex:0 0 22px;
+      width:22px;
+      height:22px;
+      display:grid;
+      place-items:center;
+      border-radius:999px;
+      background:#dcfce7;
+      color:#166534;
+      font-size:12px;
+      font-weight:1000;
+      margin-top:1px;
+    }
+
+    .spacer{flex:1 1 auto}
+
+    .card-btn{
+      position:relative;
+      z-index:1;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      margin-top:22px;
+      min-height:52px;
+      padding:14px 16px;
+      border-radius:17px;
+      background:linear-gradient(135deg,#0284c7,#0ea5e9);
+      color:#fff;
+      font-size:15px;
+      font-weight:1000;
+      box-shadow:0 16px 30px rgba(14,165,233,.2);
+    }
+
+    .choice-card.private .card-btn{
+      background:linear-gradient(135deg,var(--brand),var(--brand-2));
+      box-shadow:0 16px 30px rgba(22,163,74,.2);
+    }
+
+    .trust-strip{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:12px;
+      margin:22px 0 0;
+    }
+
+    .trust-item{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      min-height:78px;
+      padding:14px;
+      border-radius:20px;
+      background:rgba(255,255,255,.82);
+      border:1px solid #e2edf3;
+      box-shadow:0 10px 26px rgba(16,32,51,.05);
+    }
+
+    .trust-item b{
+      display:block;
+      font-size:14px;
+      font-weight:1000;
+      line-height:1.25;
+    }
+
+    .trust-item small{
+      display:block;
+      margin-top:3px;
+      color:var(--muted);
+      font-weight:800;
+      line-height:1.35;
+    }
+
+    .trust-icon{
+      flex:0 0 38px;
+      width:38px;
+      height:38px;
+      display:grid;
+      place-items:center;
+      border-radius:14px;
+      background:#ecfdf5;
+      color:#0f766e;
+      font-size:20px;
+    }
+
+    .contact-box{
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:18px;
+      align-items:center;
+      margin:26px 0 0;
+      padding:24px;
+      border-radius:var(--radius);
+      background:
+        linear-gradient(135deg,rgba(15,118,110,.96),rgba(22,163,74,.92)),
+        var(--brand);
+      color:#fff;
+      box-shadow:0 24px 62px rgba(15,118,110,.22);
+      overflow:hidden;
+      position:relative;
+    }
+
+    .contact-box:before{
+      content:"";
+      position:absolute;
+      inset:-70px -70px auto auto;
+      width:210px;
+      height:210px;
+      border-radius:50%;
+      background:rgba(255,255,255,.14);
+    }
+
+    .contact-box h2{
+      position:relative;
+      z-index:1;
+      margin:0 0 6px;
+      font-size:28px;
+      line-height:1.15;
+      font-weight:1000;
+      letter-spacing:-.025em;
+    }
+
+    .contact-box p{
+      position:relative;
+      z-index:1;
+      margin:0;
+      color:rgba(255,255,255,.86);
+      font-size:15px;
+      line-height:1.65;
+      font-weight:800;
+    }
+
+    .contact-actions{
+      position:relative;
+      z-index:1;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-start;
+    }
+
+    .contact-actions .btn{
+      background:#fff;
+      color:#0f766e;
+      box-shadow:0 12px 24px rgba(0,0,0,.1);
+    }
+
+    footer{
+      padding:26px 0 36px;
+      color:#687c8e;
+      font-size:13px;
+      line-height:1.7;
+      font-weight:800;
+      text-align:center;
+    }
+
+
+    .compact-hero{
+      border-bottom:1px solid rgba(223,234,242,.75);
+    }
+
+    .compact-hero .hero-grid{
+      max-width:920px;
+    }
+
+    @media(max-width:940px){
+      .hero-grid{grid-template-columns:1fr}
+      .hero{padding-top:14px}
+      .hero-card{min-height:auto}
+      .trust-strip{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .contact-box{grid-template-columns:1fr}
+    }
+
+    @media(max-width:780px){
+      .nav{
+        align-items:center;
+        border-radius:20px;
+        flex-direction:row;
+        flex-wrap:wrap;
+      }
+
+      .nav-actions{width:auto;flex:1 1 250px}
+      .pill{flex:1 1 120px}
+      .section-head{display:block}
+      .section-head p{margin-top:8px}
+      .choice-grid{grid-template-columns:1fr}
+      .choice-card{min-height:auto}
+    }
+
+    @media(max-width:540px){
+      .container{width:min(100% - 22px,var(--max))}
+      .topbar{padding:5px 0}
+      .nav{padding:7px;border-radius:18px;gap:8px}
+      .brand{gap:8px}
+      .logo-wrap{width:48px;height:30px;border-radius:12px}
+      .logo{max-width:43px;max-height:27px}
+      .brand-name{font-size:16px}
+      .brand-tagline{font-size:10px;white-space:normal}
+      .hero{padding-top:12px}
+      h1{font-size:28px}
+      .lead{font-size:13px;line-height:1.45}
+      .hero-buttons .btn,.contact-actions .btn{width:100%}
+      .hero-card,.choice-card,.contact-box{padding:18px;border-radius:22px}
+      .metric-grid,.trust-strip{grid-template-columns:1fr}
+      .card-top{display:block}
+      .tag{margin-top:12px}
+      .choice-card h3{font-size:23px}
+    }
+
+
+    /* תיקון לחיצות בתוך הטמעה של Google Sites */
+    .choice-card,
+    .card-btn,
+    .pill,
+    .btn{
+      cursor:pointer;
+    }
+
+    /* גורם שכל לחיצה על תוכן הכרטיס תיחשב כלחיצה על הקישור עצמו */
+    .choice-card > *{
+      pointer-events:none;
+    }/* ==========================================================
+   שילוב הדרגתי עם הדף המקורי + הסרת הפס העליון
+   צבע ניווט מקורי: #fff8ef
+   ========================================================== */
+
+html,
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+  background: #fff8ef !important;
+}
+
+/* מסיר את הפס/ניווט הפנימי העליון */
+.topbar {
+  display: none !important;
+}
+
+/* מבטל שכבת רשת/פסים שעלולה ליצור תחושת רקע נפרד */
+body:before {
+  display: none !important;
+}
+
+/* כל הדף משתלב עם רקע האתר המקורי */
+.page,
+main {
+  background: #fff8ef !important;
+}
+
+/* החלק העליון מתחיל בדיוק בצבע הניווט ואז משתלב בהדרגה */
+.hero {
+  margin: 0 !important;
+  padding: 54px 0 32px !important;
+  background:
+    linear-gradient(
+      180deg,
+      #fff8ef 0px,
+      #fff8ef 95px,
+      rgba(255,248,239,.96) 145px,
+      rgba(255,248,239,.76) 210px,
+      rgba(255,255,255,.88) 310px,
+      rgba(244,248,251,.95) 100%
+    ),
+    radial-gradient(circle at 10% 18%, rgba(15,118,110,.08), transparent 30%),
+    radial-gradient(circle at 88% 12%, rgba(14,165,233,.07), transparent 32%) !important;
+
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* מסיר גם את הפס הדק שמתחת ל-Hero */
+.compact-hero {
+  border-bottom: 0 !important;
+}
+
+/* אזור המחשבונים ממשיך על אותו רקע */
+#calculators,
+.container {
+  background: transparent !important;
+}
+
+/* שמירה על הכרטיסים הלבנים, אבל על רקע משתלב */
+.choice-card,
+.contact-box,
+.trust-item,
+.hero-card {
+  border-color: #eadfce !important;
+}
+  
+
+/* ==========================================================
+   ערכת צבעים בהירה תואמת לוגו — שמנת / כחול כהה / כתום
+   מיועד להשתלבות נקייה בתוך האתר המקורי
+   ========================================================== */
+:root{
+  --bg:#fff8ef !important;
+  --bg-soft:#fff3e6 !important;
+  --card:#ffffff !important;
+  --ink:#102033 !important;
+  --muted:#667789 !important;
+  --line:#eadfce !important;
+  --brand:#12384f !important;
+  --brand-2:#f97316 !important;
+  --brand-3:#14b8a6 !important;
+  --gold:#f97316 !important;
+  --shadow:0 18px 46px rgba(16,32,51,.075) !important;
+  --shadow-soft:0 10px 28px rgba(16,32,51,.055) !important;
+}
+
+html,
+body{
+  margin:0 !important;
+  padding:0 !important;
+  background:#fff8ef !important;
+  color:#102033 !important;
+}
+
+body{
+  background:
+    radial-gradient(circle at 10% 8%, rgba(249,115,22,.075), transparent 30%),
+    radial-gradient(circle at 92% 10%, rgba(18,56,79,.075), transparent 34%),
+    linear-gradient(180deg,#fff8ef 0%,#fff8ef 42%,#fffdf9 100%) !important;
+  overflow-x:hidden !important;
+}
+
+body:before{
+  display:none !important;
+}
+
+.page,
+main,
+#calculators,
+.container{
+  background:transparent !important;
+}
+
+/* באתר המקורי כבר יש ניווט — מסתירים את הפס הפנימי */
+.topbar{
+  display:none !important;
+}
+
+.hero{
+  margin:0 !important;
+  padding:56px 0 28px !important;
+  border:0 !important;
+  box-shadow:none !important;
+  background:
+    linear-gradient(
+      180deg,
+      #fff8ef 0px,
+      #fff8ef 92px,
+      rgba(255,248,239,.96) 150px,
+      rgba(255,255,255,.92) 285px,
+      rgba(255,253,249,.98) 100%
+    ),
+    radial-gradient(circle at 12% 18%, rgba(249,115,22,.09), transparent 32%),
+    radial-gradient(circle at 88% 12%, rgba(18,56,79,.08), transparent 34%) !important;
+}
+
+.compact-hero{
+  border-bottom:0 !important;
+}
+
+h1,
+.section-head h2,
+.choice-card h3,
+.contact-box h2{
+  color:#102033 !important;
+}
+
+.gradient-text{
+  background:linear-gradient(135deg,#102033 0%,#12384f 58%,#f97316 100%) !important;
+  -webkit-background-clip:text !important;
+  background-clip:text !important;
+  color:transparent !important;
+}
+
+.lead,
+.section-head p,
+.choice-card p,
+.details li,
+footer{
+  color:#667789 !important;
+}
+
+.section-head{
+  margin:28px 0 18px !important;
+}
+
+.choice-grid{
+  gap:18px !important;
+}
+
+.choice-card{
+  background:rgba(255,255,255,.96) !important;
+  border:1px solid #eadfce !important;
+  box-shadow:0 16px 38px rgba(16,32,51,.065) !important;
+}
+
+.choice-card:hover,
+.choice-card:focus-visible{
+  border-color:#f97316 !important;
+  box-shadow:0 22px 54px rgba(16,32,51,.095) !important;
+  transform:translateY(-4px) !important;
+}
+
+.choice-card .glow{
+  background:rgba(249,115,22,.10) !important;
+}
+
+.choice-card.private .glow{
+  background:rgba(18,56,79,.09) !important;
+}
+
+.icon,
+.choice-card.private .icon{
+  background:#fff3e6 !important;
+  border-color:#fed7aa !important;
+  color:#f97316 !important;
+  box-shadow:0 12px 24px rgba(249,115,22,.10) !important;
+}
+
+.tag{
+  background:#fff8ef !important;
+  border-color:#eadfce !important;
+  color:#12384f !important;
+}
+
+.details li{
+  background:#fffdf9 !important;
+  border-color:#eadfce !important;
+  color:#334155 !important;
+}
+
+.details li:before{
+  background:#fff3e6 !important;
+  color:#f97316 !important;
+  border:1px solid #fed7aa !important;
+}
+
+.card-btn,
+.choice-card.private .card-btn,
+.btn-main,
+.pill.primary{
+  background:linear-gradient(135deg,#12384f,#f97316) !important;
+  color:#ffffff !important;
+  box-shadow:0 14px 30px rgba(249,115,22,.18) !important;
+}
+
+.card-btn:hover,
+.btn-main:hover,
+.pill.primary:hover{
+  background:linear-gradient(135deg,#0b2233,#fb923c) !important;
+  box-shadow:0 18px 38px rgba(249,115,22,.23) !important;
+}
+
+.btn-alt,
+.pill{
+  background:#ffffff !important;
+  color:#12384f !important;
+  border-color:#eadfce !important;
+  box-shadow:0 8px 22px rgba(16,32,51,.045) !important;
+}
+
+.btn-alt:hover,
+.pill:hover{
+  color:#f97316 !important;
+  border-color:#f97316 !important;
+  background:#fff8ef !important;
+}
+
+.contact-box{
+  background:linear-gradient(135deg,#ffffff 0%,#fff8ef 54%,#fff3e6 100%) !important;
+  color:#102033 !important;
+  border:1px solid #eadfce !important;
+  box-shadow:0 16px 42px rgba(16,32,51,.07) !important;
+}
+
+.contact-box:before{
+  background:rgba(249,115,22,.10) !important;
+}
+
+.contact-box h2,
+.contact-box p{
+  color:#102033 !important;
+}
+
+.contact-box p{
+  color:#667789 !important;
+}
+
+.contact-actions .btn{
+  background:#ffffff !important;
+  color:#12384f !important;
+  border:1px solid #eadfce !important;
+  box-shadow:0 10px 24px rgba(16,32,51,.055) !important;
+}
+
+.contact-actions .btn:first-child{
+  background:linear-gradient(135deg,#12384f,#f97316) !important;
+  color:#ffffff !important;
+  border-color:transparent !important;
+}
+
+footer{
+  background:#fff8ef !important;
+  border-top:1px solid #eadfce !important;
+  margin-top:34px !important;
+}
+
+@media(max-width:940px){
+  .hero{
+    padding:38px 0 24px !important;
+  }
+}
+
+@media(max-width:540px){
+  .hero{
+    padding:30px 0 20px !important;
+  }
+  .choice-card,
+  .contact-box{
+    border-radius:22px !important;
+  }
+}
+
+
+/* ==========================================================
+   התאמת צבעים סופית — כתום בהיר ועדין + רקע שמנת
+   מיועד להשתלבות אחידה עם שאר עמודי האתר
+   ========================================================== */
+:root{
+  --bg:#fff8ef !important;
+  --bg-soft:#fff3e6 !important;
+  --card:#ffffff !important;
+  --ink:#102033 !important;
+  --muted:#667789 !important;
+  --line:#eadfce !important;
+  --brand:#12384f !important;
+  --brand-2:#ffb15f !important;
+  --brand-3:#ffc978 !important;
+  --gold:#ffb15f !important;
+  --shadow:0 18px 46px rgba(16,32,51,.06) !important;
+  --shadow-soft:0 10px 28px rgba(16,32,51,.045) !important;
+}
+
+html,
+body{
+  margin:0 !important;
+  padding:0 !important;
+  background:#fff8ef !important;
+  color:#102033 !important;
+}
+
+body{
+  background:
+    radial-gradient(circle at 10% 8%, rgba(255,177,95,.13), transparent 31%),
+    radial-gradient(circle at 92% 10%, rgba(18,56,79,.055), transparent 35%),
+    linear-gradient(180deg,#fff8ef 0%,#fff8ef 44%,#fffdf9 100%) !important;
+  overflow-x:hidden !important;
+}
+
+body:before{display:none !important;}
+
+.page,
+main,
+#calculators,
+.container{
+  background:transparent !important;
+}
+
+/* באתר המקורי יש כבר ניווט, לכן מסתירים את הפס הפנימי */
+.topbar{display:none !important;}
+
+.hero{
+  margin:0 !important;
+  padding:54px 0 30px !important;
+  border:0 !important;
+  box-shadow:none !important;
+  background:
+    linear-gradient(
+      180deg,
+      #fff8ef 0px,
+      #fff8ef 92px,
+      rgba(255,248,239,.96) 150px,
+      rgba(255,255,255,.94) 285px,
+      rgba(255,253,249,.98) 100%
+    ),
+    radial-gradient(circle at 12% 18%, rgba(255,177,95,.16), transparent 32%),
+    radial-gradient(circle at 88% 12%, rgba(18,56,79,.06), transparent 34%) !important;
+}
+
+.compact-hero{border-bottom:0 !important;}
+
+h1,
+.section-head h2,
+.choice-card h3,
+.contact-box h2{
+  color:#102033 !important;
+}
+
+.gradient-text{
+  background:linear-gradient(135deg,#102033 0%,#12384f 60%,#ffb15f 100%) !important;
+  -webkit-background-clip:text !important;
+  background-clip:text !important;
+  color:transparent !important;
+}
+
+.lead,
+.section-head p,
+.choice-card p,
+.details li,
+footer{
+  color:#667789 !important;
+}
+
+.choice-card{
+  background:rgba(255,255,255,.97) !important;
+  border:1px solid #eadfce !important;
+  box-shadow:0 14px 34px rgba(16,32,51,.055) !important;
+}
+
+.choice-card:hover,
+.choice-card:focus-visible{
+  border-color:#ffb15f !important;
+  box-shadow:0 20px 48px rgba(16,32,51,.085) !important;
+  transform:translateY(-4px) !important;
+}
+
+.choice-card .glow,
+.choice-card.private .glow{
+  background:rgba(255,177,95,.14) !important;
+}
+
+.icon,
+.choice-card.private .icon{
+  background:#fff3e6 !important;
+  border-color:#ffe0bd !important;
+  color:#e77919 !important;
+  box-shadow:0 12px 24px rgba(255,177,95,.12) !important;
+}
+
+.tag{
+  background:#fff8ef !important;
+  border-color:#eadfce !important;
+  color:#12384f !important;
+}
+
+.details li{
+  background:#fffdf9 !important;
+  border-color:#eadfce !important;
+  color:#334155 !important;
+}
+
+.details li:before{
+  background:#fff3e6 !important;
+  color:#e77919 !important;
+  border:1px solid #ffe0bd !important;
+}
+
+.card-btn,
+.choice-card.private .card-btn,
+.btn-main,
+.pill.primary{
+  background:linear-gradient(135deg,#12384f,#ffb15f) !important;
+  color:#ffffff !important;
+  box-shadow:0 14px 30px rgba(255,177,95,.20) !important;
+}
+
+.card-btn:hover,
+.btn-main:hover,
+.pill.primary:hover{
+  background:linear-gradient(135deg,#0b2233,#ffc978) !important;
+  box-shadow:0 18px 38px rgba(255,177,95,.26) !important;
+}
+
+.btn-alt,
+.pill{
+  background:#ffffff !important;
+  color:#12384f !important;
+  border-color:#eadfce !important;
+  box-shadow:0 8px 22px rgba(16,32,51,.045) !important;
+}
+
+.btn-alt:hover,
+.pill:hover{
+  color:#e77919 !important;
+  border-color:#ffb15f !important;
+  background:#fff8ef !important;
+}
+
+.contact-box{
+  background:linear-gradient(135deg,#ffffff 0%,#fff8ef 56%,#fff3e6 100%) !important;
+  color:#102033 !important;
+  border:1px solid #eadfce !important;
+  box-shadow:0 15px 38px rgba(16,32,51,.06) !important;
+}
+
+.contact-box:before{background:rgba(255,177,95,.16) !important;}
+.contact-box h2{color:#102033 !important;}
+.contact-box p{color:#667789 !important;}
+
+.contact-actions .btn{
+  background:#ffffff !important;
+  color:#12384f !important;
+  border:1px solid #eadfce !important;
+  box-shadow:0 10px 24px rgba(16,32,51,.05) !important;
+}
+
+.contact-actions .btn:first-child{
+  background:linear-gradient(135deg,#12384f,#ffb15f) !important;
+  color:#ffffff !important;
+  border-color:transparent !important;
+}
+
+footer{
+  background:#fff8ef !important;
+  border-top:1px solid #eadfce !important;
+  margin-top:34px !important;
+}
+
+@media(max-width:940px){.hero{padding:38px 0 24px !important;}}
+@media(max-width:540px){
+  .hero{padding:30px 0 20px !important;}
+  .choice-card,
+  .contact-box{border-radius:22px !important;}
+}
+
+
+
+/* ==========================================================
+   תיקון סופי — בהיר ועדין ממש
+   בלי כתום חזק, בלי רקעים כהים, בלי גרדיאנטים כבדים
+   ========================================================== */
+:root{
+  --bg:#fff8ef !important;
+  --bg-soft:#fff4e8 !important;
+  --card:#ffffff !important;
+  --ink:#102033 !important;
+  --muted:#6f7f8c !important;
+  --line:#f0dfc9 !important;
+
+  /* כתום בהיר ועדין */
+  --brand:#ffb86b !important;
+  --brand-2:#ffd19b !important;
+  --brand-3:#fff1dd !important;
+  --gold:#ffbd73 !important;
+
+  --soft-orange:#fff1dd !important;
+  --soft-orange-2:#fff7ef !important;
+  --soft-blue:#f6fbff !important;
+  --soft-cream:#fff8ef !important;
+  --shadow:0 12px 30px rgba(16,32,51,.045) !important;
+  --shadow-soft:0 8px 22px rgba(16,32,51,.035) !important;
+}
+
+html,
+body{
+  margin:0 !important;
+  padding:0 !important;
+  background:#fff8ef !important;
+  color:#102033 !important;
+}
+
+body{
+  background:
+    radial-gradient(circle at 10% 8%, rgba(255,184,107,.16), transparent 28%),
+    radial-gradient(circle at 92% 12%, rgba(255,209,155,.18), transparent 30%),
+    linear-gradient(180deg,#fff8ef 0%,#fff9f2 48%,#ffffff 100%) !important;
+}
+
+body:before,
+.topbar{
+  display:none !important;
+}
+
+.page,
+main,
+#calculators,
+.container{
+  background:transparent !important;
+}
+
+.hero{
+  margin:0 !important;
+  padding:46px 0 24px !important;
+  border:0 !important;
+  box-shadow:none !important;
+  background:
+    linear-gradient(
+      180deg,
+      #fff8ef 0px,
+      #fff8ef 100px,
+      rgba(255,249,242,.96) 170px,
+      rgba(255,255,255,.92) 300px,
+      rgba(255,255,255,.98) 100%
+    ),
+    radial-gradient(circle at 12% 18%, rgba(255,184,107,.14), transparent 32%),
+    radial-gradient(circle at 88% 12%, rgba(255,209,155,.14), transparent 34%) !important;
+}
+
+.compact-hero{
+  border-bottom:0 !important;
+}
+
+h1,
+.section-head h2,
+.choice-card h3,
+.contact-box h2{
+  color:#102033 !important;
+}
+
+.gradient-text{
+  background:linear-gradient(135deg,#102033 0%,#2b4456 62%,#d97822 100%) !important;
+  -webkit-background-clip:text !important;
+  background-clip:text !important;
+  color:transparent !important;
+}
+
+.lead,
+.section-head p,
+.choice-card p,
+.details li,
+footer,
+.brand-tagline{
+  color:#6f7f8c !important;
+}
+
+.section-head{
+  margin:24px 0 16px !important;
+}
+
+.choice-grid{
+  gap:16px !important;
+}
+
+.choice-card{
+  background:rgba(255,255,255,.97) !important;
+  border:1px solid #f0dfc9 !important;
+  box-shadow:0 12px 30px rgba(16,32,51,.045) !important;
+}
+
+.choice-card:hover,
+.choice-card:focus-visible{
+  transform:translateY(-3px) !important;
+  border-color:#ffd19b !important;
+  box-shadow:0 16px 38px rgba(16,32,51,.065) !important;
+}
+
+.choice-card .glow,
+.choice-card.private .glow,
+.contact-box:before{
+  background:rgba(255,184,107,.12) !important;
+}
+
+.icon,
+.choice-card.private .icon{
+  background:#fff1dd !important;
+  border-color:#ffd19b !important;
+  color:#d97822 !important;
+  box-shadow:0 8px 20px rgba(255,184,107,.14) !important;
+}
+
+.tag,
+.eyebrow,
+.status-badge{
+  background:#fff7ef !important;
+  border-color:#f0dfc9 !important;
+  color:#7a4a19 !important;
+}
+
+.details li,
+.metric,
+.trust-item{
+  background:#fffdf9 !important;
+  border-color:#f0dfc9 !important;
+  color:#334155 !important;
+}
+
+.details li:before,
+.trust-icon{
+  background:#fff1dd !important;
+  color:#d97822 !important;
+  border:1px solid #ffd19b !important;
+}
+
+/* כפתורים — כתום בהיר ועדין, לא כהה */
+.card-btn,
+.choice-card.private .card-btn,
+.btn-main,
+.pill.primary{
+  background:linear-gradient(135deg,#ffb86b,#ffd19b) !important;
+  color:#102033 !important;
+  border:1px solid #ffc47f !important;
+  box-shadow:0 10px 24px rgba(255,184,107,.20) !important;
+}
+
+.card-btn:hover,
+.btn-main:hover,
+.pill.primary:hover{
+  background:linear-gradient(135deg,#ffad55,#ffd8ad) !important;
+  color:#102033 !important;
+  box-shadow:0 14px 30px rgba(255,184,107,.24) !important;
+}
+
+.btn-alt,
+.pill,
+.contact-actions .btn{
+  background:#ffffff !important;
+  color:#102033 !important;
+  border:1px solid #f0dfc9 !important;
+  box-shadow:0 7px 18px rgba(16,32,51,.035) !important;
+}
+
+.btn-alt:hover,
+.pill:hover,
+.contact-actions .btn:hover{
+  color:#a75d15 !important;
+  border-color:#ffd19b !important;
+  background:#fff7ef !important;
+}
+
+/* אזור יצירת קשר — גם הוא בהיר, לא כהה */
+.contact-box{
+  background:
+    radial-gradient(circle at 8% 12%, rgba(255,184,107,.14), transparent 32%),
+    linear-gradient(135deg,#ffffff 0%,#fff8ef 58%,#fff1dd 100%) !important;
+  color:#102033 !important;
+  border:1px solid #f0dfc9 !important;
+  box-shadow:0 12px 34px rgba(16,32,51,.045) !important;
+}
+
+.contact-box h2{
+  color:#102033 !important;
+}
+
+.contact-box p{
+  color:#6f7f8c !important;
+}
+
+.contact-actions .btn:first-child{
+  background:linear-gradient(135deg,#ffb86b,#ffd19b) !important;
+  color:#102033 !important;
+  border-color:#ffc47f !important;
+}
+
+footer{
+  background:#fff8ef !important;
+  border-top:1px solid #f0dfc9 !important;
+  margin-top:28px !important;
+  color:#7b8792 !important;
+}
+
+@media(max-width:940px){
+  .hero{
+    padding:34px 0 22px !important;
+  }
+}
+
+@media(max-width:540px){
+  .hero{
+    padding:26px 0 18px !important;
+  }
+  .choice-card,
+  .contact-box{
+    border-radius:22px !important;
+  }
+}
+
+
+    /* התאמה ל-Google Sites: קישורים נפתחים בלשונית חדשה כדי להימנע מחסימות iframe */
+    .choice-card[href]{
+      pointer-events:auto !important;
+      position:relative;
+      z-index:2;
+    }
+
+</style>
+
+<style id="buttons-and-blocks-final-css">
+/* ==========================================================
+   תיקון לחצנים + חסימות בסיסיות לשמירת קוד/בדיקת קוד
+   ========================================================== */
+
+/* לחיצות ברורות ונוחות */
+a[href],
+button,
+.btn,
+.pill,
+.card-btn,
+.choice-card,
+.contact-actions a,
+.nav-actions a{
+  cursor:pointer !important;
+  -webkit-tap-highlight-color:rgba(255,184,107,.24) !important;
+  touch-action:manipulation !important;
+}
+
+/* הקלף כולו נשאר לחיץ, כולל טקסטים ואייקונים שבתוכו */
+.choice-card{
+  pointer-events:auto !important;
+  position:relative !important;
+  z-index:3 !important;
+}
+
+/* כדי שכל לחיצה בתוך הקלף תגיע לקישור של הקלף */
+.choice-card > *{
+  pointer-events:none !important;
+}
+
+/* כפתורים רגילים מחוץ לקלפים נשארים לחיצים */
+.btn,
+.pill,
+.contact-actions a,
+.nav-actions a{
+  pointer-events:auto !important;
+  position:relative !important;
+  z-index:4 !important;
+}
+
+/* מצב פוקוס נגיש וברור */
+a[href]:focus-visible,
+button:focus-visible,
+.choice-card:focus-visible,
+.btn:focus-visible,
+.pill:focus-visible{
+  outline:3px solid rgba(255,184,107,.55) !important;
+  outline-offset:3px !important;
+}
+
+/* מניעת בחירת טקסט וגרירה בעמוד */
+body{
+  -webkit-user-select:none !important;
+  user-select:none !important;
+  -webkit-touch-callout:none !important;
+}
+
+img,
+svg,
+.choice-card,
+.card-btn,
+.btn,
+.pill{
+  -webkit-user-drag:none !important;
+  user-drag:none !important;
+}
+</style>
+
+
+<style id="google-sites-button-stability-final">
+/* תיקון יציבות לחצנים בתוך Google Sites */
+a[href],
+.choice-card,
+.card-btn,
+.btn,
+.pill,
+.contact-actions a,
+.nav-actions a{
+  cursor:pointer !important;
+  touch-action:manipulation !important;
+  -webkit-tap-highlight-color:rgba(255,184,107,.24) !important;
+}
+
+.choice-card{
+  pointer-events:auto !important;
+  position:relative !important;
+  z-index:5 !important;
+}
+
+/* כל תוכן הקלף מעביר את הלחיצה לקישור האב */
+.choice-card > *{
+  pointer-events:none !important;
+}
+
+.btn,
+.pill,
+.contact-actions a,
+.nav-actions a{
+  pointer-events:auto !important;
+  position:relative !important;
+  z-index:6 !important;
+}
+
+body{
+  -webkit-user-select:none !important;
+  user-select:none !important;
+  -webkit-touch-callout:none !important;
+}
+
+img,
+svg,
+.choice-card,
+.card-btn,
+.btn,
+.pill{
+  -webkit-user-drag:none !important;
+  user-drag:none !important;
+}
+</style>
+
+
+<style id="meiri-global-nav-style">
+  #meiri-global-nav, #meiri-global-nav * { box-sizing: border-box; }
+  #meiri-global-nav {
+    direction: rtl; position: sticky; top: 0; z-index: 2147483000;
+    width: 100%; font-family: Arial,"Noto Sans Hebrew",sans-serif;
+    background: rgba(255,255,255,.96); border-bottom: 1px solid #eadfce;
+    box-shadow: 0 8px 24px rgba(23,20,19,.08); backdrop-filter: blur(12px);
+  }
+  #meiri-global-nav .mgn-inner {
+    width: min(1240px, calc(100% - 24px)); min-height: 66px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between; gap: 18px;
+  }
+  #meiri-global-nav a { text-decoration: none; }
+  #meiri-global-nav .mgn-brand { display:flex; align-items:center; gap:10px; color:#171413; font-weight:900; white-space:nowrap; }
+  #meiri-global-nav .mgn-brand img { width:78px; height:46px; object-fit:contain; display:block; }
+  #meiri-global-nav .mgn-links { display:flex; align-items:center; justify-content:center; gap:6px; flex:1; }
+  #meiri-global-nav .mgn-link, #meiri-global-nav summary {
+    display:flex; align-items:center; justify-content:center; min-height:40px; padding:8px 14px;
+    border-radius:999px; color:#2a2522; font-size:14px; font-weight:900; cursor:pointer;
+    border:1px solid transparent; background:transparent; list-style:none; white-space:nowrap;
+  }
+  #meiri-global-nav summary::-webkit-details-marker { display:none; }
+  #meiri-global-nav .mgn-link:hover, #meiri-global-nav summary:hover,
+  #meiri-global-nav .mgn-link[aria-current="page"], #meiri-global-nav .mgn-current > summary {
+    color:#c2410c; background:#fff3e6; border-color:#ffd8a8;
+  }
+  #meiri-global-nav .mgn-dropdown { position:relative; }
+  #meiri-global-nav .mgn-menu {
+    display:none; position:absolute; right:0; top:calc(100% + 8px); min-width:245px; padding:8px;
+    background:#fff; border:1px solid #eadfce; border-radius:16px; box-shadow:0 18px 45px rgba(23,20,19,.16);
+  }
+  #meiri-global-nav .mgn-dropdown[open] .mgn-menu { display:grid; gap:4px; }
+  #meiri-global-nav .mgn-menu a { padding:10px 12px; border-radius:11px; color:#2a2522; font-size:13px; font-weight:800; }
+  #meiri-global-nav .mgn-menu a:hover, #meiri-global-nav .mgn-menu a[aria-current="page"] { background:#fff8ef; color:#c2410c; }
+  #meiri-global-nav .mgn-phone {
+    display:inline-flex; align-items:center; justify-content:center; min-height:40px; padding:8px 14px;
+    border-radius:999px; background:linear-gradient(135deg,#ff8a2a,#ffb15f); color:#fff;
+    font-size:13px; font-weight:900; white-space:nowrap; box-shadow:0 10px 22px rgba(255,122,26,.18);
+  }
+  @media (max-width: 800px) {
+    #meiri-global-nav .mgn-inner { min-height:auto; padding:7px 0; flex-wrap:wrap; gap:7px; }
+    #meiri-global-nav .mgn-brand img { width:62px; height:36px; }
+    #meiri-global-nav .mgn-brand span { font-size:14px; }
+    #meiri-global-nav .mgn-links { order:3; width:100%; flex:0 0 100%; overflow-x:auto; justify-content:flex-start; padding-bottom:2px; }
+    #meiri-global-nav .mgn-link, #meiri-global-nav summary { min-height:34px; padding:6px 11px; font-size:12.5px; }
+    #meiri-global-nav .mgn-phone { min-height:34px; padding:6px 10px; font-size:12px; }
+    #meiri-global-nav .mgn-menu { position:fixed; top:112px; right:12px; left:12px; min-width:0; }
+  }
+</style>
+
+</head>
+<body>
+
+<header id="meiri-global-nav" aria-label="ניווט ראשי">
+  <div class="mgn-inner">
+    <a class="mgn-brand" href="/">
+      <img src="https://content.vp4.me/ishabat/Content/%D7%9C%D7%95%D7%92%D7%95_%D7%9E%D7%90%D7%99%D7%A8%D7%99_%D7%A9%D7%91%D7%AA_-_%D7%9E%D7%A2%D7%95%D7%93%D7%9B%D7%9F_600x271-removebg-preview_600x271-r.png" alt="לוגו מאירי שבת">
+      <span>מאירי שבת</span>
+    </a>
+    <nav class="mgn-links" aria-label="עמודי האתר">
+      <a class="mgn-link" href="/">דף הבית</a>
+      <a class="mgn-link" href="/magazine/">המגזין</a>
+      <details class="mgn-dropdown mgn-current">
+        <summary>מחשבונים ▾</summary>
+        <div class="mgn-menu">
+          <a href="/calculators/" aria-current="page">כל המחשבונים</a>
+          <a href="/calculators/institutions/">מחשבון מוסדות וסולארי</a>
+          <a href="/calculators/private/">מחשבון צריכה לפרטיים</a>
+        </div>
+      </details>
+    </nav>
+    <a class="mgn-phone" href="tel:0548444350">☎ 054-844-4350</a>
+  </div>
+</header>
+
+  <div class="page">
+    <header class="topbar">
+      <div class="container nav">
+        <a class="brand" href="/" aria-label="מאירי שבת - דף הבית" rel="noopener noreferrer">
+          <span class="logo-wrap">
+            <img class="logo" src="https://content.vp4.me/ishabat/Content/%D7%9C%D7%95%D7%92%D7%95_%D7%9E%D7%90%D7%99%D7%A8%D7%99_%D7%A9%D7%91%D7%AA_-_%D7%9E%D7%A2%D7%95%D7%93%D7%9B%D7%9F_600x271-removebg-preview_600x271-r(1).png" alt="לוגו מאירי שבת" onerror="this.style.display='none'" />
+          </span>
+          <span>
+            <strong class="brand-name">מאירי שבת</strong>
+            <span class="brand-tagline">מחשבוני אגירה וסוללות להתאמת מערכת</span>
+          </span>
+        </a>
+
+        <nav class="nav-actions" aria-label="יצירת קשר">
+          <a class="pill" href="https://mail.google.com/mail/?view=cm&fs=1&to=A026233343%40GMAIL.COM&su=%D7%91%D7%A7%D7%A9%D7%94%20%D7%9C%D7%94%D7%AA%D7%90%D7%9E%D7%AA%20%D7%9E%D7%A2%D7%A8%D7%9B%D7%AA%20%D7%90%D7%92%D7%99%D7%A8%D7%94&body=%D7%A9%D7%9C%D7%95%D7%9D%2C%0A%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A7%D7%91%D7%9C%20%D7%94%D7%9B%D7%95%D7%95%D7%A0%D7%94%20%D7%9C%D7%91%D7%97%D7%99%D7%A8%D7%AA%20%D7%9E%D7%97%D7%A9%D7%91%D7%95%D7%9F%20/%20%D7%94%D7%AA%D7%90%D7%9E%D7%AA%20%D7%9E%D7%A2%D7%A8%D7%9B%D7%AA%20%D7%90%D7%92%D7%99%D7%A8%D7%94.%0A%0A%D7%A9%D7%9D%3A%0A%D7%98%D7%9C%D7%A4%D7%95%D7%9F%3A%0A%D7%A1%D7%95%D7%92%20%D7%A9%D7%99%D7%9E%D7%95%D7%A9%3A%20%D7%A4%D7%A8%D7%98%D7%99%20/%20%D7%9E%D7%95%D7%A1%D7%93%0A%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A0%D7%95%D7%A1%D7%A4%D7%99%D7%9D%3A%0A%0A%D7%AA%D7%95%D7%93%D7%94." target="_blank" rel="noopener noreferrer">✉️ פנייה במייל</a>
+          <a class="pill primary" href="tel:0548444350">☎ 054-844-4350</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero compact-hero">
+        <div class="container hero-grid">
+          <div>
+            <h1><span class="gradient-text">מתאימים מערכת אגירה</span> בצורה ברורה ומהירה</h1>
+            <p class="lead">בחרו מסלול חישוב: מוסדות עם נתוני צריכה, או פרטיים לפי מכשירים ושעות שימוש.</p>
+   
+          </div>
+        </div>
+      </section>
+
+      <section class="container" id="calculators" aria-label="בחירת מחשבון">
+        <div class="section-head">
+          <h2>איזה חישוב מתאים לך?</h2>
+          <p>שני מסלולים ברורים: חישוב מקצועי למוסדות, או חישוב מהיר וממוקד למשפחה ולבית.</p>
+        </div>
+
+        <div class="choice-grid">
+          <a class="choice-card" href="/calculators/institutions/" rel="noopener noreferrer">
+            <span class="glow"></span>
+            <div class="card-top">
+              <span class="icon">🏢</span>
+              <span class="tag">למוסדות וקהילות</span>
+            </div>
+            <h3>מחשבון מוסדות ובתי כנסת</h3>
+            <p>
+              מתאים למקום עם נתוני צריכה קיימים. מעלים קובץ, מזינים שטח סולארי ונתונים משלימים, ומקבלים תמונת מערכת רחבה.
+            </p>
+            <ul class="details">
+              <li>קריאת קובץ צריכה וחישוב לפי מונים.</li>
+              <li>בדיקת פוטנציאל סולארי ואגירה.</li>
+              <li>המלצה מסכמת לגודל מערכת, עלות, חיסכון והחזר משוער.</li>
+            </ul>
+            <span class="spacer"></span>
+            <span class="card-btn">פתח מחשבון מוסדות ←</span>
+          </a>
+
+          <a class="choice-card private" href="/calculators/private/" rel="noopener noreferrer">
+            <span class="glow"></span>
+            <div class="card-top">
+              <span class="icon">🔋</span>
+              <span class="tag">למשפחות ופרטיים</span>
+            </div>
+            <h3>מחשבון חישוב צריכה לפרטיים</h3>
+            <p>
+              מתאים לחישוב מהיר לפי מכשירים. בוחרים מכשיר, מזינים שעות שימוש וכמות, ומקבלים הערכת צריכת אנרגיה והמלצת מערכת.
+            </p>
+            <ul class="details">
+              <li>הוספת מכשירים נפוצים או הזנה ידנית.</li>
+              <li>חישוב kWh, כמות סוללות והספק ממיר מומלץ.</li>
+              <li>אפשרות ייצוא לתיעוד ב־PDF או Excel.</li>
+            </ul>
+            <span class="spacer"></span>
+            <span class="card-btn">פתח מחשבון פרטיים ←</span>
+          </a>
+        </div>
+
+        <div class="contact-box">
+          <div>
+            <h2>לא בטוחים איזה מחשבון לבחור?</h2>
+            <p>אפשר להתחיל במחשבון הפרטיים לחישוב מהיר, או לפנות לקבלת הכוונה לבחירת מסלול החישוב המתאים.</p>
+          </div>
+          <div class="contact-actions">
+            <a class="btn" href="tel:0548444350">☎ 054-844-4350</a>
+            <a class="btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=A026233343%40GMAIL.COM&su=%D7%91%D7%A7%D7%A9%D7%94%20%D7%9C%D7%94%D7%AA%D7%90%D7%9E%D7%AA%20%D7%9E%D7%A2%D7%A8%D7%9B%D7%AA%20%D7%90%D7%92%D7%99%D7%A8%D7%94&body=%D7%A9%D7%9C%D7%95%D7%9D%2C%0A%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A7%D7%91%D7%9C%20%D7%94%D7%9B%D7%95%D7%95%D7%A0%D7%94%20%D7%9C%D7%91%D7%97%D7%99%D7%A8%D7%AA%20%D7%9E%D7%97%D7%A9%D7%91%D7%95%D7%9F%20/%20%D7%94%D7%AA%D7%90%D7%9E%D7%AA%20%D7%9E%D7%A2%D7%A8%D7%9B%D7%AA%20%D7%90%D7%92%D7%99%D7%A8%D7%94.%0A%0A%D7%A9%D7%9D%3A%0A%D7%98%D7%9C%D7%A4%D7%95%D7%9F%3A%0A%D7%A1%D7%95%D7%92%20%D7%A9%D7%99%D7%9E%D7%95%D7%A9%3A%20%D7%A4%D7%A8%D7%98%D7%99%20/%20%D7%9E%D7%95%D7%A1%D7%93%0A%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A0%D7%95%D7%A1%D7%A4%D7%99%D7%9D%3A%0A%0A%D7%AA%D7%95%D7%93%D7%94." target="_blank" rel="noopener noreferrer">✉️ שליחת פנייה מוכנה בג׳ימייל</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        © <span id="year"></span> מאירי שבת · פתרונות אנרגיה · כל הזכויות שמורות
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+<script id="buttons-and-blocks-final-js">
+/* ==========================================================
+   תיקון לחצנים בתוך Google Sites + חסימות בסיסיות
+   חשוב: לא משתמשים ב-window.top.location, כדי לא להיתקל בחסימת sandbox/CSP.
+   ========================================================== */
+(function () {
+  "use strict";
+
+  function prepareLinks() {
+    var links = document.querySelectorAll("a[href]");
+
+    links.forEach(function (link) {
+      var href = (link.getAttribute("href") || "").trim();
+
+      if (!link.hasAttribute("tabindex")) {
+        link.setAttribute("tabindex", "0");
+      }
+
+      /* בתוך הטמעה של Google Sites:
+         עדיף לפתוח קישורי עמודים/ג׳ימייל בלשונית חדשה.
+         זה מונע שגיאות:
+         Unsafe attempt to initiate navigation
+         frame-ancestors / CSP
+      */
+      if (
+        href &&
+        href.charAt(0) !== "#" &&
+        href.indexOf("tel:") !== 0
+      ) {
+        link.setAttribute("target", "_blank");
+        link.setAttribute("rel", "noopener noreferrer");
+      }
+
+      /* לא עושים preventDefault בלחיצה רגילה.
+         נותנים לדפדפן לפתוח את הקישור בעצמו, כי זו הדרך שה-sandbox מאפשרת הכי טוב.
+      */
+      link.addEventListener("keydown", function (e) {
+        if (e.key === " " && link.classList.contains("choice-card")) {
+          e.preventDefault();
+          link.click();
+        }
+      }, false);
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", prepareLinks);
+  } else {
+    prepareLinks();
+  }
+
+  /* ---------- חסימות ---------- */
+  function lower(value) {
+    return String(value || "").toLowerCase();
+  }
+
+  function isEditableTarget(target) {
+    return target && /input|textarea|select/i.test(target.tagName);
+  }
+
+  function isBlockedShortcut(e) {
+    var key = lower(e.key);
+    var code = lower(e.code);
+    var keyCode = e.keyCode || e.which || 0;
+    var ctrlOrCmd = !!(e.ctrlKey || e.metaKey);
+
+    return (
+      key === "f12" ||
+      code === "f12" ||
+      keyCode === 123 ||
+
+      /* שמירה / קוד מקור / הדפסה */
+      (ctrlOrCmd && (
+        key === "s" || code === "keys" || keyCode === 83 ||
+        key === "u" || code === "keyu" || keyCode === 85 ||
+        key === "p" || code === "keyp" || keyCode === 80
+      )) ||
+
+      /* העתקה / גזירה / בחירה מלאה */
+      (!isEditableTarget(e.target) && ctrlOrCmd && (
+        key === "c" || code === "keyc" || keyCode === 67 ||
+        key === "x" || code === "keyx" || keyCode === 88 ||
+        key === "a" || code === "keya" || keyCode === 65
+      )) ||
+
+      /* כלי מפתחים */
+      (ctrlOrCmd && e.shiftKey && (
+        key === "i" || code === "keyi" || keyCode === 73 ||
+        key === "j" || code === "keyj" || keyCode === 74 ||
+        key === "c" || code === "keyc" || keyCode === 67 ||
+        key === "k" || code === "keyk" || keyCode === 75
+      )) ||
+
+      /* Safari / Mac */
+      (e.metaKey && e.altKey && (
+        key === "i" || code === "keyi" ||
+        key === "j" || code === "keyj" ||
+        key === "c" || code === "keyc"
+      ))
+    );
+  }
+
+  function blockEvent(e) {
+    if (isBlockedShortcut(e)) {
+      try { e.preventDefault(); } catch (err) {}
+      try { e.stopImmediatePropagation(); } catch (err) {}
+      try { e.stopPropagation(); } catch (err) {}
+      return false;
+    }
+  }
+
+  ["keydown", "keypress", "keyup"].forEach(function (eventName) {
+    window.addEventListener(eventName, blockEvent, true);
+    document.addEventListener(eventName, blockEvent, true);
+    document.documentElement.addEventListener(eventName, blockEvent, true);
+  });
+
+  ["contextmenu", "dragstart", "copy", "cut", "selectstart"].forEach(function (eventName) {
+    document.addEventListener(eventName, function (e) {
+      if (isEditableTarget(e.target)) return true;
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      return false;
+    }, true);
+  });
+
+  document.onkeydown = function (e) {
+    return blockEvent(e || window.event);
+  };
+
+  window.onkeydown = function (e) {
+    return blockEvent(e || window.event);
+  };
+
+  document.oncontextmenu = function () {
+    return false;
+  };
+})();
+</script>
+
+</body>
+</html>

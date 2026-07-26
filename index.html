@@ -1,0 +1,5235 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="he">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>מערכות אגירת חשמל ומצברי ליתיום | מאירי שבת</title>
+<meta content="מערכות אגירת חשמל, מצברי ליתיום וממירים, כולל התאמת מערכת לפי צריכת החשמל, אספקה, התקנה ושירות מקצועי." name="description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="#0b2233" name="theme-color"/>
+<style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      min-height: 100%;
+      background: #fff8ef;
+    }
+  </style>
+<style id="meiri-global-nav-style">
+  #meiri-global-nav, #meiri-global-nav * { box-sizing: border-box; }
+  #meiri-global-nav {
+    direction: rtl; position: sticky; top: 0; z-index: 2147483000;
+    width: 100%; font-family: Arial,"Noto Sans Hebrew",sans-serif;
+    background: rgba(255,255,255,.96); border-bottom: 1px solid #eadfce;
+    box-shadow: 0 8px 24px rgba(23,20,19,.08); backdrop-filter: blur(12px);
+  }
+  #meiri-global-nav .mgn-inner {
+    width: min(1240px, calc(100% - 24px)); min-height: 66px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between; gap: 18px;
+  }
+  #meiri-global-nav a { text-decoration: none; }
+  #meiri-global-nav .mgn-brand { display:flex; align-items:center; gap:10px; color:#171413; font-weight:900; white-space:nowrap; }
+  #meiri-global-nav .mgn-brand img { width:78px; height:46px; object-fit:contain; display:block; }
+  #meiri-global-nav .mgn-links { display:flex; align-items:center; justify-content:center; gap:6px; flex:1; }
+  #meiri-global-nav .mgn-link, #meiri-global-nav summary {
+    display:flex; align-items:center; justify-content:center; min-height:40px; padding:8px 14px;
+    border-radius:999px; color:#2a2522; font-size:14px; font-weight:900; cursor:pointer;
+    border:1px solid transparent; background:transparent; list-style:none; white-space:nowrap;
+  }
+  #meiri-global-nav summary::-webkit-details-marker { display:none; }
+  #meiri-global-nav .mgn-link:hover, #meiri-global-nav summary:hover,
+  #meiri-global-nav .mgn-link[aria-current="page"], #meiri-global-nav .mgn-current > summary {
+    color:#c2410c; background:#fff3e6; border-color:#ffd8a8;
+  }
+  #meiri-global-nav .mgn-dropdown { position:relative; }
+  #meiri-global-nav .mgn-menu {
+    display:none; position:absolute; right:0; top:calc(100% + 8px); min-width:245px; padding:8px;
+    background:#fff; border:1px solid #eadfce; border-radius:16px; box-shadow:0 18px 45px rgba(23,20,19,.16);
+  }
+  #meiri-global-nav .mgn-dropdown[open] .mgn-menu { display:grid; gap:4px; }
+  #meiri-global-nav .mgn-menu a { padding:10px 12px; border-radius:11px; color:#2a2522; font-size:13px; font-weight:800; }
+  #meiri-global-nav .mgn-menu a:hover, #meiri-global-nav .mgn-menu a[aria-current="page"] { background:#fff8ef; color:#c2410c; }
+  #meiri-global-nav .mgn-phone {
+    display:inline-flex; align-items:center; justify-content:center; min-height:40px; padding:8px 14px;
+    border-radius:999px; background:linear-gradient(135deg,#ff8a2a,#ffb15f); color:#fff;
+    font-size:13px; font-weight:900; white-space:nowrap; box-shadow:0 10px 22px rgba(255,122,26,.18);
+  }
+  @media (max-width: 800px) {
+    #meiri-global-nav .mgn-inner { min-height:auto; padding:7px 0; flex-wrap:wrap; gap:7px; }
+    #meiri-global-nav .mgn-brand img { width:62px; height:36px; }
+    #meiri-global-nav .mgn-brand span { font-size:14px; }
+    #meiri-global-nav .mgn-links { order:3; width:100%; flex:0 0 100%; overflow-x:auto; justify-content:flex-start; padding-bottom:2px; }
+    #meiri-global-nav .mgn-link, #meiri-global-nav summary { min-height:34px; padding:6px 11px; font-size:12.5px; }
+    #meiri-global-nav .mgn-phone { min-height:34px; padding:6px 10px; font-size:12px; }
+    #meiri-global-nav .mgn-menu { position:fixed; top:112px; right:12px; left:12px; min-width:0; }
+  }
+</style>
+</head>
+<body>
+<header aria-label="ניווט ראשי" id="meiri-global-nav">
+<div class="mgn-inner">
+<a aria-current="page" class="mgn-brand" href="/">
+<img alt="לוגו מאירי שבת" src="https://content.vp4.me/ishabat/Content/%D7%9C%D7%95%D7%92%D7%95_%D7%9E%D7%90%D7%99%D7%A8%D7%99_%D7%A9%D7%91%D7%AA_-_%D7%9E%D7%A2%D7%95%D7%93%D7%9B%D7%9F_600x271-removebg-preview_600x271-r.png"/>
+<span>מאירי שבת</span>
+</a>
+<nav aria-label="עמודי האתר" class="mgn-links">
+<a aria-current="page" class="mgn-link" href="/">דף הבית</a>
+<a class="mgn-link" href="/magazine/">המגזין</a>
+<details class="mgn-dropdown">
+<summary>מחשבונים ▾</summary>
+<div class="mgn-menu">
+<a href="/calculators/">כל המחשבונים</a>
+<a href="/calculators/institutions/">מחשבון מוסדות וסולארי</a>
+<a href="/calculators/private/">מחשבון צריכה לפרטיים</a>
+</div>
+</details>
+</nav>
+<a class="mgn-phone" href="tel:0548444350">☎ 054-844-4350</a>
+</div>
+</header>
+<div id="meiri-pro-site">
+<style>
+    #meiri-pro-site {
+      direction: rtl;
+      font-family: Arial, "Noto Sans Hebrew", sans-serif;
+      color: #092336;
+      background: #fff7ee;
+      line-height: 1.7;
+      overflow-x: hidden;
+      width: 100%;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+    }/* ==========================================
+   צבעים מודרניים בלבד — בלי שינוי מבנה האתר
+   ========================================== */
+
+#meiri-pro-site {
+  --dark: #0b2233;
+  --dark-2: #12384f;
+  --text: #102a3c;
+  --muted: #536b7d;
+
+  --accent: #f97316;
+  --accent-soft: #fff3e8;
+
+  --cyan-soft: #eaf7f8;
+  --cream: #fbf7f1;
+  --white: #ffffff;
+
+  --line: #e6edf2;
+  --shadow: rgba(15, 35, 52, 0.09);
+
+  background: var(--cream);
+  color: var(--text);
+}
+
+/* רקע פתיחה מודרני ועדין */
+#meiri-pro-site .hero {
+  background:
+    radial-gradient(circle at 15% 18%, rgba(249, 115, 22, 0.13), transparent 30%),
+    radial-gradient(circle at 84% 12%, rgba(14, 165, 183, 0.13), transparent 32%),
+    linear-gradient(135deg, #fbf7f1 0%, #ffffff 48%, #eaf7f8 100%);
+}
+
+/* כותרות */
+#meiri-pro-site h1,
+#meiri-pro-site h2,
+#meiri-pro-site h3 {
+  color: var(--dark);
+}
+
+/* טקסט משני */
+#meiri-pro-site .muted,
+#meiri-pro-site .section-title p,
+#meiri-pro-site .hero-text {
+  color: var(--muted);
+}
+
+/* כתום מודרני במקום כתום זרחני */
+#meiri-pro-site .btn-primary {
+  background: linear-gradient(135deg, #f97316, #fb923c);
+  color: #ffffff;
+  box-shadow: 0 12px 26px rgba(249, 115, 22, 0.24);
+}
+
+#meiri-pro-site .btn-primary:hover {
+  box-shadow: 0 18px 34px rgba(249, 115, 22, 0.34);
+}
+
+/* כפתור כהה */
+#meiri-pro-site .btn-dark {
+  background: linear-gradient(135deg, #0b2233, #12384f);
+  color: #ffffff;
+}#meiri-pro-site .floating-calculator {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 50;
+  width: min(330px, calc(100% - 100px));
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.96) !important;
+  color: #0b2233 !important;
+  border: 1px solid #eadfce;
+  padding: 13px 16px;
+  box-shadow: 0 16px 34px rgba(16,32,51,.16);
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  font-weight: 900;
+  transition: 0.25s ease;
+}
+
+#meiri-pro-site .floating-calculator:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 42px rgba(16,32,51,.22);
+  border-color: #ffb15f;
+}
+
+#meiri-pro-site .floating-calculator .calc-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
+  background: #fff8ef;
+  border: 1px solid #ffd7a3;
+  color: #12384f;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+
+#meiri-pro-site .floating-calculator .calc-text {
+  line-height: 1.25;
+}
+
+#meiri-pro-site .floating-calculator small {
+  display: block;
+  font-size: 13px;
+  color: #667789;
+  font-weight: 800;
+  margin-top: 3px;
+}
+
+@media (max-width: 560px) {
+  #meiri-pro-site .floating-calculator {
+    right: 12px;
+    bottom: 88px;
+    width: calc(100% - 24px);
+  }
+}
+
+/* כפתור בהיר */
+#meiri-pro-site .btn-light {
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--dark);
+  border: 1px solid var(--line);
+}
+
+/* תגית עליונה */
+#meiri-pro-site .badge {
+  background: rgba(255, 243, 232, 0.92);
+  border: 1px solid #ffd6b8;
+  color: #a84408;
+}
+
+/* הדגשות כתומות */
+#meiri-pro-site .section-title span,
+#meiri-pro-site .product-label {
+  color: var(--accent);
+}
+
+/* כרטיסים — יותר נקי ועדכני */
+#meiri-pro-site .hero-card,
+#meiri-pro-site .top-lead-box,
+#meiri-pro-site .info-box,
+#meiri-pro-site .process-card,
+#meiri-pro-site .product,
+#meiri-pro-site .calculator,
+#meiri-pro-site .contact-card,
+#meiri-pro-site .form-card {
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid var(--line);
+  box-shadow: 0 18px 45px var(--shadow);
+}
+
+/* קופסאות קטנות */
+#meiri-pro-site .trust-box,
+#meiri-pro-site .feature,
+#meiri-pro-site .spec,
+#meiri-pro-site .contact-item,
+#meiri-pro-site .hero-note {
+  background: #f8fbfc;
+  border-color: var(--line);
+  color: var(--text);
+}
+
+/* אזור הסטטיסטיקות */
+#meiri-pro-site .stats {
+  background: linear-gradient(135deg, #0b2233, #17445d);
+}
+
+#meiri-pro-site .stat {
+  background: rgba(255, 255, 255, 0.075);
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+#meiri-pro-site .stat strong {
+  color: #fb923c;
+}
+
+/* אזור יצירת קשר */
+#meiri-pro-site .contact {
+  background:
+    radial-gradient(circle at 14% 10%, rgba(249, 115, 22, 0.12), transparent 30%),
+    linear-gradient(135deg, #fbf7f1, #ffffff 52%, #eaf7f8 100%);
+}
+
+/* שדות טופס */
+#meiri-pro-site .lead-field input {
+  background: #f8fbfc;
+  border-color: #dfe8ee;
+  color: var(--text);
+}
+
+#meiri-pro-site .lead-field input:focus {
+  background: #ffffff;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.13);
+}
+
+/* כפתורים צפים */
+#meiri-pro-site .floating-call {
+  background: #f97316;
+}
+
+#meiri-pro-site .floating-calculator {
+  background: linear-gradient(135deg, #0b2233, #17445d);
+}
+
+/* לוגו/אייקון במידה שה-header הפנימי עדיין קיים */
+#meiri-pro-site .brand-icon {
+  background: linear-gradient(135deg, #f97316, #fb923c);
+  box-shadow: 0 12px 24px rgba(249, 115, 22, 0.24);
+}
+
+/* פס כהה עליון/ניווט פנימי — רק אם נשאר בקוד */
+#meiri-pro-site .top-strip,
+#meiri-pro-site .header {
+  background: #0b2233;
+  color: #ffffff;
+}
+
+#meiri-pro-site .nav,
+#meiri-pro-site .brand,
+#meiri-pro-site .nav button {
+  color: #ffffff;
+}
+
+#meiri-pro-site .nav button:hover {
+  color: #fb923c;
+}
+
+    #meiri-pro-site * {
+      box-sizing: border-box;
+    }
+
+    #meiri-pro-site a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    #meiri-pro-site button {
+      font-family: inherit;
+    }
+
+    #meiri-pro-site .wrap {
+      width: min(1180px, calc(100% - 32px));
+      margin: auto;
+    }
+
+    #meiri-pro-site .top-strip {
+      background: #071d2b;
+      color: #fff;
+      padding: 9px 0;
+      font-size: 15px;
+    }
+
+    #meiri-pro-site .top-strip .wrap {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    #meiri-pro-site .top-strip strong {
+      font-weight: 900;
+    }
+
+    #meiri-pro-site .header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgba(255, 255, 255, 0.97);
+      border-bottom: 1px solid #e4edf4;
+      box-shadow: 0 10px 28px rgba(10, 35, 55, 0.08);
+    }
+
+    #meiri-pro-site .header-inner {
+      min-height: 78px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    #meiri-pro-site .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      font-size: 25px;
+      color: #102c42;
+      border: 0;
+      background: transparent;
+      padding: 0;
+      cursor: pointer;
+    }
+
+    #meiri-pro-site .brand-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 15px;
+      background: linear-gradient(135deg, #ff9800, #ffbd70);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 27px;
+      box-shadow: 0 12px 24px rgba(255,152,0,.25);
+    }
+
+    #meiri-pro-site .nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-weight: 800;
+      font-size: 15px;
+      color: #284255;
+    }
+
+    #meiri-pro-site .nav button {
+      border: 0;
+      background: transparent;
+      color: inherit;
+      font-weight: 800;
+      cursor: pointer;
+      padding: 5px 0;
+    }
+
+    #meiri-pro-site .nav button:hover {
+      color: #ff9800;
+    }
+
+    #meiri-pro-site .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 24px;
+      border-radius: 999px;
+      font-weight: 900;
+      border: 0;
+      cursor: pointer;
+      transition: .25s ease;
+      white-space: nowrap;
+      text-align: center;
+      line-height: 1.25;
+    }
+
+    #meiri-pro-site .btn-primary {
+      background: linear-gradient(135deg, #ff9800, #ffad4f);
+      color: #fff;
+      box-shadow: 0 12px 26px rgba(255,152,0,.27);
+    }
+
+    #meiri-pro-site .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 34px rgba(255,152,0,.36);
+    }
+
+    #meiri-pro-site .btn-dark {
+      background: #112f43;
+      color: #fff;
+    }
+
+    #meiri-pro-site .btn-light {
+      background: #fff;
+      color: #112f43;
+      border: 1px solid #dfeaf1;
+    }
+
+    #meiri-pro-site .hero {
+      background:
+        linear-gradient(
+          180deg,
+          #fff7ee 0%,
+          #fff7ee 44px,
+          #eef8fb 220px,
+          #ffffff 62%,
+          #f7fbff 100%
+        );
+      padding: 72px 0 58px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #meiri-pro-site .hero-grid {
+      display: grid;
+      grid-template-columns: 1.03fr .97fr;
+      gap: 38px;
+      align-items: center;
+    }
+
+    #meiri-pro-site .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 15px;
+      border-radius: 999px;
+      background: #eaf7f3;
+      border: 1px solid #cfeee6;
+      color: #08715d;
+      font-weight: 900;
+      margin-bottom: 16px;
+      font-size: 14px;
+    }
+
+    #meiri-pro-site h1 {
+      font-size: clamp(34px, 5vw, 61px);
+      line-height: 1.08;
+      margin: 0 0 18px;
+      letter-spacing: -1.3px;
+      color: #092336;
+    }
+
+    #meiri-pro-site .hero-text {
+      font-size: 20px;
+      color: #4a6275;
+      max-width: 670px;
+      margin: 0 0 25px;
+    }
+
+    #meiri-pro-site .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 28px 0 22px;
+    }
+
+    #meiri-pro-site .top-lead-box {
+      max-width: 680px;
+      margin: 22px 0 18px;
+      background: rgba(255,255,255,.94);
+      border: 1px solid #e4edf4;
+      border-radius: 24px;
+      padding: 20px;
+      box-shadow: 0 16px 40px rgba(13,45,68,.08);
+    }
+
+    #meiri-pro-site .top-lead-box h3 {
+      margin-bottom: 5px;
+      font-size: 22px;
+    }
+
+    #meiri-pro-site .custom-lead-form.top-lead-form {
+      margin-top: 14px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      align-items: end;
+    }
+
+    #meiri-pro-site .top-lead-form .lead-submit,
+    #meiri-pro-site .top-lead-form .lead-success {
+      grid-column: 1 / -1;
+    }
+
+    #meiri-pro-site .top-lead-form .lead-field label {
+      font-size: 14px;
+    }
+
+    #meiri-pro-site .top-lead-form .lead-field input {
+      padding: 12px 14px;
+      font-size: 15px;
+    }
+
+    #meiri-pro-site .trust-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      max-width: 660px;
+    }
+
+    #meiri-pro-site .trust-box {
+      background: rgba(255,255,255,.82);
+      border: 1px solid #e3edf4;
+      border-radius: 18px;
+      padding: 14px;
+      font-weight: 900;
+      color: #163348;
+      box-shadow: 0 10px 28px rgba(13,45,68,.06);
+    }
+
+    #meiri-pro-site .hero-card {
+      background: #fff;
+      border: 1px solid #e2edf4;
+      border-radius: 34px;
+      padding: 28px;
+      box-shadow: 0 22px 60px rgba(10, 40, 65, .13);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #meiri-pro-site .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: auto -40px -55px auto;
+      width: 230px;
+      height: 230px;
+      border-radius: 50%;
+      background: rgba(255,152,0,.13);
+    }
+
+    #meiri-pro-site .battery-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      align-items: center;
+    }
+
+    #meiri-pro-site .battery-grid img {
+      width: 100%;
+      max-height: 280px;
+      object-fit: contain;
+      filter: drop-shadow(0 18px 18px rgba(0,0,0,.13));
+    }
+
+    #meiri-pro-site .hero-note {
+      position: relative;
+      z-index: 1;
+      margin-top: 18px;
+      background: #f7fafc;
+      border: 1px solid #e5eef4;
+      border-radius: 22px;
+      padding: 18px;
+    }
+
+    #meiri-pro-site .hero-note strong {
+      display: block;
+      font-size: 22px;
+      color: #102c42;
+      margin-bottom: 5px;
+    }
+
+    #meiri-pro-site .section {
+      padding: 74px 0;
+    }
+
+    #meiri-pro-site .section.white {
+      background: #fff;
+    }
+
+    #meiri-pro-site .section-title {
+      text-align: center;
+      margin-bottom: 38px;
+    }
+
+    #meiri-pro-site .section-title span {
+      color: #ff9800;
+      font-weight: 900;
+      display: inline-block;
+      margin-bottom: 7px;
+    }
+
+    #meiri-pro-site h2 {
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.18;
+      margin: 0;
+      color: #102c42;
+      letter-spacing: -.7px;
+    }
+
+    #meiri-pro-site h3 {
+      font-size: 25px;
+      color: #102c42;
+      margin: 0 0 9px;
+      line-height: 1.25;
+    }
+
+    #meiri-pro-site p {
+      margin: 0;
+    }
+
+    #meiri-pro-site .section-title p,
+    #meiri-pro-site .muted {
+      color: #536b7d;
+    }
+
+    #meiri-pro-site .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    #meiri-pro-site .info-box {
+      background: #fff;
+      border: 1px solid #e4edf4;
+      border-radius: 28px;
+      padding: 30px;
+      box-shadow: 0 16px 40px rgba(13,45,68,.06);
+    }
+
+    #meiri-pro-site .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    #meiri-pro-site .feature {
+      background: #f7fafc;
+      border: 1px solid #e5eef4;
+      border-radius: 18px;
+      padding: 14px;
+      font-weight: 900;
+      color: #173348;
+    }
+
+    #meiri-pro-site .ticks {
+      list-style: none;
+      padding: 0;
+      margin: 16px 0 20px;
+    }
+
+    #meiri-pro-site .ticks li {
+      position: relative;
+      padding-right: 30px;
+      margin: 8px 0;
+      color: #30495c;
+      font-weight: 800;
+    }
+
+    #meiri-pro-site .ticks li::before {
+      content: "✓";
+      position: absolute;
+      right: 0;
+      top: 0;
+      color: #0b8a68;
+      font-weight: 900;
+    }
+
+    #meiri-pro-site .process-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    #meiri-pro-site .process-card {
+      background: #fff;
+      border: 1px solid #e4edf4;
+      border-radius: 26px;
+      padding: 26px;
+      box-shadow: 0 16px 40px rgba(13,45,68,.07);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #meiri-pro-site .process-num {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #112f43;
+      color: #fff;
+      font-size: 21px;
+      font-weight: 900;
+      margin-bottom: 15px;
+    }
+
+    #meiri-pro-site .stats {
+      background: linear-gradient(135deg, #092336, #17435b);
+      color: #fff;
+      padding: 42px 0;
+    }
+
+    #meiri-pro-site .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      text-align: center;
+    }
+
+    #meiri-pro-site .stat {
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.13);
+      border-radius: 22px;
+      padding: 22px 14px;
+    }
+
+    #meiri-pro-site .stat strong {
+      display: block;
+      color: #ffb664;
+      font-size: 34px;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    #meiri-pro-site .stat strong .counter {
+      display: inline-block;
+      min-width: 1.3em;
+    }
+
+    #meiri-pro-site .product-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    #meiri-pro-site .product {
+      background: linear-gradient(180deg, #fff, #f8fbfd);
+      border: 1px solid #e4edf4;
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: 0 18px 48px rgba(13,45,68,.08);
+      display: grid;
+      grid-template-columns: .86fr 1.14fr;
+      min-height: 410px;
+    }
+
+    #meiri-pro-site .product-img {
+      background:
+        radial-gradient(circle at center, rgba(255,152,0,.13), transparent 58%),
+        #f3f8fb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 22px;
+    }
+
+    #meiri-pro-site .product-img img {
+      width: 100%;
+      max-height: 285px;
+      object-fit: contain;
+      filter: drop-shadow(0 18px 18px rgba(0,0,0,.14));
+    }
+
+    #meiri-pro-site .product-body {
+      padding: 28px;
+    }
+
+    #meiri-pro-site .product-label {
+      color: #ff9800;
+      font-size: 14px;
+      font-weight: 900;
+      margin-bottom: 5px;
+    }
+
+    #meiri-pro-site .specs {
+      display: grid;
+      gap: 9px;
+      margin-top: 16px;
+    }
+
+    #meiri-pro-site .spec {
+      background: #f7fafc;
+      border: 1px solid #e5eef4;
+      border-radius: 14px;
+      padding: 10px 12px;
+      color: #30495c;
+      font-size: 15px;
+      font-weight: 800;
+    }
+
+    #meiri-pro-site .calculator {
+      background:
+        linear-gradient(135deg, rgba(255,152,0,.13), rgba(0,130,115,.10)),
+        #fff;
+      border: 1px solid #e4edf4;
+      border-radius: 30px;
+      padding: 34px;
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 24px;
+      align-items: center;
+      box-shadow: 0 18px 48px rgba(13,45,68,.08);
+    }
+
+    #meiri-pro-site .calculator-icon {
+      min-height: 210px;
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at center, rgba(255,152,0,.18), transparent 54%),
+        linear-gradient(135deg, #0f3147, #1b5873);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 78px;
+    }
+
+    #meiri-pro-site .contact {
+      background:
+        radial-gradient(circle at 12% 12%, rgba(255,152,0,.17), transparent 26%),
+        linear-gradient(135deg, #eef8fb, #ffffff);
+    }
+
+    #meiri-pro-site .contact-grid {
+      display: grid;
+      grid-template-columns: .88fr 1.12fr;
+      gap: 26px;
+      align-items: start;
+    }
+
+    #meiri-pro-site .contact-card,
+    #meiri-pro-site .form-card {
+      background: #fff;
+      border: 1px solid #e4edf4;
+      border-radius: 30px;
+      padding: 30px;
+      box-shadow: 0 18px 50px rgba(13,45,68,.09);
+    }
+
+    #meiri-pro-site .contact-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    #meiri-pro-site .contact-item {
+      background: #f7fafc;
+      border: 1px solid #e5eef4;
+      border-radius: 18px;
+      padding: 15px 16px;
+      font-weight: 900;
+      color: #173348;
+      text-align: right;
+    }
+
+    #meiri-pro-site .contact-item button {
+      border: 0;
+      background: transparent;
+      color: inherit;
+      font: inherit;
+      cursor: pointer;
+      padding: 0;
+      text-align: right;
+    }
+
+    #meiri-pro-site .custom-lead-form {
+      margin-top: 22px;
+      display: grid;
+      gap: 16px;
+    }
+
+    #meiri-pro-site .lead-field {
+      display: grid;
+      gap: 7px;
+    }
+
+    #meiri-pro-site .lead-field label {
+      font-weight: 900;
+      color: #173348;
+      font-size: 16px;
+    }
+
+    #meiri-pro-site .lead-field input {
+      width: 100%;
+      border: 1px solid #dce8f0;
+      background: #f8fbfd;
+      border-radius: 18px;
+      padding: 15px 16px;
+      font-size: 17px;
+      font-family: Arial, "Noto Sans Hebrew", sans-serif;
+      outline: none;
+      transition: 0.2s ease;
+      color: #13293d;
+    }
+
+    #meiri-pro-site .lead-field input:focus {
+      background: #fff;
+      border-color: #ff9800;
+      box-shadow: 0 0 0 4px rgba(255,152,0,0.13);
+    }
+
+    #meiri-pro-site .lead-submit {
+      width: 100%;
+      font-size: 19px;
+      margin-top: 6px;
+    }
+
+    #meiri-pro-site .lead-submit:disabled {
+      opacity: 0.75;
+      cursor: not-allowed;
+    }
+
+    #meiri-pro-site .lead-success {
+      display: none;
+      background: #eaf7f3;
+      border: 1px solid #cdeee4;
+      color: #08715d;
+      border-radius: 18px;
+      padding: 15px 18px;
+      font-weight: 900;
+      text-align: center;
+    }
+
+    #meiri-pro-site .footer {
+      background: #071d2b;
+      color: #dce8ef;
+      padding: 28px 0;
+      text-align: center;
+      font-size: 15px;
+    }
+
+    #meiri-pro-site .floating-call {
+      position: fixed;
+      left: 18px;
+      bottom: 18px;
+      z-index: 50;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: #ff9800;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 25px;
+      box-shadow: 0 14px 30px rgba(0,0,0,.22);
+      border: 0;
+      cursor: pointer;
+    }
+
+    #meiri-pro-site .floating-calculator {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 50;
+      width: min(310px, calc(100% - 100px));
+      border-radius: 22px;
+      background: linear-gradient(135deg, #112f43, #1f5a73);
+      color: #fff;
+      padding: 14px 16px;
+      box-shadow: 0 16px 34px rgba(0,0,0,.24);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+    }
+
+    #meiri-pro-site .floating-calculator .calc-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.16);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 23px;
+      flex: 0 0 auto;
+    }
+
+    #meiri-pro-site .floating-calculator small {
+      display: block;
+      font-size: 13px;
+      color: #dce8ef;
+      font-weight: 800;
+      line-height: 1.35;
+    }
+
+    #meiri-pro-site .call-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 80;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(7,29,43,.62);
+    }
+
+    #meiri-pro-site .call-modal.is-open {
+      display: flex;
+    }
+
+    #meiri-pro-site .call-modal-card {
+      width: min(430px, 100%);
+      background: #fff;
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: 0 22px 60px rgba(0,0,0,.25);
+      position: relative;
+      text-align: center;
+    }
+
+    #meiri-pro-site .modal-close {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 0;
+      background: #eef4f8;
+      color: #102c42;
+      font-size: 21px;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    #meiri-pro-site .call-number {
+      display: block;
+      margin: 13px 0;
+      background: #f7fafc;
+      border: 1px solid #e5eef4;
+      border-radius: 18px;
+      padding: 14px;
+      color: #102c42;
+      font-weight: 900;
+      font-size: 20px;
+    }
+
+    #meiri-pro-site .call-modal-actions {
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    @media (max-width: 980px) {
+      #meiri-pro-site .hero-grid,
+      #meiri-pro-site .about-grid,
+      #meiri-pro-site .contact-grid,
+      #meiri-pro-site .calculator,
+      #meiri-pro-site .product {
+        grid-template-columns: 1fr;
+      }
+
+      #meiri-pro-site .process-grid,
+      #meiri-pro-site .product-grid {
+        grid-template-columns: 1fr;
+      }
+
+      #meiri-pro-site .nav {
+        display: none;
+      }
+
+      #meiri-pro-site .custom-lead-form.top-lead-form {
+        grid-template-columns: 1fr;
+      }
+
+      #meiri-pro-site .stats-grid,
+      #meiri-pro-site .trust-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 560px) {
+      #meiri-pro-site .top-strip .wrap {
+        justify-content: center;
+        text-align: center;
+      }
+
+      #meiri-pro-site .brand {
+        font-size: 20px;
+      }
+
+      #meiri-pro-site .hero {
+        padding: 48px 0 42px;
+      }
+
+      #meiri-pro-site .hero-actions .btn {
+        width: 100%;
+      }
+
+      #meiri-pro-site .battery-grid,
+      #meiri-pro-site .feature-grid,
+      #meiri-pro-site .stats-grid,
+      #meiri-pro-site .trust-row {
+        grid-template-columns: 1fr;
+      }
+
+      #meiri-pro-site .section {
+        padding: 54px 0;
+      }
+
+      #meiri-pro-site .contact-card,
+      #meiri-pro-site .form-card,
+      #meiri-pro-site .info-box,
+      #meiri-pro-site .calculator,
+      #meiri-pro-site .top-lead-box {
+        padding: 22px;
+      }
+
+      #meiri-pro-site .floating-calculator {
+        right: 12px;
+        bottom: 88px;
+        width: calc(100% - 24px);
+      }
+
+      #meiri-pro-site .floating-call {
+        left: 12px;
+        bottom: 14px;
+      }
+    }
+
+    /* =====================================
+       התאמת הצבעים לניווט העליון של Google Sites
+       נשאר ניווט אחד בלבד: הניווט של Google Sites.
+       ===================================== */
+
+    #meiri-pro-site {
+      background: #fff7ee;
+      color: #092336;
+    }
+
+    #meiri-pro-site h1,
+    #meiri-pro-site h2,
+    #meiri-pro-site h3 {
+      color: #092336;
+    }
+
+    #meiri-pro-site .hero {
+      background:
+        linear-gradient(
+          180deg,
+          #fff7ee 0%,
+          #fff7ee 44px,
+          #eef8fb 220px,
+          #ffffff 62%,
+          #f7fbff 100%
+        );
+    }
+
+    #meiri-pro-site .badge {
+      background: #fff7ee;
+      border: 1px solid #ffd7a3;
+      color: #071d2b;
+    }
+
+    #meiri-pro-site .btn-primary {
+      background: linear-gradient(135deg, #ff9800, #ffb15f);
+      color: #ffffff;
+      box-shadow: 0 12px 26px rgba(255, 152, 0, 0.28);
+    }
+
+    #meiri-pro-site .btn-primary:hover {
+      box-shadow: 0 18px 34px rgba(255, 152, 0, 0.38);
+    }
+
+    #meiri-pro-site .btn-dark,
+    #meiri-pro-site .floating-calculator {
+      background: linear-gradient(135deg, #071d2b, #12384f);
+      color: #ffffff;
+    }
+
+    #meiri-pro-site .btn-light {
+      background: #ffffff;
+      color: #071d2b;
+      border: 1px solid #dfeaf1;
+    }
+
+    #meiri-pro-site .section-title span,
+    #meiri-pro-site .product-label {
+      color: #ff9800;
+    }
+
+    #meiri-pro-site .top-lead-box,
+    #meiri-pro-site .hero-card,
+    #meiri-pro-site .info-box,
+    #meiri-pro-site .product,
+    #meiri-pro-site .calculator,
+    #meiri-pro-site .contact-card,
+    #meiri-pro-site .form-card {
+      border-color: #eadfce;
+    }
+
+    #meiri-pro-site .lead-field input:focus {
+      border-color: #ff9800;
+      box-shadow: 0 0 0 4px rgba(255, 152, 0, 0.13);
+    }
+
+    #meiri-pro-site .floating-call {
+      background: #ff9800;
+    }
+
+  
+
+    /* ==========================================================
+       התאמת צבעים בהירה אחידה — תואם ללוגו ולשאר המחשבונים
+       רקע ראשי: #fff8ef | כרטיסים לבנים | כחול כהה + כתום
+       ========================================================== */
+
+    #meiri-pro-site {
+      --dark: #12384f !important;
+      --dark-2: #0b2233 !important;
+      --text: #102033 !important;
+      --muted: #667789 !important;
+
+      --accent: #f97316 !important;
+      --accent-soft: #fff3e6 !important;
+      --accent-light: #fb923c !important;
+
+      --cyan-soft: #f2fbfb !important;
+      --cream: #fff8ef !important;
+      --white: #ffffff !important;
+
+      --line: #eadfce !important;
+      --shadow: rgba(16, 32, 51, 0.075) !important;
+
+      background:
+        radial-gradient(circle at 10% 0%, rgba(249, 115, 22, 0.08), transparent 30%),
+        radial-gradient(circle at 90% 6%, rgba(18, 56, 79, 0.07), transparent 34%),
+        linear-gradient(180deg, #fff8ef 0%, #fff8ef 34%, #fffdf9 72%, #ffffff 100%) !important;
+      color: #102033 !important;
+    }
+
+    #meiri-pro-site h1,
+    #meiri-pro-site h2,
+    #meiri-pro-site h3 {
+      color: #102033 !important;
+    }
+
+    #meiri-pro-site .hero {
+      background:
+        radial-gradient(circle at 12% 14%, rgba(249, 115, 22, 0.10), transparent 30%),
+        radial-gradient(circle at 86% 8%, rgba(18, 56, 79, 0.08), transparent 34%),
+        linear-gradient(
+          180deg,
+          #fff8ef 0px,
+          #fff8ef 92px,
+          rgba(255, 248, 239, .96) 155px,
+          rgba(255, 253, 249, .98) 285px,
+          #ffffff 100%
+        ) !important;
+      padding-top: 60px !important;
+      border: 0 !important;
+      box-shadow: none !important;
+    }
+
+    #meiri-pro-site .section {
+      background: transparent !important;
+    }
+
+    #meiri-pro-site .section.white {
+      background: linear-gradient(180deg, #fffdf9, #ffffff) !important;
+    }
+
+    #meiri-pro-site .contact {
+      background:
+        radial-gradient(circle at 12% 12%, rgba(249, 115, 22, 0.08), transparent 28%),
+        radial-gradient(circle at 88% 0%, rgba(18, 56, 79, 0.07), transparent 32%),
+        linear-gradient(135deg, #fff8ef 0%, #fffdf9 55%, #ffffff 100%) !important;
+    }
+
+    #meiri-pro-site .badge {
+      background: #fff3e6 !important;
+      border: 1px solid #ffd7b0 !important;
+      color: #9a3412 !important;
+      box-shadow: 0 8px 22px rgba(249,115,22,.08) !important;
+    }
+
+    #meiri-pro-site .section-title span,
+    #meiri-pro-site .product-label {
+      color: #f97316 !important;
+    }
+
+    #meiri-pro-site .hero-text,
+    #meiri-pro-site .muted,
+    #meiri-pro-site .section-title p {
+      color: #667789 !important;
+    }
+
+    #meiri-pro-site .top-lead-box,
+    #meiri-pro-site .hero-card,
+    #meiri-pro-site .info-box,
+    #meiri-pro-site .process-card,
+    #meiri-pro-site .product,
+    #meiri-pro-site .calculator,
+    #meiri-pro-site .contact-card,
+    #meiri-pro-site .form-card,
+    #meiri-pro-site .call-modal-card {
+      background: rgba(255,255,255,.96) !important;
+      border: 1px solid #eadfce !important;
+      box-shadow: 0 16px 42px rgba(16,32,51,.065) !important;
+    }
+
+    #meiri-pro-site .hero-card {
+      background:
+        radial-gradient(circle at 92% 95%, rgba(249,115,22,.08), transparent 34%),
+        linear-gradient(180deg, #ffffff, #fffdf9) !important;
+    }
+
+    #meiri-pro-site .hero-card::before {
+      background: rgba(249,115,22,.11) !important;
+    }
+
+    #meiri-pro-site .trust-box,
+    #meiri-pro-site .feature,
+    #meiri-pro-site .spec,
+    #meiri-pro-site .contact-item,
+    #meiri-pro-site .hero-note,
+    #meiri-pro-site .call-number {
+      background: #fffdf9 !important;
+      border: 1px solid #eadfce !important;
+      color: #102033 !important;
+      box-shadow: 0 8px 20px rgba(16,32,51,.035) !important;
+    }
+
+    #meiri-pro-site .ticks li {
+      color: #334155 !important;
+    }
+
+    #meiri-pro-site .ticks li::before {
+      color: #f97316 !important;
+    }
+
+    #meiri-pro-site .btn-primary {
+      background: linear-gradient(135deg, #12384f, #f97316) !important;
+      color: #ffffff !important;
+      box-shadow: 0 12px 28px rgba(249,115,22,.18) !important;
+    }
+
+    #meiri-pro-site .btn-primary:hover {
+      transform: translateY(-2px) !important;
+      box-shadow: 0 18px 36px rgba(249,115,22,.24) !important;
+    }
+
+    #meiri-pro-site .btn-dark,
+    #meiri-pro-site .floating-calculator,
+    #meiri-pro-site .process-num {
+      background: linear-gradient(135deg, #0b2233, #12384f) !important;
+      color: #ffffff !important;
+    }
+
+    #meiri-pro-site .btn-light {
+      background: #ffffff !important;
+      color: #12384f !important;
+      border: 1px solid #eadfce !important;
+      box-shadow: 0 8px 20px rgba(16,32,51,.045) !important;
+    }
+
+    #meiri-pro-site .btn-light:hover {
+      color: #f97316 !important;
+      border-color: #f97316 !important;
+      background: #fff8ef !important;
+    }
+
+    #meiri-pro-site .lead-field label {
+      color: #102033 !important;
+    }
+
+    #meiri-pro-site .lead-field input {
+      background: #ffffff !important;
+      border: 1px solid #eadfce !important;
+      color: #102033 !important;
+    }
+
+    #meiri-pro-site .lead-field input:focus {
+      background: #ffffff !important;
+      border-color: #f97316 !important;
+      box-shadow: 0 0 0 4px rgba(249,115,22,.14) !important;
+    }
+
+    #meiri-pro-site .lead-success {
+      background: #ecfdf5 !important;
+      border-color: #99f6e4 !important;
+      color: #0f766e !important;
+    }
+
+    #meiri-pro-site .stats {
+      background:
+        radial-gradient(circle at 10% 10%, rgba(249,115,22,.20), transparent 32%),
+        linear-gradient(135deg, #0b2233, #12384f) !important;
+      color: #ffffff !important;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.08) !important;
+    }
+
+    #meiri-pro-site .stat {
+      background: rgba(255,255,255,.09) !important;
+      border-color: rgba(255,255,255,.16) !important;
+      box-shadow: none !important;
+    }
+
+    #meiri-pro-site .stat strong {
+      color: #fb923c !important;
+    }
+
+    #meiri-pro-site .product {
+      background: linear-gradient(180deg, #ffffff, #fffdf9) !important;
+    }
+
+    #meiri-pro-site .product-img {
+      background:
+        radial-gradient(circle at center, rgba(249,115,22,.12), transparent 56%),
+        #fff8ef !important;
+    }
+
+    #meiri-pro-site .calculator {
+      background:
+        radial-gradient(circle at 88% 10%, rgba(249,115,22,.10), transparent 32%),
+        linear-gradient(135deg, #ffffff, #fff8ef) !important;
+    }
+
+    #meiri-pro-site .calculator-icon {
+      background:
+        radial-gradient(circle at center, rgba(249,115,22,.20), transparent 54%),
+        linear-gradient(135deg, #0b2233, #12384f) !important;
+      color: #ffffff !important;
+    }
+
+    #meiri-pro-site .floating-call {
+      background: #f97316 !important;
+      color: #ffffff !important;
+      box-shadow: 0 14px 30px rgba(249,115,22,.28) !important;
+    }
+
+    #meiri-pro-site .floating-calculator {
+      box-shadow: 0 16px 34px rgba(16,32,51,.22) !important;
+    }
+
+    #meiri-pro-site .footer {
+      background: #fff8ef !important;
+      color: #667789 !important;
+      border-top: 1px solid #eadfce !important;
+    }
+
+    #meiri-pro-site .modal-close {
+      background: #fff3e6 !important;
+      color: #12384f !important;
+    }
+
+    @media (max-width: 560px) {
+      #meiri-pro-site .hero {
+        padding-top: 42px !important;
+      }
+
+      #meiri-pro-site .floating-calculator {
+        background: linear-gradient(135deg, #0b2233, #12384f) !important;
+      }
+    }
+
+  
+
+    /* ==========================================================
+       התאמת כתום בהיר — גרסה עדינה ונקייה
+       ========================================================== */
+
+    #meiri-pro-site {
+      --accent: #ffb15f !important;        /* כתום בהיר מרכזי */
+      --accent-light: #ffc978 !important;  /* כתום בהיר יותר */
+      --accent-soft: #fff3e6 !important;   /* רקע כתום עדין */
+      --accent-border: #ffd7a3 !important;
+      --accent-text: #9a4b00 !important;
+
+      --dark: #0b2233 !important;
+      --dark-2: #12384f !important;
+      --text: #102033 !important;
+      --muted: #647789 !important;
+      --line: #eadfce !important;
+      --cream: #fff8ef !important;
+
+      background: #fff8ef !important;
+      color: var(--text) !important;
+    }
+
+    #meiri-pro-site .hero {
+      background:
+        radial-gradient(circle at 14% 14%, rgba(255,177,95,.18), transparent 31%),
+        radial-gradient(circle at 86% 10%, rgba(18,56,79,.07), transparent 34%),
+        linear-gradient(180deg, #fff8ef 0%, #fff8ef 90px, #fffdf8 48%, #ffffff 100%) !important;
+    }
+
+    #meiri-pro-site .badge,
+    #meiri-pro-site .lead-success {
+      background: #fff3e6 !important;
+      border-color: #ffd7a3 !important;
+      color: #9a4b00 !important;
+    }
+
+    #meiri-pro-site .btn-primary,
+    #meiri-pro-site .lead-submit,
+    #meiri-pro-site .floating-call {
+      background: linear-gradient(135deg, #ffb15f, #ffc978) !important;
+      color: #0b2233 !important;
+      box-shadow: 0 12px 26px rgba(255,177,95,.26) !important;
+    }
+
+    #meiri-pro-site .btn-primary:hover,
+    #meiri-pro-site .lead-submit:hover {
+      background: linear-gradient(135deg, #ffa044, #ffbd6a) !important;
+      box-shadow: 0 18px 34px rgba(255,177,95,.34) !important;
+    }
+
+    #meiri-pro-site .btn-dark,
+    #meiri-pro-site .floating-calculator,
+    #meiri-pro-site .stats {
+      background: linear-gradient(135deg, #0b2233, #12384f) !important;
+      color: #ffffff !important;
+    }
+
+    #meiri-pro-site .btn-light {
+      background: #ffffff !important;
+      color: #0b2233 !important;
+      border-color: #eadfce !important;
+    }
+
+    #meiri-pro-site .btn-light:hover {
+      border-color: #ffb15f !important;
+      background: #fff8ef !important;
+    }
+
+    #meiri-pro-site .section-title span,
+    #meiri-pro-site .product-label,
+    #meiri-pro-site .nav button:hover {
+      color: #d97706 !important;
+    }
+
+    #meiri-pro-site .hero-card::before,
+    #meiri-pro-site .product-img,
+    #meiri-pro-site .calculator {
+      background:
+        radial-gradient(circle at center, rgba(255,177,95,.18), transparent 58%),
+        #fffdf8 !important;
+    }
+
+    #meiri-pro-site .calculator-icon {
+      background:
+        radial-gradient(circle at center, rgba(255,177,95,.22), transparent 54%),
+        linear-gradient(135deg, #12384f, #0b2233) !important;
+      color: #ffffff !important;
+    }
+
+    #meiri-pro-site .top-lead-box,
+    #meiri-pro-site .hero-card,
+    #meiri-pro-site .info-box,
+    #meiri-pro-site .process-card,
+    #meiri-pro-site .product,
+    #meiri-pro-site .calculator,
+    #meiri-pro-site .contact-card,
+    #meiri-pro-site .form-card,
+    #meiri-pro-site .trust-box,
+    #meiri-pro-site .feature,
+    #meiri-pro-site .spec,
+    #meiri-pro-site .contact-item,
+    #meiri-pro-site .hero-note,
+    #meiri-pro-site .call-number {
+      border-color: #eadfce !important;
+    }
+
+    #meiri-pro-site .trust-box,
+    #meiri-pro-site .feature,
+    #meiri-pro-site .spec,
+    #meiri-pro-site .contact-item,
+    #meiri-pro-site .hero-note,
+    #meiri-pro-site .call-number {
+      background: #fffdf8 !important;
+    }
+
+    #meiri-pro-site .process-num {
+      background: #12384f !important;
+      color: #ffffff !important;
+    }
+
+    #meiri-pro-site .stat strong {
+      color: #ffcc83 !important;
+    }
+
+    #meiri-pro-site .contact {
+      background:
+        radial-gradient(circle at 12% 12%, rgba(255,177,95,.18), transparent 28%),
+        linear-gradient(135deg, #fff8ef, #ffffff 56%, #fffdf8 100%) !important;
+    }
+
+    #meiri-pro-site .lead-field input:focus {
+      border-color: #ffb15f !important;
+      box-shadow: 0 0 0 4px rgba(255,177,95,.18) !important;
+    }
+
+    #meiri-pro-site .brand-icon {
+      background: linear-gradient(135deg, #ffb15f, #ffc978) !important;
+      color: #0b2233 !important;
+      box-shadow: 0 12px 24px rgba(255,177,95,.24) !important;
+    }
+
+    #meiri-pro-site .footer {
+      background: #0b2233 !important;
+      color: #fff3e6 !important;
+    }
+
+    /* ==========================================================
+       תוספות: טופס בכרטיס העליון, הודעות לקוחות זזות, אזור וידאו/מידע ופוטר מסודר
+       ========================================================== */
+
+    #meiri-pro-site .hero-side-lead {
+      position: relative;
+      z-index: 1;
+      margin-top: 18px;
+      background:
+        radial-gradient(circle at 8% 0%, rgba(255,177,95,.18), transparent 34%),
+        linear-gradient(180deg, #ffffff, #fffdf8) !important;
+      border: 1px solid #eadfce !important;
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: 0 14px 34px rgba(16,32,51,.07) !important;
+    }
+
+    #meiri-pro-site .hero-side-lead h3 {
+      margin-bottom: 5px;
+    }
+
+    #meiri-pro-site .hero-side-lead .custom-lead-form {
+      margin-top: 14px;
+      gap: 11px;
+    }
+
+    #meiri-pro-site .hero-side-lead .lead-field label {
+      font-size: 14px;
+    }
+
+    #meiri-pro-site .hero-side-lead .lead-field input {
+      padding: 12px 14px;
+      font-size: 15px;
+      border-radius: 15px;
+    }
+
+    #meiri-pro-site .reviews-section {
+      background:
+        radial-gradient(circle at 12% 0%, rgba(255,177,95,.18), transparent 30%),
+        linear-gradient(180deg, #fff8ef, #ffffff) !important;
+      overflow: hidden;
+    }
+
+    #meiri-pro-site .reviews-wrap {
+      background: rgba(255,255,255,.78);
+      border: 1px solid #eadfce;
+      border-radius: 30px;
+      padding: 24px 0;
+      box-shadow: 0 16px 42px rgba(16,32,51,.06);
+      overflow: hidden;
+    }
+
+    #meiri-pro-site .reviews-ticker {
+      width: 100%;
+      overflow: hidden;
+      direction: ltr;
+      padding: 6px 0;
+    }
+
+    #meiri-pro-site .reviews-track {
+      display: flex;
+      gap: 14px;
+      width: max-content;
+      animation: meiriReviewsMove 45s linear infinite; will-change: transform;
+    }
+
+    #meiri-pro-site .reviews-ticker:hover .reviews-track {
+      animation-play-state: paused;
+    }
+
+    #meiri-pro-site .review-pill {
+      direction: rtl;
+      min-width: 330px;
+      max-width: 390px;
+      background: #fffdf8;
+      border: 1px solid #eadfce;
+      border-radius: 22px;
+      padding: 16px 18px;
+      box-shadow: 0 10px 24px rgba(16,32,51,.05);
+      color: #102033;
+      font-weight: 850;
+      line-height: 1.55;
+    }
+
+    #meiri-pro-site .review-pill strong {
+      display: block;
+      color: #12384f;
+      margin-bottom: 4px;
+      font-size: 15px;
+    }
+
+    @keyframes meiriReviewsMove {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    #meiri-pro-site .bottom-info {
+      background:
+        radial-gradient(circle at 90% 0%, rgba(18,56,79,.07), transparent 32%),
+        linear-gradient(180deg, #ffffff, #fff8ef) !important;
+    }
+
+    #meiri-pro-site .bottom-info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    #meiri-pro-site .bottom-info-card {
+      background: rgba(255,255,255,.96);
+      border: 1px solid #eadfce;
+      border-radius: 30px;
+      padding: 30px;
+      box-shadow: 0 16px 42px rgba(16,32,51,.065);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      min-height: 245px;
+    }
+
+    #meiri-pro-site .editable-note {
+      background: #fff3e6;
+      border: 1px dashed #ffb15f;
+      color: #9a4b00;
+      border-radius: 16px;
+      padding: 12px 14px;
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    #meiri-pro-site .bottom-info-card .hero-actions {
+      margin-top: auto;
+      margin-bottom: 0;
+    }
+
+    #meiri-pro-site .footer {
+      padding: 34px 0 !important;
+    }
+
+    #meiri-pro-site .footer-inner {
+      display: grid;
+      gap: 16px;
+      text-align: center;
+    }
+
+    #meiri-pro-site .footer-contact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      text-align: center;
+    }
+
+    #meiri-pro-site .footer-contact-item {
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.16);
+      color: #fff3e6;
+      border-radius: 18px;
+      padding: 14px 12px;
+      font-weight: 900;
+    }
+
+    #meiri-pro-site .footer-contact-item a {
+      color: #fff3e6;
+      text-decoration: none;
+    }
+
+    #meiri-pro-site .footer-small {
+      color: rgba(255,243,230,.78);
+      font-size: 14px;
+    }
+
+    @media (max-width: 980px) {
+      #meiri-pro-site .bottom-info-grid,
+      #meiri-pro-site .footer-contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      #meiri-pro-site .review-pill {
+        min-width: 285px;
+      }
+    }
+
+
+
+    /* ==========================================================
+       עדכון לפי בקשה: טופס אחד בראש, לקוחות קליל, פוטר שורה אחת
+       ========================================================== */
+
+    #meiri-pro-site .lead-only-card {
+      padding: 30px !important;
+      min-height: auto !important;
+    }
+
+    #meiri-pro-site .lead-only-card::before {
+      inset: auto -70px -80px auto !important;
+      opacity: .7 !important;
+    }
+
+    #meiri-pro-site .lead-only-card .hero-side-lead {
+      margin-top: 0 !important;
+      background: transparent !important;
+      border: 0 !important;
+      box-shadow: none !important;
+      padding: 0 !important;
+      border-radius: 0 !important;
+    }
+
+    #meiri-pro-site .hero-side-lead .lead-intro {
+      display: grid;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    #meiri-pro-site .hero-side-lead .lead-mini-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    #meiri-pro-site .hero-side-lead .lead-mini-row span {
+      background: #fff8ef;
+      border: 1px solid #eadfce;
+      border-radius: 999px;
+      padding: 7px 11px;
+      font-size: 13px;
+      font-weight: 900;
+      color: #12384f;
+    }
+
+    #meiri-pro-site .reviews-section {
+      background: linear-gradient(180deg, #ffffff, #fff8ef) !important;
+      padding-top: 56px !important;
+      padding-bottom: 56px !important;
+    }
+
+    #meiri-pro-site .reviews-section .section-title {
+      margin-bottom: 18px !important;
+    }
+
+    #meiri-pro-site .reviews-wrap {
+      background: transparent !important;
+      border: 0 !important;
+      border-radius: 0 !important;
+      padding: 6px 0 !important;
+      box-shadow: none !important;
+    }
+
+    #meiri-pro-site .reviews-ticker {
+      border-top: 1px solid #eadfce;
+      border-bottom: 1px solid #eadfce;
+      padding: 16px 0 !important;
+      background: rgba(255,248,239,.45);
+    }
+
+    #meiri-pro-site .reviews-track {
+      gap: 0 !important;
+      animation-duration: 60s !important;
+    }
+
+    #meiri-pro-site .review-pill {
+      direction: rtl;
+      min-width: 430px !important;
+      max-width: 520px !important;
+      background: transparent !important;
+      border: 0 !important;
+      border-radius: 0 !important;
+      padding: 0 26px !important;
+      box-shadow: none !important;
+      color: #102033 !important;
+      font-weight: 700 !important;
+      line-height: 1.65 !important;
+      position: relative;
+      white-space: normal;
+    }
+
+    #meiri-pro-site .review-pill::after {
+      content: "•";
+      position: absolute;
+      left: -4px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #ffb15f;
+      font-size: 24px;
+      font-weight: 900;
+    }
+
+    #meiri-pro-site .review-pill strong {
+      display: inline !important;
+      color: #12384f !important;
+      margin: 0 0 0 7px !important;
+      font-size: 16px !important;
+      font-weight: 900 !important;
+    }
+
+    #meiri-pro-site .contact-form-only {
+      grid-template-columns: minmax(280px, 760px) !important;
+      justify-content: center !important;
+    }
+
+    #meiri-pro-site .footer {
+      padding: 22px 0 !important;
+    }
+
+    #meiri-pro-site .footer-line {
+      text-align: center;
+      font-weight: 850;
+      color: #fff3e6;
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    #meiri-pro-site .footer-line a {
+      color: #fff3e6;
+      text-decoration: none;
+    }
+
+    @media (max-width: 560px) {
+      #meiri-pro-site .lead-only-card {
+        padding: 22px !important;
+      }
+
+      #meiri-pro-site .review-pill {
+        min-width: 315px !important;
+        max-width: 340px !important;
+        padding: 0 18px !important;
+      }
+    }
+
+
+    /* ==========================================================
+       עדכון: סרטון מוטמע בתוך העמוד + תמונה מקושרת לדף מידע
+       ========================================================== */
+
+    #meiri-pro-site .video-embed-box {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 24px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 15% 10%, rgba(255,177,95,.22), transparent 34%),
+        linear-gradient(135deg, #0b2233, #12384f);
+      border: 1px solid #eadfce;
+      box-shadow: 0 14px 34px rgba(16,32,51,.08);
+    }
+
+    #meiri-pro-site .video-embed-box iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      background: #0b2233;
+    }
+
+    #meiri-pro-site .video-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-align: center;
+      padding: 22px;
+      color: #fff3e6;
+      pointer-events: none;
+    }
+
+    #meiri-pro-site .video-placeholder strong {
+      font-size: 24px;
+      color: #ffffff;
+    }
+
+    #meiri-pro-site .video-placeholder span {
+      color: rgba(255,243,230,.82);
+      font-weight: 800;
+    }
+
+    #meiri-pro-site .video-embed-box.is-ready .video-placeholder {
+      display: none;
+    }
+
+    #meiri-pro-site .info-image-link {
+      display: block;
+      width: 100%;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid #eadfce;
+      background: #fff8ef;
+      box-shadow: 0 14px 34px rgba(16,32,51,.08);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    #meiri-pro-site .info-image-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 42px rgba(16,32,51,.12);
+    }
+
+    #meiri-pro-site .info-image-link img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      display: block;
+    }
+
+    #meiri-pro-site .bottom-info-card.media-card {
+      gap: 16px;
+    }
+
+    #meiri-pro-site .media-card .hero-actions {
+      margin-top: 4px !important;
+    }
+
+    @media (max-width: 560px) {
+      #meiri-pro-site .video-placeholder strong {
+        font-size: 20px;
+      }
+    }
+
+
+    /* ==========================================================
+       עדכון: קוביות העריכה אחת מתחת לשנייה + גלריית תמונות נעה
+       ========================================================== */
+
+    #meiri-pro-site .bottom-info-grid {
+      grid-template-columns: 1fr !important;
+      max-width: 920px;
+      margin: 0 auto;
+      align-items: stretch !important;
+    }
+
+    #meiri-pro-site .bottom-info-card {
+      min-height: auto !important;
+    }
+
+    #meiri-pro-site .moving-gallery-section {
+      /* צבע הרקע נשאר לפי העיצוב המקורי של האזור */
+      overflow: hidden;
+      padding-top: 58px !important;
+      padding-bottom: 58px !important;
+    }
+
+    #meiri-pro-site .gallery-edit-note {
+      max-width: 760px;
+      margin: -12px auto 22px;
+      text-align: center;
+    }
+
+    #meiri-pro-site .gallery-ticker {
+      width: 100%;
+      overflow: hidden;
+      direction: ltr;
+      padding: 14px 0 22px;
+      -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+      mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+    }
+
+    #meiri-pro-site .gallery-track {
+      display: flex;
+      gap: 18px;
+      width: max-content;
+      animation: meiriGalleryMove 42s linear infinite; will-change: transform;
+    }
+
+    #meiri-pro-site .gallery-ticker:hover .gallery-track {
+      animation-play-state: paused;
+    }
+
+    #meiri-pro-site .gallery-item {
+      direction: rtl;
+      width: 270px;
+      flex: 0 0 270px;
+      overflow: hidden;
+      border-radius: 24px;
+      background: #ffffff;
+      border: 1px solid #eadfce;
+      box-shadow: 0 14px 34px rgba(16,32,51,.075);
+      transform: translateZ(0);
+    }
+
+    #meiri-pro-site .gallery-item img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      display: block;
+      background: #fff8ef;
+    }
+
+    #meiri-pro-site .gallery-caption {
+      padding: 12px 15px;
+      font-weight: 900;
+      color: #12384f;
+      background: #fffdf8;
+      border-top: 1px solid #eadfce;
+      font-size: 15px;
+    }
+
+    @keyframes meiriGalleryMove {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    @media (max-width: 560px) {
+      #meiri-pro-site .gallery-item {
+        width: 215px;
+        flex-basis: 215px;
+        border-radius: 20px;
+      }
+
+      #meiri-pro-site .gallery-caption {
+        font-size: 14px;
+        padding: 10px 12px;
+      }
+    }
+
+
+    /* ==========================================================
+       שדרוג אייקונים ומיקוד שירות — מעבדה, ניידות שירות ולקוחות מרוצים
+       ========================================================== */
+
+    /* מראה מקצועי ונקי: תגי שירות מינימליים במקום אימוג׳ים */
+    #meiri-pro-site .brand-service-icon {
+      width: 46px;
+      height: 46px;
+      min-width: 46px;
+      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      background: linear-gradient(180deg, #ffffff 0%, #fff8ef 100%);
+      color: #12384f;
+      font-size: 11px;
+      font-weight: 950;
+      letter-spacing: .7px;
+      line-height: 1;
+      text-transform: uppercase;
+      box-shadow: 0 8px 18px rgba(16, 32, 51, .07);
+      border: 1px solid #eadfce;
+    }
+
+    #meiri-pro-site .brand-service-icon::before {
+      content: "";
+      position: absolute;
+      top: 8px;
+      right: 10px;
+      left: 10px;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #ffb15f, #12384f);
+    }
+
+    #meiri-pro-site .brand-service-icon::after {
+      content: "";
+      position: absolute;
+      inset: 5px;
+      border-radius: 11px;
+      border: 1px solid rgba(18, 56, 79, .07);
+      pointer-events: none;
+    }
+
+    #meiri-pro-site .trust-row {
+      grid-template-columns: repeat(4, 1fr) !important;
+    }
+
+    #meiri-pro-site .trust-box.icon-trust {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 7px 12px;
+      min-height: auto;
+      align-content: start;
+      align-items: start;
+      padding: 15px !important;
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+
+    #meiri-pro-site .trust-box.icon-trust .brand-service-icon {
+      grid-row: 1 / span 2;
+    }
+
+    #meiri-pro-site .trust-box.icon-trust:hover,
+    #meiri-pro-site .feature.icon-feature:hover,
+    #meiri-pro-site .service-card:hover {
+      transform: translateY(-3px);
+      border-color: #ffb15f !important;
+      box-shadow: 0 18px 42px rgba(16,32,51,.10) !important;
+    }
+
+    #meiri-pro-site .trust-box.icon-trust strong,
+    #meiri-pro-site .feature.icon-feature strong,
+    #meiri-pro-site .service-card strong {
+      display: block;
+      color: #12384f;
+      font-size: 17px;
+      line-height: 1.25;
+    }
+
+    #meiri-pro-site .trust-box.icon-trust span:not(.brand-service-icon),
+    #meiri-pro-site .feature.icon-feature small,
+    #meiri-pro-site .service-card p {
+      color: #647789;
+      font-size: 14px;
+      font-weight: 800;
+      line-height: 1.55;
+    }
+
+    #meiri-pro-site .feature.icon-feature {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 7px 12px;
+      align-content: start;
+      align-items: start;
+      padding: 16px !important;
+      min-height: 132px;
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+
+    #meiri-pro-site .feature.icon-feature .brand-service-icon {
+      grid-row: 1 / span 2;
+      width: 42px;
+      height: 42px;
+      min-width: 42px;
+      font-size: 10px;
+    }
+
+    #meiri-pro-site .process-card .brand-service-icon {
+      margin-bottom: 14px;
+    }
+
+    #meiri-pro-site .process-card .process-num {
+      position: absolute;
+      top: 22px;
+      left: 22px;
+      width: 34px;
+      height: 34px;
+      font-size: 15px;
+      margin: 0;
+      background: #fff3e6 !important;
+      color: #9a4b00 !important;
+      border: 1px solid #ffd7a3;
+    }
+
+    #meiri-pro-site .service-focus-section {
+      background:
+        radial-gradient(circle at 12% 0%, rgba(255,177,95,.20), transparent 30%),
+        radial-gradient(circle at 88% 8%, rgba(18,56,79,.09), transparent 34%),
+        linear-gradient(180deg, #ffffff, #fff8ef 58%, #ffffff) !important;
+    }
+
+    #meiri-pro-site .service-focus-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    #meiri-pro-site .service-card {
+      background: rgba(255,255,255,.96);
+      border: 1px solid #eadfce;
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: 0 12px 28px rgba(16,32,51,.055);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 9px 13px;
+      align-content: start;
+      align-items: start;
+      min-height: 210px;
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+
+    #meiri-pro-site .service-card .brand-service-icon {
+      grid-row: 1 / span 3;
+    }
+
+    #meiri-pro-site .service-card p {
+      grid-column: 2;
+    }
+
+    #meiri-pro-site .service-card .service-kicker {
+      display: inline-flex;
+      width: fit-content;
+      border-radius: 999px;
+      padding: 5px 10px;
+      background: #fff3e6;
+      border: 1px solid #ffd7a3;
+      color: #9a4b00;
+      font-weight: 900;
+      font-size: 12px;
+    }
+
+    #meiri-pro-site .service-cta-box {
+      margin-top: 26px;
+      background: linear-gradient(135deg, #0b2233, #12384f);
+      color: #ffffff;
+      border-radius: 30px;
+      padding: 28px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: center;
+      box-shadow: 0 18px 42px rgba(16,32,51,.16);
+    }
+
+    #meiri-pro-site .service-cta-box h3,
+    #meiri-pro-site .service-cta-box p {
+      color: #ffffff !important;
+    }
+
+    #meiri-pro-site .service-cta-box p {
+      opacity: .84;
+      font-weight: 800;
+    }
+
+    #meiri-pro-site .calculator .brand-service-icon {
+      width: 82px;
+      height: 82px;
+      min-width: 82px;
+      border-radius: 24px;
+      font-size: 13px;
+      margin: auto;
+    }
+
+    @media (max-width: 980px) {
+      #meiri-pro-site .trust-row,
+      #meiri-pro-site .service-focus-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+      }
+
+      #meiri-pro-site .service-cta-box {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      #meiri-pro-site .trust-row,
+      #meiri-pro-site .service-focus-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      #meiri-pro-site .brand-service-icon {
+        width: 42px;
+        height: 42px;
+        min-width: 42px;
+        border-radius: 13px;
+        font-size: 10px;
+      }
+    }
+
+
+    /* ==========================================================
+       עדכון אייקונים: איור עדין ומקצועי במקום תגי אותיות
+       ========================================================== */
+
+    #meiri-pro-site .brand-service-icon {
+      width: 52px !important;
+      height: 52px !important;
+      min-width: 52px !important;
+      border-radius: 18px !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      background:
+        radial-gradient(circle at 74% 20%, rgba(255,177,95,.18), transparent 48%),
+        linear-gradient(180deg, #ffffff 0%, #fffaf3 100%) !important;
+      color: #12384f !important;
+      border: 1px solid rgba(234,223,206,.95) !important;
+      box-shadow: 0 9px 22px rgba(16,32,51,.06) !important;
+      overflow: visible !important;
+      isolation: isolate !important;
+      font-size: 0 !important;
+      letter-spacing: 0 !important;
+      text-transform: none !important;
+    }
+
+    #meiri-pro-site .brand-service-icon::before,
+    #meiri-pro-site .brand-service-icon::after {
+      content: none !important;
+      display: none !important;
+    }
+
+    #meiri-pro-site .brand-service-icon svg {
+      width: 30px !important;
+      height: 30px !important;
+      display: block !important;
+      fill: none !important;
+      stroke: currentColor !important;
+      stroke-width: 1.75 !important;
+      stroke-linecap: round !important;
+      stroke-linejoin: round !important;
+    }
+
+    #meiri-pro-site .brand-service-icon .soft-accent,
+    #meiri-pro-site .brand-service-icon .soft-dot {
+      stroke: #ffb15f !important;
+    }
+
+    #meiri-pro-site .brand-service-icon .soft-dot {
+      fill: rgba(255,177,95,.22) !important;
+    }
+
+    #meiri-pro-site .trust-box.icon-trust,
+    #meiri-pro-site .feature.icon-feature,
+    #meiri-pro-site .service-card {
+      gap: 8px 14px !important;
+    }
+
+    #meiri-pro-site .trust-box.icon-trust .brand-service-icon,
+    #meiri-pro-site .feature.icon-feature .brand-service-icon,
+    #meiri-pro-site .service-card .brand-service-icon {
+      transform: translateY(1px);
+    }
+
+    #meiri-pro-site .feature.icon-feature .brand-service-icon {
+      width: 48px !important;
+      height: 48px !important;
+      min-width: 48px !important;
+      border-radius: 17px !important;
+    }
+
+    #meiri-pro-site .feature.icon-feature .brand-service-icon svg {
+      width: 28px !important;
+      height: 28px !important;
+    }
+
+    #meiri-pro-site .process-card .brand-service-icon {
+      width: 54px !important;
+      height: 54px !important;
+      min-width: 54px !important;
+      border-radius: 19px !important;
+      margin-bottom: 15px !important;
+    }
+
+    #meiri-pro-site .calculator .brand-service-icon {
+      width: 88px !important;
+      height: 88px !important;
+      min-width: 88px !important;
+      border-radius: 28px !important;
+      background:
+        radial-gradient(circle at 70% 20%, rgba(255,177,95,.22), transparent 48%),
+        rgba(255,255,255,.10) !important;
+      border-color: rgba(255,255,255,.22) !important;
+      color: #ffffff !important;
+      box-shadow: none !important;
+    }
+
+    #meiri-pro-site .calculator .brand-service-icon svg {
+      width: 48px !important;
+      height: 48px !important;
+    }
+
+    @media (max-width: 560px) {
+      #meiri-pro-site .brand-service-icon {
+        width: 48px !important;
+        height: 48px !important;
+        min-width: 48px !important;
+      }
+
+      #meiri-pro-site .brand-service-icon svg {
+        width: 28px !important;
+        height: 28px !important;
+      }
+    }
+
+
+    /* ==========================================================
+       אזור סרטון יוטיוב מלא: כותרת, כותרת משנה וכתבה
+       ========================================================== */
+
+    #meiri-pro-site .youtube-story-section {
+      background:
+        radial-gradient(circle at 12% 8%, rgba(255,177,95,.16), transparent 30%),
+        radial-gradient(circle at 90% 8%, rgba(18,56,79,.07), transparent 32%),
+        linear-gradient(180deg, #ffffff 0%, #fff8ef 100%) !important;
+      overflow: hidden;
+    }
+
+    #meiri-pro-site .youtube-story-box {
+      background: rgba(255,255,255,.96);
+      border: 1px solid #eadfce;
+      border-radius: 32px;
+      padding: 30px;
+      box-shadow: 0 18px 48px rgba(16,32,51,.08);
+      display: grid;
+      grid-template-columns: .92fr 1.08fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    #meiri-pro-site .youtube-story-text {
+      text-align: right;
+    }
+
+    #meiri-pro-site .youtube-story-label {
+      display: inline-flex;
+      margin-bottom: 10px;
+      padding: 7px 14px;
+      border-radius: 999px;
+      background: #fff3e6;
+      border: 1px solid #ffd7a3;
+      color: #9a4b00;
+      font-weight: 900;
+      font-size: 14px;
+    }
+
+    #meiri-pro-site .youtube-story-title {
+      margin: 0 0 12px;
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.18;
+      color: #102033;
+      letter-spacing: -.5px;
+    }
+
+    #meiri-pro-site .youtube-story-subtitle {
+      font-size: 19px;
+      font-weight: 850;
+      color: #12384f;
+      margin: 0 0 14px;
+      line-height: 1.65;
+    }
+
+    #meiri-pro-site .youtube-story-article {
+      font-size: 16px;
+      color: #647789;
+      line-height: 1.9;
+      margin: 0 0 22px;
+    }
+
+    #meiri-pro-site .youtube-story-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    #meiri-pro-site .youtube-story-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 22px;
+      border-radius: 999px;
+      font-weight: 900;
+      text-decoration: none;
+      transition: 0.25s ease;
+      white-space: nowrap;
+      line-height: 1.25;
+    }
+
+    #meiri-pro-site .youtube-story-btn-primary {
+      background: linear-gradient(135deg, #ffb15f, #ffc978);
+      color: #0b2233;
+      box-shadow: 0 12px 26px rgba(255,177,95,.26);
+    }
+
+    #meiri-pro-site .youtube-story-btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 34px rgba(255,177,95,.34);
+    }
+
+    #meiri-pro-site .youtube-story-btn-light {
+      background: #ffffff;
+      color: #12384f;
+      border: 1px solid #eadfce;
+    }
+
+    #meiri-pro-site .youtube-story-btn-light:hover {
+      border-color: #ffb15f;
+      background: #fff8ef;
+    }
+
+    #meiri-pro-site .youtube-story-frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 26px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 12% 8%, rgba(255,177,95,.22), transparent 34%),
+        linear-gradient(135deg, #0b2233, #12384f);
+      box-shadow: 0 16px 34px rgba(16,32,51,.16);
+      border: 1px solid #eadfce;
+    }
+
+    #meiri-pro-site .youtube-story-frame iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      background: #0b2233;
+    }
+
+    @media (max-width: 900px) {
+      #meiri-pro-site .youtube-story-box {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      #meiri-pro-site .youtube-story-box {
+        padding: 22px;
+        border-radius: 26px;
+      }
+
+      #meiri-pro-site .youtube-story-actions {
+        display: grid;
+      }
+
+      #meiri-pro-site .youtube-story-btn {
+        width: 100%;
+      }
+    }
+
+
+
+    /* ==========================================================
+       תוספת: מאמר להורדה עם תמונה לחיצה + שורת זכויות ויצירת קשר
+       ========================================================== */
+
+    #meiri-pro-site .article-download-section {
+      background:
+        radial-gradient(circle at 12% 0%, rgba(255,177,95,.15), transparent 31%),
+        radial-gradient(circle at 90% 12%, rgba(18,56,79,.07), transparent 34%),
+        linear-gradient(180deg, #ffffff 0%, #fff8ef 100%) !important;
+      padding-top: 66px !important;
+      padding-bottom: 66px !important;
+    }
+
+    #meiri-pro-site .article-download-card {
+      max-width: 1080px;
+      margin: 0 auto;
+      background: rgba(255,255,255,.96);
+      border: 1px solid #eadfce;
+      border-radius: 32px;
+      padding: 30px;
+      box-shadow: 0 18px 48px rgba(16,32,51,.08);
+      display: grid;
+      grid-template-columns: minmax(280px, 1fr) minmax(300px, 520px);
+      gap: 28px;
+      align-items: center;
+    }
+
+    #meiri-pro-site .article-download-text {
+      text-align: right;
+    }
+
+    #meiri-pro-site .article-download-label {
+      display: inline-flex;
+      margin-bottom: 10px;
+      padding: 7px 14px;
+      border-radius: 999px;
+      background: #fff3e6;
+      border: 1px solid #ffd7a3;
+      color: #9a4b00;
+      font-weight: 900;
+      font-size: 14px;
+    }
+
+    #meiri-pro-site .article-download-text h2 {
+      margin: 0 0 12px;
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.18;
+      color: #102033;
+    }
+
+    #meiri-pro-site .article-download-text p {
+      margin: 0 0 16px;
+      color: #647789;
+      font-size: 17px;
+      line-height: 1.85;
+    }
+
+    #meiri-pro-site .article-download-note {
+      background: #fff8ef;
+      border: 1px dashed #ffb15f;
+      color: #9a4b00;
+      border-radius: 18px;
+      padding: 12px 14px;
+      font-size: 14px;
+      font-weight: 900;
+      margin: 16px 0 20px;
+    }
+
+    #meiri-pro-site .article-download-note:empty {
+      display: none !important;
+    }
+
+    #meiri-pro-site .article-image-download {
+      display: block;
+      position: relative;
+      width: 100%;
+      max-width: 520px;
+      justify-self: center;
+      border-radius: 26px;
+      overflow: hidden;
+      border: 1px solid #eadfce;
+      background: #fff8ef;
+      box-shadow: 0 16px 38px rgba(16,32,51,.10);
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+
+    #meiri-pro-site .article-image-download:hover {
+      transform: translateY(-3px);
+      border-color: #ffb15f;
+      box-shadow: 0 22px 48px rgba(16,32,51,.16);
+    }
+
+    #meiri-pro-site .article-image-download img {
+      width: 100%;
+      min-height: 480px;
+      max-height: 680px;
+      object-fit: contain;
+      display: block;
+      background: #ffffff;
+    }
+
+    #meiri-pro-site .article-download-badge {
+      position: absolute;
+      right: 16px;
+      bottom: 16px;
+      background: rgba(11,34,51,.92);
+      color: #ffffff;
+      border-radius: 999px;
+      padding: 10px 16px;
+      font-weight: 900;
+      box-shadow: 0 10px 24px rgba(0,0,0,.18);
+    }
+
+    #meiri-pro-site .article-download-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    #meiri-pro-site .rights-footer {
+      background: #0b2233 !important;
+      color: #fff3e6 !important;
+      border-top: 1px solid rgba(255,255,255,.12) !important;
+      padding: 20px 0 !important;
+      text-align: center;
+    }
+
+    #meiri-pro-site .rights-footer-line {
+      font-weight: 850;
+      font-size: 15px;
+      line-height: 1.9;
+    }
+
+    #meiri-pro-site .rights-footer-line a {
+      color: #fff3e6;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    #meiri-pro-site .rights-footer-line a:hover {
+      color: #ffc978;
+    }
+
+    @media (max-width: 900px) {
+      #meiri-pro-site .article-download-card {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      #meiri-pro-site .article-download-section {
+        padding-top: 52px !important;
+        padding-bottom: 52px !important;
+      }
+
+      #meiri-pro-site .article-download-card {
+        padding: 22px;
+        border-radius: 26px;
+      }
+
+      #meiri-pro-site .article-image-download img {
+        min-height: 360px;
+        max-height: none;
+      }
+
+      #meiri-pro-site .article-download-actions .btn {
+        width: 100%;
+      }
+
+      #meiri-pro-site .article-download-badge {
+        right: 10px;
+        bottom: 10px;
+        font-size: 13px;
+        padding: 8px 12px;
+      }
+    }
+
+  
+
+    /* ==========================================================
+       הגדלת תמונות משמעותית — תוספת בסוף הקוד
+       ========================================================== */
+
+    /* תמונות באזור העליון */
+    #meiri-pro-site .hero-card {
+      padding: 34px !important;
+    }
+
+    #meiri-pro-site .battery-grid {
+      gap: 22px !important;
+    }
+
+    #meiri-pro-site .battery-grid img {
+      max-height: 430px !important;
+      transform: scale(1.16) !important;
+      transform-origin: center !important;
+    }
+
+    /* תמונות כרטיסי המוצרים */
+    #meiri-pro-site .product {
+      grid-template-columns: 1.18fr .82fr !important;
+      min-height: 500px !important;
+    }
+
+    #meiri-pro-site .product-img {
+      padding: 16px !important;
+    }
+
+    #meiri-pro-site .product-img img {
+      max-height: 450px !important;
+      transform: scale(1.12) !important;
+      transform-origin: center !important;
+    }
+
+    /* תמונת מידע / קישור תמונה */
+    #meiri-pro-site .info-image-link img {
+      aspect-ratio: 16 / 8 !important;
+      object-fit: cover !important;
+    }
+
+    /* גלריית התמונות הנעה — הגדלה משמעותית */
+    #meiri-pro-site .gallery-track {
+      gap: 26px !important;
+      animation-duration: 52s !important;
+    }
+
+    #meiri-pro-site .gallery-item {
+      width: 420px !important;
+      flex: 0 0 420px !important;
+      border-radius: 30px !important;
+    }
+
+    #meiri-pro-site .gallery-item img {
+      aspect-ratio: 4 / 3 !important;
+      object-fit: cover !important;
+    }
+
+    #meiri-pro-site .gallery-caption {
+      font-size: 17px !important;
+      padding: 15px 18px !important;
+    }
+
+    @media (max-width: 980px) {
+      #meiri-pro-site .product {
+        min-height: auto !important;
+      }
+
+      #meiri-pro-site .product-img img {
+        max-height: 430px !important;
+        transform: scale(1.06) !important;
+      }
+
+      #meiri-pro-site .gallery-item {
+        width: 360px !important;
+        flex-basis: 360px !important;
+      }
+    }
+
+    @media (max-width: 560px) {
+      #meiri-pro-site .hero-card {
+        padding: 24px !important;
+      }
+
+      #meiri-pro-site .battery-grid img {
+        max-height: 330px !important;
+        transform: scale(1.05) !important;
+      }
+
+      #meiri-pro-site .product-img img {
+        max-height: 330px !important;
+        transform: scale(1.04) !important;
+      }
+
+      #meiri-pro-site .gallery-track {
+        gap: 18px !important;
+      }
+
+      #meiri-pro-site .gallery-item {
+        width: 305px !important;
+        flex-basis: 305px !important;
+        border-radius: 24px !important;
+      }
+
+      #meiri-pro-site .gallery-caption {
+        font-size: 15px !important;
+        padding: 12px 14px !important;
+      }
+    }
+
+  
+
+    /* ==========================================================
+       החלפת גלריה נעה בגלריה גדולה שמדפדפת תמונות
+       ========================================================== */
+
+    #meiri-pro-site .large-gallery-section {
+      overflow: visible !important;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(255,177,95,.16), transparent 30%),
+        radial-gradient(circle at 88% 10%, rgba(18,56,79,.07), transparent 32%),
+        linear-gradient(180deg, #fff8ef, #ffffff 62%, #fff8ef) !important;
+    }
+
+    #meiri-pro-site .large-gallery-wrap {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    #meiri-pro-site .large-gallery-main {
+      position: relative;
+      background:
+        radial-gradient(circle at 88% 12%, rgba(255,177,95,.18), transparent 32%),
+        linear-gradient(180deg, #ffffff, #fffdf8);
+      border: 1px solid #eadfce;
+      border-radius: 34px;
+      padding: 18px;
+      box-shadow: 0 22px 56px rgba(16,32,51,.10);
+      overflow: hidden;
+    }
+
+    #meiri-pro-site .large-gallery-stage {
+      position: relative;
+      min-height: clamp(310px, 52vw, 620px);
+      border-radius: 26px;
+      overflow: hidden;
+      background: #fff8ef;
+    }
+
+    #meiri-pro-site .large-gallery-slide {
+      position: absolute;
+      inset: 0;
+      margin: 0;
+      opacity: 0;
+      pointer-events: none;
+      transform: scale(.985);
+      transition: opacity .45s ease, transform .45s ease;
+    }
+
+    #meiri-pro-site .large-gallery-slide.is-active {
+      opacity: 1;
+      pointer-events: auto;
+      transform: scale(1);
+      z-index: 1;
+    }
+
+    #meiri-pro-site .large-gallery-slide img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+      background:
+        radial-gradient(circle at center, rgba(255,177,95,.15), transparent 54%),
+        #fff8ef;
+    }
+
+    #meiri-pro-site .large-gallery-caption {
+      position: absolute;
+      right: 18px;
+      left: 18px;
+      bottom: 18px;
+      z-index: 2;
+      width: fit-content;
+      max-width: calc(100% - 36px);
+      background: rgba(11,34,51,.88);
+      color: #fff3e6;
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 999px;
+      padding: 10px 18px;
+      font-size: 18px;
+      font-weight: 950;
+      box-shadow: 0 12px 28px rgba(16,32,51,.22);
+    }
+
+    #meiri-pro-site .large-gallery-arrow {
+      position: absolute;
+      top: 50%;
+      z-index: 5;
+      transform: translateY(-50%);
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.65);
+      background: rgba(11,34,51,.86);
+      color: #fff3e6;
+      font-size: 44px;
+      line-height: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 12px 28px rgba(16,32,51,.22);
+      transition: transform .2s ease, background .2s ease;
+    }
+
+    #meiri-pro-site .large-gallery-arrow:hover {
+      background: #12384f;
+      transform: translateY(-50%) scale(1.06);
+    }
+
+    #meiri-pro-site .large-gallery-prev {
+      right: 28px;
+    }
+
+    #meiri-pro-site .large-gallery-next {
+      left: 28px;
+    }
+
+    #meiri-pro-site .large-gallery-dots {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 9px;
+      margin: 18px 0 16px;
+    }
+
+    #meiri-pro-site .large-gallery-dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 999px;
+      border: 0;
+      background: #d7c8b5;
+      cursor: pointer;
+      transition: .2s ease;
+    }
+
+    #meiri-pro-site .large-gallery-dot.is-active {
+      width: 34px;
+      background: linear-gradient(135deg, #0b2233, #ffb15f);
+    }
+
+    #meiri-pro-site .large-gallery-thumbs {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    #meiri-pro-site .large-gallery-thumb {
+      border: 1px solid #eadfce;
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 8px;
+      display: grid;
+      gap: 7px;
+      cursor: pointer;
+      color: #12384f;
+      font-family: inherit;
+      font-weight: 900;
+      text-align: center;
+      box-shadow: 0 10px 24px rgba(16,32,51,.055);
+      transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+    }
+
+    #meiri-pro-site .large-gallery-thumb:hover,
+    #meiri-pro-site .large-gallery-thumb.is-active {
+      transform: translateY(-2px);
+      border-color: #ffb15f;
+      box-shadow: 0 16px 34px rgba(16,32,51,.10);
+    }
+
+    #meiri-pro-site .large-gallery-thumb img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-radius: 13px;
+      display: block;
+      background: #fff8ef;
+    }
+
+    #meiri-pro-site .large-gallery-thumb span {
+      font-size: 14px;
+      line-height: 1.35;
+    }
+
+    @media (max-width: 980px) {
+      #meiri-pro-site .large-gallery-stage {
+        min-height: clamp(280px, 66vw, 540px);
+      }
+
+      #meiri-pro-site .large-gallery-thumbs {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 560px) {
+      #meiri-pro-site .large-gallery-main {
+        border-radius: 24px;
+        padding: 10px;
+      }
+
+      #meiri-pro-site .large-gallery-stage {
+        min-height: 360px;
+        border-radius: 18px;
+      }
+
+      #meiri-pro-site .large-gallery-caption {
+        right: 12px;
+        left: 12px;
+        bottom: 12px;
+        max-width: calc(100% - 24px);
+        font-size: 15px;
+        padding: 8px 13px;
+      }
+
+      #meiri-pro-site .large-gallery-arrow {
+        width: 42px;
+        height: 42px;
+        font-size: 34px;
+      }
+
+      #meiri-pro-site .large-gallery-prev {
+        right: 16px;
+      }
+
+      #meiri-pro-site .large-gallery-next {
+        left: 16px;
+      }
+
+      #meiri-pro-site .large-gallery-thumbs {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+
+      #meiri-pro-site .large-gallery-thumb {
+        border-radius: 15px;
+        padding: 6px;
+      }
+
+      #meiri-pro-site .large-gallery-thumb span {
+        font-size: 12px;
+      }
+    }
+
+
+    /* ==========================================================
+       גלריה ראשית כרקע מלא לרוחב העמוד והחלון
+       ========================================================== */
+    #meiri-pro-site .large-gallery-section {
+      padding: 0 !important;
+      min-height: 100vh;
+      background: #0b2233 !important;
+      position: relative;
+      overflow: hidden !important;
+    }
+
+    #meiri-pro-site .large-gallery-section > .wrap {
+      width: 100% !important;
+      max-width: none !important;
+      margin: 0 !important;
+    }
+
+    #meiri-pro-site .large-gallery-section .section-title {
+      position: absolute;
+      z-index: 8;
+      top: clamp(28px, 5vw, 64px);
+      right: 50%;
+      transform: translateX(50%);
+      width: min(900px, calc(100% - 40px));
+      margin: 0 !important;
+      padding: 18px 24px;
+      border-radius: 24px;
+      color: #ffffff;
+      background: rgba(11, 34, 51, .56);
+      border: 1px solid rgba(255,255,255,.18);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      box-shadow: 0 14px 34px rgba(0,0,0,.18);
+    }
+
+    #meiri-pro-site .large-gallery-section .section-title span,
+    #meiri-pro-site .large-gallery-section .section-title h2,
+    #meiri-pro-site .large-gallery-section .section-title p {
+      color: #ffffff !important;
+    }
+
+    #meiri-pro-site .large-gallery-wrap {
+      width: 100vw !important;
+      max-width: none !important;
+      margin: 0 calc(50% - 50vw) !important;
+    }
+
+    #meiri-pro-site .large-gallery-main {
+      width: 100% !important;
+      min-height: 100vh;
+      padding: 0 !important;
+      border: 0 !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+      background: #0b2233 !important;
+    }
+
+    #meiri-pro-site .large-gallery-stage {
+      width: 100%;
+      height: 100vh;
+      min-height: 620px !important;
+      border-radius: 0 !important;
+      background: #0b2233 !important;
+    }
+
+    #meiri-pro-site .large-gallery-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover !important;
+      object-position: center;
+      background: #0b2233 !important;
+      filter: brightness(.72);
+    }
+
+    #meiri-pro-site .large-gallery-slide::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(7,29,43,.34), rgba(7,29,43,.08) 48%, rgba(7,29,43,.52));
+      pointer-events: none;
+    }
+
+    #meiri-pro-site .large-gallery-caption {
+      z-index: 3;
+      right: 50%;
+      left: auto;
+      bottom: 38px;
+      transform: translateX(50%);
+      max-width: calc(100% - 40px);
+    }
+
+    #meiri-pro-site .large-gallery-dots {
+      position: absolute;
+      z-index: 7;
+      right: 50%;
+      bottom: 92px;
+      transform: translateX(50%);
+      margin: 0 !important;
+    }
+
+    #meiri-pro-site .large-gallery-thumbs {
+      display: none !important;
+    }
+
+    @media (max-width: 560px) {
+      #meiri-pro-site .large-gallery-section,
+      #meiri-pro-site .large-gallery-main,
+      #meiri-pro-site .large-gallery-stage {
+        min-height: auto !important;
+        height: auto !important;
+      }
+
+      #meiri-pro-site .large-gallery-section .section-title {
+        top: 20px;
+        width: calc(100% - 24px);
+        padding: 14px 16px;
+      }
+
+      #meiri-pro-site .large-gallery-section .section-title p {
+        display: none;
+      }
+
+      #meiri-pro-site .large-gallery-arrow {
+        top: 58%;
+      }
+    }
+
+  
+
+    /* תיקון: הגלריה נשארת אזור נפרד ואינה מחליפה את רקע כל העמוד */
+    #meiri-pro-site .large-gallery-section {
+      position: relative !important;
+      min-height: auto !important;
+      height: auto !important;
+      padding: 58px 0 !important;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(255,177,95,.16), transparent 30%),
+        radial-gradient(circle at 88% 10%, rgba(18,56,79,.07), transparent 32%),
+        linear-gradient(180deg, #fff8ef, #ffffff 62%, #fff8ef) !important;
+    }
+
+    #meiri-pro-site .large-gallery-section .section-title {
+      position: static !important;
+      transform: none !important;
+      width: auto !important;
+      margin: 0 0 24px !important;
+      padding: 0 !important;
+      color: inherit !important;
+      background: transparent !important;
+      border: 0 !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      box-shadow: none !important;
+    }
+
+    #meiri-pro-site .large-gallery-section .section-title span {
+      color: #d97706 !important;
+    }
+
+    #meiri-pro-site .large-gallery-section .section-title h2 {
+      color: #102033 !important;
+    }
+
+    #meiri-pro-site .large-gallery-section .section-title p {
+      color: #647789 !important;
+    }
+
+    #meiri-pro-site .large-gallery-wrap {
+      width: 100% !important;
+      max-width: 1180px !important;
+      margin: 0 auto !important;
+    }
+
+    #meiri-pro-site .large-gallery-main {
+      min-height: auto !important;
+      height: auto !important;
+      border: 1px solid #eadfce !important;
+      border-radius: 28px !important;
+      overflow: hidden !important;
+      box-shadow: 0 16px 42px rgba(16,32,51,.08) !important;
+      background: #0b2233 !important;
+    }
+
+    #meiri-pro-site .large-gallery-stage {
+      height: clamp(360px, 58vw, 620px) !important;
+      min-height: 0 !important;
+      border-radius: 28px !important;
+      overflow: hidden !important;
+    }
+
+    #meiri-pro-site .large-gallery-slide img {
+      filter: none !important;
+    }
+
+    #meiri-pro-site .large-gallery-slide::after {
+      background: linear-gradient(180deg, rgba(7,29,43,.08), rgba(7,29,43,.02) 52%, rgba(7,29,43,.42)) !important;
+    }
+
+    #meiri-pro-site .large-gallery-dots {
+      bottom: 26px !important;
+    }
+
+    @media (max-width: 560px) {
+      #meiri-pro-site .large-gallery-section {
+        padding: 42px 0 !important;
+      }
+
+      #meiri-pro-site .large-gallery-section .section-title {
+        width: auto !important;
+        padding: 0 !important;
+      }
+
+      #meiri-pro-site .large-gallery-section .section-title p {
+        display: block !important;
+      }
+
+      #meiri-pro-site .large-gallery-stage {
+        height: 360px !important;
+        min-height: 0 !important;
+      }
+    }
+
+    /* תיקון צבע בלבד: לא משנים את צבע הרקע המקורי */
+    #meiri-pro-site .large-gallery-section {
+      background: inherit !important;
+    }
+
+    #meiri-pro-site .large-gallery-main,
+    #meiri-pro-site .large-gallery-stage,
+    #meiri-pro-site .large-gallery-slide img {
+      background-color: transparent !important;
+    }
+
+
+    /* תיקון חדות בגלריה: ללא מתיחת תמונות מעבר לגודל המקורי */
+    #meiri-pro-site .large-gallery-slide {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+
+    #meiri-pro-site .large-gallery-slide img {
+      width: auto !important;
+      height: auto !important;
+      max-width: 100% !important;
+      max-height: 100% !important;
+      object-fit: contain !important;
+      object-position: center !important;
+      transform: translateZ(0);
+      image-rendering: auto;
+    }
+
+
+
+    /* עדכון אחרון: הגלריה מוצגת ללא מסגרת, על גבי הרקע הקיים */
+    #meiri-pro-site .large-gallery-wrap {
+      width: 100vw !important;
+      max-width: none !important;
+      margin-right: calc(50% - 50vw) !important;
+      margin-left: calc(50% - 50vw) !important;
+    }
+
+    #meiri-pro-site .large-gallery-main,
+    #meiri-pro-site .large-gallery-stage {
+      border: 0 !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+      background: transparent !important;
+      overflow: hidden !important;
+    }
+
+    #meiri-pro-site .large-gallery-slide,
+    #meiri-pro-site .large-gallery-slide img {
+      border: 0 !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+      background: transparent !important;
+    }
+
+    #meiri-pro-site .large-gallery-stage {
+      height: clamp(340px, 52vw, 650px) !important;
+    }
+
+    #meiri-pro-site .large-gallery-slide img {
+      max-width: min(100%, 1600px) !important;
+      max-height: 100% !important;
+      object-fit: contain !important;
+    }
+
+    /* איור נקי לדגמי מצברים ללא תמונת מוצר לא מדויקת */
+    #meiri-pro-site .battery-placeholder {
+      width: min(210px, 78%);
+      aspect-ratio: 4 / 5;
+      border: 3px solid #12384f;
+      border-radius: 24px;
+      position: relative;
+      background: linear-gradient(180deg, #ffffff, #fff8ef);
+      box-shadow: 0 18px 30px rgba(16,32,51,.12);
+    }
+
+    #meiri-pro-site .battery-placeholder::before {
+      content: "";
+      position: absolute;
+      top: -12px;
+      right: 50%;
+      transform: translateX(50%);
+      width: 42%;
+      height: 12px;
+      border-radius: 8px 8px 0 0;
+      background: #12384f;
+    }
+
+    #meiri-pro-site .battery-placeholder::after {
+      content: attr(data-capacity);
+      position: absolute;
+      inset: 18% 12%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #12384f, #ffb15f);
+      color: #ffffff;
+      font-size: clamp(22px, 3vw, 34px);
+      font-weight: 950;
+      text-align: center;
+      padding: 12px;
+    }
+
+
+
+    /* ==========================================================
+       עדכון דגמים: ארבעה כרטיסים בשורה אחת על רוחב העמוד
+       ========================================================== */
+    #meiri-pro-site #products .wrap {
+      width: calc(100% - 32px) !important;
+      max-width: 1800px !important;
+    }
+
+    #meiri-pro-site #products .product-grid {
+      display: grid !important;
+      grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+      gap: 18px !important;
+      align-items: stretch !important;
+    }
+
+    #meiri-pro-site #products .product {
+      display: flex !important;
+      flex-direction: column !important;
+      min-width: 0 !important;
+      min-height: 100% !important;
+    }
+
+    #meiri-pro-site #products .product-img {
+      min-height: 250px !important;
+      height: 250px !important;
+      padding: 18px !important;
+    }
+
+    #meiri-pro-site #products .product-img img {
+      width: 100% !important;
+      height: 100% !important;
+      max-height: 220px !important;
+      object-fit: contain !important;
+    }
+
+    #meiri-pro-site #products .product-body {
+      padding: 22px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      flex: 1 1 auto !important;
+    }
+
+    #meiri-pro-site #products .product-body h3 {
+      font-size: clamp(20px, 1.55vw, 27px) !important;
+    }
+
+    #meiri-pro-site #products .specs {
+      margin-top: auto !important;
+      padding-top: 14px !important;
+    }
+
+    @media (max-width: 1250px) {
+      #meiri-pro-site #products .product-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      }
+    }
+
+    @media (max-width: 680px) {
+      #meiri-pro-site #products .product-grid {
+        grid-template-columns: 1fr !important;
+      }
+      #meiri-pro-site #products .product-img {
+        height: 230px !important;
+        min-height: 230px !important;
+      }
+    }
+
+
+    /* ==========================================================
+       עדכון: גלריה אוטומטית, מלאה לרוחב, עם שמירה מיטבית על איכות
+       ========================================================== */
+    #meiri-pro-site .large-gallery-section > .wrap {
+      width: 100% !important;
+      max-width: none !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    #meiri-pro-site .large-gallery-wrap {
+      width: 100% !important;
+      max-width: none !important;
+      margin: 0 !important;
+    }
+
+    #meiri-pro-site .large-gallery-main,
+    #meiri-pro-site .large-gallery-stage {
+      width: 100% !important;
+    }
+
+    #meiri-pro-site .large-gallery-stage {
+      height: clamp(320px, 46vw, 720px) !important;
+      min-height: 320px !important;
+    }
+
+    #meiri-pro-site .large-gallery-slide {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      background: transparent !important;
+    }
+
+    #meiri-pro-site .large-gallery-slide img {
+      width: 100% !important;
+      height: 100% !important;
+      max-width: none !important;
+      max-height: none !important;
+      object-fit: cover !important;
+      object-position: center center !important;
+      image-rendering: auto !important;
+      image-rendering: -webkit-optimize-contrast !important;
+      backface-visibility: hidden;
+      transform: translateZ(0);
+    }
+
+    #meiri-pro-site .large-gallery-caption {
+      bottom: 20px !important;
+    }
+
+    @media (max-width: 980px) {
+      #meiri-pro-site .large-gallery-stage {
+        height: clamp(280px, 58vw, 520px) !important;
+        min-height: 280px !important;
+      }
+    }
+
+    @media (max-width: 560px) {
+      #meiri-pro-site .large-gallery-stage {
+        height: 240px !important;
+        min-height: 240px !important;
+      }
+
+      #meiri-pro-site .large-gallery-caption {
+        right: 12px !important;
+        left: 12px !important;
+        bottom: 12px !important;
+        font-size: 15px !important;
+        padding: 8px 14px !important;
+      }
+    }
+
+
+
+    /* ==========================================================
+       שדרוג כולל: פריסה נקייה, אחידה ומסודרת יותר
+       ========================================================== */
+    #meiri-pro-site {
+      --page-max: 1320px;
+      --card-radius: 24px;
+      --soft-shadow: 0 12px 34px rgba(16,32,51,.07);
+      --strong-shadow: 0 18px 44px rgba(16,32,51,.10);
+    }
+
+    #meiri-pro-site .wrap {
+      width: min(var(--page-max), calc(100% - 40px)) !important;
+      margin-inline: auto !important;
+    }
+
+    #meiri-pro-site .section {
+      padding: 64px 0 !important;
+    }
+
+    #meiri-pro-site .section-title {
+      max-width: 780px;
+      margin: 0 auto 30px !important;
+      text-align: center !important;
+    }
+
+    #meiri-pro-site .section-title h2 {
+      font-size: clamp(30px, 3.2vw, 44px) !important;
+      line-height: 1.18 !important;
+    }
+
+    #meiri-pro-site .section-title p {
+      margin-top: 10px !important;
+      font-size: 17px !important;
+      line-height: 1.75 !important;
+    }
+
+    #meiri-pro-site .hero {
+      padding: 58px 0 48px !important;
+    }
+
+    #meiri-pro-site .hero-grid {
+      grid-template-columns: minmax(0, 1.08fr) minmax(340px, .92fr) !important;
+      gap: 34px !important;
+      align-items: center !important;
+    }
+
+    #meiri-pro-site .hero-card,
+    #meiri-pro-site .info-box,
+    #meiri-pro-site .process-card,
+    #meiri-pro-site .product,
+    #meiri-pro-site .service-card,
+    #meiri-pro-site .youtube-story-box,
+    #meiri-pro-site .article-download-card,
+    #meiri-pro-site .form-card {
+      border-radius: var(--card-radius) !important;
+      box-shadow: var(--soft-shadow) !important;
+    }
+
+    #meiri-pro-site .info-box {
+      padding: 28px !important;
+    }
+
+    #meiri-pro-site .feature-grid,
+    #meiri-pro-site .process-grid,
+    #meiri-pro-site .service-focus-grid {
+      gap: 16px !important;
+    }
+
+    #meiri-pro-site .process-card,
+    #meiri-pro-site .service-card {
+      padding: 22px !important;
+    }
+
+    /* סטטיסטיקות */
+    #meiri-pro-site .stats {
+      padding: 34px 0 !important;
+    }
+
+    #meiri-pro-site .stats-grid {
+      gap: 12px !important;
+    }
+
+    #meiri-pro-site .stat {
+      padding: 18px 12px !important;
+      border-radius: 18px !important;
+    }
+
+    /* משובים — פס נקי ולא עמוס */
+    #meiri-pro-site .reviews-section {
+      padding: 48px 0 !important;
+    }
+
+    #meiri-pro-site .reviews-ticker {
+      padding: 14px 0 !important;
+    }
+
+    #meiri-pro-site .review-pill {
+      min-width: 390px !important;
+      max-width: 440px !important;
+      padding: 0 22px !important;
+      font-size: 15px !important;
+      line-height: 1.6 !important;
+    }
+
+    /* גלריה — רחבה אך לא שוברת את העמוד */
+    #meiri-pro-site .large-gallery-section {
+      padding: 52px 0 !important;
+    }
+
+    #meiri-pro-site .large-gallery-section > .wrap {
+      width: min(1480px, calc(100% - 32px)) !important;
+      max-width: 1480px !important;
+      margin-inline: auto !important;
+      padding: 0 !important;
+    }
+
+    #meiri-pro-site .large-gallery-wrap,
+    #meiri-pro-site .large-gallery-main {
+      width: 100% !important;
+      max-width: 1480px !important;
+      margin-inline: auto !important;
+    }
+
+    #meiri-pro-site .large-gallery-main {
+      border-radius: 24px !important;
+      overflow: hidden !important;
+      background: #fffdf8 !important;
+      box-shadow: var(--strong-shadow) !important;
+    }
+
+    #meiri-pro-site .large-gallery-stage {
+      height: clamp(330px, 43vw, 620px) !important;
+      min-height: 330px !important;
+      border-radius: 24px !important;
+      background: #fffdf8 !important;
+    }
+
+    #meiri-pro-site .large-gallery-slide img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: contain !important;
+      object-position: center !important;
+      background: #fffdf8 !important;
+    }
+
+    #meiri-pro-site .large-gallery-caption {
+      font-size: 16px !important;
+      padding: 8px 15px !important;
+      right: 16px !important;
+      bottom: 16px !important;
+    }
+
+    #meiri-pro-site .large-gallery-arrow {
+      width: 44px !important;
+      height: 44px !important;
+      font-size: 34px !important;
+    }
+
+    /* מוצרים — ארבעה כרטיסים אחידים ומאוזנים */
+    #meiri-pro-site #products .wrap {
+      width: min(1480px, calc(100% - 32px)) !important;
+      max-width: 1480px !important;
+    }
+
+    #meiri-pro-site #products .product-grid {
+      gap: 14px !important;
+    }
+
+    #meiri-pro-site #products .product {
+      overflow: hidden !important;
+      border-radius: 22px !important;
+    }
+
+    #meiri-pro-site #products .product-img {
+      height: 220px !important;
+      min-height: 220px !important;
+      padding: 16px !important;
+    }
+
+    #meiri-pro-site #products .product-img img {
+      max-height: 188px !important;
+    }
+
+    #meiri-pro-site #products .product-body {
+      padding: 18px !important;
+    }
+
+    #meiri-pro-site #products .product-body h3 {
+      font-size: clamp(19px, 1.35vw, 24px) !important;
+      min-height: 58px;
+    }
+
+    #meiri-pro-site #products .product-body > p {
+      min-height: 76px;
+      font-size: 14px !important;
+      line-height: 1.65 !important;
+    }
+
+    #meiri-pro-site #products .ticks {
+      margin: 12px 0 10px !important;
+    }
+
+    #meiri-pro-site #products .ticks li {
+      margin: 5px 0 !important;
+      font-size: 13px !important;
+      line-height: 1.5 !important;
+      padding-right: 24px !important;
+    }
+
+    #meiri-pro-site #products .specs {
+      gap: 6px !important;
+      padding-top: 10px !important;
+    }
+
+    #meiri-pro-site #products .spec {
+      padding: 8px 10px !important;
+      font-size: 12.5px !important;
+      line-height: 1.45 !important;
+      border-radius: 11px !important;
+    }
+
+    /* אזורי תוכן ארוכים */
+    #meiri-pro-site .youtube-story-box,
+    #meiri-pro-site .article-download-card {
+      max-width: 1180px !important;
+      margin-inline: auto !important;
+      gap: 28px !important;
+      padding: 28px !important;
+      align-items: center !important;
+    }
+
+    #meiri-pro-site .youtube-story-text,
+    #meiri-pro-site .article-download-text {
+      min-width: 0 !important;
+    }
+
+    #meiri-pro-site .youtube-story-title,
+    #meiri-pro-site .article-download-text h2 {
+      font-size: clamp(25px, 2.6vw, 36px) !important;
+      line-height: 1.25 !important;
+    }
+
+    #meiri-pro-site .youtube-story-article,
+    #meiri-pro-site .article-download-text {
+      line-height: 1.8 !important;
+    }
+
+    #meiri-pro-site .youtube-story-article {
+      max-height: 270px;
+      overflow-y: auto;
+      padding-left: 8px;
+    }
+
+    #meiri-pro-site .article-download-text {
+      max-height: 430px;
+      overflow-y: auto;
+      padding-left: 8px;
+    }
+
+    #meiri-pro-site .youtube-story-frame,
+    #meiri-pro-site .article-image-download {
+      border-radius: 20px !important;
+      overflow: hidden !important;
+    }
+
+    /* טופס סיום */
+    #meiri-pro-site .contact-form-only {
+      max-width: 780px !important;
+      margin-inline: auto !important;
+    }
+
+    #meiri-pro-site .form-card {
+      padding: 28px !important;
+    }
+
+    @media (max-width: 1100px) {
+      #meiri-pro-site .hero-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      #meiri-pro-site #products .product-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      }
+
+      #meiri-pro-site .youtube-story-box,
+      #meiri-pro-site .article-download-card {
+        grid-template-columns: 1fr !important;
+      }
+    }
+
+    @media (max-width: 680px) {
+      #meiri-pro-site .wrap {
+        width: min(100% - 24px, var(--page-max)) !important;
+      }
+
+      #meiri-pro-site .section {
+        padding: 44px 0 !important;
+      }
+
+      #meiri-pro-site .hero {
+        padding: 40px 0 34px !important;
+      }
+
+      #meiri-pro-site .section-title {
+        margin-bottom: 22px !important;
+      }
+
+      #meiri-pro-site .info-box,
+      #meiri-pro-site .hero-card,
+      #meiri-pro-site .form-card,
+      #meiri-pro-site .youtube-story-box,
+      #meiri-pro-site .article-download-card {
+        padding: 20px !important;
+      }
+
+      #meiri-pro-site .review-pill {
+        min-width: 300px !important;
+        max-width: 320px !important;
+      }
+
+      #meiri-pro-site .large-gallery-section > .wrap,
+      #meiri-pro-site #products .wrap {
+        width: calc(100% - 20px) !important;
+      }
+
+      #meiri-pro-site .large-gallery-stage {
+        height: 260px !important;
+        min-height: 260px !important;
+      }
+
+      #meiri-pro-site #products .product-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      #meiri-pro-site #products .product-body h3,
+      #meiri-pro-site #products .product-body > p {
+        min-height: 0 !important;
+      }
+
+      #meiri-pro-site .youtube-story-article,
+      #meiri-pro-site .article-download-text {
+        max-height: none !important;
+        overflow: visible !important;
+      }
+    }
+
+
+
+    /* אחידות במספרי ובשמות הדגמים */
+    #meiri-pro-site #products .product-model-title {
+      min-height: 86px !important;
+      margin: 0 0 14px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      justify-content: flex-start !important;
+      gap: 9px !important;
+      line-height: 1.25 !important;
+    }
+
+    #meiri-pro-site #products .model-name {
+      display: block !important;
+      width: 100% !important;
+      min-height: 2.5em !important;
+      font-size: clamp(18px, 1.35vw, 23px) !important;
+      font-weight: 900 !important;
+      color: #102033 !important;
+      direction: ltr !important;
+      text-align: right !important;
+      unicode-bidi: isolate !important;
+      overflow-wrap: anywhere !important;
+    }
+
+    #meiri-pro-site #products .model-capacity {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      min-width: 118px !important;
+      min-height: 38px !important;
+      padding: 7px 14px !important;
+      border-radius: 999px !important;
+      background: #fff3e6 !important;
+      border: 1px solid #ffd7a3 !important;
+      color: #9a4b00 !important;
+      font-size: 17px !important;
+      font-weight: 950 !important;
+      line-height: 1 !important;
+      direction: ltr !important;
+      white-space: nowrap !important;
+      unicode-bidi: isolate !important;
+    }
+
+    @media (max-width: 680px) {
+      #meiri-pro-site #products .product-model-title {
+        min-height: auto !important;
+      }
+
+      #meiri-pro-site #products .model-name {
+        min-height: auto !important;
+        font-size: 21px !important;
+      }
+    }
+
+    /* גלריה נקייה: ללא תמונות דגמים וללא כיתובים */
+    #meiri-pro-site #gallery .large-gallery-caption {
+      display: none !important;
+    }
+
+
+    /* הדגשת אחריות ושירות בכל דגמי המצברים */
+    #meiri-pro-site .warranty-highlight {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin: 14px 0 16px;
+      padding: 11px 14px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #0b2233, #12384f);
+      color: #ffffff;
+      font-weight: 950;
+      font-size: 15px;
+      text-align: center;
+      box-shadow: 0 10px 24px rgba(16,32,51,.14);
+    }
+
+    #meiri-pro-site .warranty-highlight::before {
+      content: "✓";
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #ffb15f;
+      color: #0b2233;
+      flex: 0 0 auto;
+      font-size: 14px;
+      font-weight: 950;
+    }
+
+    #meiri-pro-site #products .section-title p strong {
+      color: #12384f;
+    }
+
+
+    /* לוגו יצרן בכרטיסי הדגמים */
+    #meiri-pro-site #products .product-img {
+      position: relative !important;
+    }
+
+    #meiri-pro-site #products .product-brand-logo {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      z-index: 3;
+      width: auto !important;
+      height: 34px !important;
+      max-width: 118px !important;
+      object-fit: contain !important;
+      background: rgba(255,255,255,.94);
+      border: 1px solid #eadfce;
+      border-radius: 10px;
+      padding: 5px 8px;
+      box-shadow: 0 6px 18px rgba(16,32,51,.08);
+    }
+
+    @media (max-width: 680px) {
+      #meiri-pro-site #products .product-brand-logo {
+        top: 10px;
+        right: 10px;
+        height: 30px !important;
+        max-width: 105px !important;
+        padding: 4px 7px;
+      }
+    }
+
+
+    /* עדכון: לוגואים עדינים ורשימות מפרט אחידות בין כל הדגמים */
+    #meiri-pro-site #products .product-brand-logo {
+      top: 16px !important;
+      right: 16px !important;
+      height: 30px !important;
+      max-width: 110px !important;
+      padding: 0 !important;
+      background: transparent !important;
+      border: 0 !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+      opacity: .82 !important;
+      filter: drop-shadow(0 2px 4px rgba(16,32,51,.10)) !important;
+    }
+
+    #meiri-pro-site #products .specs {
+      display: grid !important;
+      grid-template-columns: 1fr !important;
+      gap: 8px !important;
+    }
+
+    #meiri-pro-site #products .spec {
+      display: grid !important;
+      grid-template-columns: 118px minmax(0,1fr) !important;
+      gap: 10px !important;
+      align-items: start !important;
+      min-height: 52px !important;
+      padding: 11px 12px !important;
+      line-height: 1.45 !important;
+    }
+
+    #meiri-pro-site #products .spec-label {
+      color: #12384f !important;
+      font-weight: 950 !important;
+    }
+
+    #meiri-pro-site #products .spec-value {
+      color: #536b7d !important;
+      font-weight: 800 !important;
+    }
+
+    @media (max-width: 680px) {
+      #meiri-pro-site #products .product-brand-logo {
+        height: 27px !important;
+        max-width: 96px !important;
+      }
+      #meiri-pro-site #products .spec {
+        grid-template-columns: 102px minmax(0,1fr) !important;
+        min-height: auto !important;
+      }
+    }
+
+
+    /* מפרט קומפקטי יותר + הדגשת BMS */
+    #meiri-pro-site #products .specs {
+      display: grid !important;
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      gap: 6px !important;
+      padding-top: 8px !important;
+      margin-top: 10px !important;
+    }
+
+    #meiri-pro-site #products .spec {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 2px !important;
+      min-height: 0 !important;
+      padding: 8px 9px !important;
+      border-radius: 10px !important;
+      line-height: 1.3 !important;
+    }
+
+    #meiri-pro-site #products .spec-label {
+      font-size: 11px !important;
+      line-height: 1.2 !important;
+    }
+
+    #meiri-pro-site #products .spec-value {
+      font-size: 12px !important;
+      line-height: 1.35 !important;
+    }
+
+    #meiri-pro-site #products .spec-bms {
+      grid-column: 1 / -1 !important;
+      background: #fff3e6 !important;
+      border-color: #ffd7a3 !important;
+    }
+
+    #meiri-pro-site #products .spec-bms .spec-label {
+      color: #9a4b00 !important;
+    }
+
+    #meiri-pro-site #products .spec-bms .spec-value {
+      color: #12384f !important;
+      font-weight: 900 !important;
+    }
+
+    @media (max-width: 680px) {
+      #meiri-pro-site #products .specs {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      }
+    }
+
+
+
+    /* BMS מוצג כמו יתר שורות המפרט */
+    #meiri-pro-site #products .spec-bms {
+      grid-column: auto !important;
+      background: #fffdf8 !important;
+      border-color: #eadfce !important;
+    }
+    #meiri-pro-site #products .spec-bms .spec-label { color: #12384f !important; }
+    #meiri-pro-site #products .spec-bms .spec-value { color: #536b7d !important; font-weight: 800 !important; }
+
+
+    /* ==========================================================
+       מפרט משודרג וקומפקטי — ללא קוביות מסורבלות
+       ========================================================== */
+    #meiri-pro-site #products .specs {
+      display: grid !important;
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      column-gap: 18px !important;
+      row-gap: 0 !important;
+      margin-top: 14px !important;
+      padding-top: 10px !important;
+      border-top: 1px solid #eadfce !important;
+    }
+
+    #meiri-pro-site #products .spec {
+      display: grid !important;
+      grid-template-columns: 1fr !important;
+      gap: 1px !important;
+      min-height: 0 !important;
+      padding: 8px 0 !important;
+      margin: 0 !important;
+      background: transparent !important;
+      border: 0 !important;
+      border-bottom: 1px solid rgba(234, 223, 206, .78) !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+      line-height: 1.25 !important;
+    }
+
+    #meiri-pro-site #products .spec-label {
+      font-size: 10.5px !important;
+      font-weight: 900 !important;
+      color: #7a8792 !important;
+      letter-spacing: .1px !important;
+    }
+
+    #meiri-pro-site #products .spec-value {
+      font-size: 12.5px !important;
+      font-weight: 850 !important;
+      color: #12384f !important;
+      line-height: 1.35 !important;
+      overflow-wrap: anywhere !important;
+    }
+
+    #meiri-pro-site #products .spec-bms,
+    #meiri-pro-site #products .spec-bms .spec-label,
+    #meiri-pro-site #products .spec-bms .spec-value {
+      background: transparent !important;
+      border-color: rgba(234, 223, 206, .78) !important;
+      color: inherit !important;
+    }
+
+    #meiri-pro-site #products .product-body {
+      padding: 20px !important;
+    }
+
+    #meiri-pro-site #products .ticks {
+      margin: 10px 0 4px !important;
+    }
+
+    #meiri-pro-site #products .ticks li {
+      margin: 4px 0 !important;
+      font-size: 13px !important;
+      line-height: 1.4 !important;
+    }
+
+    @media (max-width: 1250px) {
+      #meiri-pro-site #products .specs {
+        column-gap: 22px !important;
+      }
+    }
+
+    @media (max-width: 680px) {
+      #meiri-pro-site #products .specs {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        column-gap: 14px !important;
+      }
+
+      #meiri-pro-site #products .spec {
+        padding: 7px 0 !important;
+      }
+
+      #meiri-pro-site #products .spec-value {
+        font-size: 12px !important;
+      }
+    }
+
+
+  
+
+/* עדכון קומפקטי: כל פרטי הדגם ברשימה אחת */
+#meiri-pro-site #products .product {
+  border-radius: 22px !important;
+}
+#meiri-pro-site #products .product-img {
+  height: 205px !important;
+  min-height: 205px !important;
+  padding: 12px !important;
+}
+#meiri-pro-site #products .product-img > img:not(.product-brand-logo) {
+  max-height: 178px !important;
+}
+#meiri-pro-site #products .product-body {
+  padding: 15px 16px 17px !important;
+}
+#meiri-pro-site #products .product-label {
+  margin-bottom: 2px !important;
+  font-size: 12px !important;
+}
+#meiri-pro-site #products .product-model-title {
+  min-height: auto !important;
+  margin: 0 0 5px !important;
+  line-height: 1.2 !important;
+}
+#meiri-pro-site #products .model-name {
+  font-size: clamp(18px, 1.25vw, 23px) !important;
+}
+#meiri-pro-site #products .product-body > p {
+  margin: 0 0 8px !important;
+  font-size: 13px !important;
+  line-height: 1.45 !important;
+}
+#meiri-pro-site #products .ticks {
+  margin: 5px 0 0 !important;
+  display: grid !important;
+  gap: 0 !important;
+}
+#meiri-pro-site #products .ticks li {
+  margin: 0 !important;
+  padding: 5px 21px 5px 0 !important;
+  border-bottom: 1px solid rgba(234,223,206,.72);
+  color: #536b7d !important;
+  font-size: 12.5px !important;
+  line-height: 1.35 !important;
+  font-weight: 700 !important;
+}
+#meiri-pro-site #products .ticks li:last-child {
+  border-bottom: 0;
+}
+#meiri-pro-site #products .ticks li::before {
+  top: 5px !important;
+  font-size: 13px !important;
+  color: #d97706 !important;
+}
+#meiri-pro-site #products .ticks li strong {
+  color: #12384f;
+  font-weight: 900;
+}
+@media (max-width: 680px) {
+  #meiri-pro-site #products .product-img {
+    height: 190px !important;
+    min-height: 190px !important;
+  }
+  #meiri-pro-site #products .product-body {
+    padding: 14px !important;
+  }
+}
+</style>
+<section class="hero" id="top">
+<div class="wrap hero-grid">
+<div>
+<h1>החשמל שלך לשבת יציב, שקט, ואיכותי, באחריות ללא פשרות</h1>
+<p class="hero-text">
+  מאירי שבת מתמחה מאז 2005 בתכנון, התקנה וליווי של מערכות אגירת אנרגיה מתקדמות לבית, לעסק ולמוסדות — עם שירות אישי, מותאמים במיוחד לחשמל כשר, מוצרים איכותיים ומחירים הוגנים, עם פריסה של אלפי לקוחות מרוצים בכל רחבי הארץ.
+</p>
+<div class="hero-actions">
+<button class="btn btn-primary" onclick="meiriOpenCallModal()" type="button">שיחה עם נציג</button>
+<a class="btn btn-light" href="/calculators/" rel="noopener">לחץ לחישוב הצריכה</a>
+</div>
+</div>
+<div class="hero-card lead-only-card">
+<div class="hero-side-lead">
+<div class="lead-intro">
+<h3>דברו עם המומחים שלנו</h3>
+<p class="muted">
+              מלא שם, נייד ואימייל — ונחזור אליך עם מענה מסודר, התאמה לפי הצריכה והצעת מחיר ברורה.
+            </p>
+<div aria-label="יתרונות השירות" class="lead-mini-row">
+</div>
+</div>
+<iframe name="hidden_google_form_hero" style="display:none;"></iframe>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSfCh3ghn70C-M9QDyY_KOsbRMS6dUWcllfBtQxDKaMgJyS0ng/formResponse" class="custom-lead-form" method="POST" onsubmit="return meiriLeadSuccess(this);" target="hidden_google_form_hero">
+<div class="lead-field">
+<label>שם מלא</label>
+<input name="entry.565996853" placeholder="הכנס שם מלא" required="" type="text"/>
+</div>
+<div class="lead-field">
+<label>נייד</label>
+<input name="entry.1519886671" placeholder="הכנס מספר נייד" required="" type="tel"/>
+</div>
+<div class="lead-field">
+<label>כתובת אימייל</label>
+<input name="entry.398069712" placeholder="הכנס כתובת אימייל" type="email"/>
+</div>
+<button class="btn btn-primary lead-submit" data-default="שלח פרטים" type="submit">
+              שלח פרטים
+            </button>
+<div class="lead-success">
+              הפרטים נשלחו בהצלחה. נחזור אליך בהקדם.
+            </div>
+</form>
+</div>
+</div>
+</div>
+</section>
+<section class="section white" id="about">
+<div class="wrap" style="max-width: 860px;">
+<div class="info-box" style="margin: 0 auto; text-align: center;">
+<div class="section-title" style="text-align:center;margin-bottom:18px;">
+<span>אודות</span>
+<h2>מניסיון, אצלנו קונים גם שירות</h2>
+</div>
+<p class="muted">
+          מאירי אנרגיה פועלת משנת 2005 ומתמחה בשיווק, התאמה, בדיקה וליווי של מערכות חשמל ואגירת אנרגיה ללקוחות פרטיים, עסקים ומוסדות, מותאמים לחשמל כשר לשבת קודש,
+        </p>
+<p class="muted" style="margin-top:12px;">
+          המטרה שלנו היא לתת לכל לקוח פתרון שמתאים באמת לצריכה שלו — עם שירות מסודר, מעבדה מקצועית, ניידות שירות וליווי גם אחרי שהמערכת כבר עובדת.
+        </p>
+<div class="feature-grid" style="margin-top:28px; text-align:right;">
+<div class="feature icon-feature">
+<span aria-hidden="true" class="brand-service-icon"><svg aria-hidden="true" focusable="false" viewbox="0 0 48 48">
+<rect height="30" rx="4" width="24" x="12" y="10"></rect>
+<path d="M19 8h10l2 5H17l2-5z"></path>
+<path class="soft-accent" d="M18 22h12"></path>
+<path d="M18 29h8"></path>
+<path class="soft-accent" d="M28 35l3 3 6-8"></path>
+</svg></span>
+<strong>תכנון לפי צריכה</strong>
+<small>חישוב מסודר לפי מכשירים, שעות שימוש וצרכים בפועל.</small>
+</div>
+<div class="feature icon-feature">
+<span aria-hidden="true" class="brand-service-icon"><svg aria-hidden="true" focusable="false" viewbox="0 0 48 48">
+<rect height="18" rx="4" width="28" x="9" y="15"></rect>
+<path d="M37 21h3c1.2 0 2 .8 2 2v2c0 1.2-.8 2-2 2h-3"></path>
+<path class="soft-accent" d="M15 24h7"></path>
+<path d="M25 24h4"></path>
+<path class="soft-accent" d="M16 38h14"></path>
+</svg></span>
+<strong>מצברי ליתיום איכותיים</strong>
+<small>דגמים אמינים, אפשרות הרחבה וליווי בבחירת המערכת.</small>
+</div>
+<div class="feature icon-feature">
+<span aria-hidden="true" class="brand-service-icon"><svg aria-hidden="true" focusable="false" viewbox="0 0 48 48">
+<path d="M12 27v-4c0-7 5-12 12-12s12 5 12 12v4"></path>
+<path d="M12 27c0 3 2 5 5 5h2v-9h-3c-2.2 0-4 1.8-4 4z"></path>
+<path d="M36 27c0 3-2 5-5 5h-2v-9h3c2.2 0 4 1.8 4 4z"></path>
+<path class="soft-accent" d="M30 34c-1 2-3.2 3-6 3h-3"></path>
+<path d="M19 37h4"></path>
+</svg></span>
+<strong>מעבדה ושירות</strong>
+<small>בדיקה, אבחון ותמיכה מקצועית לאורך זמן.</small>
+</div>
+<div class="feature icon-feature">
+<span aria-hidden="true" class="brand-service-icon"><svg aria-hidden="true" focusable="false" viewbox="0 0 48 48">
+<path d="M8 28V17c0-2.2 1.8-4 4-4h16c2.2 0 4 1.8 4 4v11"></path>
+<path d="M32 20h5l4 6v2h-9"></path>
+<path class="soft-accent" d="M10 28h29"></path>
+<circle cx="16" cy="33" r="4"></circle>
+<circle cx="34" cy="33" r="4"></circle>
+<path d="M16 33h.1M34 33h.1"></path>
+</svg></span>
+<strong>ניידות שירות</strong>
+<small>מענה שטח מסודר לתיאום שירות, בדיקה וליווי.</small>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="section" id="vision">
+<div class="wrap">
+<div class="info-box">
+<div class="section-title">
+<span>איך מתקדמים?</span>
+<h2>שלושה צעדים פשוטים למערכת שמתאימה באמת</h2>
+<p>
+          תהליך ברור שמתחיל מחישוב הצריכה, ממשיך בהתאמת דגם, ומסתיים בליווי מקצועי עד שהמערכת מוכנה לשימוש.
+        </p>
+</div>
+<div class="process-grid">
+<div class="process-card">
+<div class="process-num">1</div>
+<span aria-hidden="true" class="brand-service-icon"><svg aria-hidden="true" focusable="false" viewbox="0 0 48 48">
+<rect height="30" rx="4" width="24" x="12" y="10"></rect>
+<path d="M19 8h10l2 5H17l2-5z"></path>
+<path class="soft-accent" d="M18 22h12"></path>
+<path d="M18 29h8"></path>
+<path class="soft-accent" d="M28 35l3 3 6-8"></path>
+</svg></span>
+<h3>אפיון צרכים</h3>
+<p class="muted">
+            בודקים את הצריכה, אופי השימוש, תנאי המקום והדרישות החשובות לפני בחירת המערכת.
+          </p>
+</div>
+<div class="process-card">
+<div class="process-num">2</div>
+<span aria-hidden="true" class="brand-service-icon"><svg aria-hidden="true" focusable="false" viewbox="0 0 48 48">
+<rect height="18" rx="4" width="28" x="9" y="15"></rect>
+<path d="M37 21h3c1.2 0 2 .8 2 2v2c0 1.2-.8 2-2 2h-3"></path>
+<path class="soft-accent" d="M15 24h7"></path>
+<path d="M25 24h4"></path>
+<path class="soft-accent" d="M16 38h14"></path>
+</svg></span>
+<h3>התאמת מערכת</h3>
+<p class="muted">
+            מתאימים מצבר, ממיר, פאנלים ואפשרויות הרחבה — בצורה מדויקת ולא מנופחת.
+          </p>
+</div>
+<div class="process-card">
+<div class="process-num">3</div>
+<span aria-hidden="true" class="brand-service-icon"><svg aria-hidden="true" focusable="false" viewbox="0 0 48 48">
+<path d="M12 27v-4c0-7 5-12 12-12s12 5 12 12v4"></path>
+<path d="M12 27c0 3 2 5 5 5h2v-9h-3c-2.2 0-4 1.8-4 4z"></path>
+<path d="M36 27c0 3-2 5-5 5h-2v-9h3c2.2 0 4 1.8 4 4z"></path>
+<path class="soft-accent" d="M30 34c-1 2-3.2 3-6 3h-3"></path>
+<path d="M19 37h4"></path>
+</svg></span>
+<h3>שירות וליווי</h3>
+<p class="muted">
+            מקבלים ליווי מקצועי, בדיקות מעבדה לפי הצורך ומענה שירות מסודר גם לאחר ההפעלה.
+          </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="stats">
+<div class="wrap stats-grid" style="grid-template-columns: repeat(3, 1fr);">
+<div class="stat">
+<strong><span class="counter" data-target="25">25</span>+</strong>
+<span>שנות ניסיון</span>
+</div>
+<div class="stat">
+<strong><span class="counter" data-target="5482">5,482</span>+</strong>
+<span>לקוחות מרוצים</span>
+</div>
+<div class="stat">
+<strong><span class="counter" data-target="263">263</span>+</strong>
+<span>מוסדות בכל הארץ</span>
+</div>
+</div>
+</section>
+<section class="section reviews-section" id="reviews">
+<div class="wrap">
+<div class="section-title">
+<span>לקוחות מספרים</span>
+<h2>מה הלקוחות שלנו אומרים
+</h2>
+<p>
+</p>
+</div>
+<div class="reviews-wrap">
+<div aria-label="תגובות לקוחות מרוצים" class="reviews-ticker">
+<div class="reviews-track" data-runtime-clone="true">
+<div class="review-pill"><strong>יוסי מירושלים:</strong> כבר בשיחת המכירה קיבלתי הסבר ברור, בלי לחץ ובלי הבטחות מיותרות. התאימו לי פתרון לפי הצריכה האמיתית שלי.</div>
+<div class="review-pill"><strong>משה מבית שמש:</strong> גם אחרי הקנייה נשארו זמינים. כל שאלה קיבלה תשובה מסודרת והרגשתי שיש מי שמלווה אותי לאורך הדרך.</div>
+<div class="review-pill"><strong>אבי מבני ברק:</strong> המקצוענות בלטה מהרגע הראשון — בדקו נתונים, הסבירו את ההבדלים והמליצו רק על מה שבאמת מתאים.</div>
+<div class="review-pill"><strong>חיים ממודיעין עילית:</strong> אפשרויות התשלום הוסברו בצורה ברורה ונוחה, והצלחתי לבחור מסלול שמתאים לתקציב שלי בלי הפתעות.</div>
+<div class="review-pill"><strong>אליהו מאלעד:</strong> בשעת עומס ולחץ קיבלתי מענה מהיר, רגוע וממוקד. הצוות עזר לי לפתור את הבעיה בלי להסתבך.</div>
+<div class="review-pill"><strong>דוד מאשדוד:</strong> ההתקנה בוצעה בצורה נקייה ומסודרת, הגיעו בזמן והשאירו אחריהם סביבת עבודה מסודרת.</div>
+<div class="review-pill"><strong>שלמה מירושלים:</strong> הסבירו לי בסבלנות איך להשתמש במערכת ומה חשוב לבדוק. ההדרכה הייתה פשוטה וברורה גם בלי ידע טכני.</div>
+<div class="review-pill"><strong>יעקב מביתר:</strong> כשהייתה תקלה קיבלתי אבחון מהיר ופתרון ענייני. לא מרחו זמן ולא העבירו אותי מאדם לאדם.</div>
+<div class="review-pill"><strong>נפתלי מנתניה:</strong> הרגשתי שההתאמה הייתה אישית ולא מוצר מדף. עברו איתי על הצרכים בבית ובנו פתרון מדויק.</div>
+<div class="review-pill"><strong>ישראל מחיפה:</strong> המחיר היה הוגן ושקוף. קיבלתי פירוט מלא של מה כלול והכול התנהל בדיוק כפי שסוכם מראש.</div>
+
+
+
+
+
+
+
+
+
+
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="section moving-gallery-section large-gallery-section" id="gallery">
+<div class="wrap">
+<div class="large-gallery-wrap" data-large-gallery="">
+<div aria-label="גלריית תמונות גדולה" class="large-gallery-main">
+<button aria-label="תמונה קודמת" class="large-gallery-arrow large-gallery-prev" data-gallery-prev="" type="button">‹</button>
+<div class="large-gallery-stage">
+<figure aria-hidden="false" class="large-gallery-slide is-active" data-gallery-slide="">
+<img alt="התקנה מסודרת" loading="eager" onerror="this.onerror=null;this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22900%22%20height%3D%22675%22%20viewBox%3D%220%200%20900%20675%22%3E%3Crect%20width%3D%22900%22%20height%3D%22675%22%20fill%3D%22%23fff8ef%22%2F%3E%3Ccircle%20cx%3D%22760%22%20cy%3D%22110%22%20r%3D%22150%22%20fill%3D%22%23ffe2bd%22%2F%3E%3Crect%20x%3D%2295%22%20y%3D%22150%22%20width%3D%22710%22%20height%3D%22360%22%20rx%3D%2242%22%20fill%3D%22%23ffffff%22%20stroke%3D%22%23eadfce%22%20stroke-width%3D%224%22%2F%3E%3Ctext%20x%3D%22450%22%20y%3D%22300%22%20font-family%3D%22Arial%22%20font-size%3D%2246%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%20fill%3D%22%2312384f%22%3E%D7%AA%D7%9E%D7%95%D7%A0%D7%94%20%D7%9C%D7%92%D7%9C%D7%A8%D7%99%D7%94%3C%2Ftext%3E%3Ctext%20x%3D%22450%22%20y%3D%22365%22%20font-family%3D%22Arial%22%20font-size%3D%2228%22%20text-anchor%3D%22middle%22%20fill%3D%22%23647789%22%3E%D7%94%D7%97%D7%9C%D7%A3%20%D7%90%D7%AA%20%D7%A7%D7%99%D7%A9%D7%95%D7%A8%20%D7%94%D7%AA%D7%9E%D7%95%D7%A0%D7%94%20%D7%91%D7%A7%D7%95%D7%93%3C%2Ftext%3E%3C%2Fsvg%3E';" src="https://meish.neocities.org/60kWh-Solar-Rack-Battery-_420x251-r.jpg">
+</img></figure>
+<figure aria-hidden="true" class="large-gallery-slide" data-gallery-slide="">
+<img alt="תכנון לפי צריכה" loading="lazy" onerror="this.onerror=null;this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22900%22%20height%3D%22675%22%20viewBox%3D%220%200%20900%20675%22%3E%3Crect%20width%3D%22900%22%20height%3D%22675%22%20fill%3D%22%23fff8ef%22%2F%3E%3Ccircle%20cx%3D%22760%22%20cy%3D%22110%22%20r%3D%22150%22%20fill%3D%22%23ffe2bd%22%2F%3E%3Crect%20x%3D%2295%22%20y%3D%22150%22%20width%3D%22710%22%20height%3D%22360%22%20rx%3D%2242%22%20fill%3D%22%23ffffff%22%20stroke%3D%22%23eadfce%22%20stroke-width%3D%224%22%2F%3E%3Ctext%20x%3D%22450%22%20y%3D%22300%22%20font-family%3D%22Arial%22%20font-size%3D%2246%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%20fill%3D%22%2312384f%22%3E%D7%AA%D7%9E%D7%95%D7%A0%D7%94%20%D7%9C%D7%92%D7%9C%D7%A8%D7%99%D7%94%3C%2Ftext%3E%3Ctext%20x%3D%22450%22%20y%3D%22365%22%20font-family%3D%22Arial%22%20font-size%3D%2228%22%20text-anchor%3D%22middle%22%20fill%3D%22%23647789%22%3E%D7%94%D7%97%D7%9C%D7%A3%20%D7%90%D7%AA%20%D7%A7%D7%99%D7%A9%D7%95%D7%A8%20%D7%94%D7%AA%D7%9E%D7%95%D7%A0%D7%94%20%D7%91%D7%A7%D7%95%D7%93%3C%2Ftext%3E%3C%2Fsvg%3E';" src="https://meish.neocities.org/ca897741e7_774x450-r.jpg"/>
+</figure>
+<figure aria-hidden="true" class="large-gallery-slide" data-gallery-slide="">
+<img alt="פתרון לבית ולעסק" loading="lazy" onerror="this.onerror=null;this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22900%22%20height%3D%22675%22%20viewBox%3D%220%200%20900%20675%22%3E%3Crect%20width%3D%22900%22%20height%3D%22675%22%20fill%3D%22%23fff8ef%22%2F%3E%3Ccircle%20cx%3D%22760%22%20cy%3D%22110%22%20r%3D%22150%22%20fill%3D%22%23ffe2bd%22%2F%3E%3Crect%20x%3D%2295%22%20y%3D%22150%22%20width%3D%22710%22%20height%3D%22360%22%20rx%3D%2242%22%20fill%3D%22%23ffffff%22%20stroke%3D%22%23eadfce%22%20stroke-width%3D%224%22%2F%3E%3Ctext%20x%3D%22450%22%20y%3D%22300%22%20font-family%3D%22Arial%22%20font-size%3D%2246%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%20fill%3D%22%2312384f%22%3E%D7%AA%D7%9E%D7%95%D7%A0%D7%94%20%D7%9C%D7%92%D7%9C%D7%A8%D7%99%D7%94%3C%2Ftext%3E%3Ctext%20x%3D%22450%22%20y%3D%22365%22%20font-family%3D%22Arial%22%20font-size%3D%2228%22%20text-anchor%3D%22middle%22%20fill%3D%22%23647789%22%3E%D7%94%D7%97%D7%9C%D7%A3%20%D7%90%D7%AA%20%D7%A7%D7%99%D7%A9%D7%95%D7%A8%20%D7%94%D7%AA%D7%9E%D7%95%D7%A0%D7%94%20%D7%91%D7%A7%D7%95%D7%93%3C%2Ftext%3E%3C%2Fsvg%3E';" src="https://meish.neocities.org/51.2V-314Ah-solar-battery_900x445-r%20(2).jpg"/>
+</figure>
+<figure aria-hidden="true" class="large-gallery-slide" data-gallery-slide="">
+<img alt="ליווי ושירות" loading="lazy" onerror="this.onerror=null;this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22900%22%20height%3D%22675%22%20viewBox%3D%220%200%20900%20675%22%3E%3Crect%20width%3D%22900%22%20height%3D%22675%22%20fill%3D%22%23fff8ef%22%2F%3E%3Ccircle%20cx%3D%22760%22%20cy%3D%22110%22%20r%3D%22150%22%20fill%3D%22%23ffe2bd%22%2F%3E%3Crect%20x%3D%2295%22%20y%3D%22150%22%20width%3D%22710%22%20height%3D%22360%22%20rx%3D%2242%22%20fill%3D%22%23ffffff%22%20stroke%3D%22%23eadfce%22%20stroke-width%3D%224%22%2F%3E%3Ctext%20x%3D%22450%22%20y%3D%22300%22%20font-family%3D%22Arial%22%20font-size%3D%2246%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%20fill%3D%22%2312384f%22%3E%D7%AA%D7%9E%D7%95%D7%A0%D7%94%20%D7%9C%D7%92%D7%9C%D7%A8%D7%99%D7%94%3C%2Ftext%3E%3Ctext%20x%3D%22450%22%20y%3D%22365%22%20font-family%3D%22Arial%22%20font-size%3D%2228%22%20text-anchor%3D%22middle%22%20fill%3D%22%23647789%22%3E%D7%94%D7%97%D7%9C%D7%A3%20%D7%90%D7%AA%20%D7%A7%D7%99%D7%A9%D7%95%D7%A8%20%D7%94%D7%AA%D7%9E%D7%95%D7%A0%D7%94%20%D7%91%D7%A7%D7%95%D7%93%3C%2Ftext%3E%3C%2Fsvg%3E';" src="https://meish.neocities.org/CI-Energy-Storage-system.jpg"/>
+</figure>
+<figure aria-hidden="true" class="large-gallery-slide" data-gallery-slide="">
+<img alt="מערכת יציבה ונוחה" loading="lazy" onerror="this.onerror=null;this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22900%22%20height%3D%22675%22%20viewBox%3D%220%200%20900%20675%22%3E%3Crect%20width%3D%22900%22%20height%3D%22675%22%20fill%3D%22%23fff8ef%22%2F%3E%3Ccircle%20cx%3D%22760%22%20cy%3D%22110%22%20r%3D%22150%22%20fill%3D%22%23ffe2bd%22%2F%3E%3Crect%20x%3D%2295%22%20y%3D%22150%22%20width%3D%22710%22%20height%3D%22360%22%20rx%3D%2242%22%20fill%3D%22%23ffffff%22%20stroke%3D%22%23eadfce%22%20stroke-width%3D%224%22%2F%3E%3Ctext%20x%3D%22450%22%20y%3D%22300%22%20font-family%3D%22Arial%22%20font-size%3D%2246%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%20fill%3D%22%2312384f%22%3E%D7%AA%D7%9E%D7%95%D7%A0%D7%94%20%D7%9C%D7%92%D7%9C%D7%A8%D7%99%D7%94%3C%2Ftext%3E%3Ctext%20x%3D%22450%22%20y%3D%22365%22%20font-family%3D%22Arial%22%20font-size%3D%2228%22%20text-anchor%3D%22middle%22%20fill%3D%22%23647789%22%3E%D7%94%D7%97%D7%9C%D7%A3%20%D7%90%D7%AA%20%D7%A7%D7%99%D7%A9%D7%95%D7%A8%20%D7%94%D7%AA%D7%9E%D7%95%D7%A0%D7%94%20%D7%91%D7%A7%D7%95%D7%93%3C%2Ftext%3E%3C%2Fsvg%3E';" src="https://meish.neocities.org/51.2V-314Ah-solar-battery_900x445-r%20(2).jpg"/>
+</figure>
+<figure aria-hidden="true" class="large-gallery-slide" data-gallery-slide="">
+<img alt="פתרון אגירת אנרגיה לבית" loading="lazy" src="https://meish.neocities.org/off-grid-home-energy-storage-solution.jpg"/>
+</figure>
+<figure aria-hidden="true" class="large-gallery-slide" data-gallery-slide="">
+<img alt="התאמה אישית" loading="lazy" onerror="this.onerror=null;this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22900%22%20height%3D%22675%22%20viewBox%3D%220%200%20900%20675%22%3E%3Crect%20width%3D%22900%22%20height%3D%22675%22%20fill%3D%22%23fff8ef%22%2F%3E%3Ccircle%20cx%3D%22760%22%20cy%3D%22110%22%20r%3D%22150%22%20fill%3D%22%23ffe2bd%22%2F%3E%3Crect%20x%3D%2295%22%20y%3D%22150%22%20width%3D%22710%22%20height%3D%22360%22%20rx%3D%2242%22%20fill%3D%22%23ffffff%22%20stroke%3D%22%23eadfce%22%20stroke-width%3D%224%22%2F%3E%3Ctext%20x%3D%22450%22%20y%3D%22300%22%20font-family%3D%22Arial%22%20font-size%3D%2246%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%20fill%3D%22%2312384f%22%3E%D7%AA%D7%9E%D7%95%D7%A0%D7%94%20%D7%9C%D7%92%D7%9C%D7%A8%D7%99%D7%94%3C%2Ftext%3E%3Ctext%20x%3D%22450%22%20y%3D%22365%22%20font-family%3D%22Arial%22%20font-size%3D%2228%22%20text-anchor%3D%22middle%22%20fill%3D%22%23647789%22%3E%D7%94%D7%97%D7%9C%D7%A3%20%D7%90%D7%AA%20%D7%A7%D7%99%D7%A9%D7%95%D7%A8%20%D7%94%D7%AA%D7%9E%D7%95%D7%A0%D7%94%20%D7%91%D7%A7%D7%95%D7%93%3C%2Ftext%3E%3C%2Fsvg%3E';" src="https://meish.neocities.org/ca897741e7_774x450-r.jpg"/>
+</figure>
+</div>
+<button aria-label="תמונה הבאה" class="large-gallery-arrow large-gallery-next" data-gallery-next="" type="button">›</button>
+</div>
+<div aria-label="ניווט בין תמונות" class="large-gallery-dots">
+<button aria-label="עבור לתמונה 1" class="large-gallery-dot is-active" data-gallery-dot="0" type="button"></button>
+<button aria-label="עבור לתמונה 2" class="large-gallery-dot" data-gallery-dot="1" type="button"></button>
+<button aria-label="עבור לתמונה 3" class="large-gallery-dot" data-gallery-dot="2" type="button"></button>
+<button aria-label="עבור לתמונה 4" class="large-gallery-dot" data-gallery-dot="3" type="button"></button>
+<button aria-label="עבור לתמונה 5" class="large-gallery-dot" data-gallery-dot="4" type="button"></button>
+<button aria-label="עבור לתמונה 6" class="large-gallery-dot" data-gallery-dot="5" type="button"></button>
+<button aria-label="עבור לתמונה 7" class="large-gallery-dot" data-gallery-dot="6" type="button"></button>
+</div></div>
+</div>
+</section>
+<section class="section" id="products">
+<div class="wrap">
+<div class="section-title">
+<span>דגמים מומלצים</span>
+<h2>מערכות אגירה לפי גודל השימוש</h2>
+<p>
+          פתרונות אגירה מתקדמים לבית, לעסק ולמוסדות — בהתאמה אישית לצריכת החשמל בפועל,
+          עם <strong>אחריות ל־10 שנים ושירות עד בית הלקוח</strong> בכל הדגמים.
+        </p>
+<p class="products-bms-note">
+<strong>BMS בכל הדגמים:</strong> ניטור ובקרה מתקדמים עם הגנות התחממות־יתר.
+        </p>
+</div>
+<div class="product-grid">
+<article class="product">
+<div class="product-img">
+<img alt="לוגו BSL" class="product-brand-logo" loading="lazy" src="https://meish.neocities.org/logo-21%20(3).png"/>
+<img alt="Li-Pro 15360" src="https://content.vp4.me/ishabat/Content/15kWh-home-battery_370x438-r%281%29.png"/>
+</div>
+<div class="product-body">
+<div class="product-label">דגם מרווח</div>
+<h3 class="product-model-title"><span class="model-name">Li-Pro 15360</span></h3>
+<p class="muted">
+              מתאים לבית בינוני/גדול, שימוש ממושך וצריכה גבוהה.
+            </p>
+<ul class="ticks">
+<li>מתאים להתקנה חיצונית</li>
+<li>יציבות ואמינות לאורך זמן</li>
+<li>התקנה וליווי מסודר</li>
+<li><strong>קיבולת: </strong>15.3 kWh</li><li><strong>עומק פריקה: </strong>90%</li><li><strong>אורך חיים: </strong>יותר מ־6,000 מחזורים</li><li><strong>דרגת אטימות: </strong>IP65</li><li><strong>מידות: </strong>900×660×220 מ״מ</li><li><strong>משקל: </strong>132 ק״ג</li><li><strong>אחריות: </strong>10 שנים ושירות עד בית הלקוח</li></ul>
+</div>
+</article>
+<article class="product">
+<div class="product-img">
+<img alt="לוגו BSL" class="product-brand-logo" loading="lazy" src="https://meish.neocities.org/logo-21%20(3).png"/>
+<img alt="Li-Pro 5120" src="https://content.vp4.me/ishabat/Content/lifepo4-server-rack-battery%20%281%29_480x420-r.png"/>
+</div>
+<div class="product-body">
+<div class="product-label">דגם קומפקטי</div>
+<h3 class="product-model-title"><span class="model-name">Li-Pro 5120</span></h3>
+<p class="muted">
+              מתאים לבית קטן/בינוני, שימוש ממושך ופתרון קומפקטי יותר.
+            </p>
+<ul class="ticks">
+<li>מתאים להתקנה בטור</li>
+<li>מתאים להתקנה ביתית</li>
+<li>יציבות ואמינות לאורך זמן</li>
+<li><strong>קיבולת: </strong>5.1 kWh</li><li><strong>עומק פריקה: </strong>90%</li><li><strong>אורך חיים: </strong>יותר מ־6,000 מחזורים</li><li><strong>דרגת אטימות: </strong>IP21</li><li><strong>מידות: </strong>140×550×490 מ״מ</li><li><strong>משקל: </strong>45 ק״ג</li><li><strong>אחריות: </strong>10 שנים ושירות עד בית הלקוח</li></ul>
+</div>
+</article>
+<article class="product">
+<div class="product-img">
+<img alt="לוגו SolaX" class="product-brand-logo" loading="lazy" src="https://meish.neocities.org/logo.jpg"/>
+<img alt="מצבר SolaX T-BAT-SYS-LV D53" loading="lazy" src="https://meish.neocities.org/-5.3%20(2)%20-%20.png"/>
+</div>
+<div class="product-body">
+<div class="product-label">דגם מודולרי וחכם</div>
+<h3 class="product-model-title"><span class="model-name">SolaX T-BAT-SYS-LV D53</span></h3>
+<p class="muted">
+              מודול אגירה במתח נמוך, המתאים לבית או לעסק לפי צריכת החשמל בפועל.
+            </p>
+<ul class="ticks">
+<li>קומפקטי וקל לניוד</li>
+<li>מתאים להתקנה על הרצפה או על הקיר</li>
+<li>אבחון ועדכונים מרחוק</li>
+<li><strong>קיבולת: </strong>5.3 kWh</li><li><strong>עומק פריקה: </strong>90%</li><li><strong>אורך חיים: </strong>יותר מ־6,000 מחזורים</li><li><strong>דרגת אטימות: </strong>IP65</li><li><strong>מידות: </strong>645×150×430 מ״מ</li><li><strong>משקל: </strong>48.5 ק״ג</li><li><strong>אחריות: </strong>10 שנים ושירות עד בית הלקוח</li></ul>
+</div>
+</article>
+<article class="product">
+<div class="product-img">
+<img alt="לוגו SolaX" class="product-brand-logo" loading="lazy" src="https://meish.neocities.org/logo.jpg"/>
+<img alt="מצבר SolaX TSYS-LD160" loading="lazy" src="https://meish.neocities.org/9ca08bb0ed.png"/>
+</div>
+<div class="product-body">
+<div class="product-label">דגם עוצמתי לצריכה גבוהה</div>
+<h3 class="product-model-title"><span class="model-name">SolaX TSYS-LD160</span></h3>
+<p class="muted">
+              מערכת אגירה עומדת לבית גדול, לעסק ולשימוש ממושך, בדגם 16 קילוואט.
+            </p>
+<ul class="ticks">
+<li>עומק פריקה 95% ויותר מ־8,000 מחזורים</li>
+<li>מתאים להתקנה ביתית</li>
+<li>ניתן להרחבה בהתאם לצורך</li>
+<li><strong>קיבולת: </strong>16 kWh</li><li><strong>עומק פריקה: </strong>95%</li><li><strong>אורך חיים: </strong>יותר מ־8,000 מחזורים</li><li><strong>דרגת אטימות: </strong>IP40</li><li><strong>מידות: </strong>953×356×289 מ״מ</li><li><strong>משקל: </strong>118.5 ק״ג</li><li><strong>אחריות: </strong>10 שנים ושירות עד בית הלקוח</li></ul>
+</div>
+</article>
+</div>
+</div>
+</section>
+<section class="section service-focus-section" id="service">
+<div class="wrap">
+<div class="section-title">
+<span>מעטפת השירות שלנו</span>
+<h2>אצלנו לא קונים רק מערכת — קונים מעטפת שירות מלאה</h2>
+<p>
+          אצלנו השירות ממשיך גם אחרי הרכישה, עם מעבדה מקצועית, ניידות שירות, אלפי לקוחות מרוצים והתאמה מדויקת לפי הצריכה בפועל.
+        </p>
+</div>
+<div class="service-focus-grid">
+<article class="service-card">
+<span aria-hidden="true" class="brand-service-icon"><svg aria-hidden="true" focusable="false" viewbox="0 0 48 48">
+<path class="soft-accent" d="M19 8h10"></path>
+<path d="M21 8v10L13.5 32.5c-1.8 3.4.7 7.5 4.5 7.5h12c3.8 0 6.3-4.1 4.5-7.5L27 18V8"></path>
+<path class="soft-accent" d="M17 31h14"></path>
+<circle class="soft-dot" cx="31" cy="12" r="2"></circle>
+<circle class="soft-dot" cx="17" cy="18" r="1.8"></circle>
+</svg></span>
+<span class="service-kicker">מעבדה</span>
+<strong>מעבדה מקצועית</strong>
+<p>בדיקות, אבחון ותמיכה טכנית למערכות ולרכיבים.</p>
+</article>
+<article class="service-card">
+<span aria-hidden="true" class="brand-service-icon"><svg aria-hidden="true" focusable="false" viewbox="0 0 48 48">
+<path d="M8 28V17c0-2.2 1.8-4 4-4h16c2.2 0 4 1.8 4 4v11"></path>
+<path d="M32 20h5l4 6v2h-9"></path>
+<path class="soft-accent" d="M10 28h29"></path>
+<circle cx="16" cy="33" r="4"></circle>
+<circle cx="34" cy="33" r="4"></circle>
+<path d="M16 33h.1M34 33h.1"></path>
+</svg></span>
+<span class="service-kicker">שטח</span>
+<strong>ניידות שירות</strong>
+<p>מענה שטח מסודר לתיאום, בדיקה וליווי לאחר הרכישה.</p>
+</article>
+<article class="service-card">
+<span aria-hidden="true" class="brand-service-icon"><svg aria-hidden="true" focusable="false" viewbox="0 0 48 48">
+<circle cx="24" cy="15" r="5"></circle>
+<circle cx="13" cy="20" r="4"></circle>
+<circle cx="35" cy="20" r="4"></circle>
+<path d="M15 36c1.5-6 16.5-6 18 0"></path>
+<path d="M6.5 34c.8-4 7.2-5.4 11-3"></path>
+<path d="M30.5 31c3.8-2.4 10.2-1 11 3"></path>
+<path class="soft-accent" d="M20 26.5l3 3 6-7"></path>
+</svg></span>
+<span class="service-kicker">לקוחות</span>
+<strong>אלפי לקוחות מרוצים</strong>
+<p>ניסיון מצטבר עם לקוחות פרטיים, עסקים ומוסדות.</p>
+</article>
+<article class="service-card">
+<span aria-hidden="true" class="brand-service-icon"><svg aria-hidden="true" focusable="false" viewbox="0 0 48 48">
+<rect height="26" rx="5" width="28" x="10" y="11"></rect>
+<path class="soft-accent" d="M16 20h16"></path>
+<path d="M16 27h9"></path>
+<path class="soft-accent" d="M28 18l3 3 6-7"></path>
+</svg></span>
+<span class="service-kicker">התאמה</span>
+<strong>התאמה מדויקת</strong>
+<p>מערכת שנבנית לפי הצריכה בפועל ולא לפי ניחוש.</p>
+</article>
+</div>
+</div>
+</section>
+<section class="section youtube-story-section" id="youtube-video">
+<div class="wrap">
+<div class="youtube-story-box">
+<div class="youtube-story-text">
+<h2 class="youtube-story-title">הגר"ח קנייבסקי זצוק"ל: זה נמשל לאחד ששורף ספר תורה, והשני מדליק את הסיגריה שלו מזה
+ </h2>
+<p class="youtube-story-subtitle">
+</p>
+<p class="youtube-story-article">
+מרן שר התורה הגר"ח קניבסקי פעל רבות כידוע בהוראת דודו מרן בעל ה'חזון איש' זי"ע בעד השימוש בחשמל כשר בשבת קודש, פורסם בשמו בשם החזון איש זי"ע כי הדבר נמשל לאדם שנהנה משריפת שפר תורה רח"ל,
+<br/>
+בדיון לפני כ-25 שנה במעונו, בהשתתפות ראש עיריית מודיעין עילית יעקב גוטרמן, הרב אריה עמר ועוד, נשאל מרן שר התורה הגר"ח קניבסקי "כתבו בעיתונות שהרב פעם אמר לח"כ יעקב ליצמן יו"ר אגודת ישראל בשם החזון איש שזה דומה לשורף ספר תורה",
+<br/>
+מרן שר התורה מאשר את הדברים ומצטט במדוייק את דברי החזון איש "הוא אמר, זה נמשל לאחד ששורף ספר תורה והשני מדליק את הסיגריה שלו מהספר תורה, הם (חברת חשמל ה"ה) מחללים שבת ואנחנו משתמשים בזה",
+<br/>
+כידוע מרן החזו"א זי"ע היה החלוץ הראשון שעמד בראש מחנה האוסרים להשתמש בחשמל בשבת קודש. מרן זי"ע כותב (חזו"א או"ח לח, ד) כך: "אם נעשה בתחנת החשמל בשבת על ידי ישראל שאינו משמר שבתו, אסור להינות ממנו. ואף אם הוא באופן שיש היתר בשימושו מן הדין, אסור להשתמש בו, מפני שיש בשימושו איסור חילול ה', שאינו חס לכבוד שמים, כיוון שהוא שימוש ציבורי, והעובד בשבת הוא עושה במרד ר"ל, והנהנה ממעשיו מעיד ח"ו שאין ליבו כואב על חילול שבת, ויהא רעוא שישובו בתשובה שלמה במהרה".          </p>
+<div class="youtube-story-actions">
+</div>
+</div>
+<div class="youtube-story-frame">
+<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" src="https://www.youtube.com/embed/WubjmQPTu0Y" title="סרטון הסבר">
+</iframe>
+</div>
+</div>
+</div>
+</section>
+<section class="section article-download-section" id="article-download">
+<div class="wrap">
+<div class="article-download-card">
+<div class="article-download-text">
+<h2>קונטרס: בירור מעמיק על ייצור חשמל בארץ ישראל</h2>
+<p>
+הקונטרס שלפניכם מציג תיעוד נדיר ומקיף ממפגשים עם מהנדסי תחנות כוח, לצד עדויות מקצועיות ועדויות בשטח, בשילוב עמדת גדולי התורה בדור האחרון – כולם סביב השאלה ההלכתית: האם מותר להשתמש בחשמל המיוצר בשבת בישראל?
+          </p>
+
+עיקרי הממצאים:
+ייצור החשמל בישראל דורש התערבות אנושית תמידית, גם בשבת: הדלקה וכיבוי טורבינות, פיקוח שוטף, טיפול בתקלות, רישום ידני ועוד.
+          
+
+המערכת אינה אוטומטית, גם לא בליל שבת. עשרות פעולות נעשות בידיים – לעיתים רבות משיקולי רווח ולא פיקוח נפש.
+          
+
+צריכת החשמל ע"י הציבור החרדי מגבירה בפועל את הפעילות בשבת.
+          
+
+עמדת גדולי התורה:
+          
+
+בקונטרס מובאים דבריהם הברורים של החזון איש, הגרי"ש אלישיב, הגר"מ שך, הגר"ע יוסף ועוד רבים, אשר הביעו איסור חמור על השימוש בחשמל המיוצר כך בשבת – הן מצד מעשה שבת, הן מצד מסייע, והן מצד חילול השם.
+          
+<div class="article-download-actions">
+<a class="btn btn-primary" href="https://drive.google.com/file/d/1y9O_XHv_NBPjfMZ5tFE4YNJpzeDRwIwv/view" rel="noopener" target="_blank">
+              פתח את המאמר המלא
+            </a>
+</div>
+</div>
+<a aria-label="פתיחת המאמר המלא" class="article-image-download" href="https://drive.google.com/file/d/1y9O_XHv_NBPjfMZ5tFE4YNJpzeDRwIwv/view" rel="noopener" target="_blank">
+<img alt="תמונת המאמר" src="https://meish.neocities.org/%D7%97%D7%A9%D7%9E%D7%9C%20%D7%94%D7%A9%D7%9C%D7%9D%20%D7%AA%D7%A9%D7%A4%D7%92_1.jpg"/>
+<span class="article-download-badge">לחץ לפתיחת המאמר</span>
+</a>
+</div>
+</div>
+</section>
+<section class="section contact" id="contact">
+<div class="wrap contact-grid contact-form-only">
+<div class="form-card">
+<h3>השאר פרטים לחזרה</h3>
+<p class="muted">
+          מלא שם, נייד וכתובת אימייל — ונחזור אליך לשיחה עם מומחה, התאמת פתרון לפי הצורך והסבר על אפשרויות השירות.
+        </p>
+<iframe name="hidden_google_form_contact" style="display:none;"></iframe>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSfCh3ghn70C-M9QDyY_KOsbRMS6dUWcllfBtQxDKaMgJyS0ng/formResponse" class="custom-lead-form" method="POST" onsubmit="return meiriLeadSuccess(this);" target="hidden_google_form_contact">
+<div class="lead-field">
+<label>שם מלא</label>
+<input name="entry.565996853" placeholder="הכנס שם מלא" required="" type="text"/>
+</div>
+<div class="lead-field">
+<label>נייד</label>
+<input name="entry.1519886671" placeholder="הכנס מספר נייד" required="" type="tel"/>
+</div>
+<div class="lead-field">
+<label>כתובת אימייל</label>
+<input name="entry.398069712" placeholder="הכנס כתובת אימייל" type="email"/>
+</div>
+<button class="btn btn-primary lead-submit" data-default="שלח פרטים" type="submit">
+            שלח פרטים
+          </button>
+<div class="lead-success">
+            הפרטים נשלחו בהצלחה. נחזור אליך בהקדם.
+          </div>
+</form>
+</div>
+</div>
+</section>
+<footer class="footer rights-footer">
+<div class="wrap">
+<div class="rights-footer-line">
+        © כל הזכויות שמורות | מאירי שבת |
+        <a href="tel:0548444350">נייד: 054-844-4350</a> |
+        <a href="tel:026233343">מרכזייה: 02-6233343</a> |
+        <a href="mailto:a026233343@GMAIL.com">אימייל: a026233343@GMAIL.com</a>
+</div>
+</div>
+</footer>
+<button class="floating-call" onclick="meiriOpenCallModal()" title="שיחה עם נציג" type="button">☎</button>
+<a class="floating-calculator" href="/calculators/" rel="noopener" title="כניסה למחשבון צריכה">
+<span aria-hidden="true" class="calc-icon">
+<svg fill="none" height="26" viewbox="0 0 24 24" width="26" xmlns="http://www.w3.org/2000/svg">
+<rect height="18" rx="3" stroke="currentColor" stroke-width="2" width="14" x="5" y="3"></rect>
+<path d="M8 7h8" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+<path d="M8 11h2M12 11h2M16 11h0.01" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+<path d="M8 15h2M12 15h2M16 15h0.01" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+<path d="M8 18h2M12 18h4" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>
+</span>
+<span class="calc-text">
+    כניסה למחשבון צריכה
+    <small>חשב את גודל המערכת המתאים לך</small>
+</span>
+</a>
+<div aria-label="שיחה עם נציג" aria-modal="true" class="call-modal" id="meiri-call-modal" role="dialog">
+<div class="call-modal-card">
+<button aria-label="סגירה" class="modal-close" onclick="meiriCloseCallModal()" type="button">×</button>
+<h3>שיחה עם נציג</h3>
+<p class="muted">אפשר להתקשר לאחד המספרים הבאים:</p>
+<span class="call-number">נייד: 054-844-4350</span>
+<span class="call-number">מרכזייה: 02-6233343</span>
+<div class="call-modal-actions">
+<a class="btn btn-primary" href="tel:0548444350">חייג לנייד</a>
+<a class="btn btn-light" href="tel:026233343">חייג למרכזייה</a>
+<button class="btn btn-dark" onclick="meiriScrollTo('contact'); meiriCloseCallModal();" type="button">השאר פרטים לחזרה</button>
+</div>
+</div>
+</div>
+<script>
+    function meiriScrollTo(id) {
+      var section = document.getElementById(id);
+      if (!section) return;
+      section.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function meiriOpenCallModal() {
+      var modal = document.getElementById("meiri-call-modal");
+      if (modal) modal.classList.add("is-open");
+    }
+
+    function meiriCloseCallModal() {
+      var modal = document.getElementById("meiri-call-modal");
+      if (modal) modal.classList.remove("is-open");
+    }
+
+    document.addEventListener("click", function(event) {
+      var modal = document.getElementById("meiri-call-modal");
+      if (modal && event.target === modal) {
+        meiriCloseCallModal();
+      }
+    });
+
+    document.addEventListener("keydown", function(event) {
+      if (event.key === "Escape") {
+        meiriCloseCallModal();
+      }
+    });
+
+    function meiriLeadSuccess(form) {
+      var button = form.querySelector(".lead-submit");
+      var success = form.querySelector(".lead-success");
+      var defaultText = button.getAttribute("data-default") || "שלח פרטים";
+
+      button.disabled = true;
+      button.innerText = "שולח...";
+
+      setTimeout(function() {
+        success.style.display = "block";
+        button.innerText = "נשלח בהצלחה";
+        form.reset();
+
+        setTimeout(function() {
+          button.disabled = false;
+          button.innerText = defaultText;
+          success.style.display = "none";
+        }, 3500);
+      }, 900);
+
+      return true;
+    }
+
+
+
+    (function() {
+      var videoBoxes = document.querySelectorAll("#meiri-pro-site .video-embed-box");
+      videoBoxes.forEach(function(box) {
+        var frame = box.querySelector("iframe");
+        if (!frame) return;
+        var src = frame.getAttribute("src") || "";
+        if (src && src.indexOf("https://youtu.be/WubjmQPTu0Y") === -1) {
+          box.classList.add("is-ready");
+        }
+      });
+    })();
+
+    (function() {
+      var counters = document.querySelectorAll("#meiri-pro-site .counter");
+      if (!counters.length) return;
+
+      function formatNumber(value) {
+        return Math.floor(value).toLocaleString("he-IL");
+      }
+
+      function animateCounter(counter) {
+        if (counter.dataset.counted === "true") return;
+        counter.dataset.counted = "true";
+
+        var target = parseInt(counter.getAttribute("data-target"), 10) || 0;
+        var duration = 1600;
+        var startTime = null;
+
+        function step(timestamp) {
+          if (!startTime) startTime = timestamp;
+          var progress = Math.min((timestamp - startTime) / duration, 1);
+          var eased = 1 - Math.pow(1 - progress, 3);
+          counter.textContent = formatNumber(target * eased);
+
+          if (progress < 1) {
+            window.requestAnimationFrame(step);
+          } else {
+            counter.textContent = formatNumber(target);
+          }
+        }
+
+        window.requestAnimationFrame(step);
+      }
+
+      if ("IntersectionObserver" in window) {
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              counters.forEach(animateCounter);
+              observer.disconnect();
+            }
+          });
+        }, { threshold: 0.35 });
+
+        var statsSection = document.querySelector("#meiri-pro-site .stats");
+        if (statsSection) observer.observe(statsSection);
+      } else {
+        counters.forEach(animateCounter);
+      }
+    })();
+  
+
+    (function() {
+      var galleries = document.querySelectorAll("#meiri-pro-site [data-large-gallery]");
+      if (!galleries.length) return;
+
+      galleries.forEach(function(gallery) {
+        var slides = Array.prototype.slice.call(gallery.querySelectorAll("[data-gallery-slide]"));
+        var dots = Array.prototype.slice.call(gallery.querySelectorAll("[data-gallery-dot]"));
+        var thumbs = Array.prototype.slice.call(gallery.querySelectorAll("[data-gallery-thumb]"));
+        var prev = gallery.querySelector("[data-gallery-prev]");
+        var next = gallery.querySelector("[data-gallery-next]");
+        var current = 0;
+        var timer = null;
+
+        if (!slides.length) return;
+
+        function showSlide(index) {
+          current = (index + slides.length) % slides.length;
+
+          slides.forEach(function(slide, i) {
+            var isActive = i === current;
+            slide.classList.toggle("is-active", isActive);
+            slide.setAttribute("aria-hidden", isActive ? "false" : "true");
+          });
+
+          dots.forEach(function(dot, i) {
+            dot.classList.toggle("is-active", i === current);
+          });
+
+          thumbs.forEach(function(thumb, i) {
+            thumb.classList.toggle("is-active", i === current);
+          });
+        }
+
+        function nextSlide() {
+          showSlide(current + 1);
+        }
+
+        function prevSlide() {
+          showSlide(current - 1);
+        }
+
+        function startAuto() {
+          stopAuto();
+          timer = window.setInterval(nextSlide, 3800);
+        }
+
+        function stopAuto() {
+          if (timer) {
+            window.clearInterval(timer);
+            timer = null;
+          }
+        }
+
+        if (next) {
+          next.addEventListener("click", function() {
+            nextSlide();
+            startAuto();
+          });
+        }
+
+        if (prev) {
+          prev.addEventListener("click", function() {
+            prevSlide();
+            startAuto();
+          });
+        }
+
+        dots.forEach(function(dot, i) {
+          dot.addEventListener("click", function() {
+            showSlide(i);
+            startAuto();
+          });
+        });
+
+        thumbs.forEach(function(thumb, i) {
+          thumb.addEventListener("click", function() {
+            showSlide(i);
+            startAuto();
+          });
+        });
+
+        gallery.addEventListener("mouseenter", stopAuto);
+        gallery.addEventListener("mouseleave", startAuto);
+
+        document.addEventListener("visibilitychange", function() {
+          if (document.hidden) {
+            stopAuto();
+          } else {
+            startAuto();
+          }
+        });
+
+        showSlide(0);
+        startAuto();
+      });
+    })();
+
+  </script>
+</div>
+<script id="reviews-runtime-clone-script">
+(function(){
+  function cloneReviewsForTicker(){
+    var track=document.querySelector('#meiri-pro-site .reviews-track[data-runtime-clone="true"]');
+    if(!track || track.dataset.cloned==='true') return;
+    var originals=Array.prototype.slice.call(track.querySelectorAll(':scope > .review-pill'));
+    originals.forEach(function(item){
+      var clone=item.cloneNode(true);
+      clone.setAttribute('aria-hidden','true');
+      clone.setAttribute('role','presentation');
+      clone.classList.add('review-pill-runtime-copy');
+      track.appendChild(clone);
+    });
+    track.dataset.cloned='true';
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',cloneReviewsForTicker);
+  else cloneReviewsForTicker();
+})();
+</script></body>
+</html>

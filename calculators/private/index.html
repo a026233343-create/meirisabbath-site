@@ -1,0 +1,4206 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+
+
+
+
+<script id="early-ctrl-save-block">
+/* ==========================================================
+   חסימה מוקדמת מאוד — נטענת בראש הקובץ
+   מיועדת לתפוס Ctrl/Cmd+S וקיצורי דפדפן לפני שאר הקוד.
+   ========================================================== */
+(function () {
+  "use strict";
+
+  function low(v) {
+    return String(v || "").toLowerCase();
+  }
+
+  function isEditable(el) {
+    return !!(
+      el &&
+      (
+        /input|textarea|select/i.test(el.tagName || "") ||
+        el.isContentEditable
+      )
+    );
+  }
+
+  function stop(e) {
+    try { e.preventDefault(); } catch (err) {}
+    try { e.stopImmediatePropagation(); } catch (err) {}
+    try { e.stopPropagation(); } catch (err) {}
+    e.returnValue = false;
+    return false;
+  }
+
+  function shouldBlock(e) {
+    var key = low(e.key);
+    var code = low(e.code);
+    var kc = e.keyCode || e.which || 0;
+    var ctrl = !!(e.ctrlKey || e.metaKey);
+
+    return (
+      /* F12 */
+      key === "f12" ||
+      code === "f12" ||
+      kc === 123 ||
+
+      /* שמירה */
+      (ctrl && (key === "s" || code === "keys" || kc === 83)) ||
+
+      /* קוד מקור / הדפסה / פתיחת קובץ */
+      (ctrl && (
+        key === "u" || code === "keyu" || kc === 85 ||
+        key === "p" || code === "keyp" || kc === 80 ||
+        key === "o" || code === "keyo" || kc === 79
+      )) ||
+
+      /* העתקה / גזירה / בחירת הכול — מחוץ לשדות */
+      (!isEditable(e.target) && ctrl && (
+        key === "c" || code === "keyc" || kc === 67 ||
+        key === "x" || code === "keyx" || kc === 88 ||
+        key === "a" || code === "keya" || kc === 65
+      )) ||
+
+      /* כלי מפתחים */
+      (ctrl && e.shiftKey && (
+        key === "i" || code === "keyi" || kc === 73 ||
+        key === "j" || code === "keyj" || kc === 74 ||
+        key === "c" || code === "keyc" || kc === 67 ||
+        key === "k" || code === "keyk" || kc === 75 ||
+        key === "e" || code === "keye" || kc === 69
+      )) ||
+
+      /* Mac / Safari */
+      (e.metaKey && e.altKey && (
+        key === "i" || code === "keyi" ||
+        key === "j" || code === "keyj" ||
+        key === "c" || code === "keyc" ||
+        key === "u" || code === "keyu"
+      ))
+    );
+  }
+
+  function handler(e) {
+    if (shouldBlock(e)) return stop(e);
+  }
+
+  ["keydown", "keypress", "keyup", "beforeinput"].forEach(function (name) {
+    window.addEventListener(name, handler, true);
+    document.addEventListener(name, handler, true);
+    if (document.documentElement) {
+      document.documentElement.addEventListener(name, handler, true);
+    }
+  });
+
+  document.onkeydown = function (e) {
+    return handler(e || window.event);
+  };
+
+  window.onkeydown = function (e) {
+    return handler(e || window.event);
+  };
+})();
+</script>
+
+
+<meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Content-Security-Policy" content="
+default-src 'self';
+script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://unpkg.com https://cdnjs.cloudflare.com;
+style-src  'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com;
+font-src   'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com;
+img-src    'self' data: blob: https://content.vp4.me https://meish.neocities.org;
+connect-src 'self';
+object-src 'none';
+base-uri   'self';
+frame-ancestors 'self';
+">
+
+<title>מאירי שבת |מאירי שבת, מצברים, סוללות, סולארי, מחשבון צריכה חשמל כשר- </title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link rel="icon" href="https://meish.neocities.org/%D7%9C%D7%95%D7%92%D7%95__2_-removebg-preview.png"  type="image/png" />
+<style>
+  /* --- פריסת כרטיסי סטטיסטיקה --- */
+.stats{
+  display:flex;              /* שורה אופקית */
+  flex-wrap:wrap;            /* ישברו לשורה שנייה במסך צר */
+  gap:16px;                  /* רווח בין כרטיסים */
+}
+
+.stats .stat-card{
+  flex:1 1 220px;            /* כולם ייקחו רוחב שווה (מינ׳ 220px) */
+}
+
+    :root{
+      --bg:#f9fbff;         /* רקע בהיר מאוד */
+      --surface:#f3f7ff;    /* משטח בהיר */
+      --card:#ffffff;       /* כרטיס לבן */
+      --border:#e4ecf7;     /* גבול בהיר */
+      --text:#0f172a;       /* טקסט כהה קריא */
+      --muted:#64748b;      /* טקסט משני */
+      --primary:#2563eb;    /* כחול תאגידי */
+      --primary-600:#1d4ed8;/* כחול כהה יותר */
+      --accent:#38bdf8;     /* הדגשה */
+      --shadow:0 10px 30px rgba(15,23,42,.06);
+      --radius:18px;
+    }
+    /* מסתיר את תיבת הסימון אך משאיר אותה זמינה ללחיצה דרך התווית */
+.visually-hide{
+  position:absolute;
+  inline-size:1px;
+  block-size:1px;
+  margin:0;
+  padding:0;
+  opacity:0;
+  overflow:hidden;
+  clip:rect(0 0 0 0);
+}
+
+/* להרגשת כפתור בעת ריחוף / פוקוס  (לא חובה) */
+.advanced-trigger:hover span,
+.advanced-trigger:focus-within span{
+  text-decoration:underline;
+}
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font-family:"Heebo",system-ui,Segoe UI,Roboto,Arial,sans-serif;background:
+      radial-gradient(1200px at 85% 0%, rgba(37,99,235,.08), transparent 60%),
+      radial-gradient(900px at 10% 90%, rgba(56,189,248,.12), transparent 65%),
+      var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+    header{position:sticky;top:0;z-index:10;backdrop-filter:saturate(180%) blur(12px);background:rgba(255,255,255,.78);border-bottom:1px solid var(--border)}
+    .container{max-width:1400px;margin:0 auto;padding:0 24px}
+    .nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+    .brand{display:flex;align-items:center;gap:14px;font-weight:700}
+    .logo{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--primary),var(--accent));display:grid;place-items:center;color:#fff;font-size:22px;font-weight:800;box-shadow:var(--shadow)}
+.logo-img {  width: 100px !important;       /* רוחב */
+  height: 100px !important;      /* גובה */
+  border-radius: 0 !important;   /* או 50% לעיגול */
+  object-fit: contain;
+  background: none !important;   /* בלי רקע */
+  border: none !important;       /* בלי גבול */
+  box-shadow: none !important;   /* בלי צל */
+  display: block !important;     /* מוצג במקום ה‑fallback */
+}
+
+    .btn{appearance:none;border:1px solid transparent;border-radius:14px;padding:14px 22px;cursor:pointer;font-weight:600;transition:all .2s ease;box-shadow:var(--shadow)}
+    .btn-primary{background:linear-gradient(135deg,var(--primary),var(--primary-600));color:#fff}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(37,99,235,.22)}
+    .btn-outline{background:#fff;color:var(--text);border-color:var(--border)}
+    .btn-outline:hover{border-color:var(--primary);color:var(--primary)}
+    .btn-danger{background:#ef4444;color:#fff}
+
+
+/* --- באנר פנייה צף קטן ומשודרג בצד שמאל --- */
+.lead-banner{
+  position:fixed;
+  left:18px;
+  bottom:18px;
+  z-index:1200;
+  display:none;
+  align-items:center;
+  gap:10px;
+  width:min(360px,calc(100vw - 36px));
+  padding:9px 10px;
+  border:1px solid rgba(37,99,235,.16);
+  border-radius:16px;
+  background:rgba(255,255,255,.97);
+  box-shadow:0 14px 34px rgba(15,23,42,.15);
+  backdrop-filter:blur(10px);
+}
+.lead-banner.is-visible{display:flex}
+.lead-banner__text{display:grid;gap:1px;line-height:1.25;min-width:0;flex:1}
+.lead-banner__title{font-weight:800;color:#0f172a;font-size:14px}
+.lead-banner__subtitle{color:#475569;font-size:11.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lead-banner__actions{display:flex;gap:6px;align-items:center;flex-shrink:0}
+.lead-banner__close{
+  border:none;
+  background:#f1f5f9;
+  color:#64748b;
+  font-size:16px;
+  line-height:1;
+  cursor:pointer;
+  padding:5px 8px;
+  border-radius:999px;
+}
+.lead-banner__mail{text-decoration:none;white-space:nowrap;padding:8px 12px;border-radius:11px;font-size:13px}
+@media (max-width:760px){
+  .lead-banner{left:10px;right:10px;bottom:10px;width:auto;padding:8px 9px;gap:8px}
+  .lead-banner__subtitle{white-space:normal}
+  .lead-banner__mail{padding:8px 10px;font-size:12.5px}
+}
+
+
+    .hero{padding:92px 0 56px}
+  .hero-grid{
+  display:grid;
+  grid-template-columns:3.05fr 1.95fr;
+}
+
+/* קיבוע טקסט + קוביות בתקציר */
+.hero-grid > div:first-child{
+  position: sticky;
+  top: 106px;     /* המרחק מהרום. הגדל/הקטן לפי הצורך */
+}
+   
+    h1{margin:0 0 16px;font-size:clamp(36px,6vw,54px);line-height:1.05;font-weight:800;background:linear-gradient(135deg,#0f172a,var(--primary));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .lead{color:var(--muted);font-size:20px;margin:0 0 28px}
+
+    .panel{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:28px}
+    .panel h2{margin:0 0 20px;font-size:26px}
+
+
+    .stat-card{background:linear-gradient(180deg,#ffffff,#fafafa);border:1px solid var(--border);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow)}
+    .stat-card h3{margin:0;font-size:34px;color:var(--primary-600)}
+    .stat-card span{color:var(--muted);font-size:14px}
+
+    .table-wrap{overflow:auto;border-radius:16px;border:1px solid var(--border);background:#fff}
+    table{width:100%;border-collapse:collapse;min-width:720px}
+    th,td{padding:14px 16px;border-bottom:1px solid var(--border);color:var(--text)}
+    tbody tr:hover{background:#f1f5f9}
+    td.actions{white-space:nowrap}
+
+    .field{display:grid;gap:8px}
+    label{font-weight:600;color:#334155}
+    select,input[type="number"],input[type="text"]{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--border);background:#fff;color:var(--text);outline:none;transition:border-color .2s ease,box-shadow .2s ease;box-shadow:0 1px 0 rgba(0,0,0,.02)}
+    select:focus,input:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(37,99,235,.15)}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    @media (max-width:980px){.grid-3{grid-template-columns:1fr}}
+
+    .summary{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}
+    @media (max-width:980px){.summary{grid-template-columns:1fr}}
+    .summary .box{background:linear-gradient(180deg,#ffffff,#fafafa);border:1px solid var(--border);border-radius:var(--radius);padding:22px;min-height:120px;box-shadow:var(--shadow)}
+    .summary .title{color:var(--muted);font-size:14px;margin-bottom:10px;font-weight:600}
+    .summary .value{font-size:20px;font-weight:700}
+
+    .note{background:var(--surface);border:1px dashed var(--border);border-radius:16px;padding:18px;color:var(--muted)}
+    footer{margin-top:80px;border-top:1px solid var(--border);padding:40px 0;color:var(--muted);background:#fff7;backdrop-filter:blur(4px)}
+
+    .modal-backdrop{position:fixed;inset:0;background:rgba(15,23,42,.28);display:none;place-items:center;z-index:1000}
+    .modal{width:min(720px,92vw);max-height:88vh;overflow:auto;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:24px}
+    .modal-header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}
+    .close{background:transparent;color:var(--muted);border:none;font-size:26px;cursor:pointer}
+    .nav-actions {
+  display: inline-flex; /* חשוב! */
+  gap: 12px;
+  direction: rtl;
+}
+
+.nav-actions button {
+  width: 110px;
+  height: 70px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 6px;
+  font-size: 12px;
+  font-family: 'Heebo', sans-serif;
+  border-radius: 10px;
+  border: 1px solid #d1d5db; /* זו המסגרת */
+  background-color: #f8fafc;
+  color: #1f2937;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+  .nav-actions button:hover {
+    background-color: #e2e8f0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  }
+
+  .nav-actions button i {
+    font-size: 22px;
+  }
+
+  /* צבעים מותאמים לכל אייקון */
+  #solarPanelBtn i       { color: #f97316; } /* כתום */
+  #openModelsBtn i       { color: #facc15; } /* צהוב */
+  #openInstructionsBtn i { color: #3b82f6; } /* כחול */
+  #exportPdfBtn i        { color: #ef4444; } /* אדום */
+  #exportXlBtn i         { color: #22c55e; } /* ירוק */
+  #clearTableBtn i       { color: #6b7280; } /* אפור */
+  #openCalcBtn i         { color: #ffffff; } /* לבן */
+
+  .btn-primary {
+    background-color: #2563eb;
+    color: #ffffff;
+  }
+
+  .btn-primary:hover {
+    background-color: #1d4ed8;
+  }
+
+
+/* ==========================================================
+   התאמה נקייה להטמעה באתר המקורי + הסרת פס עליון
+   ========================================================== */
+:root{
+  --bg:#fff8ef;
+  --surface:#fff3e6;
+  --card:#ffffff;
+  --border:#eadfce;
+  --text:#102033;
+  --muted:#667789;
+  --primary:#1f4ed8;
+  --primary-600:#173db6;
+  --accent:#14b8a6;
+  --orange:#f97316;
+  --shadow:0 14px 38px rgba(16,32,51,.07);
+}
+html,body{margin:0!important;padding:0!important;background:#fff8ef!important;}
+body{
+  background:
+    radial-gradient(circle at 8% 10%, rgba(249,115,22,.07), transparent 30%),
+    radial-gradient(circle at 92% 8%, rgba(20,184,166,.08), transparent 34%),
+    linear-gradient(180deg,#fff8ef 0%,#fff8ef 40%,#fffdf9 100%)!important;
+}
+header{display:none!important;}
+.hero{padding:36px 0 48px!important;}
+.hero-grid{gap:28px!important;}
+.hero-grid>div:first-child{position:static!important;top:auto!important;}
+h1{-webkit-text-fill-color:initial!important;background:none!important;color:#102033!important;}
+.lead{color:#667789!important;}
+.panel,.stat-card,.modal,.table-wrap,.summary .box,.note{
+  background:rgba(255,255,255,.94)!important;
+  border-color:#eadfce!important;
+  box-shadow:0 12px 32px rgba(16,32,51,.06)!important;
+}
+.stat-card h3{color:#1f4ed8!important;}
+.btn-primary,.btn.btn-primary{
+  background:linear-gradient(135deg,#1f4ed8,#14b8a6)!important;
+  color:#fff!important;
+}
+.btn-outline{background:#fffdf9!important;border-color:#eadfce!important;color:#102033!important;}
+.btn-outline:hover{border-color:#1f4ed8!important;color:#1f4ed8!important;}
+#solarPanelBtn i{color:#f97316;}
+input,select,textarea{border-color:#eadfce!important;}
+input:focus,select:focus,textarea:focus{border-color:#1f4ed8!important;box-shadow:0 0 0 3px rgba(31,78,216,.14)!important;}
+th{background:#fff3e6!important;color:#102033!important;}
+tbody tr:hover{background:#fff8ef!important;}
+.site-footer{margin-top:48px!important;border-top:1px solid #eadfce!important;background:rgba(255,255,255,.62)!important;color:#667789!important;padding:24px 0 28px!important;backdrop-filter:blur(4px);}
+.site-footer-inner{display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap;font-size:14px;line-height:1.7;}
+.lead-banner{border-color:#eadfce!important;}
+@media(max-width:980px){.hero{padding-top:22px!important}.hero-grid{grid-template-columns:1fr!important}.container{padding:0 14px!important}}
+
+
+
+/* ==========================================================
+   תיקון שילוב הדרגתי בחלק העליון לצבע האתר #fff8ef
+   ========================================================== */
+html,
+body{
+  background:#fff8ef !important;
+}
+
+body{
+  background:
+    linear-gradient(180deg,#fff8ef 0%,#fff8ef 44%,#fffdf9 100%) !important;
+}
+
+/* החלק העליון מתחיל בדיוק בגוון האתר המקורי ואז נפתח בהדרגה לעיצוב המחשבון */
+.hero{
+  margin-top:0 !important;
+  padding:56px 0 50px !important;
+  background:
+    linear-gradient(
+      180deg,
+      #fff8ef 0px,
+      #fff8ef 96px,
+      rgba(255,248,239,.96) 150px,
+      rgba(255,248,239,.78) 225px,
+      rgba(255,255,255,.88) 330px,
+      rgba(255,253,249,.96) 100%
+    ),
+    radial-gradient(circle at 10% 18%, rgba(249,115,22,.075), transparent 32%),
+    radial-gradient(circle at 90% 12%, rgba(20,184,166,.08), transparent 34%) !important;
+  border-top:0 !important;
+  box-shadow:none !important;
+}
+
+/* שלא ייווצר פס רקע אחר בין תחילת ההטמעה לתוכן */
+.hero:first-child,
+main:first-child,
+body > .hero:first-child{
+  margin-top:0 !important;
+}
+
+/* הכרטיסים בחלק העליון נשארים קריאים על המעבר */
+.hero .stat-card,
+.hero .panel{
+  background:rgba(255,255,255,.94) !important;
+  border-color:#eadfce !important;
+}
+
+@media(max-width:980px){
+  .hero{
+    padding:38px 0 42px !important;
+    background:
+      linear-gradient(
+        180deg,
+        #fff8ef 0px,
+        #fff8ef 72px,
+        rgba(255,248,239,.92) 130px,
+        rgba(255,255,255,.90) 260px,
+        rgba(255,253,249,.96) 100%
+      ) !important;
+  }
+}
+
+
+
+/* ==========================================================
+   ערכת עיצוב סופית תואמת לוגו
+   שמנת + כחול כהה + כתום אנרגיה
+   ========================================================== */
+:root{
+  --bg:#fff8ef !important;
+  --surface:#fff3e6 !important;
+  --card:#ffffff !important;
+  --border:#eadfce !important;
+  --line:#eadfce !important;
+  --text:#102033 !important;
+  --muted:#667789 !important;
+  --primary:#12384f !important;
+  --primary-600:#0b2233 !important;
+  --accent:#f97316 !important;
+  --accent-2:#fb923c !important;
+  --orange:#f97316 !important;
+  --green:#12384f !important;
+  --green2:#f97316 !important;
+  --shadow:0 14px 38px rgba(16,32,51,.075) !important;
+  --radius:18px !important;
+}
+
+html,
+body{
+  margin:0 !important;
+  padding:0 !important;
+  background:#fff8ef !important;
+  color:#102033 !important;
+}
+
+body{
+  background:
+    radial-gradient(circle at 9% 10%, rgba(249,115,22,.12), transparent 30%),
+    radial-gradient(circle at 92% 8%, rgba(18,56,79,.11), transparent 34%),
+    linear-gradient(180deg,#fff8ef 0%,#fff8ef 42%,#fffdf9 100%) !important;
+  overflow-x:hidden !important;
+}
+
+/* ביטול פס עליון פנימי */
+header,
+body > header{
+  display:none !important;
+}
+
+/* החלק העליון משתלב בהדרגה עם רקע האתר המקורי */
+.hero{
+  margin-top:0 !important;
+  padding:58px 0 52px !important;
+  background:
+    linear-gradient(
+      180deg,
+      #fff8ef 0px,
+      #fff8ef 96px,
+      rgba(255,248,239,.96) 150px,
+      rgba(255,248,239,.80) 230px,
+      rgba(255,255,255,.90) 340px,
+      rgba(255,253,249,.97) 100%
+    ),
+    radial-gradient(circle at 10% 18%, rgba(249,115,22,.10), transparent 32%),
+    radial-gradient(circle at 90% 12%, rgba(18,56,79,.09), transparent 34%) !important;
+  border-top:0 !important;
+  box-shadow:none !important;
+}
+
+.container{
+  background:transparent !important;
+}
+
+.hero-grid{
+  gap:30px !important;
+}
+
+.hero-grid > div:first-child{
+  position:static !important;
+  top:auto !important;
+}
+
+h1{
+  background:linear-gradient(135deg,#102033 0%,#12384f 58%,#f97316 100%) !important;
+  -webkit-background-clip:text !important;
+  background-clip:text !important;
+  -webkit-text-fill-color:transparent !important;
+  color:transparent !important;
+}
+
+.lead{
+  color:#667789 !important;
+}
+
+/* כרטיסים */
+.panel,
+.stat-card,
+.summary .box,
+.table-wrap,
+.modal,
+.note,
+.lead-banner,
+#solarResult{
+  background:rgba(255,255,255,.95) !important;
+  border-color:#eadfce !important;
+  box-shadow:0 12px 32px rgba(16,32,51,.065) !important;
+}
+
+.stat-card{
+  background:linear-gradient(180deg,#ffffff,#fffdf9) !important;
+}
+
+.stat-card h3,
+.summary .value,
+.big{
+  color:#12384f !important;
+}
+
+.stat-card span,
+.summary .title,
+.small,
+.note,
+footer,
+.site-footer{
+  color:#667789 !important;
+}
+
+/* כפתורים */
+.btn-primary,
+.btn.btn-primary,
+.btn:not(.btn-outline):not(.btn-danger),
+#solarPanelBtn,
+.lead-banner__mail{
+  background:linear-gradient(135deg,#12384f,#f97316) !important;
+  color:#ffffff !important;
+  border-color:transparent !important;
+  box-shadow:0 12px 28px rgba(249,115,22,.18) !important;
+}
+
+.btn-primary:hover,
+.btn.btn-primary:hover,
+.btn:not(.btn-outline):not(.btn-danger):hover,
+#solarPanelBtn:hover,
+.lead-banner__mail:hover{
+  background:linear-gradient(135deg,#0b2233,#fb923c) !important;
+  color:#ffffff !important;
+  transform:translateY(-2px) !important;
+}
+
+.btn-outline{
+  background:#ffffff !important;
+  color:#12384f !important;
+  border-color:#eadfce !important;
+  box-shadow:0 8px 18px rgba(16,32,51,.045) !important;
+}
+
+.btn-outline:hover{
+  background:#fff3e6 !important;
+  color:#f97316 !important;
+  border-color:#f97316 !important;
+}
+
+.btn-danger{
+  background:#dc2626 !important;
+  color:#fff !important;
+}
+
+/* אייקונים בכפתורים */
+#openModelsBtn i{color:#f97316 !important;}
+#openInstructionsBtn i{color:#12384f !important;}
+#exportPdfBtn i{color:#dc2626 !important;}
+#exportXlBtn i{color:#0f766e !important;}
+#clearTableBtn i{color:#667789 !important;}
+#openCalcBtn i{color:#ffffff !important;}
+#solarPanelBtn i{color:#ffffff !important;}
+
+/* טפסים */
+input,
+select,
+textarea{
+  background:#ffffff !important;
+  color:#102033 !important;
+  border-color:#eadfce !important;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+  border-color:#f97316 !important;
+  box-shadow:0 0 0 4px rgba(249,115,22,.14) !important;
+}
+
+label{
+  color:#12384f !important;
+}
+
+/* טבלה */
+th{
+  background:#fff3e6 !important;
+  color:#12384f !important;
+}
+
+td{
+  color:#102033 !important;
+}
+
+tbody tr:hover{
+  background:#fff8ef !important;
+}
+
+/* תיבות הודעה וטיפים */
+.note{
+  background:#fff3e6 !important;
+  border-style:dashed !important;
+}
+
+/* חלונות */
+.modal-backdrop{
+  background:rgba(16,32,51,.34) !important;
+  backdrop-filter:blur(4px) !important;
+}
+
+.modal-header h3,
+.panel h2{
+  color:#102033 !important;
+}
+
+.close{
+  color:#12384f !important;
+}
+
+/* באנר פנייה */
+.lead-banner__title{
+  color:#12384f !important;
+}
+
+.lead-banner__subtitle{
+  color:#667789 !important;
+}
+
+.lead-banner__close{
+  background:#fff3e6 !important;
+  color:#12384f !important;
+}
+
+/* תחתית */
+footer,
+.site-footer{
+  margin-top:56px !important;
+  border-top:1px solid #eadfce !important;
+  background:rgba(255,248,239,.82) !important;
+  color:#667789 !important;
+  backdrop-filter:blur(4px) !important;
+}
+
+/* מובייל */
+@media(max-width:980px){
+  .hero{
+    padding:38px 0 42px !important;
+    background:
+      linear-gradient(
+        180deg,
+        #fff8ef 0px,
+        #fff8ef 72px,
+        rgba(255,248,239,.94) 130px,
+        rgba(255,255,255,.92) 260px,
+        rgba(255,253,249,.97) 100%
+      ),
+      radial-gradient(circle at 12% 15%, rgba(249,115,22,.09), transparent 34%),
+      radial-gradient(circle at 88% 10%, rgba(18,56,79,.08), transparent 36%) !important;
+  }
+  .hero-grid{
+    grid-template-columns:1fr !important;
+  }
+  .container{
+    padding:0 14px !important;
+  }
+}
+
+@media(max-width:560px){
+  .hero{
+    padding-top:28px !important;
+  }
+  h1{
+    font-size:clamp(32px,10vw,42px) !important;
+  }
+}
+</style>
+ 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<style id="light-centered-layout-final">
+/* ==========================================================
+   גרסה בהירה ומסודרת: מחשבון במרכז, קוביות סיכום למעלה
+   ========================================================== */
+:root{
+  --bg:#fff8ef !important;
+  --surface:#fffaf5 !important;
+  --card:#ffffff !important;
+  --border:#eadfce !important;
+  --line:#eadfce !important;
+  --text:#102033 !important;
+  --muted:#667789 !important;
+  --primary:#12384f !important;
+  --primary-600:#0b2233 !important;
+  --accent:#f97316 !important;
+  --accent-2:#fb923c !important;
+  --green:#12384f !important;
+  --green2:#f97316 !important;
+  --shadow:0 14px 34px rgba(16,32,51,.07) !important;
+  --radius:22px !important;
+}
+
+html,
+body{
+  margin:0 !important;
+  padding:0 !important;
+  background:#fff8ef !important;
+  color:#102033 !important;
+}
+
+body{
+  background:
+    radial-gradient(circle at 8% 6%, rgba(249,115,22,.08), transparent 30%),
+    radial-gradient(circle at 92% 7%, rgba(18,56,79,.07), transparent 34%),
+    linear-gradient(180deg,#fff8ef 0%, #fff8ef 34%, #fffdf9 100%) !important;
+  overflow-x:hidden !important;
+}
+
+body:before,
+header,
+.top,
+.top:before{
+  display:none !important;
+}
+
+.container{
+  max-width:1280px !important;
+  margin-inline:auto !important;
+  padding-inline:24px !important;
+}
+
+.hero{
+  margin:0 !important;
+  padding:44px 0 54px !important;
+  border:0 !important;
+  box-shadow:none !important;
+  background:
+    linear-gradient(
+      180deg,
+      #fff8ef 0px,
+      #fff8ef 110px,
+      rgba(255,248,239,.94) 190px,
+      rgba(255,255,255,.86) 330px,
+      rgba(255,253,249,.98) 100%
+    ),
+    radial-gradient(circle at 12% 14%, rgba(249,115,22,.08), transparent 32%),
+    radial-gradient(circle at 88% 10%, rgba(18,56,79,.07), transparent 34%) !important;
+}
+
+.hero-grid{
+  display:grid !important;
+  grid-template-columns:1fr !important;
+  gap:22px !important;
+  align-items:start !important;
+}
+
+.hero-grid > div:first-child{
+  position:static !important;
+  top:auto !important;
+  text-align:center !important;
+  max-width:1180px !important;
+  margin-inline:auto !important;
+  width:100% !important;
+}
+
+.hero-grid > div:last-child{
+  width:100% !important;
+  max-width:1160px !important;
+  margin:0 auto !important;
+}
+
+h1{
+  margin:0 auto 12px !important;
+  max-width:820px !important;
+  font-size:clamp(34px,5vw,58px) !important;
+  line-height:1.08 !important;
+  font-weight:900 !important;
+  color:#102033 !important;
+  background:linear-gradient(135deg,#102033 0%, #12384f 62%, #f97316 100%) !important;
+  -webkit-background-clip:text !important;
+  background-clip:text !important;
+  -webkit-text-fill-color:transparent !important;
+}
+
+.lead{
+  max-width:860px !important;
+  margin:0 auto 22px !important;
+  color:#667789 !important;
+  font-size:clamp(16px,2vw,20px) !important;
+  line-height:1.65 !important;
+}
+
+/* קוביות סיכום עליונות — בהיר, אחיד ולא עמוס */
+.stats,
+.stats.stats-ordered{
+  display:grid !important;
+  grid-template-columns:repeat(5,minmax(0,1fr)) !important;
+  gap:14px !important;
+  width:100% !important;
+  max-width:1180px !important;
+  margin:22px auto 0 !important;
+  align-items:stretch !important;
+}
+
+.stats .stat-card,
+.stats.stats-ordered .stat-card,
+.stats.stats-ordered .stat-card--main,
+.stats.stats-ordered .stat-card--battery{
+  grid-column:auto !important;
+  min-height:116px !important;
+  padding:18px 16px !important;
+  border-radius:22px !important;
+  background:rgba(255,255,255,.94) !important;
+  border:1px solid #eadfce !important;
+  box-shadow:0 12px 28px rgba(16,32,51,.055) !important;
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:7px !important;
+  overflow:hidden !important;
+  text-align:center !important;
+}
+
+.stats .stat-card::before,
+.stats.stats-ordered .stat-card::before{
+  content:"" !important;
+  position:absolute !important;
+  inset:auto -54px -58px auto !important;
+  width:126px !important;
+  height:126px !important;
+  border-radius:999px !important;
+  background:rgba(249,115,22,.06) !important;
+  pointer-events:none !important;
+}
+
+.stats .stat-card > *,
+.stats.stats-ordered .stat-card > *{
+  position:relative !important;
+  z-index:1 !important;
+}
+
+.stats .stat-label,
+.stats .stat-card span,
+.stats.stats-ordered .stat-label,
+.stats.stats-ordered .stat-card span{
+  color:#667789 !important;
+  font-size:13px !important;
+  font-weight:900 !important;
+  line-height:1.35 !important;
+}
+
+.stats .stat-card h3,
+.stats.stats-ordered .stat-card h3{
+  margin:0 !important;
+  color:#12384f !important;
+  font-size:clamp(26px,3vw,38px) !important;
+  line-height:1 !important;
+  text-shadow:none !important;
+  font-weight:950 !important;
+}
+
+.stats .stat-card small,
+.stats.stats-ordered .stat-card small{
+  color:#7b8794 !important;
+  font-size:11.5px !important;
+  line-height:1.35 !important;
+  max-width:190px !important;
+}
+
+.calc-tip-card{
+  grid-column:1 / -1 !important;
+  min-height:auto !important;
+  padding:15px 18px !important;
+  border-radius:20px !important;
+  background:#fff3e6 !important;
+  border:1px solid #fed7aa !important;
+  color:#5f3b1c !important;
+  box-shadow:0 8px 20px rgba(249,115,22,.065) !important;
+  text-align:center !important;
+  line-height:1.65 !important;
+  font-size:15px !important;
+}
+
+.calc-tip-card b{
+  color:#12384f !important;
+  margin-left:5px !important;
+}
+
+/* המחשבון במרכז — האזור הראשי של הדף */
+.panel{
+  width:100% !important;
+  max-width:1160px !important;
+  margin:0 auto !important;
+  padding:24px !important;
+  border-radius:28px !important;
+  background:rgba(255,255,255,.96) !important;
+  border:1px solid #eadfce !important;
+  box-shadow:0 18px 46px rgba(16,32,51,.075) !important;
+  display:grid !important;
+  gap:16px !important;
+}
+
+.panel h2{
+  margin:0 !important;
+  text-align:center !important;
+  font-size:26px !important;
+  color:#102033 !important;
+}
+
+/* שורת כפתורים מסודרת */
+.panel > div[style*="overflow-x"]{
+  overflow:visible !important;
+  white-space:normal !important;
+  padding:0 !important;
+}
+
+.nav-actions{
+  display:grid !important;
+  grid-template-columns:repeat(7,minmax(92px,1fr)) !important;
+  gap:10px !important;
+  width:100% !important;
+  direction:rtl !important;
+}
+
+.nav-actions button,
+.nav-actions .btn{
+  width:100% !important;
+  min-width:0 !important;
+  height:58px !important;
+  padding:8px 10px !important;
+  border-radius:16px !important;
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:4px !important;
+  font-size:12px !important;
+  font-weight:900 !important;
+  box-shadow:none !important;
+  white-space:normal !important;
+}
+
+.btn,
+.btn-primary{
+  background:linear-gradient(135deg,#12384f,#f97316) !important;
+  color:#ffffff !important;
+  border-color:transparent !important;
+}
+
+.btn-outline{
+  background:#fffdf9 !important;
+  color:#12384f !important;
+  border:1px solid #eadfce !important;
+}
+
+.btn-outline:hover{
+  background:#fff3e6 !important;
+  color:#f97316 !important;
+  border-color:#f97316 !important;
+}
+
+.table-wrap{
+  margin-top:0 !important;
+  border-radius:22px !important;
+  border:1px solid #eadfce !important;
+  background:#ffffff !important;
+  box-shadow:none !important;
+}
+
+table{
+  background:#ffffff !important;
+}
+
+th{
+  background:#fff3e6 !important;
+  color:#12384f !important;
+  font-weight:900 !important;
+}
+
+td{
+  background:#ffffff !important;
+  color:#102033 !important;
+}
+
+tbody tr:hover{
+  background:#fffaf5 !important;
+}
+
+input,
+select,
+textarea{
+  background:#ffffff !important;
+  border-color:#eadfce !important;
+  color:#102033 !important;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+  border-color:#f97316 !important;
+  box-shadow:0 0 0 4px rgba(249,115,22,.14) !important;
+}
+
+.note,
+.summary .box,
+.modal{
+  background:#fffdf9 !important;
+  border-color:#eadfce !important;
+}
+
+.modal-backdrop{
+  background:rgba(16,32,51,.34) !important;
+}
+
+.lead-banner{
+  background:rgba(255,255,255,.97) !important;
+  border-color:#eadfce !important;
+}
+
+.site-footer{
+  margin-top:0 !important;
+  background:#fff8ef !important;
+  border-top:1px solid #eadfce !important;
+  color:#667789 !important;
+}
+
+.site-footer *{
+  color:#667789 !important;
+}
+
+@media(max-width:1120px){
+  .stats,
+  .stats.stats-ordered{
+    grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+  }
+  .nav-actions{
+    grid-template-columns:repeat(4,minmax(92px,1fr)) !important;
+  }
+}
+
+@media(max-width:760px){
+  .hero{
+    padding:30px 0 40px !important;
+  }
+  .container{
+    padding-inline:14px !important;
+  }
+  .stats,
+  .stats.stats-ordered{
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    gap:10px !important;
+  }
+  .panel{
+    padding:16px !important;
+    border-radius:22px !important;
+  }
+  .nav-actions{
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  }
+}
+
+@media(max-width:480px){
+  .stats,
+  .stats.stats-ordered{
+    grid-template-columns:1fr !important;
+  }
+  .nav-actions{
+    grid-template-columns:1fr 1fr !important;
+  }
+  h1{
+    font-size:clamp(30px,10vw,40px) !important;
+  }
+}
+</style>
+
+
+<style id="ultra-light-delicate-orange-final">
+/* גרסה בהירה ועדינה מאוד — רקע שמנת, כתום בהיר, כרטיסים נקיים */
+:root{
+  --bg:#fff8ef !important;
+  --surface:#fffaf6 !important;
+  --surface-2:#fff3e6 !important;
+  --card:#ffffff !important;
+  --border:#f0dfcc !important;
+  --line:#f0dfcc !important;
+  --text:#102033 !important;
+  --muted:#728091 !important;
+  --primary:#16384f !important;
+  --primary-600:#102a3c !important;
+  --accent:#ffb15f !important;
+  --accent-2:#ffc978 !important;
+  --accent-soft:#fff3e6 !important;
+  --green:#16384f !important;
+  --green2:#ffb15f !important;
+  --shadow:0 12px 30px rgba(16,32,51,.055) !important;
+  --radius:22px !important;
+}
+
+html,body{
+  margin:0 !important;
+  padding:0 !important;
+  background:#fff8ef !important;
+  color:#102033 !important;
+}
+
+body{
+  background:
+    radial-gradient(circle at 10% 8%, rgba(255,177,95,.12), transparent 31%),
+    radial-gradient(circle at 90% 9%, rgba(18,56,79,.045), transparent 36%),
+    linear-gradient(180deg,#fff8ef 0%,#fff8ef 44%,#fffdf9 100%) !important;
+  overflow-x:hidden !important;
+}
+
+body:before,
+header,
+body > header{
+  display:none !important;
+}
+
+.container{
+  max-width:1280px !important;
+  margin-inline:auto !important;
+  padding-inline:24px !important;
+  background:transparent !important;
+}
+
+.hero{
+  margin:0 !important;
+  padding:42px 0 52px !important;
+  border:0 !important;
+  box-shadow:none !important;
+  background:
+    linear-gradient(180deg,#fff8ef 0,#fff8ef 110px,rgba(255,248,239,.96) 190px,rgba(255,255,255,.84) 330px,#fffdf9 100%),
+    radial-gradient(circle at 12% 16%, rgba(255,177,95,.12), transparent 32%),
+    radial-gradient(circle at 88% 12%, rgba(18,56,79,.045), transparent 36%) !important;
+}
+
+.hero-grid{
+  display:grid !important;
+  grid-template-columns:1fr !important;
+  gap:22px !important;
+  align-items:start !important;
+}
+
+.hero-grid > div:first-child{
+  position:static !important;
+  top:auto !important;
+  width:100% !important;
+  max-width:1180px !important;
+  margin-inline:auto !important;
+  text-align:center !important;
+}
+
+.hero-grid > div:last-child{
+  width:100% !important;
+  max-width:1160px !important;
+  margin-inline:auto !important;
+}
+
+h1{
+  max-width:850px !important;
+  margin:0 auto 12px !important;
+  font-size:clamp(34px,5vw,56px) !important;
+  line-height:1.09 !important;
+  font-weight:950 !important;
+  background:linear-gradient(135deg,#102033 0%,#16384f 64%,#e99a4d 100%) !important;
+  -webkit-background-clip:text !important;
+  background-clip:text !important;
+  -webkit-text-fill-color:transparent !important;
+  color:transparent !important;
+  text-shadow:none !important;
+}
+
+.lead{
+  max-width:880px !important;
+  margin:0 auto 20px !important;
+  color:#6f7f91 !important;
+  font-size:clamp(16px,2vw,19px) !important;
+  line-height:1.65 !important;
+}
+
+.stats,
+.stats.stats-ordered{
+  display:grid !important;
+  grid-template-columns:repeat(5,minmax(0,1fr)) !important;
+  gap:12px !important;
+  width:100% !important;
+  max-width:1180px !important;
+  margin:22px auto 0 !important;
+  align-items:stretch !important;
+}
+
+.stats .stat-card,
+.stats.stats-ordered .stat-card,
+.stats.stats-ordered .stat-card--main,
+.stats.stats-ordered .stat-card--battery{
+  position:relative !important;
+  grid-column:auto !important;
+  min-height:112px !important;
+  padding:17px 14px !important;
+  border-radius:22px !important;
+  background:rgba(255,255,255,.96) !important;
+  border:1px solid #f0dfcc !important;
+  box-shadow:0 10px 24px rgba(16,32,51,.045) !important;
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:7px !important;
+  overflow:hidden !important;
+  text-align:center !important;
+}
+
+.stats .stat-card::before,
+.stats.stats-ordered .stat-card::before{
+  content:"" !important;
+  position:absolute !important;
+  inset:auto -56px -62px auto !important;
+  width:128px !important;
+  height:128px !important;
+  border-radius:999px !important;
+  background:rgba(255,177,95,.075) !important;
+  pointer-events:none !important;
+}
+
+.stats .stat-card > *,
+.stats.stats-ordered .stat-card > *{
+  position:relative !important;
+  z-index:1 !important;
+}
+
+.stats .stat-label,
+.stats .stat-card span,
+.stats.stats-ordered .stat-label,
+.stats.stats-ordered .stat-card span{
+  display:block !important;
+  color:#728091 !important;
+  font-size:13px !important;
+  font-weight:900 !important;
+  line-height:1.35 !important;
+}
+
+.stats .stat-card h3,
+.stats.stats-ordered .stat-card h3{
+  margin:0 !important;
+  color:#16384f !important;
+  font-size:clamp(26px,3vw,38px) !important;
+  line-height:1 !important;
+  font-weight:950 !important;
+  text-shadow:none !important;
+}
+
+.stats .stat-card small,
+.stats.stats-ordered .stat-card small{
+  color:#8792a0 !important;
+  font-size:11.5px !important;
+  line-height:1.35 !important;
+  max-width:200px !important;
+}
+
+.calc-tip-card{
+  grid-column:1 / -1 !important;
+  min-height:auto !important;
+  padding:14px 18px !important;
+  border-radius:20px !important;
+  background:#fff3e6 !important;
+  border:1px solid #f6d9b8 !important;
+  color:#5f472d !important;
+  box-shadow:0 8px 18px rgba(255,177,95,.07) !important;
+  text-align:center !important;
+  line-height:1.65 !important;
+  font-size:15px !important;
+  font-weight:800 !important;
+}
+
+.calc-tip-card b{
+  color:#16384f !important;
+  background:transparent !important;
+  padding:0 !important;
+  margin-left:5px !important;
+}
+
+.panel{
+  width:100% !important;
+  max-width:1160px !important;
+  margin:0 auto !important;
+  padding:24px !important;
+  border-radius:28px !important;
+  background:rgba(255,255,255,.97) !important;
+  border:1px solid #f0dfcc !important;
+  box-shadow:0 14px 34px rgba(16,32,51,.055) !important;
+  display:grid !important;
+  gap:16px !important;
+}
+
+.panel h2{
+  margin:0 !important;
+  color:#102033 !important;
+  font-size:25px !important;
+  text-align:center !important;
+}
+
+.panel > div[style*="overflow-x"]{
+  overflow:visible !important;
+  white-space:normal !important;
+  padding:0 !important;
+}
+
+.nav-actions{
+  display:grid !important;
+  grid-template-columns:repeat(7,minmax(90px,1fr)) !important;
+  gap:9px !important;
+  width:100% !important;
+  direction:rtl !important;
+}
+
+.nav-actions button,
+.nav-actions .btn{
+  width:100% !important;
+  min-width:0 !important;
+  height:56px !important;
+  padding:8px 10px !important;
+  border-radius:16px !important;
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:4px !important;
+  font-size:12px !important;
+  font-weight:900 !important;
+  white-space:normal !important;
+  box-shadow:none !important;
+}
+
+.btn,
+.btn-primary,
+.btn.btn-primary,
+.btn:not(.btn-outline):not(.btn-danger),
+#solarPanelBtn,
+.lead-banner__mail{
+  background:linear-gradient(135deg,#ffb15f,#ffc978) !important;
+  color:#3f2a12 !important;
+  border:1px solid #f2c99f !important;
+  box-shadow:0 9px 20px rgba(255,177,95,.16) !important;
+}
+
+.btn:hover,
+.btn-primary:hover,
+.btn.btn-primary:hover,
+.btn:not(.btn-outline):not(.btn-danger):hover,
+#solarPanelBtn:hover,
+.lead-banner__mail:hover{
+  background:linear-gradient(135deg,#ffa94d,#ffd39a) !important;
+  color:#2c1d0d !important;
+  transform:translateY(-2px) !important;
+  box-shadow:0 12px 26px rgba(255,177,95,.22) !important;
+}
+
+.btn-outline{
+  background:#ffffff !important;
+  color:#16384f !important;
+  border:1px solid #f0dfcc !important;
+  box-shadow:0 6px 14px rgba(16,32,51,.035) !important;
+}
+
+.btn-outline:hover{
+  background:#fff3e6 !important;
+  color:#9a5a16 !important;
+  border-color:#f2c99f !important;
+}
+
+.btn-danger{
+  background:#fee2e2 !important;
+  color:#991b1b !important;
+  border-color:#fecaca !important;
+}
+
+#solarPanelBtn i,
+#openModelsBtn i{color:#d97706 !important;}
+#openInstructionsBtn i{color:#16384f !important;}
+#exportPdfBtn i{color:#b91c1c !important;}
+#exportXlBtn i{color:#0f766e !important;}
+#clearTableBtn i{color:#7b8794 !important;}
+#openCalcBtn i{color:#3f2a12 !important;}
+
+.table-wrap{
+  margin-top:0 !important;
+  border-radius:22px !important;
+  border:1px solid #f0dfcc !important;
+  background:#ffffff !important;
+  box-shadow:none !important;
+}
+
+table{background:#ffffff !important;}
+th{background:#fff3e6 !important;color:#16384f !important;font-weight:900 !important;}
+td{background:#ffffff !important;color:#102033 !important;}
+tbody tr:hover{background:#fffaf5 !important;}
+
+input,select,textarea{
+  background:#ffffff !important;
+  color:#102033 !important;
+  border-color:#f0dfcc !important;
+}
+
+input:focus,select:focus,textarea:focus{
+  border-color:#ffb15f !important;
+  box-shadow:0 0 0 4px rgba(255,177,95,.18) !important;
+}
+
+label{color:#16384f !important;}
+
+.note,
+.summary .box,
+.modal,
+#solarResult{
+  background:#fffdf9 !important;
+  border-color:#f0dfcc !important;
+  color:#6f7f91 !important;
+}
+
+.modal{box-shadow:0 18px 48px rgba(16,32,51,.12) !important;}
+.modal-backdrop{background:rgba(16,32,51,.22) !important;backdrop-filter:blur(4px) !important;}
+.modal-header h3{color:#102033 !important;}
+.close{color:#16384f !important;}
+
+.lead-banner{
+  background:rgba(255,255,255,.97) !important;
+  border-color:#f0dfcc !important;
+  box-shadow:0 12px 28px rgba(16,32,51,.08) !important;
+}
+.lead-banner__title{color:#16384f !important;}
+.lead-banner__subtitle{color:#728091 !important;}
+.lead-banner__close{background:#fff3e6 !important;color:#16384f !important;}
+
+footer,
+.site-footer{
+  margin-top:0 !important;
+  background:#fff8ef !important;
+  border-top:1px solid #f0dfcc !important;
+  color:#728091 !important;
+  backdrop-filter:none !important;
+}
+.site-footer *{color:#728091 !important;}
+
+@media(max-width:1120px){
+  .stats,.stats.stats-ordered{grid-template-columns:repeat(3,minmax(0,1fr)) !important;}
+  .nav-actions{grid-template-columns:repeat(4,minmax(90px,1fr)) !important;}
+}
+
+@media(max-width:760px){
+  .hero{padding:30px 0 40px !important;}
+  .container{padding-inline:14px !important;}
+  .stats,.stats.stats-ordered{grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:10px !important;}
+  .panel{padding:16px !important;border-radius:22px !important;}
+  .nav-actions{grid-template-columns:repeat(2,minmax(0,1fr)) !important;}
+}
+
+@media(max-width:480px){
+  .stats,.stats.stats-ordered{grid-template-columns:1fr !important;}
+  .nav-actions{grid-template-columns:1fr 1fr !important;}
+  h1{font-size:clamp(30px,10vw,40px) !important;}
+}
+</style>
+
+
+<style id="calculator-order-cleanup-final">
+/* ==========================================================
+   סידור סדר המחשבון — פעולה ראשית, פעולות משניות, ואז טבלה
+   ========================================================== */
+
+.calc-panel.calc-panel-ordered{
+  display:grid !important;
+  gap:18px !important;
+  padding:26px !important;
+}
+
+.calc-panel-head{
+  display:grid !important;
+  grid-template-columns:1fr auto !important;
+  gap:18px !important;
+  align-items:center !important;
+  padding:18px !important;
+  border:1px solid #f0dfcc !important;
+  border-radius:24px !important;
+  background:
+    radial-gradient(circle at 8% 0%, rgba(255,177,95,.18), transparent 32%),
+    linear-gradient(180deg,#ffffff,#fffaf5) !important;
+}
+
+.calc-panel-title{
+  display:grid !important;
+  gap:6px !important;
+  text-align:right !important;
+}
+
+.calc-kicker{
+  display:inline-flex !important;
+  width:max-content !important;
+  padding:6px 12px !important;
+  border-radius:999px !important;
+  background:#fff3e6 !important;
+  border:1px solid #f6d9b8 !important;
+  color:#9a5a16 !important;
+  font-size:13px !important;
+  font-weight:950 !important;
+}
+
+.calc-panel-title h2,
+.calc-table-title h3{
+  margin:0 !important;
+  color:#102033 !important;
+  font-weight:950 !important;
+  line-height:1.15 !important;
+}
+
+.calc-panel-title h2{
+  font-size:30px !important;
+  text-align:right !important;
+}
+
+.calc-panel-title p,
+.calc-table-title p{
+  margin:0 !important;
+  color:#728091 !important;
+  font-size:15px !important;
+  line-height:1.55 !important;
+}
+
+.calc-main-action{
+  min-width:210px !important;
+  min-height:74px !important;
+  border-radius:20px !important;
+  font-size:18px !important;
+  font-weight:950 !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:10px !important;
+  box-shadow:0 14px 30px rgba(255,177,95,.22) !important;
+}
+
+.calc-main-action i{
+  font-size:24px !important;
+}
+
+.calc-secondary-actions{
+  display:grid !important;
+  grid-template-columns:repeat(6,minmax(0,1fr)) !important;
+  gap:10px !important;
+  width:100% !important;
+  direction:rtl !important;
+}
+
+.calc-secondary-actions button{
+  width:100% !important;
+  min-width:0 !important;
+  height:58px !important;
+  padding:8px 10px !important;
+  border-radius:16px !important;
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:4px !important;
+  font-size:12px !important;
+  font-weight:900 !important;
+  white-space:normal !important;
+  box-shadow:0 6px 14px rgba(16,32,51,.035) !important;
+}
+
+.calc-secondary-actions button i{
+  font-size:19px !important;
+}
+
+.calc-table-title{
+  display:flex !important;
+  align-items:end !important;
+  justify-content:space-between !important;
+  gap:16px !important;
+  padding:4px 2px 0 !important;
+}
+
+.calc-table-title > div{
+  display:grid !important;
+  gap:6px !important;
+}
+
+.calc-table-title h3{
+  font-size:23px !important;
+}
+
+.calc-table-title p{
+  max-width:560px !important;
+  text-align:left !important;
+}
+
+/* מוודא שלא יישאר עיצוב השורה הישנה אם הדפדפן שומר CSS קודם */
+.calc-panel .nav-actions{
+  display:none !important;
+}
+
+/* הטבלה צמודה לסדר החדש ונראית כחלק מהשלב השני */
+.calc-panel .table-wrap{
+  margin-top:0 !important;
+}
+
+/* מובייל */
+@media(max-width:900px){
+  .calc-panel-head{
+    grid-template-columns:1fr !important;
+  }
+
+  .calc-main-action{
+    width:100% !important;
+    min-width:0 !important;
+  }
+
+  .calc-secondary-actions{
+    grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+  }
+
+  .calc-table-title{
+    display:grid !important;
+    align-items:start !important;
+  }
+
+  .calc-table-title p{
+    text-align:right !important;
+    max-width:none !important;
+  }
+}
+
+@media(max-width:560px){
+  .calc-panel.calc-panel-ordered{
+    padding:16px !important;
+    gap:14px !important;
+  }
+
+  .calc-panel-head{
+    padding:14px !important;
+    border-radius:20px !important;
+  }
+
+  .calc-panel-title h2{
+    font-size:25px !important;
+  }
+
+  .calc-main-action{
+    min-height:64px !important;
+    font-size:16px !important;
+  }
+
+  .calc-secondary-actions{
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    gap:8px !important;
+  }
+
+  .calc-secondary-actions button{
+    height:54px !important;
+  }
+}
+</style>
+<style id="official-results-layout-final">
+/* ==========================================================
+   עיצוב התוצאה רשמי ומסודר — במקום קוביות סטטיסטיקה
+   ========================================================== */
+
+.official-results{
+  width:100% !important;
+  max-width:980px !important;
+  margin:26px auto 0 !important;
+  background:#ffffff !important;
+  border:1px solid #eadfce !important;
+  border-radius:26px !important;
+  box-shadow:0 14px 34px rgba(16,32,51,.055) !important;
+  overflow:hidden !important;
+  text-align:right !important;
+}
+
+.official-results-head{
+  display:grid !important;
+  grid-template-columns:1fr auto !important;
+  gap:18px !important;
+  align-items:end !important;
+  padding:22px 24px !important;
+  background:
+    linear-gradient(180deg,#fffdf9,#fff8ef) !important;
+  border-bottom:1px solid #eadfce !important;
+}
+
+.official-results-kicker{
+  display:inline-flex !important;
+  padding:6px 12px !important;
+  border-radius:999px !important;
+  background:#fff3e6 !important;
+  border:1px solid #f6d9b8 !important;
+  color:#9a5a16 !important;
+  font-size:13px !important;
+  font-weight:950 !important;
+  margin-bottom:9px !important;
+}
+
+.official-results-head h2{
+  margin:0 !important;
+  color:#102033 !important;
+  font-size:28px !important;
+  line-height:1.15 !important;
+  font-weight:950 !important;
+  text-align:right !important;
+  background:none !important;
+  -webkit-text-fill-color:initial !important;
+}
+
+.official-results-head p{
+  margin:0 !important;
+  max-width:430px !important;
+  color:#728091 !important;
+  font-size:14.5px !important;
+  line-height:1.6 !important;
+}
+
+.official-results-table{
+  display:grid !important;
+  background:#ffffff !important;
+}
+
+.official-results-row{
+  display:grid !important;
+  grid-template-columns:minmax(230px,1fr) 220px !important;
+  align-items:center !important;
+  min-height:76px !important;
+  border-bottom:1px solid #f0dfcc !important;
+}
+
+.official-results-row:last-child{
+  border-bottom:0 !important;
+}
+
+.official-results-row-main{
+  background:#fffdf9 !important;
+}
+
+.official-result-name{
+  display:grid !important;
+  gap:4px !important;
+  padding:16px 24px !important;
+}
+
+.official-result-name span{
+  color:#102033 !important;
+  font-size:17px !important;
+  font-weight:950 !important;
+}
+
+.official-result-name small{
+  color:#728091 !important;
+  font-size:13px !important;
+  line-height:1.45 !important;
+}
+
+.official-result-value{
+  align-self:stretch !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  padding:14px 18px !important;
+  border-right:1px solid #f0dfcc !important;
+  color:#12384f !important;
+  font-size:clamp(24px,3.2vw,36px) !important;
+  font-weight:950 !important;
+  line-height:1 !important;
+  background:#fffaf5 !important;
+  direction:ltr !important;
+  text-align:center !important;
+}
+
+/* התאמה עדינה להתוצאה הראשית */
+.official-results-row-main .official-result-value{
+  color:#9a5a16 !important;
+  background:#fff3e6 !important;
+}
+
+/* מבטל השפעות של עיצוב הקוביות הישן אם נשאר בקאש או בקוד */
+.stats,
+.stats.stats-ordered,
+.stat-card,
+.calc-tip-card{
+  display:none !important;
+}
+
+@media(max-width:760px){
+  .official-results{
+    margin-top:20px !important;
+    border-radius:22px !important;
+  }
+
+  .official-results-head{
+    grid-template-columns:1fr !important;
+    padding:18px !important;
+  }
+
+  .official-results-head p{
+    max-width:none !important;
+  }
+
+  .official-results-row{
+    grid-template-columns:1fr !important;
+    min-height:auto !important;
+  }
+
+  .official-result-name{
+    padding:15px 18px 8px !important;
+  }
+
+  .official-result-value{
+    border-right:0 !important;
+    border-top:1px solid #f0dfcc !important;
+    justify-content:flex-start !important;
+    padding:12px 18px 16px !important;
+    font-size:30px !important;
+  }
+}
+</style>
+
+
+<style id="right-summary-friendly-copy-final">
+/* ==========================================================
+   סיכום בצד ימין + ניסוח ידידותי ומסודר
+   ========================================================== */
+
+.calculator-hero{
+  padding:44px 0 58px !important;
+  background:
+    radial-gradient(circle at 12% 12%, rgba(255,177,95,.13), transparent 32%),
+    radial-gradient(circle at 88% 10%, rgba(18,56,79,.06), transparent 34%),
+    linear-gradient(180deg,#fff8ef 0%,#fff8ef 38%,#fffdf9 100%) !important;
+}
+
+.calculator-hero-container{
+  max-width:1320px !important;
+  margin:0 auto !important;
+  padding-inline:24px !important;
+}
+
+.calculator-intro{
+  max-width:920px !important;
+  margin:0 auto 28px !important;
+  text-align:center !important;
+  display:grid !important;
+  gap:10px !important;
+}
+
+.calculator-intro-kicker{
+  display:inline-flex !important;
+  width:max-content !important;
+  margin:0 auto !important;
+  padding:7px 14px !important;
+  border-radius:999px !important;
+  background:#fff3e6 !important;
+  border:1px solid #f6d9b8 !important;
+  color:#9a5a16 !important;
+  font-size:14px !important;
+  font-weight:950 !important;
+}
+
+.calculator-intro h1{
+  margin:0 auto !important;
+  max-width:920px !important;
+  font-size:clamp(34px,5vw,56px) !important;
+  line-height:1.09 !important;
+  font-weight:950 !important;
+  background:linear-gradient(135deg,#102033 0%,#16384f 62%,#e99a4d 100%) !important;
+  -webkit-background-clip:text !important;
+  background-clip:text !important;
+  -webkit-text-fill-color:transparent !important;
+  color:transparent !important;
+}
+
+.calculator-intro .lead{
+  margin:0 auto !important;
+  max-width:860px !important;
+  color:#6f7f91 !important;
+  font-size:clamp(16px,2vw,20px) !important;
+  line-height:1.7 !important;
+}
+
+.calculator-workspace{
+  display:flex !important;
+  flex-direction:row !important;
+  direction:rtl !important;
+  align-items:flex-start !important;
+  gap:22px !important;
+  width:100% !important;
+  max-width:1260px !important;
+  margin:0 auto !important;
+}
+
+.calculator-results-sidebar{
+  flex:0 0 360px !important;
+  width:360px !important;
+  direction:rtl !important;
+  position:sticky !important;
+  top:18px !important;
+  z-index:2 !important;
+}
+
+.calculator-main-area{
+  flex:1 1 auto !important;
+  min-width:0 !important;
+  direction:rtl !important;
+}
+
+/* כרטיס התוצאה בצד ימין */
+.calculator-results-sidebar .official-results,
+.official-results-side{
+  width:100% !important;
+  max-width:none !important;
+  margin:0 !important;
+  border-radius:28px !important;
+  overflow:hidden !important;
+  background:#ffffff !important;
+  border:1px solid #f0dfcc !important;
+  box-shadow:0 16px 38px rgba(16,32,51,.075) !important;
+  text-align:right !important;
+}
+
+.calculator-results-sidebar .official-results-head{
+  display:grid !important;
+  grid-template-columns:1fr !important;
+  gap:10px !important;
+  padding:22px !important;
+  background:
+    radial-gradient(circle at 8% 0%, rgba(255,177,95,.16), transparent 36%),
+    linear-gradient(180deg,#ffffff,#fff8ef) !important;
+  border-bottom:1px solid #f0dfcc !important;
+}
+
+.calculator-results-sidebar .official-results-kicker{
+  display:inline-flex !important;
+  width:max-content !important;
+  padding:6px 12px !important;
+  border-radius:999px !important;
+  background:#fff3e6 !important;
+  border:1px solid #f6d9b8 !important;
+  color:#9a5a16 !important;
+  font-size:13px !important;
+  font-weight:950 !important;
+  margin-bottom:4px !important;
+}
+
+.calculator-results-sidebar .official-results-head h2{
+  margin:0 !important;
+  color:#102033 !important;
+  font-size:25px !important;
+  line-height:1.15 !important;
+  font-weight:950 !important;
+  text-align:right !important;
+  background:none !important;
+  -webkit-text-fill-color:initial !important;
+}
+
+.calculator-results-sidebar .official-results-head p{
+  margin:0 !important;
+  color:#728091 !important;
+  font-size:14px !important;
+  line-height:1.6 !important;
+}
+
+.calculator-results-sidebar .official-results-table{
+  display:grid !important;
+  background:#ffffff !important;
+}
+
+.calculator-results-sidebar .official-results-row{
+  display:grid !important;
+  grid-template-columns:1fr auto !important;
+  align-items:center !important;
+  gap:12px !important;
+  min-height:auto !important;
+  padding:15px 18px !important;
+  border-bottom:1px solid #f0dfcc !important;
+  background:#ffffff !important;
+}
+
+.calculator-results-sidebar .official-results-row:last-child{
+  border-bottom:0 !important;
+}
+
+.calculator-results-sidebar .official-results-row-main{
+  background:#fffdf9 !important;
+}
+
+.calculator-results-sidebar .official-result-name{
+  display:grid !important;
+  gap:3px !important;
+  padding:0 !important;
+}
+
+.calculator-results-sidebar .official-result-name span{
+  color:#102033 !important;
+  font-size:15.5px !important;
+  font-weight:950 !important;
+}
+
+.calculator-results-sidebar .official-result-name small{
+  color:#728091 !important;
+  font-size:12.5px !important;
+  line-height:1.4 !important;
+}
+
+.calculator-results-sidebar .official-result-value{
+  min-width:76px !important;
+  min-height:46px !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  padding:8px 10px !important;
+  border:1px solid #f0dfcc !important;
+  border-radius:16px !important;
+  background:#fffaf5 !important;
+  color:#16384f !important;
+  font-size:clamp(21px,2.5vw,30px) !important;
+  font-weight:950 !important;
+  line-height:1 !important;
+  direction:ltr !important;
+  text-align:center !important;
+}
+
+.calculator-results-sidebar .official-results-row-main .official-result-value{
+  color:#9a5a16 !important;
+  background:#fff3e6 !important;
+  border-color:#f6d9b8 !important;
+}
+
+.results-friendly-note{
+  margin:0 !important;
+  padding:16px 18px !important;
+  background:#fff8ef !important;
+  border-top:1px solid #f0dfcc !important;
+  color:#5f472d !important;
+  font-size:13.5px !important;
+  line-height:1.65 !important;
+  font-weight:750 !important;
+}
+
+.results-friendly-note b{
+  color:#16384f !important;
+  font-weight:950 !important;
+}
+
+/* המחשבון עצמו */
+.calculator-main-area .calc-panel{
+  max-width:none !important;
+  width:100% !important;
+  margin:0 !important;
+  border-radius:28px !important;
+}
+
+.calculator-main-area .calc-panel-head{
+  background:
+    radial-gradient(circle at 10% 0%, rgba(255,177,95,.16), transparent 34%),
+    linear-gradient(180deg,#ffffff,#fffaf5) !important;
+}
+
+.calculator-main-area .calc-panel-title p,
+.calculator-main-area .calc-table-title p{
+  color:#728091 !important;
+}
+
+.calculator-main-area .calc-main-action{
+  min-width:230px !important;
+}
+
+.calc-secondary-actions{
+  grid-template-columns:repeat(6,minmax(0,1fr)) !important;
+}
+
+.calc-secondary-actions button span{
+  line-height:1.2 !important;
+}
+
+/* מסתיר לגמרי עיצובים/קוביות ישנים אם נשארו בקוד קודם */
+.stats,
+.stats.stats-ordered,
+.stat-card,
+.calc-tip-card{
+  display:none !important;
+}
+
+/* טקסטים בטבלה — יותר ידידותיים לקריאה */
+#productsTable th{
+  font-size:14px !important;
+  white-space:nowrap !important;
+}
+
+#productsTable td{
+  font-size:14.5px !important;
+}
+
+/* מובייל */
+@media(max-width:1080px){
+  .calculator-workspace{
+    flex-direction:column !important;
+  }
+
+  .calculator-results-sidebar{
+    position:static !important;
+    width:100% !important;
+    flex:0 0 auto !important;
+  }
+
+  .calculator-results-sidebar .official-results-table{
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  }
+
+  .calculator-results-sidebar .official-results-row{
+    border-left:1px solid #f0dfcc !important;
+  }
+
+  .calculator-results-sidebar .official-results-row-main{
+    grid-column:1 / -1 !important;
+  }
+}
+
+@media(max-width:760px){
+  .calculator-hero{
+    padding:30px 0 42px !important;
+  }
+
+  .calculator-hero-container{
+    padding-inline:14px !important;
+  }
+
+  .calculator-intro{
+    margin-bottom:20px !important;
+  }
+
+  .calculator-workspace{
+    gap:16px !important;
+  }
+
+  .calculator-results-sidebar .official-results-table{
+    grid-template-columns:1fr !important;
+  }
+
+  .calculator-results-sidebar .official-results-row{
+    border-left:0 !important;
+  }
+
+  .calculator-main-area .calc-panel-head{
+    grid-template-columns:1fr !important;
+  }
+
+  .calculator-main-area .calc-main-action{
+    width:100% !important;
+    min-width:0 !important;
+  }
+
+  .calc-secondary-actions{
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  }
+}
+
+@media(max-width:480px){
+  .calculator-intro h1{
+    font-size:clamp(30px,10vw,40px) !important;
+  }
+}
+</style>
+
+
+<style id="full-site-protection-css">
+/* ==========================================================
+   שכבת חסימות מלאה — CSS
+   ========================================================== */
+
+html,
+body{
+  -webkit-touch-callout:none !important;
+}
+
+body{
+  -webkit-user-select:none !important;
+  user-select:none !important;
+}
+
+/* לא לשבור הקלדה בתוך המחשבון והטפסים */
+input,
+textarea,
+select,
+[contenteditable="true"]{
+  -webkit-user-select:text !important;
+  user-select:text !important;
+}
+
+/* מניעת גרירה */
+img,
+svg,
+a,
+button,
+.btn,
+.panel,
+.table-wrap,
+.stat-card,
+.official-results,
+.calculator-results-sidebar{
+  -webkit-user-drag:none !important;
+  user-drag:none !important;
+}
+
+/* שמירה על לחיצות תקינות */
+a[href],
+button,
+.btn,
+.close,
+.lead-banner__close,
+.lead-banner__mail{
+  cursor:pointer !important;
+  touch-action:manipulation !important;
+  -webkit-tap-highlight-color:rgba(249,115,22,.22) !important;
+}
+
+/* עוזר לתפוס מקלדת בתוך iframe/Google Sites */
+body,
+#calculator,
+.calculator-hero,
+.calculator-workspace,
+.panel{
+  outline:none !important;
+}
+
+/* חסימת הדפסה רגילה */
+@media print{
+  body *{
+    visibility:hidden !important;
+  }
+
+  body::before{
+    content:"הדפסה ושמירת העמוד חסומות.";
+    visibility:visible !important;
+    display:block !important;
+    direction:rtl !important;
+    text-align:center !important;
+    font-family:Arial, sans-serif !important;
+    font-size:22px !important;
+    padding:42px !important;
+    color:#102033 !important;
+  }
+}
+</style>
+
+
+<style id="meiri-global-nav-style">
+  #meiri-global-nav, #meiri-global-nav * { box-sizing: border-box; }
+  #meiri-global-nav {
+    direction: rtl; position: sticky; top: 0; z-index: 2147483000;
+    width: 100%; font-family: Arial,"Noto Sans Hebrew",sans-serif;
+    background: rgba(255,255,255,.96); border-bottom: 1px solid #eadfce;
+    box-shadow: 0 8px 24px rgba(23,20,19,.08); backdrop-filter: blur(12px);
+  }
+  #meiri-global-nav .mgn-inner {
+    width: min(1240px, calc(100% - 24px)); min-height: 66px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between; gap: 18px;
+  }
+  #meiri-global-nav a { text-decoration: none; }
+  #meiri-global-nav .mgn-brand { display:flex; align-items:center; gap:10px; color:#171413; font-weight:900; white-space:nowrap; }
+  #meiri-global-nav .mgn-brand img { width:78px; height:46px; object-fit:contain; display:block; }
+  #meiri-global-nav .mgn-links { display:flex; align-items:center; justify-content:center; gap:6px; flex:1; }
+  #meiri-global-nav .mgn-link, #meiri-global-nav summary {
+    display:flex; align-items:center; justify-content:center; min-height:40px; padding:8px 14px;
+    border-radius:999px; color:#2a2522; font-size:14px; font-weight:900; cursor:pointer;
+    border:1px solid transparent; background:transparent; list-style:none; white-space:nowrap;
+  }
+  #meiri-global-nav summary::-webkit-details-marker { display:none; }
+  #meiri-global-nav .mgn-link:hover, #meiri-global-nav summary:hover,
+  #meiri-global-nav .mgn-link[aria-current="page"], #meiri-global-nav .mgn-current > summary {
+    color:#c2410c; background:#fff3e6; border-color:#ffd8a8;
+  }
+  #meiri-global-nav .mgn-dropdown { position:relative; }
+  #meiri-global-nav .mgn-menu {
+    display:none; position:absolute; right:0; top:calc(100% + 8px); min-width:245px; padding:8px;
+    background:#fff; border:1px solid #eadfce; border-radius:16px; box-shadow:0 18px 45px rgba(23,20,19,.16);
+  }
+  #meiri-global-nav .mgn-dropdown[open] .mgn-menu { display:grid; gap:4px; }
+  #meiri-global-nav .mgn-menu a { padding:10px 12px; border-radius:11px; color:#2a2522; font-size:13px; font-weight:800; }
+  #meiri-global-nav .mgn-menu a:hover, #meiri-global-nav .mgn-menu a[aria-current="page"] { background:#fff8ef; color:#c2410c; }
+  #meiri-global-nav .mgn-phone {
+    display:inline-flex; align-items:center; justify-content:center; min-height:40px; padding:8px 14px;
+    border-radius:999px; background:linear-gradient(135deg,#ff8a2a,#ffb15f); color:#fff;
+    font-size:13px; font-weight:900; white-space:nowrap; box-shadow:0 10px 22px rgba(255,122,26,.18);
+  }
+  @media (max-width: 800px) {
+    #meiri-global-nav .mgn-inner { min-height:auto; padding:7px 0; flex-wrap:wrap; gap:7px; }
+    #meiri-global-nav .mgn-brand img { width:62px; height:36px; }
+    #meiri-global-nav .mgn-brand span { font-size:14px; }
+    #meiri-global-nav .mgn-links { order:3; width:100%; flex:0 0 100%; overflow-x:auto; justify-content:flex-start; padding-bottom:2px; }
+    #meiri-global-nav .mgn-link, #meiri-global-nav summary { min-height:34px; padding:6px 11px; font-size:12.5px; }
+    #meiri-global-nav .mgn-phone { min-height:34px; padding:6px 10px; font-size:12px; }
+    #meiri-global-nav .mgn-menu { position:fixed; top:112px; right:12px; left:12px; min-width:0; }
+  }
+</style>
+
+</head>
+<body>
+
+<header id="meiri-global-nav" aria-label="ניווט ראשי">
+  <div class="mgn-inner">
+    <a class="mgn-brand" href="/">
+      <img src="https://content.vp4.me/ishabat/Content/%D7%9C%D7%95%D7%92%D7%95_%D7%9E%D7%90%D7%99%D7%A8%D7%99_%D7%A9%D7%91%D7%AA_-_%D7%9E%D7%A2%D7%95%D7%93%D7%9B%D7%9F_600x271-removebg-preview_600x271-r.png" alt="לוגו מאירי שבת">
+      <span>מאירי שבת</span>
+    </a>
+    <nav class="mgn-links" aria-label="עמודי האתר">
+      <a class="mgn-link" href="/">דף הבית</a>
+      <a class="mgn-link" href="/magazine/">המגזין</a>
+      <details class="mgn-dropdown mgn-current">
+        <summary>מחשבונים ▾</summary>
+        <div class="mgn-menu">
+          <a href="/calculators/">כל המחשבונים</a>
+          <a href="/calculators/institutions/">מחשבון מוסדות וסולארי</a>
+          <a href="/calculators/private/" aria-current="page">מחשבון צריכה לפרטיים</a>
+        </div>
+      </details>
+    </nav>
+    <a class="mgn-phone" href="tel:0548444350">☎ 054-844-4350</a>
+  </div>
+</header>
+
+  <section class="hero calculator-hero">
+    <div class="container calculator-hero-container">
+      <div class="calculator-intro">
+        <h1>בונים חישוב — וראים  מיד תוצאה מותאמת</h1>
+        <p class="lead">הוסיפו את המכשירים שתרצו להפעיל, הזינו שעות וכמה יחידות?, וקבלו סיכום ברור בצד ימין: צריכה כוללת, ממיר מומלץ ומספר סוללות משוער.</p>
+      </div>
+
+      <div class="calculator-workspace">
+<aside class="calculator-results-sidebar" aria-label="סיכום החישוב">
+          <section class="official-results official-results-side" aria-label="תוצאת חישוב">
+            <div class="official-results-head">
+              <div>
+                <h2>סיכום מהיר וברור</h2>
+              </div>
+              <p>כאן רואים מיד את גודל המערכת המשוער לפי מה שהוזן במחשבון.</p>
+            </div>
+
+            <div class="official-results-table" role="table" aria-label="סיכום התאמה">
+              <div class="official-results-row official-results-row-main" role="row">
+                <div class="official-result-name" role="cell">
+                  <span>צריכה כוללת</span>
+                  <small>סך האנרגיה שהמכשירים צורכים</small>
+                </div>
+                <strong class="official-result-value" id="statKWh" role="cell">0.00</strong>
+              </div>
+
+              <div class="official-results-row" role="row">
+                <div class="official-result-name" role="cell">
+                  <span>ממיר מומלץ</span>
+                  <small>הדגם הקרוב מתוך הדגמים הקיימים</small>
+                </div>
+                <strong class="official-result-value" id="statInverter" role="cell">0</strong>
+              </div>
+
+              <div class="official-results-row" role="row">
+                <div class="official-result-name" role="cell">
+                  <span>סוללות 5.1kWh</span>
+                  <small>BSL דגם 5100 וואט</small>
+                </div>
+                <strong class="official-result-value" id="statBatteries" role="cell">0</strong>
+              </div>
+
+              <div class="official-results-row" role="row">
+                <div class="official-result-name" role="cell">
+                  <span>סוללות 15.3kWh</span>
+                  <small>BSL דגם 15300 וואט</small>
+                </div>
+                <strong class="official-result-value" id="statBatteries153" role="cell">0</strong>
+              </div>
+
+              <div class="official-results-row" role="row">
+                <div class="official-result-name" role="cell">
+                  <span>סוללות 16kWh</span>
+                  <small>סולקס דגם 16000 וואט</small>
+                </div>
+                <strong class="official-result-value" id="statBatteriesLarge" role="cell">0</strong>
+              </div>
+            </div>
+
+            <div class="results-friendly-note">
+              <b>טיפ קטן:</b>
+      התחילו בחישוב מינימלי, המכשירים שחייבים לעבוד. ולפי השעות שבפועל מדליקים, כי תמיד אפשר להוסיף צרכנים בהמשך    .
+            </div>
+          </section>
+        </aside>
+
+        <main class="calculator-main-area" aria-label="מחשבון צריכה">
+          <div class="panel calc-panel calc-panel-ordered">
+          <div class="calc-panel-head">
+            <div class="calc-panel-title">
+              <span class="calc-kicker">מתחילים כאן</span>
+              <h2>בניית החישוב שלך</h2>
+              <p>איזה מכשיר תרצו להוסיף?, הזינו כמה שעות שימוש? וכמה יחידות? — וההתוצאה בצד תתעדכן מיד.</p>
+            </div>
+
+            <button class="btn btn-primary calc-main-action" id="openCalcBtn" title="הוספת מכשיר לחישוב" type="button">
+              <i class="fas fa-plus-circle"></i>
+              <span>הוספת מכשיר לחישוב</span>
+            </button>
+          </div>
+
+          <div class="calc-secondary-actions" aria-label="כלים שימושיים להשלמת החישוב">
+            <button class="btn btn-outline" id="openModelsBtn" title="דגמים שיכולים להתאים" type="button">
+              <i class="fas fa-bolt"></i>
+              <span>דגמים מתאימים</span>
+            </button>
+
+            <button class="btn btn-outline" id="solarPanelBtn" title="חישוב קולטים" type="button">
+              <i class="fas fa-solar-panel"></i>
+              <span>בדיקת סולארי</span>
+            </button>
+
+            <button class="btn btn-outline" id="openInstructionsBtn" title="הוראות" type="button">
+              <i class="fas fa-info-circle"></i>
+              <span>איך משתמשים</span>
+            </button>
+
+            <button class="btn btn-outline" id="exportPdfBtn" title="ייצוא PDF" type="button">
+              <i class="fas fa-file-pdf"></i>
+              <span>שמירה ל־PDF</span>
+            </button>
+
+            <button class="btn btn-outline" id="exportXlBtn" title="Excel" type="button">
+              <i class="fas fa-file-excel"></i>
+              <span>שמירה לאקסל</span>
+            </button>
+
+            <button class="btn btn-outline" id="clearTableBtn" title="ניקוי" type="button">
+              <i class="fas fa-trash-alt"></i>
+              <span>ניקוי חישוב</span>
+            </button>
+          </div>
+
+          <div class="calc-table-title">
+            <div>
+              <h3>המכשירים שנכנסו לחישוב</h3>
+            </div>
+            <p>כל מכשיר שתוסיפו יופיע כאן. ניתן לשנות שעות וכמות ולראות את ההתוצאה מתעדכנת.</p>
+          </div>
+          <div class="table-wrap">
+            <table id="productsTable" aria-describedby="tableDesc">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>מכשיר</th>
+                  <th>שעות</th>
+                  <th>כמה יחידות?</th>
+                  <th>צריכה כוללת (Wh)</th>
+                  <th>עריכה / מחיקה</th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+
+          </div>
+        </div>
+        </main>
+      </div>
+    </div>
+  </section>
+  <!-- באנר פנייה צף לאחר שימוש פעיל במחשבון -->
+  <div class="lead-banner" id="leadBanner" aria-live="polite">
+    <div class="lead-banner__text">
+      <div class="lead-banner__title">רוצים לקבל הכוונה להמשך?</div>
+      <div class="lead-banner__subtitle">שמרו את החישוב ושלחו אותו לבדיקה מסודרת.</div>
+    </div>
+    <div class="lead-banner__actions">
+      <a class="btn btn-primary lead-banner__mail" id="sendInquiryBtn" href="#" target="_blank" rel="noopener">שליחת החישוב</a>
+      <button class="lead-banner__close" id="closeLeadBanner" type="button" aria-label="סגירת הבאנר">×</button>
+    </div>
+  </div>
+  <!-- תבנית נסתרת לייצוא PDF -->
+  <div id="pdfTemplate" style="position:fixed;top:-10000px;right:-10000px;direction:rtl;font-family:'Heebo', Arial; width:800px;background:#fff;color:#0f172a">
+    <div style="padding:32px;border-bottom:4px solid #f97316;display:flex;gap:16px;align-items:center;justify-content:space-between">
+      <div style="display:flex;align-items:center;gap:16px">
+<!-- במקום השורה המקורית -->
+<img id="pdfLogo" alt="לוגו"
+     style="
+       width:100px;          /* גודל חדש */
+       height:80px;         /* גובה תואם */
+       border-radius:0;      /* או 50% לעיגול */
+       object-fit:contain;
+       background:none;      /* מסיר רקע */
+       border:none;          /* מסיר גבול */
+       box-shadow:none;      /* מסיר צל */
+       display:none
+     "
+     crossorigin="anonymous" />
+
+        <div id="pdfLogoFallback" style="width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg,#12384f,#f97316);display:grid;place-items:center;box-shadow:0 8px 24px rgba(37,99,235,.25);font-size:28px;color:#fff">⚡</div>
+        <div>
+          <div style="font-size:26px;font-weight:800" id="pdfBrand">VoltPlan</div>
+          <div style="color:#64748b">דוח התאמה עומסים – סוללות וממיר</div>
+        </div>
+      </div>
+      <div id="pdfCompany" style="text-align:right;color:#334155;font-size:14px"></div>
+    </div>
+
+    <div style="padding:24px;display:grid;gap:16px">
+      <div id="pdfSummary" style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px"></div>
+
+      <table style="width:100%;border-collapse:collapse;min-width:700px">
+        <thead>
+          <tr style="background:#f1f5f9;color:#0f172a">
+            <th style="border:1px solid #e2e8f0;padding:10px;text-align:right">#</th>
+            <th style="border:1px solid #e2e8f0;padding:10px;text-align:right">מכשיר/דגם</th>
+            <th style="border:1px solid #e2e8f0;padding:10px;text-align:right">הספק המכשיר ב־W</th>
+            <th style="border:1px solid #e2e8f0;padding:10px;text-align:right">שעות</th>
+            <th style="border:1px solid #e2e8f0;padding:10px;text-align:right">כמה יחידות?</th>
+            <th style="border:1px solid #e2e8f0;padding:10px;text-align:right">סה"כ Wh</th>
+          </tr>
+        </thead>
+        <tbody id="pdfTableBody"></tbody>
+      </table>
+
+      <div style="margin-top:24px;color:#64748b;font-size:12px">פירוט קצר: חישוב הסוללות כולל הורדת 10% לשימושיות. הממיר נבחר מתוך הדגמים הקיימים. במזגן: כל כוח סוס מחושב לממיר כ־1000W בגלל התנעה. מומלץ להתחיל מחישוב מינימלי של הצרכנים שחייבים לפעול באמת.</div>
+    </div>
+  </div>
+
+  <!-- Modals -->
+  <div class="modal-backdrop" id="solarPanelModal" role="dialog" aria-modal="true" aria-labelledby="solarTitle">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="solarTitle">בדיקת התאמה סולארית</h3>
+      <button class="close" onclick="closeSolarModal()">×</button>
+    </div>
+  
+    <div class="content" style="display:grid;gap:16px;color:#0f172a">
+      <label class="field">
+        <span>כמה מ״ר פנויים להתקנה?</span>
+        <input type="number" id="solarAreaInput" placeholder="לדוגמה: 12" min="1" step="0.1" />
+     <label class="field">
+  <span>איך הפאנלים צפויים להיות מונחים?</span>
+  <select id="solarAngleInput">
+    <option value="1">בזווית טובה על הגג</option>
+    <option value="0.85">מונחים שטוח</option>
+    <option value="0.75">הטיה חדה יחסית</option>
+    <option value="0.5">על קיר / בצורה אנכית</option>
+  </select>
+</label>
+<label class="field">
+  <span>לאיזה כיוון ההתקנה פונה?</span>
+  <select id="solarDirectionInput">
+    <option value="1">דרום — הכיוון המומלץ</option>
+    <option value="0.95">דרום־מזרח / דרום־מערב</option>
+    <option value="0.8">מזרח / מערב</option>
+    <option value="0.6">צפון</option>
+  </select>
+</label>
+
+      </label>
+      <div id="solarResult" style="background:#f1f5f9;padding:16px;border-radius:12px;display:none"></div>
+    </div>
+    <div style="margin-top:16px">
+      <button class="btn btn-primary" onclick="calcSolarOutput()">בדיקת תפוקה משוערת</button>
+    </div>
+  </div>
+</div>
+
+  <div class="modal-backdrop" id="calculatorModal" role="dialog" aria-modal="true" aria-labelledby="calcTitle">
+    <div class="modal" id="calculator">
+      <div class="modal-header">
+        <h3 id="calcTitle" style="margin:0">הוספת מכשיר לחישוב</h3>
+        <button class="close" id="closeCalculator" aria-label="סגור">×</button>
+      </div>
+
+      <div class="grid-3" style="margin-top:8px">
+        <div class="field">
+          <label for="productSelect">איזה מכשיר תרצו להוסיף?</label>
+          <select id="productSelect"></select>
+        </div>
+        <div class="field">
+          <label for="modelSelect">בחרו דגם / הספק מתאים</label>
+          <select id="modelSelect"></select>
+        </div>
+        <div class="field">
+          <label for="hoursInput">כמה שעות שימוש?</label>
+<input
+  id="hoursInput"
+  type="number"
+  min="1"
+  step="1"
+  placeholder="למשל 3"
+  oninput="this.value = this.value.replace(/\D/g,'')"
+/>
+        </div>
+        <div class="field">
+          <label for="qtyInput">כמה יחידות?</label>
+          <input id="qtyInput" type="number" min="1" step="1" value="1" />
+        </div>
+      </div>
+
+      <p class="note" style="margin-top:16px">בחרנו עבורכם הספק ממוצע לפי דגמים נפוצים. רוצים לדייק יותר? אפשר לפתוח הזנה ידנית.</p>
+<!-- ——— מצב מתקדם ——— -->
+<label class="field advanced-trigger" style="align-items:start;margin-top:12px;cursor:pointer">
+  <!-- ה‑checkbox נשאר כדי שה‑JS יזהה, אבל מוסתר לגמרי -->
+  <input type="checkbox" id="advancedToggle" class="visually-hide" />
+  <span>רוצה לדייק? הזנה ידנית</span>
+</label>
+
+
+<!-- שדות מתקדם: מוסתרים כברירת‑מחדל -->
+<div id="advancedFields" style="display:none;margin-top:12px" class="grid-3">
+  <div class="field">
+    <label for="customName">שם המכשיר להצגה בטבלה</label>
+    <input id="customName" type="text" placeholder="לדוגמה: תאורת סלון" />
+  </div>
+  <div class="field">
+    <label for="customPower">הספק המכשיר ב־W</label>
+    <input id="customPower" type="number" min="1" step="1" placeholder="120" />
+  </div>
+</div>
+
+      <div style="margin-top:16px;display:flex;gap:12px;justify-content:flex-start">
+        <button class="btn btn-primary" id="addItemBtn">הוספה לחישוב</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="instructionsModal" role="dialog" aria-modal="true" aria-labelledby="instTitle">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="instTitle" style="margin:0">איך משתמשים במחשבון?</h3>
+        <button class="close" id="closeInstructions" aria-label="סגור">×</button>
+      </div>
+      <div class="content" style="display:grid;gap:16px;color:#0f172a">
+  <p>1. לחצו על <b>הוספת מכשיר לחישוב</b> ובחרו את סוג המכשיר.</p>
+  <p>2. הזינו <b>כמה שעות שימוש?</b> ו<b>כמה יחידות?</b>. אין צורך בהספקים – זה מחושב לבד.</p>
+  <p>3. הטבלה מחשבת הכל אוטומטית. אפשר לשנות שעות/כמה יחידות? בכל רגע, והסיכומים יתעדכנו.</p>
+  <p>4. בסיכום תקבלו צריכה כוללת, ממיר מומלץ ומספר סוללות משוער לפי כמה אפשרויות קיבולת.</p>
+   <p>5. בסיום מומלץ לשמור את הדוח ל־PDF או לאקסל ולשלוח לבדיקה מסודרת.</p>
+
+  <p style="color:#334155">
+    🔸 <b>טיפ חשוב:</b> התחילו מהצרכנים שחייבים לעבוד בפועל.<br>
+    כך מקבלים בסיס נכון ולא מנפחים את המערכת סתם. תמיד אפשר להוסיף צרכנים או שעות בהמשך.
+  </p>
+</div>
+
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="modelsModal" role="dialog" aria-modal="true" aria-labelledby="modelsTitle">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="modelsTitle" style="margin:0">דגמים שיכולים להתאים</h3>
+        <button class="close" id="closeModelsBtn" aria-label="סגור">×</button>
+      </div>
+      <div class="content" style="display:grid;gap:16px;color:#0f172a">
+        <p>רוצים להתקדם להצעת מחיר? כאן אפשר לראות דגמים מתאימים ולבחור את הכיוון הנכון:</p>
+        <p>
+          <a href="https://lp.vp4.me/mw18#zHeader_5bcf1375207c43369b0c2ea3a8756397" target="_blank" rel="noopener" class="btn btn-primary" style="display:inline-block;text-decoration:none">פתיחת דגמים שיכולים להתאים</a>
+        </p>
+        <p style="margin:0;color:#64748b;font-size:14px">* החישוב כולל מקדם ביטחון של 10% בקיבולת השימושית: 5.1kWh נטו 4.6kWh, 15.3kWh נטו 13.77kWh, ו־16kWh נטו 14.4kWh.</p>
+      </div>
+    </div>
+  </div>
+  <footer class="site-footer">
+    <div class="container site-footer-inner">
+      <div>© <span id="year"></span> <span id="footerBrand">VoltPlan</span>. כל הזכויות שמורות.</div>
+      </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/xlsx-js-style@1.2.0/dist/xlsx.min.js"></script>
+
+  <script>
+    // ======== מאגר מכשירים ודגמים (תיקון כפילות בנורה 60W) ========
+    const RAW_PRODUCTS = {
+      "מקרר": [
+        { model: "650 ליטר", power: 170 },
+        { model: "500 ליטר", power: 145 },
+        { model: "140 ליטר", power: 90 }
+      ],
+      "מקפיא": [
+        { model: "עד 4 מגירות", power: 80 },
+        { model: "עד 8 מגירות", power: 120 }
+      ],
+      "פלטת שבת": [
+        { model: "סיר אחד", power: 200 },
+        { model: "2 סירים", power: 300 },
+        { model: "4 סירים", power: 400 },
+        { model: "6 סירים", power: 600 }
+      ],
+      "מיחם חשמלי": [ { model: "40 כוסות", power: 120 } ],
+      "טרמוס חשמלי": [ { model: "40 כוסות", power: 60 } ],
+      "מזגן": [
+        { model: "1 כוח סוס", power: 600 },
+        { model: "1.25 כוח סוס", power: 750 },
+        { model: "1.5 כוח סוס", power: 900 },
+        { model: "2 כוח סוס", power: 1200 },
+        { model: "2.5 כוח סוס", power: 1500 },
+        { model: "3 כוח סוס", power: 1800 }
+      ],
+      "מאוורר": [
+        { model: "30 סנטימטר", power: 60 },
+        { model: "40 סנטימטר", power: 70 },
+        { model: "50 סנטימטר", power: 80 },
+        { model: "תקרה 99 סנטימטר", power: 120 }
+      ],
+      "רדיאטור": [
+        { model: "8 צלעות", power: 1500 },
+        { model: "12 צלעות", power: 2000 },
+        { model: "דרגה 2", power: 1500 }
+      ],
+      "מפזר חום": [ { model: "דרגה 3", power: 2000 } ],
+"תנור ספירלה": [ { model: "ממוצע", power: 1000 } ],
+      "תמי 4 ": [ { model: "1 פיית מים", power: 120 } ],
+      "נורה": [
+        { model: "60 וואט", power: 60 },
+        { model: "45 וואט", power: 45 },
+        { model: "50 וואט", power: 50 },
+        { model: "18 וואט", power: 18 },
+        { model: "22 וואט", power: 22 },
+        { model: "25 וואט", power: 25 },
+        { model: "36 וואט", power: 36 },
+        { model: "48 וואט", power: 48 }
+      ],
+      "פס לד": [ { model: "למטר", power: 13 } ]
+    };
+
+    // ======== קבועים עבור דגמי הסוללות ========
+    const SMALL_BATTERY_WH_NET = 5120 * 0.90;   // 4,608 Wh נטו
+    const MID_BATTERY_WH_NET   = 15300 * 0.90;  // 13,770 Wh נטו
+    const LARGE_BATTERY_WH_NET = 16000 * 0.90;  // 14,400 Wh נטו
+    const INVERTER_MODELS_W = [2000,3000,4000,5000,6000,8000,10000,12000,15000,20000];
+
+    // פרטי חברה / מיתוג ל-PDF ולכותרת. עדכנו את logoUrl לקובץ הלוגו שלכם.
+    const COMPANY = {
+      name: 'מאירי שבת',
+      phone: '054-844-4350',
+      email: 'a026233343@gmail.com',
+      website: '',
+      logoUrl: 'https://content.vp4.me/ishabat/Content/%d7%9c%d7%95%d7%92%d7%95_%d7%9e%d7%90%d7%99%d7%a8%d7%99_%d7%a9%d7%91%d7%aa_-_%d7%9e%d7%a2%d7%95%d7%93%d7%9b%d7%9f_600x271-removebg-preview_600x271-r.png'
+    }
+
+    // ======== מצב אפליקציה ========
+    const productsList = []; // { product, model, power, hours, quantity }
+
+    // ======== DOM ========
+    const yearEl = document.getElementById('year');
+    const openCalcBtn = document.getElementById('openCalcBtn');
+    const openInstructionsBtn = document.getElementById('openInstructionsBtn');
+    const openModelsBtn = document.getElementById('openModelsBtn');
+    const exportPdfBtn = document.getElementById('exportPdfBtn');
+
+    const calculatorModal = document.getElementById('calculatorModal');
+    const instructionsModal = document.getElementById('instructionsModal');
+    const modelsModal = document.getElementById('modelsModal');
+
+    const closeCalculatorBtn = document.getElementById('closeCalculator');
+    const closeInstructionsBtn = document.getElementById('closeInstructions');
+    const closeModelsBtn = document.getElementById('closeModelsBtn');
+
+    const productSelect = document.getElementById('productSelect');
+    const modelSelect = document.getElementById('modelSelect');
+    const hoursInput = document.getElementById('hoursInput');
+    const qtyInput = document.getElementById('qtyInput');
+    const addItemBtn = document.getElementById('addItemBtn');
+const advancedToggle = document.getElementById('advancedToggle');
+const advancedFields = document.getElementById('advancedFields');
+const customName     = document.getElementById('customName');
+const customPower    = document.getElementById('customPower');
+
+    const tableBody = document.querySelector('#productsTable tbody');
+
+    const leadBanner = document.getElementById('leadBanner');
+    const sendInquiryBtn = document.getElementById('sendInquiryBtn');
+    const closeLeadBannerBtn = document.getElementById('closeLeadBanner');
+    let leadBannerDismissed = false;
+    let leadBannerActivated = false;
+    let recommendationBasisTouched = false;
+
+   const statInverter = document.getElementById('statInverter');
+
+
+    const statWh = document.getElementById('statWh');
+    const statKWh = document.getElementById('statKWh');
+    const statBatteries = document.getElementById('statBatteries');
+    const statBatteries153 = document.getElementById('statBatteries153');
+    const statBatteriesLarge = document.getElementById('statBatteriesLarge');
+
+    const brandLogo = document.getElementById('brandLogo');
+    const brandFallback = document.getElementById('brandFallback');
+    const brandName = document.getElementById('brandName');
+    const footerBrand = document.getElementById('footerBrand');
+
+    yearEl.textContent = new Date().getFullYear();
+/* 1. הכרזה ב-let כדי שאפשר יהיה לעדכן */
+let batteryCalculation  = document.getElementById('batteryCalculation');
+let inverterCalculation = document.getElementById('inverterCalculation');
+
+/* 2. אם האלמנטים לא קיימים – צור אותם */
+
+function closeSolarModal() {
+  const modal = document.getElementById("solarPanelModal");
+  if (modal) {
+    modal.style.display = "none";
+  }
+}
+
+
+    // לוגו ומיתוג במסך וב-PDF
+    (function setupBranding(){
+      if (brandName) brandName.textContent = COMPANY.name || 'VoltPlan';
+      if (footerBrand) footerBrand.textContent = COMPANY.name || 'VoltPlan';
+      const pdfBrandEl = document.getElementById('pdfBrand');
+      if (pdfBrandEl) pdfBrandEl.textContent = COMPANY.name || 'VoltPlan';
+      if(COMPANY.logoUrl && brandLogo){
+        brandLogo.crossOrigin = 'anonymous';
+        brandLogo.src = COMPANY.logoUrl;
+        brandLogo.onload = ()=>{ brandLogo.style.display='block'; if (brandFallback) brandFallback.style.display='none'; };
+        brandLogo.onerror = ()=>{ brandLogo.style.display='none'; if (brandFallback) brandFallback.style.display='grid'; };
+      }
+      const pdfLogo = document.getElementById('pdfLogo');
+      const pdfLogoFallback = document.getElementById('pdfLogoFallback');
+      if(COMPANY.logoUrl && pdfLogo){
+        pdfLogo.src = COMPANY.logoUrl;
+        pdfLogo.onload = ()=>{ pdfLogo.style.display='block'; if (pdfLogoFallback) pdfLogoFallback.style.display='none'; };
+      }
+    })();
+
+function getAirConditionerPeakWatts(item){
+  const modelText = String(item.model || item.product || '');
+  const hpMatch = modelText.match(/([0-9]+(?:\.[0-9]+)?)\s*כוח\s*סוס/);
+  if (hpMatch) return Math.ceil(Number(hpMatch[1]) * 1000);
+  return Number(item.power) || 0;
+}
+
+function calcPeakPowerForInverter(){
+  return productsList.reduce((sum,it)=>{
+    const qty = Number(it.quantity) || 0;
+    const watts = String(it.product || '').includes('מזגן')
+      ? getAirConditionerPeakWatts(it)
+      : (Number(it.power) || 0);
+    return sum + watts * qty;
+  },0);
+}
+
+function recommendInverterModel(requiredW){
+  const required = Math.ceil(Number(requiredW) || 0);
+  if (required <= 0) return 0;
+  return INVERTER_MODELS_W.find(model => model >= required) || null;
+}
+
+function formatInverterRecommendation(requiredW){
+  const model = recommendInverterModel(requiredW);
+  if (!model) return requiredW > 0 ? 'מעל 20,000' : '0';
+  return formatNumber(model);
+}
+
+function inverterExplanationText(requiredW){
+  const model = recommendInverterModel(requiredW);
+  if (!requiredW) return 'אין צרכנים בטבלה';
+  if (!model) return `${formatNumber(requiredW)} W צריכה בפועל ⇒ מעל 20,000 W — נדרש תכנון מיוחד או שילוב ממירים`;
+  return `${formatNumber(requiredW)} W צריכה בפועל ⇒ דגם ממיר ${formatNumber(model)} W`;
+}
+
+
+    function show(el){ if(el) el.style.display = 'grid'; }
+    function hide(el){ if(el) el.style.display = 'none'; }
+
+    function openCalculator(){ show(calculatorModal); }
+    function closeCalculator(){ hide(calculatorModal); }
+    function openInstructions(){ show(instructionsModal); }
+    function closeInstructions(){ hide(instructionsModal); }
+    function openModels(){ show(modelsModal); }
+    function closeModels(){ hide(modelsModal); }
+
+function populateProductSelect(){
+  /* אופציית placeholder – בחר מכשיר */
+  productSelect.innerHTML = '';                         // איפוס
+  const ph = document.createElement('option');
+  ph.textContent = '— בחר מכשיר —';
+  ph.value = '';
+  ph.disabled = true;
+  ph.selected = true;
+  productSelect.appendChild(ph);
+
+  /* מילוי רשימת המוצרים */
+  Object.keys(RAW_PRODUCTS).forEach(name=>{
+    const opt = document.createElement('option');
+    opt.value = name;
+    opt.textContent = name;
+    productSelect.appendChild(opt);
+  });
+  
+  /* כל עוד עומד placeholder – אין מודלים */
+  populateModelSelect('');
+}
+
+    function populateModelSelect(productName){
+      modelSelect.innerHTML = '';
+      const models = RAW_PRODUCTS[productName] || [];
+      models.forEach((m,idx)=>{
+        const opt = document.createElement('option');
+        opt.value = String(idx);
+        opt.textContent = `${m.model} – ${m.power}W`;
+        opt.dataset.power = String(m.power);
+        opt.dataset.model = m.model;
+        modelSelect.appendChild(opt);
+      });
+    }
+
+    function getSelectedModel(){
+      const opt = modelSelect.selectedOptions[0];
+      if(!opt) return { label:'', watts:0 };
+      return { label: opt.dataset.model || '', watts: Number(opt.dataset.power)||0 };
+    }
+
+    function calcItemTotalWh(item){
+      return (Number(item.power)||0) * (Number(item.hours)||0) * (Number(item.quantity)||0);
+    }
+    function formatNumber(n){ return Number(n).toLocaleString('he-IL'); }
+
+
+function buildInquiryMailUrl(){
+  const subject = 'שליחת דוח צריכה מהמחשבון - מאירי שבת';
+  const body = `שלום,
+
+אשמח שנציג יחזור אליי בהקדם להתאמת מערכת לפי דוח הצריכה.
+מצורף / אצרף למייל את קובץ ה-PDF שהורד מהמחשבון.
+
+שם מלא:
+טלפון לחזרה:
+עיר:
+הערות נוספות:
+`;
+
+  const to = encodeURIComponent(COMPANY.email || '');
+  return `https://mail.google.com/mail/?view=cm&fs=1&to=${to}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+
+function markCalculatorUsed(){
+  leadBannerActivated = true;
+  leadBannerDismissed = false;
+  updateLeadBanner();
+}
+
+function updateLeadBanner(){
+  if(!leadBanner || !sendInquiryBtn) return;
+  const shouldShow = leadBannerActivated && (productsList.length > 0 || recommendationBasisTouched) && !leadBannerDismissed;
+  leadBanner.classList.toggle('is-visible', shouldShow);
+  document.body.classList.toggle('has-lead-banner', shouldShow);
+  if (productsList.length > 0 || recommendationBasisTouched) {
+    sendInquiryBtn.href = buildInquiryMailUrl();
+  }
+}
+
+function markRecommendationBasisChanged(){
+  recommendationBasisTouched = true;
+  markCalculatorUsed();
+}
+
+function textIncludesRecommendation(value){
+  return /המלצ|recommend/i.test(String(value || ''));
+}
+
+function textIncludesBasis(value){
+  return /בסיס|base|basis/i.test(String(value || ''));
+}
+
+function collectControlText(el){
+  if(!el) return '';
+  const parts = [
+    el.id,
+    el.name,
+    el.className,
+    el.getAttribute && el.getAttribute('data-role'),
+    el.getAttribute && el.getAttribute('data-field'),
+    el.getAttribute && el.getAttribute('aria-label'),
+    el.getAttribute && el.getAttribute('placeholder'),
+    el.getAttribute && el.getAttribute('title')
+  ];
+
+  const label = el.closest && el.closest('label');
+  if(label) parts.push(label.textContent);
+
+  let parent = el.parentElement;
+  let depth = 0;
+  while(parent && depth < 5){
+    const parentMeta = [
+      parent.id,
+      parent.className,
+      parent.getAttribute && parent.getAttribute('data-role'),
+      parent.getAttribute && parent.getAttribute('aria-label'),
+      parent.getAttribute && parent.getAttribute('title')
+    ].join(' ');
+    parts.push(parentMeta);
+    if(textIncludesRecommendation(parent.textContent) || textIncludesBasis(parent.textContent)){
+      parts.push(parent.textContent.slice(0, 500));
+    }
+    parent = parent.parentElement;
+    depth++;
+  }
+
+  return parts.filter(Boolean).join(' ');
+}
+
+function isRecommendationBasisControl(el){
+  if(!el || !el.matches || !el.matches('select,input,button,[role="button"],[role="tab"],[data-recommendation-basis]')) return false;
+  const text = collectControlText(el);
+  const hasExactHebrew = /בסיס\s*המלצ|המלצ[\s\S]{0,30}בסיס|בסיס[\s\S]{0,30}המלצ/.test(text);
+  const hasExactEnglish = /recommendation\s*(base|basis)|(base|basis)\s*recommendation|recommend[\s\S]{0,30}(base|basis)|(base|basis)[\s\S]{0,30}recommend/i.test(text);
+  const hasTaggedAttribute = el.hasAttribute && el.hasAttribute('data-recommendation-basis');
+  return hasTaggedAttribute || hasExactHebrew || hasExactEnglish || (textIncludesBasis(text) && textIncludesRecommendation(text));
+}
+
+function bindRecommendationBasisTriggers(){
+  const selector = [
+    '[data-recommendation-basis]',
+    '#recommendationBase',
+    '#recommendationBasis',
+    '#baseRecommendation',
+    '#basisRecommendation',
+    '#basisSelect',
+    '#baseSelect',
+    '[name="recommendationBase"]',
+    '[name="recommendationBasis"]',
+    '[name="baseRecommendation"]',
+    '[name="basisRecommendation"]',
+    '[id*="recommend"][id*="base" i]',
+    '[id*="recommend"][id*="basis" i]',
+    '[id*="base"][id*="recommend" i]',
+    '[id*="basis"][id*="recommend" i]',
+    '[class*="recommend"][class*="base" i]',
+    '[class*="recommend"][class*="basis" i]'
+  ].join(',');
+
+  document.querySelectorAll(selector).forEach(el => {
+    el.setAttribute('data-recommendation-basis', 'true');
+    el.addEventListener('change', markRecommendationBasisChanged);
+    el.addEventListener('click', markRecommendationBasisChanged);
+  });
+
+  document.addEventListener('change', (e) => {
+    if(isRecommendationBasisControl(e.target)) markRecommendationBasisChanged();
+  }, true);
+
+  document.addEventListener('click', (e) => {
+    if(isRecommendationBasisControl(e.target)) markRecommendationBasisChanged();
+  }, true);
+}
+
+function updateTotalsUI(totalWh){
+  const kwh      = totalWh/1000;
+  const batSmall = totalWh>0?Math.ceil(totalWh/SMALL_BATTERY_WH_NET):0;
+  const bat153   = totalWh>0?Math.ceil(totalWh/MID_BATTERY_WH_NET):0;
+  const batLarge = totalWh>0?Math.ceil(totalWh/LARGE_BATTERY_WH_NET):0;
+
+  statKWh.textContent         = kwh.toFixed(2);
+  statBatteries.textContent   = batSmall;
+  if (statBatteries153) statBatteries153.textContent = bat153;
+  statBatteriesLarge.textContent = batLarge;
+
+  const peak = calcPeakPowerForInverter();
+  statInverter.textContent = formatInverterRecommendation(peak);
+
+  if (batteryCalculation) {
+    batteryCalculation.innerHTML =
+      `עבור <b>5.1 kWh</b> (4,608 Wh נטו): <b>${batSmall}</b> סוללות.<br>` +
+      `עבור <b>15.3 kWh</b> (13,770 Wh נטו): <b>${bat153}</b> סוללות.<br>` +
+      `עבור <b>16 kWh</b> (14,400 Wh נטו): <b>${batLarge}</b> סוללות.`;
+  }
+
+  if (inverterCalculation) {
+    inverterCalculation.textContent = inverterExplanationText(peak);
+  }
+}
+
+
+/*  ⬅︎ 1. מאזין לכפתור */
+document.getElementById('clearTableBtn')
+  .addEventListener('click', clearTable);
+
+/*  ⬅︎ 2. הפעולה עצמה */
+function clearTable () {
+  if (!confirm('למחוק את כל השורות בטבלה?')) return;
+
+  productsList.length = 0;          // מרוקן את המערך
+  leadBannerActivated = false;      // לא מציג באנר אחרי ניקוי
+  recommendationBasisTouched = false; // מאפס גם שינוי בסיס המלצה
+  tableBody.innerHTML = '';         // מנקה DOM
+  updateTotalSummary();             // מאפס סיכומים
+  localStorage.removeItem(STORAGE_KEY); // מוחק את השמירה
+}
+
+
+    function updateTotalSummary(){
+      const totalWh = productsList.reduce((sum,item)=> sum + calcItemTotalWh(item), 0);
+      updateTotalsUI(totalWh);
+      updateLeadBanner();
+    }
+
+    function createRow(item, index){
+      const tr = document.createElement('tr');
+      const total = calcItemTotalWh(item);
+      tr.innerHTML = `
+        <td>${index+1}</td>
+        <td>${item.product} <span style="color:#64748b;font-size:12px;display:block">${item.model} (${item.power}W)</span></td>
+        <td class="hours-cell"></td>
+        <td class="qty-cell"></td>
+        <td class="total-cell">${total.toFixed(0)}</td>
+        <td class="actions">
+          <button class="btn btn-outline" data-action="duplicate">שכפל</button>
+          <button class="btn btn-danger" data-action="remove">מחק</button>
+        </td>`;
+
+      const hoursCell = tr.querySelector('.hours-cell');
+      const qtyCell = tr.querySelector('.qty-cell');
+
+// ===== hoursInputEl עם step=1 וסינון תווים =====
+const hoursInputEl = document.createElement('input');
+hoursInputEl.type = 'number';
+hoursInputEl.min = '1';
+hoursInputEl.step = '1';
+hoursInputEl.value = item.hours ?? 0;
+hoursInputEl.style.maxWidth = '120px';
+hoursInputEl.addEventListener('input', () => {
+  // שומר רק ספרות
+  hoursInputEl.value = hoursInputEl.value.replace(/\D/g, '');
+  // מעדכן מערך ותצוגה
+  productsList[index].hours = Number(hoursInputEl.value) || 0;
+  updateRowTotal(tr, index);
+  markCalculatorUsed();
+});
+hoursCell.appendChild(hoursInputEl);
+
+      const qtyInputEl = document.createElement('input');
+      qtyInputEl.type = 'number'; qtyInputEl.min = '1'; qtyInputEl.step = '1';
+      qtyInputEl.value = item.quantity ?? 1; qtyInputEl.style.maxWidth = '100px';
+      qtyInputEl.addEventListener('input', ()=>{ productsList[index].quantity = Number(qtyInputEl.value)||0; updateRowTotal(tr,index); markCalculatorUsed(); });
+      qtyCell.appendChild(qtyInputEl);
+
+      tr.querySelector('[data-action="remove"]').addEventListener('click', ()=> removeItem(index));
+      tr.querySelector('[data-action="duplicate"]').addEventListener('click', ()=> duplicateItem(index));
+
+      return tr;
+    }
+
+    function updateRowTotal(row,index){
+      const totalCell = row.querySelector('.total-cell');
+      const total = calcItemTotalWh(productsList[index]);
+      totalCell.textContent = total.toFixed(0);
+      updateTotalSummary();
+    saveData();             
+    }
+
+function addItemFromModal(){
+  let productName, model, power;
+
+  if (advancedToggle.checked) {
+    // --- מצב מתקדם ---
+    productName = customName.value.trim() || 'צרכן מותאם';
+    model       = '';
+    power       = Math.max(1, Number(customPower.value) || 0);
+  } else {
+    // --- מצב רגיל ---
+    productName = productSelect.value || 'מכשיר';
+    const sel   = getSelectedModel();
+    model       = sel.label;
+    power       = sel.watts;
+  }
+
+  const hours    = Math.max(1, Number(hoursInput.value) || 1);
+  const quantity = Math.max(1, Number(qtyInput.value)  || 1);
+
+  productsList.push({ product: productName, model, power, hours, quantity });
+  markCalculatorUsed();
+
+  /* איפוס שדות */
+  hoursInput.value = '';
+  qtyInput.value   = '1';
+  customName.value = '';
+  customPower.value= '';
+  advancedToggle.checked = false;
+  advancedFields.style.display = 'none';
+  productSelect.disabled = modelSelect.disabled = false;
+
+  updateTable();
+  closeCalculator();
+
+}
+
+    function removeItem(index){ productsList.splice(index,1); updateTable(); saveData();}
+    function duplicateItem(index){ const item = productsList[index]; productsList.splice(index+1,0,{...item}); markCalculatorUsed(); updateTable();saveData(); }
+
+    // ======== ייצוא PDF ========
+function buildPdfSummaryHtml(totalWh, kwh, batSmall, bat153, batLarge, peakPowerW){
+  return `
+    <div style="border:1px solid #e2e8f0;border-radius:14px;padding:16px;background:linear-gradient(180deg,#ffffff,#fafafa)">
+      <div style="color:#64748b;font-weight:600;font-size:14px;margin-bottom:6px">צריכה כוללת</div>
+      <div style="font-size:18px;font-weight:700">${formatNumber(Math.round(totalWh))} Wh</div>
+      <div style="font-size:18px;font-weight:700">${kwh} kWh</div>
+    </div>
+    <div style="border:1px solid #e2e8f0;border-radius:14px;padding:16px;background:linear-gradient(180deg,#ffffff,#fafafa)">
+      <div style="color:#64748b;font-weight:600;font-size:14px;margin-bottom:6px">חישוב סוללות מומלץ</div>
+      <div style="font-size:16px;line-height:1.6">
+        לפי דגם 5.1kWh (נטו 4,608Wh): <b>${batSmall}</b> יח׳<br/>
+        לפי דגם 15.3kWh (נטו 13,770Wh): <b>${bat153}</b> יח׳<br/>
+        לפי דגם 16kWh (נטו 14,400Wh): <b>${batLarge}</b> יח׳
+      </div>
+    </div>
+    <div style="border:1px solid #e2e8f0;border-radius:14px;padding:16px;background:linear-gradient(180deg,#ffffff,#fafafa)">
+      <div style="color:#64748b;font-weight:600;font-size:14px;margin-bottom:6px">ממיר מומלץ</div>
+      <div style="font-size:16px;line-height:1.7">${inverterExplanationText(peakPowerW)}</div>
+      <div style="font-size:12px;color:#64748b;margin-top:8px">במזגן: כל כוח סוס מחושב לממיר כ־1000W בגלל התנעה.</div>
+    </div>
+    <div style="border:1px solid #e2e8f0;border-radius:14px;padding:16px;background:linear-gradient(180deg,#ffffff,#fafafa)">
+      <div style="color:#64748b;font-weight:600;font-size:14px;margin-bottom:6px">עצת חישוב</div>
+      <div style="font-size:14px;line-height:1.7">מומלץ להתחיל מהמינימום שחייב לפעול בפועל, ורק אחר כך להוסיף צרכנים לפי צורך.</div>
+    </div>`;
+}
+
+function exportPdf(){
+  const totalWh = productsList.reduce((sum,i)=> sum + calcItemTotalWh(i), 0);
+  const kwh = (totalWh/1000).toFixed(2);
+  const batSmall = totalWh>0 ? Math.ceil(totalWh/SMALL_BATTERY_WH_NET) : 0;
+  const bat153   = totalWh>0 ? Math.ceil(totalWh/MID_BATTERY_WH_NET) : 0;
+  const batLarge = totalWh>0 ? Math.ceil(totalWh/LARGE_BATTERY_WH_NET) : 0;
+  const peakPowerW = calcPeakPowerForInverter();
+
+  const compDiv = document.getElementById('pdfCompany');
+  compDiv.innerHTML = `<b>${COMPANY.name}</b><br/>טל': ${COMPANY.phone}<br/>דוא"ל: ${COMPANY.email}<br/> ${COMPANY.website}`;
+
+  document.getElementById('pdfSummary').innerHTML = buildPdfSummaryHtml(totalWh, kwh, batSmall, bat153, batLarge, peakPowerW);
+
+  const bodyEl = document.getElementById('pdfTableBody');
+  bodyEl.innerHTML = '';
+  productsList.forEach((it,idx)=>{
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td style="border:1px solid #e2e8f0;padding:8px">${idx+1}</td>
+      <td style="border:1px solid #e2e8f0;padding:8px">${it.product} – ${it.model}</td>
+      <td style="border:1px solid #e2e8f0;padding:8px">${it.power}</td>
+      <td style="border:1px solid #e2e8f0;padding:8px">${it.hours}</td>
+      <td style="border:1px solid #e2e8f0;padding:8px">${it.quantity}</td>
+      <td style="border:1px solid #e2e8f0;padding:8px">${calcItemTotalWh(it).toFixed(0)}</td>`;
+    bodyEl.appendChild(tr);
+  });
+
+  const template = document.getElementById('pdfTemplate');
+  html2canvas(template, { scale: 2, useCORS: true }).then(canvas=>{
+    const { jsPDF } = window.jspdf || {};
+    if(!jsPDF){ alert('לא ניתן לטעון מחולל PDF (jsPDF). בדקו חיבור אינטרנט או חסימה.'); return; }
+
+    const pdf = new jsPDF({ unit: 'pt', format: 'a4', orientation: 'p' });
+    const pageWidth = pdf.internal.pageSize.getWidth();
+    const pageHeight = pdf.internal.pageSize.getHeight();
+    const marginTopFirstPage = 0;
+    const marginTopNextPages = 28;
+    const imgWidth = pageWidth;
+    const imgHeight = canvas.height * imgWidth / canvas.width;
+    let position = marginTopFirstPage;
+    let remainingHeight = imgHeight;
+
+    pdf.addImage(canvas, 'PNG', 0, position, imgWidth, imgHeight);
+    remainingHeight -= (pageHeight - marginTopFirstPage);
+
+    while (remainingHeight > 0) {
+      pdf.addPage();
+      position = -(imgHeight - remainingHeight) + marginTopNextPages;
+      pdf.addImage(canvas, 'PNG', 0, position, imgWidth, imgHeight);
+      remainingHeight -= (pageHeight - marginTopNextPages);
+    }
+
+    pdf.save('מאירי שבת ‑ דוח התאמת מערכת לפי צריכת חשמל.pdf');
+  });
+}
+
+// ======== ייצוא Excel (.xlsx) מעוצב ========
+function exportExcel(){
+  const sumWh = productsList.reduce((s,it)=> s + calcItemTotalWh(it), 0);
+  const kwh = sumWh / 1000;
+  const peakPowerW = calcPeakPowerForInverter();
+
+  const smallBatteryCount = sumWh > 0 ? Math.ceil(sumWh / SMALL_BATTERY_WH_NET) : 0;
+  const midBatteryCount   = sumWh > 0 ? Math.ceil(sumWh / MID_BATTERY_WH_NET) : 0;
+  const largeBatteryCount = sumWh > 0 ? Math.ceil(sumWh / LARGE_BATTERY_WH_NET) : 0;
+
+  const now = new Date();
+  const dateText = now.toLocaleDateString("he-IL");
+
+  const tableHeaderRow = 13;
+  const rows = [
+    ["דוח התאמת מערכת לפי צריכת חשמל", "", "", "", "", "", ""],
+    [`${COMPANY.name} | ${COMPANY.phone}${COMPANY.email ? " | " + COMPANY.email : ""}`, "", "", "", "", "", ""],
+    [`תאריך הפקה: ${dateText}`, "", "", "", "", "", ""],
+    [],
+    ["סיכום התאמה", "", "", "", "", "", ""],
+    ["מה נבדק", "התוצאה", "פירוט קצר", "", "", "", ""],
+    ["צריכה כוללת", Number(kwh.toFixed(2)), "kWh לפי כל הצרכנים שהוזנו", "", "", "", ""],
+    ["ממיר מומלץ", inverterExplanationText(peakPowerW), "נבחר לפי הדגמים הקיימים במערכת", "", "", "", ""],
+    ["סוללות 5.1kWh", smallBatteryCount, "נטו 4.6kWh לאחר הפחתת 10%", "", "", "", ""],
+    ["סוללות 15.3kWh", midBatteryCount, "נטו 13.77kWh לאחר הפחתת 10%", "", "", "", ""],
+    ["סוללות 16kWh", largeBatteryCount, "נטו 14.4kWh לאחר הפחתת 10%", "", "", "", ""],
+    [],
+    ["#", "מכשיר", "דגם", "הספק W", "שעות", "כמה יחידות?", "סה״כ Wh"]
+  ];
+
+  productsList.forEach((it,i)=>{
+    rows.push([
+      i + 1,
+      it.product,
+      it.model,
+      Number(it.power || 0),
+      Number(it.hours || 0),
+      Number(it.quantity || 0),
+      Number(calcItemTotalWh(it).toFixed(0))
+    ]);
+  });
+
+  if (!productsList.length) {
+    rows.push(["", "לא נוספו מכשירים לחישוב", "", "", "", "", ""]);
+  }
+
+  rows.push([]);
+  rows.push(["פירוט קצר", "החישוב הוא אומדן לפי הנתונים שהוזנו במחשבון. מומלץ לוודא התאמה סופית מול נציג מקצועי.", "", "", "", "", ""]);
+  rows.push(["יצירת קשר", `${COMPANY.name} | ${COMPANY.phone}${COMPANY.email ? " | " + COMPANY.email : ""}`, "", "", "", "", ""]);
+
+  const wb = XLSX.utils.book_new();
+  wb.Workbook = {
+    Views: [{ RTL: true }]
+  };
+
+  const ws = XLSX.utils.aoa_to_sheet(rows);
+  ws["!dir"] = "rtl";
+
+  const lastDataRow = tableHeaderRow + Math.max(productsList.length, 1);
+  const lastRowIndex = rows.length - 1;
+
+  ws["!merges"] = [
+    { s:{r:0,c:0}, e:{r:0,c:6} },
+    { s:{r:1,c:0}, e:{r:1,c:6} },
+    { s:{r:2,c:0}, e:{r:2,c:6} },
+    { s:{r:4,c:0}, e:{r:4,c:6} },
+    { s:{r:lastRowIndex-1,c:1}, e:{r:lastRowIndex-1,c:6} },
+    { s:{r:lastRowIndex,c:1}, e:{r:lastRowIndex,c:6} }
+  ];
+
+  ws["!cols"] = [
+    { wch: 7 },
+    { wch: 24 },
+    { wch: 28 },
+    { wch: 13 },
+    { wch: 10 },
+    { wch: 10 },
+    { wch: 16 }
+  ];
+
+  ws["!rows"] = rows.map((_, idx) => {
+    if (idx === 0) return { hpt: 30 };
+    if (idx === 4) return { hpt: 24 };
+    if (idx === tableHeaderRow - 1) return { hpt: 25 };
+    return { hpt: 22 };
+  });
+
+  ws["!autofilter"] = { ref: `A${tableHeaderRow}:G${lastDataRow}` };
+
+  const borderThin = {
+    top: { style: "thin", color: { rgb: "EADFCC" } },
+    bottom: { style: "thin", color: { rgb: "EADFCC" } },
+    left: { style: "thin", color: { rgb: "EADFCC" } },
+    right: { style: "thin", color: { rgb: "EADFCC" } }
+  };
+
+  const styles = {
+    title: {
+      font: { bold: true, sz: 20, color: { rgb: "102033" } },
+      alignment: { horizontal: "center", vertical: "center", readingOrder: 2 },
+      fill: { fgColor: { rgb: "FFF3E6" } },
+      border: borderThin
+    },
+    subTitle: {
+      font: { bold: true, sz: 11, color: { rgb: "667789" } },
+      alignment: { horizontal: "center", vertical: "center", readingOrder: 2 },
+      fill: { fgColor: { rgb: "FFFDF9" } }
+    },
+    section: {
+      font: { bold: true, sz: 15, color: { rgb: "FFFFFF" } },
+      alignment: { horizontal: "right", vertical: "center", readingOrder: 2 },
+      fill: { fgColor: { rgb: "12384F" } },
+      border: borderThin
+    },
+    header: {
+      font: { bold: true, color: { rgb: "12384F" } },
+      alignment: { horizontal: "center", vertical: "center", readingOrder: 2, wrapText: true },
+      fill: { fgColor: { rgb: "FFF3E6" } },
+      border: borderThin
+    },
+    summaryLabel: {
+      font: { bold: true, color: { rgb: "102033" } },
+      alignment: { horizontal: "right", vertical: "center", readingOrder: 2, wrapText: true },
+      fill: { fgColor: { rgb: "FFFDF9" } },
+      border: borderThin
+    },
+    summaryValue: {
+      font: { bold: true, sz: 12, color: { rgb: "9A5A16" } },
+      alignment: { horizontal: "center", vertical: "center", readingOrder: 2, wrapText: true },
+      fill: { fgColor: { rgb: "FFF3E6" } },
+      border: borderThin
+    },
+    summaryNote: {
+      font: { color: { rgb: "667789" } },
+      alignment: { horizontal: "right", vertical: "center", readingOrder: 2, wrapText: true },
+      fill: { fgColor: { rgb: "FFFFFF" } },
+      border: borderThin
+    },
+    cell: {
+      alignment: { horizontal: "right", vertical: "center", readingOrder: 2, wrapText: true },
+      border: borderThin
+    },
+    numberCell: {
+      alignment: { horizontal: "center", vertical: "center", readingOrder: 2 },
+      border: borderThin,
+      numFmt: "#,##0"
+    },
+    footerLabel: {
+      font: { bold: true, color: { rgb: "12384F" } },
+      alignment: { horizontal: "right", vertical: "center", readingOrder: 2 },
+      fill: { fgColor: { rgb: "FFF3E6" } },
+      border: borderThin
+    },
+    footerText: {
+      font: { color: { rgb: "667789" } },
+      alignment: { horizontal: "right", vertical: "center", readingOrder: 2, wrapText: true },
+      fill: { fgColor: { rgb: "FFFDF9" } },
+      border: borderThin
+    }
+  };
+
+  function cellRef(r, c) {
+    return XLSX.utils.encode_cell({ r: r, c: c });
+  }
+
+  function applyStyle(ref, style) {
+    if (!ws[ref]) ws[ref] = { t: "s", v: "" };
+    ws[ref].s = style;
+  }
+
+  function styleRange(r1, c1, r2, c2, style) {
+    for (let r = r1; r <= r2; r++) {
+      for (let c = c1; c <= c2; c++) {
+        applyStyle(cellRef(r, c), style);
+      }
+    }
+  }
+
+  styleRange(0, 0, 0, 6, styles.title);
+  styleRange(1, 0, 2, 6, styles.subTitle);
+  styleRange(4, 0, 4, 6, styles.section);
+
+  styleRange(5, 0, 5, 2, styles.header);
+  for (let r = 6; r <= 10; r++) {
+    applyStyle(cellRef(r, 0), styles.summaryLabel);
+    applyStyle(cellRef(r, 1), styles.summaryValue);
+    applyStyle(cellRef(r, 2), styles.summaryNote);
+    styleRange(r, 3, r, 6, styles.summaryNote);
+  }
+
+  styleRange(tableHeaderRow - 1, 0, tableHeaderRow - 1, 6, styles.header);
+
+  for (let r = tableHeaderRow; r < lastDataRow; r++) {
+    for (let c = 0; c <= 6; c++) {
+      applyStyle(cellRef(r, c), c === 0 || c >= 3 ? styles.numberCell : styles.cell);
+    }
+  }
+
+  applyStyle(cellRef(lastRowIndex - 1, 0), styles.footerLabel);
+  applyStyle(cellRef(lastRowIndex - 1, 1), styles.footerText);
+  styleRange(lastRowIndex - 1, 2, lastRowIndex - 1, 6, styles.footerText);
+
+  applyStyle(cellRef(lastRowIndex, 0), styles.footerLabel);
+  applyStyle(cellRef(lastRowIndex, 1), styles.footerText);
+  styleRange(lastRowIndex, 2, lastRowIndex, 6, styles.footerText);
+
+  // פורמטים מספריים
+  const kwhCell = cellRef(6, 1);
+  if (ws[kwhCell]) ws[kwhCell].z = "0.00";
+
+  for (let r = tableHeaderRow; r < lastDataRow; r++) {
+    ["D","E","F","G"].forEach(col => {
+      const ref = `${col}${r + 1}`;
+      if (ws[ref]) ws[ref].z = "#,##0";
+    });
+  }
+
+  XLSX.utils.book_append_sheet(wb, ws, "דוח התאמה");
+  XLSX.writeFile(wb, "מאירי שבת - דוח התאמה חשמל.xlsx");
+}
+
+advancedToggle.addEventListener('change', () => {
+    const advancedOn = advancedToggle.checked;
+
+    // מציג / מסתיר את קבוצת השדות
+    advancedFields.style.display = advancedOn ? 'grid' : 'none';
+
+    // כדי למנוע בלבול - משבית בחירה של מכשיר ודגם
+    productSelect.disabled = modelSelect.disabled = advancedOn;
+  });
+  
+  // 1. קבוע
+const STORAGE_KEY = 'voltplan_products';
+
+// 2. טעינה
+function loadData() {
+  const raw = localStorage.getItem(STORAGE_KEY);
+  if (!raw) return;
+  const arr = JSON.parse(raw);
+  if (Array.isArray(arr)) {
+    productsList.splice(0, productsList.length, ...arr);   // משחזר
+  }
+}
+
+// 3. שמירה
+function saveData() {
+  if (productsList.length) {                               // רק אם יש נתונים
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(productsList));
+  }
+}
+// 5. בכל שינוי (הוספה / מחיקה / עריכה)
+function updateTable() {
+  tableBody.innerHTML = '';
+  productsList.forEach((item, i) =>
+    tableBody.appendChild(createRow(item, i))
+  );
+  updateTotalSummary();
+  saveData();                 // ← נשמר רק אחרי שיש נתונים
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+ 
+  populateProductSelect();
+  loadData();
+  updateTable();
+  bindRecommendationBasisTriggers();
+
+  // ======== אירועים ========
+  openCalcBtn.addEventListener('click', openCalculator);
+  closeCalculatorBtn.addEventListener('click', closeCalculator);
+  calculatorModal.addEventListener('click', (e)=>{ if(e.target===calculatorModal) closeCalculator(); });
+document.getElementById('solarPanelBtn')
+  .addEventListener('click', () => {
+    document.getElementById('solarPanelModal').style.display = 'grid';
+  });
+
+  openInstructionsBtn.addEventListener('click', openInstructions);
+  closeInstructionsBtn.addEventListener('click', closeInstructions);
+  instructionsModal.addEventListener('click', (e)=>{ if(e.target===instructionsModal) closeInstructions(); });
+
+  openModelsBtn.addEventListener('click', openModels);
+  closeModelsBtn.addEventListener('click', closeModels);
+  modelsModal.addEventListener('click', (e)=>{ if(e.target===modelsModal) closeModels(); });
+
+  addItemBtn.addEventListener('click', addItemFromModal);
+  exportPdfBtn.addEventListener('click', exportPdf);
+  document.getElementById('exportXlBtn').addEventListener('click', exportExcel);
+
+  productSelect.addEventListener('change', ()=>{ populateModelSelect(productSelect.value); });
+
+
+  if (closeLeadBannerBtn) {
+    closeLeadBannerBtn.addEventListener('click', () => {
+      leadBannerDismissed = true;
+      updateLeadBanner();
+    });
+  }
+
+  // ======== בדיקות ========
+  console.assert(productSelect.options.length > 0, 'רשימת המכשירים לא אוישה');
+  console.assert(typeof exportPdf === 'function', 'פונקציית ה-PDF לא מוגדרת');
+  console.assert(document.getElementById('statBatteries153'), 'אלמנט סטט סוללות 15.3 חסר');
+  console.assert(document.getElementById('statBatteriesLarge'), 'אלמנט סטט סוללות גדולות חסר');
+
+  (function selfTests(){
+    const t = SMALL_BATTERY_WH_NET; 
+    const expectSmall = Math.ceil(t / SMALL_BATTERY_WH_NET);
+    const expectMid = Math.ceil(t / MID_BATTERY_WH_NET);
+    const expectLarge = Math.ceil(t / LARGE_BATTERY_WH_NET);
+    console.assert(expectSmall === 1, 'חישוב סוללה קטנה שגוי');
+    console.assert(expectMid === 1, 'חישוב סוללה 15.3 שגוי');
+    console.assert(expectLarge === 1, 'חישוב סוללה גדולה שגוי');
+
+    const bulbs60 = RAW_PRODUCTS['נורה'].filter(x=> x.model==='60 וואט');
+    console.assert(bulbs60.length === 1, 'כפילות בנורה 60W');
+
+    const testList = [
+      { product:'מזגן', model:'1 כוח סוס', power:600, hours:1, quantity:1 },
+      { product:'נורה', model:'60 וואט', power:60, hours:1, quantity:1 }
+    ];
+    const tmp = productsList.splice(0, productsList.length, ...testList);
+    const peak = calcPeakPowerForInverter();
+    console.assert(peak === 1060, 'כלל ממיר למזגן לא יושם נכון');
+    productsList.splice(0, productsList.length, ...tmp);
+  })();
+});
+function calcSolarOutput() {
+  const inputArea = document.getElementById("solarAreaInput");
+  const inputAngle = document.getElementById("solarAngleInput");
+  const inputDirection = document.getElementById("solarDirectionInput");
+  const resultEl = document.getElementById("solarResult");
+
+  const area = Number(inputArea.value);
+  const angleFactor = Number(inputAngle.value || 1);       // מקדם תפוקה לפי זווית
+  const directionFactor = Number(inputDirection.value || 1); // מקדם לפי כיוון
+
+  if (!area || area <= 0) {
+    resultEl.innerHTML = "נא להזין שטח תקין (במ\"ר)";
+    resultEl.style.display = "block";
+    return;
+  }
+
+  // קביעת נצילות שטח לפי זווית
+  let utilizationFactor = 1;
+  switch (angleFactor) {
+    case 1:
+      utilizationFactor = 1.0; break;
+    case 0.85:
+      utilizationFactor = 0.9; break;
+    case 0.75:
+      utilizationFactor = 0.75; break;
+    case 0.5:
+      utilizationFactor = 0.6; break;
+  }
+
+  // חישובים בסיסיים
+  const usableArea = area * utilizationFactor;
+  const PANEL_WIDTH_M  = 1.1;
+  const PANEL_LENGTH_M = 2.2;
+  const PANEL_AREA     = PANEL_WIDTH_M * PANEL_LENGTH_M; // 2.42 מ"ר
+  const PANEL_POWER_W  = 650;
+  const SUN_HOURS      = 6;
+
+  const panelsCount = Math.floor(usableArea / PANEL_AREA);
+  const rawKWh = (panelsCount * PANEL_POWER_W * SUN_HOURS) / 1000;
+  const adjustedKWh = rawKWh * angleFactor * directionFactor;
+
+  // פלט למשתמש
+  resultEl.innerHTML = `
+    שטח קלט: <b>${area} מ"ר</b><br>
+    ניצול שטח אפקטיבי: <b>${usableArea.toFixed(1)} מ"ר</b><br>
+    מספר קולטים שניתן להציב: <b>${panelsCount}</b><br>
+    תפוקה יומית בקיץ: <b>${adjustedKWh.toFixed(1)} kWh</b><br>
+    <span style='color:#64748b;font-size:13px'>
+      (זווית: ${(angleFactor * 100).toFixed(0)}%, כיוון: ${(directionFactor * 100).toFixed(0)}%, נצילות שטח: ${(utilizationFactor * 100).toFixed(0)}%)
+    </span>
+  `;
+  resultEl.style.display = "block";
+}
+document.addEventListener('keydown', function (e) {
+    if (e.key === 'F12' || 
+        (e.ctrlKey && e.shiftKey && e.key === 'I') || 
+        (e.ctrlKey && e.key === 'u')) {
+        e.preventDefault();
+        alert('הפעולה הזו נחסמה!');
+    }
+});
+
+  
+  document.addEventListener("contextmenu", function(e) {
+    e.preventDefault();
+  });
+
+
+// ======== ניקוי אוטומטי של הזרקות NetFree ========
+(function initNetFreeInjectionCleaner(){
+  const NETFREE_MARKERS = [
+    'netfree.link',
+    'injection-script',
+    'go-payment.js',
+    'popup-card-init.js',
+    'Injection By NetFree'
+  ];
+
+  function textHasMarker(value){
+    const txt = String(value || '').toLowerCase();
+    return NETFREE_MARKERS.some(marker => txt.includes(marker.toLowerCase()));
+  }
+
+  function isNetFreeElement(node){
+    if(!node || node.nodeType !== 1) return false;
+    return textHasMarker(node.getAttribute('src')) ||
+           textHasMarker(node.getAttribute('href')) ||
+           textHasMarker(node.id) ||
+           textHasMarker(node.className);
+  }
+
+  function removeNetFreeInjections(root = document){
+    try{
+      const nodes = root.querySelectorAll
+        ? root.querySelectorAll('script,iframe,link,img,div,section,aside')
+        : [];
+      nodes.forEach(node => {
+        if(isNetFreeElement(node)) node.remove();
+      });
+
+      const walker = document.createTreeWalker(document.documentElement, NodeFilter.SHOW_COMMENT);
+      const comments = [];
+      while(walker.nextNode()){
+        if(textHasMarker(walker.currentNode.nodeValue)) comments.push(walker.currentNode);
+      }
+      comments.forEach(comment => comment.remove());
+    }catch(err){
+      // ניקוי שקט – לא מפריע לפעולת המחשבון
+    }
+  }
+
+  removeNetFreeInjections();
+
+  const observer = new MutationObserver(mutations => {
+    mutations.forEach(mutation => {
+      if(mutation.type === 'attributes' && isNetFreeElement(mutation.target)) {
+        mutation.target.remove();
+        return;
+      }
+      mutation.addedNodes.forEach(node => {
+        if(node.nodeType === 8 && textHasMarker(node.nodeValue)) {
+          node.remove();
+          return;
+        }
+        if(isNetFreeElement(node)) {
+          node.remove();
+          return;
+        }
+        if(node.nodeType === 1) removeNetFreeInjections(node);
+      });
+    });
+  });
+
+  observer.observe(document.documentElement, {
+    childList:true,
+    subtree:true,
+    attributes:true,
+    attributeFilter:['src','href','id','class']
+  });
+
+  const cleanerTimer = setInterval(removeNetFreeInjections, 1000);
+  setTimeout(() => clearInterval(cleanerTimer), 20000);
+})();
+
+</script>
+<script id="full-site-protection-js">
+/* ==========================================================
+   שכבת חסימות מלאה — גרסה מתוקנת
+   אינה מפריעה ל-select, input, textarea וכפתורים
+   ========================================================== */
+(function () {
+  "use strict";
+
+  function low(value) {
+    return String(value || "").toLowerCase();
+  }
+
+  /**
+   * בדיקה אם האלמנט הוא שדה או רכיב אינטראקטיבי.
+   * ברכיבים אלו לא נבצע העברת פוקוס או חסימת בחירה.
+   */
+  function isInteractiveTarget(target) {
+    if (!target || !target.closest) return false;
+
+    return Boolean(
+      target.closest(
+        [
+          "input",
+          "select",
+          "textarea",
+          "button",
+          "a",
+          "label",
+          "option",
+          "[contenteditable='true']",
+          "[role='button']",
+          "[role='option']",
+          "[role='listbox']",
+          ".modal",
+          ".modal-backdrop",
+          ".btn",
+          ".close"
+        ].join(",")
+      )
+    );
+  }
+
+  /**
+   * שדות שבהם מותר לבחור ולהעתיק טקסט.
+   */
+  function isEditableTarget(target) {
+    if (!target) return false;
+
+    return Boolean(
+      /input|textarea|select|option/i.test(target.tagName || "") ||
+      target.isContentEditable ||
+      (target.closest &&
+        target.closest(
+          "input, textarea, select, option, [contenteditable='true']"
+        ))
+    );
+  }
+
+  function blockEvent(event) {
+    if (!event) return false;
+
+    try {
+      event.preventDefault();
+    } catch (error) {}
+
+    try {
+      event.stopImmediatePropagation();
+    } catch (error) {}
+
+    try {
+      event.stopPropagation();
+    } catch (error) {}
+
+    event.returnValue = false;
+    return false;
+  }
+
+  /**
+   * קיצורי המקלדת שרוצים לחסום.
+   */
+  function isBlockedShortcut(event) {
+    const key = low(event.key);
+    const code = low(event.code);
+    const keyCode = event.keyCode || event.which || 0;
+    const ctrlOrCmd = Boolean(event.ctrlKey || event.metaKey);
+
+    return Boolean(
+      /* F12 */
+      key === "f12" ||
+      code === "f12" ||
+      keyCode === 123 ||
+
+      /* שמירה, קוד מקור, הדפסה ופתיחת קובץ */
+      (ctrlOrCmd &&
+        (
+          key === "s" ||
+          code === "keys" ||
+          keyCode === 83 ||
+
+          key === "u" ||
+          code === "keyu" ||
+          keyCode === 85 ||
+
+          key === "p" ||
+          code === "keyp" ||
+          keyCode === 80 ||
+
+          key === "o" ||
+          code === "keyo" ||
+          keyCode === 79
+        )) ||
+
+      /* העתקה, גזירה ובחירת הכול — רק מחוץ לשדות */
+      (!isEditableTarget(event.target) &&
+        ctrlOrCmd &&
+        (
+          key === "c" ||
+          code === "keyc" ||
+          keyCode === 67 ||
+
+          key === "x" ||
+          code === "keyx" ||
+          keyCode === 88 ||
+
+          key === "a" ||
+          code === "keya" ||
+          keyCode === 65
+        )) ||
+
+      /* כלי מפתחים ב-Windows/Linux */
+      (ctrlOrCmd &&
+        event.shiftKey &&
+        (
+          key === "i" ||
+          code === "keyi" ||
+          keyCode === 73 ||
+
+          key === "j" ||
+          code === "keyj" ||
+          keyCode === 74 ||
+
+          key === "c" ||
+          code === "keyc" ||
+          keyCode === 67 ||
+
+          key === "k" ||
+          code === "keyk" ||
+          keyCode === 75 ||
+
+          key === "e" ||
+          code === "keye" ||
+          keyCode === 69
+        )) ||
+
+      /* כלי מפתחים ב-Mac */
+      (event.metaKey &&
+        event.altKey &&
+        (
+          key === "i" ||
+          code === "keyi" ||
+
+          key === "j" ||
+          code === "keyj" ||
+
+          key === "c" ||
+          code === "keyc" ||
+
+          key === "u" ||
+          code === "keyu"
+        ))
+    );
+  }
+
+  function shortcutHandler(event) {
+    if (isBlockedShortcut(event)) {
+      return blockEvent(event);
+    }
+
+    return true;
+  }
+
+  /**
+   * רישום מאזיני המקלדת.
+   */
+  ["keydown", "keypress", "keyup"].forEach(function (eventName) {
+    window.addEventListener(eventName, shortcutHandler, true);
+    document.addEventListener(eventName, shortcutHandler, true);
+  });
+
+  /**
+   * חסימת תפריט קליק ימני.
+   * לא משפיעה על פתיחת select בלחיצה רגילה.
+   */
+  document.addEventListener(
+    "contextmenu",
+    function (event) {
+      return blockEvent(event);
+    },
+    true
+  );
+
+  /**
+   * חסימת גרירת אלמנטים.
+   */
+  document.addEventListener(
+    "dragstart",
+    function (event) {
+      return blockEvent(event);
+    },
+    true
+  );
+
+  /**
+   * חסימת העתקה וגזירה רק מחוץ לשדות.
+   */
+  ["copy", "cut"].forEach(function (eventName) {
+    document.addEventListener(
+      eventName,
+      function (event) {
+        if (isEditableTarget(event.target)) {
+          return true;
+        }
+
+        return blockEvent(event);
+      },
+      true
+    );
+  });
+
+  /**
+   * חסימת בחירת טקסט מחוץ לשדות.
+   */
+  document.addEventListener(
+    "selectstart",
+    function (event) {
+      if (
+        isEditableTarget(event.target) ||
+        isInteractiveTarget(event.target)
+      ) {
+        return true;
+      }
+
+      return blockEvent(event);
+    },
+    true
+  );
+
+  /**
+   * חסימת לחצן אמצעי וקליק ימני בלבד.
+   *
+   * חשוב:
+   * לא מעבירים פוקוס כאן.
+   * לא חוסמים לחצן שמאלי.
+   * כך רשימות select נשארות פתוחות.
+   */
+  document.addEventListener(
+    "mousedown",
+    function (event) {
+      if (event.button === 1 || event.button === 2) {
+        return blockEvent(event);
+      }
+
+      return true;
+    },
+    true
+  );
+
+  /**
+   * מניעת גרירה מובנית של תמונות וקישורים.
+   */
+  function hardenElements(root) {
+    const scope = root && root.querySelectorAll ? root : document;
+
+    const elements = scope.querySelectorAll(
+      [
+        "img",
+        "svg",
+        "a",
+        "button",
+        ".btn",
+        ".panel",
+        ".table-wrap"
+      ].join(",")
+    );
+
+    elements.forEach(function (element) {
+      element.setAttribute("draggable", "false");
+
+      if (!element.dataset.protectionDragBound) {
+        element.addEventListener("dragstart", blockEvent, true);
+        element.dataset.protectionDragBound = "1";
+      }
+    });
+  }
+
+  /**
+   * הגדרת tabindex לאזור העמוד.
+   *
+   * אין כאן focus אוטומטי:
+   * focus אוטומטי הוא שגרם לרשימות להיסגר.
+   */
+  function preparePageFocusArea() {
+    const focusTargets = [
+      document.querySelector(".calculator-hero"),
+      document.querySelector(".calculator-workspace"),
+      document.querySelector(".panel"),
+      document.getElementById("calculator")
+    ].filter(Boolean);
+
+    focusTargets.forEach(function (element) {
+      if (!element.hasAttribute("tabindex")) {
+        element.setAttribute("tabindex", "-1");
+      }
+    });
+  }
+
+  /**
+   * טיפול באלמנטים שמתווספים בהמשך.
+   */
+  function watchNewElements() {
+    if (!window.MutationObserver || !document.body) return;
+
+    const observer = new MutationObserver(function (mutations) {
+      mutations.forEach(function (mutation) {
+        mutation.addedNodes.forEach(function (node) {
+          if (node.nodeType !== 1) return;
+
+          if (
+            node.matches &&
+            node.matches("img, svg, a, button, .btn, .panel, .table-wrap")
+          ) {
+            node.setAttribute("draggable", "false");
+          }
+
+          hardenElements(node);
+        });
+      });
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+  }
+
+  /**
+   * חסימת הדפסה.
+   */
+  window.addEventListener(
+    "beforeprint",
+    function (event) {
+      return blockEvent(event);
+    },
+    true
+  );
+
+  function initializeProtection() {
+    hardenElements(document);
+    preparePageFocusArea();
+    watchNewElements();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener(
+      "DOMContentLoaded",
+      initializeProtection,
+      { once: true }
+    );
+  } else {
+    initializeProtection();
+  }
+
+  /**
+   * גיבוי ישן לקיצורי מקלדת.
+   */
+  document.onkeydown = function (event) {
+    return shortcutHandler(event || window.event);
+  };
+
+  window.onkeydown = function (event) {
+    return shortcutHandler(event || window.event);
+  };
+
+  document.oncontextmenu = function () {
+    return false;
+  };
+})();
+</script>
+</body>
+</html>
