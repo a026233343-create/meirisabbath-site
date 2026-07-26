@@ -1859,14 +1859,21 @@ svg,
          Unsafe attempt to initiate navigation
          frame-ancestors / CSP
       */
-      if (
-        href &&
-        href.charAt(0) !== "#" &&
-        href.indexOf("tel:") !== 0
-      ) {
-        link.setAttribute("target", "_blank");
-        link.setAttribute("rel", "noopener noreferrer");
-      }
+    if (
+  href &&
+  href.charAt(0) !== "#" &&
+  href.indexOf("tel:") !== 0 &&
+  href.indexOf("mailto:") !== 0
+) {
+  var url = new URL(href, window.location.href);
+
+  if (url.origin !== window.location.origin) {
+    link.setAttribute("target", "_blank");
+    link.setAttribute("rel", "noopener noreferrer");
+  } else {
+    link.removeAttribute("target");
+  }
+}
 
       /* לא עושים preventDefault בלחיצה רגילה.
          נותנים לדפדפן לפתוח את הקישור בעצמו, כי זו הדרך שה-sandbox מאפשרת הכי טוב.
