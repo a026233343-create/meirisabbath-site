@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<!-- Injection By NetFree -->
+<script src="//wfapi.internal.netfree.link/wifree/go-install-wifree" type="text/javascript" async ></script>
+
 <html lang="he" dir="rtl">
 <head>
 <meta charset="UTF-8">
@@ -9,7 +12,6 @@
 <meta content="index, follow" name="robots"/>
 <meta content="#0b2233" name="theme-color"/>
     <link rel="icon" href="https://meish.neocities.org/removebg-preview.png"/>
-<style>
 <style id="meiri-global-nav-style">
   #meiri-global-nav, #meiri-global-nav * { box-sizing: border-box; }
   #meiri-global-nav {
@@ -727,15 +729,138 @@ function closeContactModal(){document.getElementById('contactModal').classList.r
 function openProductModal(){document.getElementById('productModal').classList.add('is-open');}
 function closeProductModal(){document.getElementById('productModal').classList.remove('is-open');}
 
-function parseTSV(text){const rows=text.trim().split(/\r?\n/).map(r=>r.split('\t'));const headers=(rows.shift()||[]).map(h=>h.trim());return rows.map(r=>Object.fromEntries(headers.map((h,i)=>[h,(r[i]||'').trim()])));}
+function parseTSV(text){
+  const clean=String(text||'').replace(/^\uFEFF/,'').trim();
+  if(!clean)return [];
+  const rows=clean.split(/\r?\n/).map(r=>r.split('\t'));
+  const headers=(rows.shift()||[]).map(h=>h.trim());
+  return rows.map(r=>Object.fromEntries(headers.map((h,i)=>[h,(r[i]||'').trim()])));
+}
 function pick(row,names){for(const n of names){if(row[n])return row[n];}return '';}
 let ads=[],adsPage=1,ADS_PER_PAGE=3;
-function normalizeAds(rows){return rows.map(row=>({title:pick(row,['שם מוצר','שם המוצר','מוצר','פריט']),category:pick(row,['קטגוריה','סוג מוצר']),area:pick(row,['אזור','איזור']),condition:pick(row,['מצב','מצב מוצר']),price:pick(row,['מחיר']),phone:pick(row,['טלפון','נייד']),name:pick(row,['שם המפרסם','שם מפרסם']),status:pick(row,['סטטוס'])})).filter(a=>a.title&&!['לא פעיל','מוסתר','טיוטה','נמחק','נדחה','לא מאושר'].includes(a.status));}
-function renderAds(){const mini=document.getElementById('miniAds'),pager=document.getElementById('adsPager'),info=document.getElementById('adsPageInfo');if(!ads.length){mini.innerHTML='<div class="mini-meta">אין כרגע מודעות להצגה.</div>';pager.style.display='none';return;}const pages=Math.max(1,Math.ceil(ads.length/ADS_PER_PAGE));adsPage=Math.min(adsPage,pages);const slice=ads.slice((adsPage-1)*ADS_PER_PAGE,adsPage*ADS_PER_PAGE);mini.innerHTML=slice.map(a=>`<div class="mini-ad"><h4>${esc(a.title)}</h4><div class="mini-price">${esc(a.price||'מחיר לא צוין')}</div><div class="mini-meta">${esc([a.category,a.area,a.condition].filter(Boolean).join(' · '))}</div>${a.phone?`<a class="mini-call" href="tel:${esc(a.phone.replace(/[^0-9+]/g,''))}">${esc(a.phone)}</a>`:''}</div>`).join('');pager.style.display=pages>1?'flex':'none';info.textContent=adsPage+' / '+pages;document.getElementById('adsPrev').disabled=adsPage<=1;document.getElementById('adsNext').disabled=adsPage>=pages;}
-async function loadAds(){if(!SHEET_TSV_URL)return renderAds();try{const r=await fetch(SHEET_TSV_URL,{cache:'no-store'});const txt=await r.text();ads=normalizeAds(parseTSV(txt));renderAds();}catch(e){document.getElementById('adsStatus').textContent='לא ניתן לטעון מודעות כרגע.';renderAds();}}
-document.getElementById('adsPrev').onclick=()=>{adsPage--;renderAds();};document.getElementById('adsNext').onclick=()=>{adsPage++;renderAds();};
-function productFormSuccess(form,event){document.getElementById('productSuccess').style.display='block';document.getElementById('openFullGoogleForm').style.display='inline-flex';setTimeout(loadAds,5000);setTimeout(()=>form.reset(),900);return true;}
-function openPrefilledGoogleForm(){const f=document.getElementById('productAdForm');const p=new URLSearchParams();for(const el of f.elements){if(el.name&&el.name.startsWith('entry.')&&el.value)p.set(el.name,el.value);}window.open(VIEWFORM+'?usp=pp_url&'+p.toString(),'_blank');}
+
+function normalizeAds(rows){
+  return rows.map(row=>({
+    title:pick(row,['שם מוצר','שם המוצר','מוצר','פריט']),
+    category:pick(row,['קטגוריה','סוג מוצר']),
+    area:pick(row,['אזור','איזור']),
+    condition:pick(row,['מצב','מצב מוצר']),
+    price:pick(row,['מחיר']),
+    phone:pick(row,['טלפון','נייד']),
+    name:pick(row,['שם המפרסם','שם מפרסם']),
+    status:pick(row,['סטטוס'])
+  })).filter(a=>a.title&&!['לא פעיל','מוסתר','טיוטה','נמחק','נדחה','לא מאושר'].includes(a.status));
+}
+
+function renderAds(){
+  const mini=document.getElementById('miniAds');
+  const pager=document.getElementById('adsPager');
+  const info=document.getElementById('adsPageInfo');
+  const prev=document.getElementById('adsPrev');
+  const next=document.getElementById('adsNext');
+  if(!mini||!pager||!info||!prev||!next)return;
+
+  if(!ads.length){
+    mini.innerHTML='<div class="mini-meta">אין כרגע מודעות להצגה.</div>';
+    pager.style.display='none';
+    mini.scrollTop=0;
+    return;
+  }
+
+  const pages=Math.max(1,Math.ceil(ads.length/ADS_PER_PAGE));
+  adsPage=Math.min(Math.max(adsPage,1),pages);
+  const slice=ads.slice((adsPage-1)*ADS_PER_PAGE,adsPage*ADS_PER_PAGE);
+
+  mini.innerHTML=slice.map(a=>`<div class="mini-ad"><h4>${esc(a.title)}</h4><div class="mini-price">${esc(a.price||'מחיר לא צוין')}</div><div class="mini-meta">${esc([a.category,a.area,a.condition].filter(Boolean).join(' · '))}</div>${a.phone?`<a class="mini-call" href="tel:${esc(a.phone.replace(/[^0-9+]/g,''))}">${esc(a.phone)}</a>`:''}</div>`).join('');
+  mini.scrollTop=0;
+  pager.style.display=pages>1?'flex':'none';
+  info.textContent=adsPage+' / '+pages;
+  prev.disabled=adsPage<=1;
+  next.disabled=adsPage>=pages;
+}
+
+async function loadAds(options={}){
+  const mini=document.getElementById('miniAds');
+  const pager=document.getElementById('adsPager');
+  const status=document.getElementById('adsStatus');
+  const keepPage=!!options.keepPage;
+
+  if(!mini||!pager||!status)return;
+  if(!SHEET_TSV_URL){renderAds();return;}
+
+  try{
+    status.textContent='';
+    if(!ads.length)mini.innerHTML='<div class="mini-meta">טוען מודעות...</div>';
+
+    const separator=SHEET_TSV_URL.includes('?')?'&':'?';
+    const url=SHEET_TSV_URL+separator+'_='+Date.now();
+    const r=await fetch(url,{cache:'no-store'});
+    const txt=await r.text();
+
+    if(!r.ok)throw new Error('HTTP '+r.status);
+    if(/^\s*<!doctype html|^\s*<html/i.test(txt))throw new Error('Unexpected HTML response');
+
+    const rows=parseTSV(txt);
+    ads=normalizeAds(rows);
+    if(!keepPage)adsPage=1;
+    renderAds();
+    status.textContent=ads.length?'עודכן: '+ads.length+' מודעות פעילות':'';
+  }catch(e){
+    console.error('Ads loading error:',e);
+    ads=[];
+    adsPage=1;
+    mini.innerHTML='<div class="mini-meta">לא ניתן לטעון את המודעות כרגע.</div>';
+    pager.style.display='none';
+    status.textContent='אירעה שגיאה בטעינת המודעות. נסו לרענן את העמוד.';
+  }
+}
+
+document.getElementById('adsPrev').onclick=()=>{adsPage=Math.max(1,adsPage-1);renderAds();};
+document.getElementById('adsNext').onclick=()=>{adsPage=adsPage+1;renderAds();};
+
+let lastProductFormParams='';
+let productFormPending=false;
+
+function serializeProductForm(form){
+  const p=new URLSearchParams();
+  for(const el of form.elements){
+    if(el.name&&el.name.startsWith('entry.')&&el.value)p.set(el.name,el.value);
+  }
+  return p.toString();
+}
+
+function productFormSuccess(form,event){
+  const success=document.getElementById('productSuccess');
+  const fallback=document.getElementById('openFullGoogleForm');
+
+  lastProductFormParams=serializeProductForm(form);
+  productFormPending=true;
+  success.textContent='שולח את המודעה...';
+  success.style.display='block';
+  fallback.style.display='inline-flex';
+
+  [5000,12000,25000].forEach(delay=>setTimeout(()=>loadAds({keepPage:false}),delay));
+  return true;
+}
+
+function openPrefilledGoogleForm(){
+  const f=document.getElementById('productAdForm');
+  const params=lastProductFormParams||serializeProductForm(f);
+  const suffix=params?'&'+params:'';
+  window.open(VIEWFORM+'?usp=pp_url'+suffix,'_blank','noopener');
+}
+
+const hiddenProductForm=document.getElementById('hiddenProductForm');
+if(hiddenProductForm){
+  hiddenProductForm.addEventListener('load',()=>{
+    if(!productFormPending)return;
+    productFormPending=false;
+    const success=document.getElementById('productSuccess');
+    success.textContent='הטופס נשלח. ייתכן שיעברו כמה שניות עד שהמודעה תופיע ברשימה.';
+    setTimeout(()=>document.getElementById('productAdForm')?.reset(),500);
+  });
+}
+
 initControls();renderAll();loadAds();
 </script>
 </div>
@@ -899,30 +1024,13 @@ initControls();renderAll();loadAds();
 
 <script id="focus-and-extra-save-block-js">
 /* ==========================================================
-   פוקוס אוטומטי לאזור + חסימה נוספת ל-Ctrl/Cmd+S
+   חסימה נוספת ל-Ctrl/Cmd+S בלבד.
+   חשוב: אין כאן focus() אוטומטי כדי לא לגנוב פוקוס משדות הטופס.
    ========================================================== */
 (function () {
   "use strict";
 
-  function focusMagazine() {
-    var root = document.getElementById("energy-magazine");
-    if (!root) return;
-    if (!root.hasAttribute("tabindex")) root.setAttribute("tabindex", "0");
-
-    try { root.focus({ preventScroll: true }); } catch (err) {
-      try { root.focus(); } catch (e) {}
-    }
-
-    ["click", "pointerdown", "touchstart", "mousemove"].forEach(function (eventName) {
-      root.addEventListener(eventName, function () {
-        try { root.focus({ preventScroll: true }); } catch (err) {
-          try { root.focus(); } catch (e) {}
-        }
-      }, true);
-    });
-  }
-
-  function stop(e) {
+  function stopSave(e) {
     var key = String(e.key || "").toLowerCase();
     var code = String(e.code || "").toLowerCase();
     var kc = e.keyCode || e.which || 0;
@@ -936,16 +1044,8 @@ initControls();renderAll();loadAds();
     }
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", focusMagazine);
-  } else {
-    focusMagazine();
-  }
-
-  window.addEventListener("keydown", stop, true);
-  document.addEventListener("keydown", stop, true);
-  window.addEventListener("keyup", stop, true);
-  document.addEventListener("keyup", stop, true);
+  window.addEventListener("keydown", stopSave, true);
+  document.addEventListener("keydown", stopSave, true);
 })();
 </script>
 
@@ -997,3 +1097,6 @@ initControls();renderAll();loadAds();
 </style>
 </body>
 </html>
+<!-- Injection By NetFree -->
+<script src="https://netfree.link/injection-script/note-in-site.js" type="text/javascript" async  id="netfree-note-site" jsondata="%7B%22noteSite%22:%22%D7%9B%D7%93%D7%99%20%D7%A9%D7%94%D7%AA%D7%9E%D7%95%D7%A0%D7%95%D7%AA%20%D7%91%D7%90%D7%AA%D7%A8%20%D7%94%D7%96%D7%94%20%D7%99%D7%97%D7%96%D7%A8%D7%95%20%D7%9E%D7%91%D7%93%D7%99%D7%A7%D7%94%2C%20%D7%99%D7%A9%20%D7%9C%D7%94%D7%92%D7%93%D7%99%D7%A8%20%5C%22%D7%90%D7%A4%D7%A9%D7%A8%20%D7%9C%D7%A1%D7%A0%D7%9F%20%D7%AA%D7%95%D7%9B%D7%9F%20%D7%A9%D7%99%D7%93%D7%95%D7%A2%20%D7%9B%D7%90%D7%99%D7%A9%D7%99%20%D7%90%D7%95%20%D7%A4%D7%A8%D7%98%D7%99%5C%22%20%D7%91%D7%94%D7%92%D7%93%D7%A8%D7%95%D7%AA%20%D7%A1%D7%99%D7%A0%D7%95%D7%9F%20%5B%5B%D7%A6%D7%90%D7%98_AI_%D7%91%D7%A0%D7%98%D7%A4%D7%A8%D7%99%7C%D7%94%D7%99%D7%9B%D7%A0%D7%A1%D7%95%20%D7%9C%D7%9B%D7%90%D7%9F%20%D7%9C%D7%94%D7%A1%D7%91%D7%A8%20%D7%9E%D7%A4%D7%95%D7%A8%D7%98%5D%5D%22%2C%22noteSiteEn%22:%22For%20images%20on%20this%20website%20to%20work%20you%20need%20to%20set%20%5C%22Filter%20content%20that%20is%20known%20as%20personal%20or%20private%5C%22%20%5B%5BAI_Chats_in_NetFree%7CClick%20here%20to%20read%20more%5D%5D%22%7D"></script><script src="//netfree.link/injection-script/go-payment.js" type="text/javascript" async ></script>
+<script src="//netfree.link/injection-script/popup-card-init.js" type="text/javascript" async ></script>
