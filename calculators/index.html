@@ -1,6 +1,4 @@
-from pathlib import Path
-
-html = r'''<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
   <meta charset="UTF-8">
@@ -783,11 +781,3 @@ html = r'''<!DOCTYPE html>
   </script>
 </body>
 </html>
-'''
-
-output = Path("/mnt/data/calculators-index-clean.html")
-output.write_text(html, encoding="utf-8")
-
-print(f"נוצר קובץ חדש: {output.name}")
-print(f"גודל: {output.stat().st_size:,} בתים")
-print("הקובץ נשמר בקידוד UTF-8 וכולל מבנה HTML תקין.")
