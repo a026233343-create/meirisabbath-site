@@ -523,6 +523,159 @@
 }
 </style>
 
+
+<style id="active-ads-polish-css">
+/* ==========================================================
+   מודעות יד 2 — עיצוב נקי ומודרני
+   ========================================================== */
+
+#energy-magazine .mini-ads{
+  display:grid !important;
+  gap:12px !important;
+  max-height:470px !important;
+  overflow-y:auto !important;
+  overflow-x:hidden !important;
+  padding:2px 2px 4px 4px !important;
+  margin-top:10px !important;
+  scrollbar-width:thin;
+}
+
+#energy-magazine .mini-ad{
+  background:linear-gradient(180deg,#ffffff 0%,#fffaf6 100%) !important;
+  border:1px solid #eadfce !important;
+  border-radius:17px !important;
+  padding:13px !important;
+  display:grid !important;
+  gap:9px !important;
+  box-shadow:0 8px 22px rgba(15,31,45,.07) !important;
+}
+
+#energy-magazine .mini-ad-top{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:9px;
+}
+
+#energy-magazine .mini-ad h4{
+  margin:0 !important;
+  color:var(--dark) !important;
+  font-size:16px !important;
+  line-height:1.35 !important;
+  font-weight:900 !important;
+  word-break:break-word;
+}
+
+#energy-magazine .mini-active-badge{
+  flex:0 0 auto;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:25px;
+  padding:4px 9px;
+  border-radius:999px;
+  background:#ecfdf5;
+  border:1px solid #a7f3d0;
+  color:#047857;
+  font-size:10.5px;
+  font-weight:900;
+  white-space:nowrap;
+}
+
+#energy-magazine .mini-price{
+  color:var(--orange) !important;
+  font-size:21px !important;
+  line-height:1.15 !important;
+  font-weight:900 !important;
+}
+
+#energy-magazine .mini-chips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:5px;
+}
+
+#energy-magazine .mini-chip{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:4px 8px;
+  border-radius:999px;
+  background:#fff3e6;
+  border:1px solid #f6d8b8;
+  color:#9a3412;
+  font-size:10.8px;
+  line-height:1.3;
+  font-weight:900;
+}
+
+#energy-magazine .mini-seller{
+  display:flex;
+  align-items:center;
+  gap:5px;
+  color:#5f6b76;
+  font-size:11.8px;
+  line-height:1.4;
+  font-weight:800;
+}
+
+#energy-magazine .mini-call{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  width:100% !important;
+  min-height:38px !important;
+  padding:8px 11px !important;
+  border-radius:12px !important;
+  background:linear-gradient(135deg,var(--dark),var(--dark2)) !important;
+  color:#fff !important;
+  font-size:12.5px !important;
+  font-weight:900 !important;
+  text-decoration:none !important;
+  box-shadow:0 7px 16px rgba(15,31,45,.14);
+}
+
+#energy-magazine .mini-call:hover{
+  transform:translateY(-1px);
+  opacity:.97;
+}
+
+#energy-magazine .ads-pager{
+  gap:7px !important;
+  margin-top:9px !important;
+  padding-top:9px !important;
+}
+
+#energy-magazine .ads-pager button{
+  min-height:32px;
+  padding:6px 11px !important;
+}
+
+#energy-magazine #adsStatus{
+  margin-top:7px;
+  text-align:center;
+  font-size:11px;
+}
+
+#energy-magazine .mini-empty{
+  padding:18px 10px;
+  border:1px dashed var(--line);
+  border-radius:14px;
+  background:#fffaf6;
+  text-align:center;
+  color:var(--muted);
+  font-size:12px;
+  font-weight:800;
+  line-height:1.55;
+}
+
+@media(max-width:980px){
+  #energy-magazine .mini-ads{
+    max-height:520px !important;
+  }
+}
+</style>
+
 <section class="hero">
   <div class="wrap hero-text">
     <span class="eyebrow">מדריך מקצועי ללקוח</span>
@@ -740,16 +893,28 @@ function pick(row,names){for(const n of names){if(row[n])return row[n];}return '
 let ads=[],adsPage=1,ADS_PER_PAGE=3;
 
 function normalizeAds(rows){
-  return rows.map(row=>({
-    title:pick(row,['שם מוצר','שם המוצר','מוצר','פריט']),
-    category:pick(row,['קטגוריה','סוג מוצר']),
-    area:pick(row,['אזור','איזור']),
-    condition:pick(row,['מצב','מצב מוצר']),
-    price:pick(row,['מחיר']),
-    phone:pick(row,['טלפון','נייד']),
-    name:pick(row,['שם המפרסם','שם מפרסם']),
-    status:pick(row,['סטטוס'])
-  })).filter(a=>a.title&&!['לא פעיל','מוסתר','טיוטה','נמחק','נדחה','לא מאושר'].includes(a.status));
+  return rows.map(row=>{
+    /*
+      עמודה K היא העמודה ה-11.
+      Object.values שומר את סדר הכותרות כפי שהן הגיעו מה-TSV,
+      לכן אינדקס 10 הוא עמודה K.
+    */
+    const rowValues=Object.values(row||{});
+    const columnK=String(rowValues[10]||'').trim();
+
+    return {
+      title:pick(row,['שם מוצר','שם המוצר','מוצר','פריט']),
+      category:pick(row,['קטגוריה','סוג מוצר']),
+      area:pick(row,['אזור','איזור']),
+      condition:pick(row,['מצב','מצב מוצר']),
+      price:pick(row,['מחיר']),
+      phone:pick(row,['טלפון','נייד']),
+      name:pick(row,['שם המפרסם','שם מפרסם']),
+      status:columnK
+    };
+  }).filter(a=>{
+    return a.title && String(a.status||'').trim()==='פעיל';
+  });
 }
 
 function renderAds(){
@@ -758,10 +923,11 @@ function renderAds(){
   const info=document.getElementById('adsPageInfo');
   const prev=document.getElementById('adsPrev');
   const next=document.getElementById('adsNext');
+
   if(!mini||!pager||!info||!prev||!next)return;
 
   if(!ads.length){
-    mini.innerHTML='<div class="mini-meta">אין כרגע מודעות להצגה.</div>';
+    mini.innerHTML='<div class="mini-empty">אין כרגע מודעות פעילות להצגה.<br>מודעה תוצג רק כאשר בעמודה K בגיליון כתוב <strong>פעיל</strong>.</div>';
     pager.style.display='none';
     mini.scrollTop=0;
     return;
@@ -771,7 +937,41 @@ function renderAds(){
   adsPage=Math.min(Math.max(adsPage,1),pages);
   const slice=ads.slice((adsPage-1)*ADS_PER_PAGE,adsPage*ADS_PER_PAGE);
 
-  mini.innerHTML=slice.map(a=>`<div class="mini-ad"><h4>${esc(a.title)}</h4><div class="mini-price">${esc(a.price||'מחיר לא צוין')}</div><div class="mini-meta">${esc([a.category,a.area,a.condition].filter(Boolean).join(' · '))}</div>${a.phone?`<a class="mini-call" href="tel:${esc(a.phone.replace(/[^0-9+]/g,''))}">${esc(a.phone)}</a>`:''}</div>`).join('');
+  mini.innerHTML=slice.map(a=>{
+    const chips=[a.category,a.area,a.condition]
+      .filter(Boolean)
+      .map(v=>`<span class="mini-chip">${esc(v)}</span>`)
+      .join('');
+
+    const phoneHref=String(a.phone||'').replace(/[^0-9+]/g,'');
+
+    return `
+      <article class="mini-ad">
+        <div class="mini-ad-top">
+          <h4>${esc(a.title)}</h4>
+          <span class="mini-active-badge">פעיל</span>
+        </div>
+
+        <div class="mini-price">${esc(a.price||'מחיר לא צוין')}</div>
+
+        ${chips?`<div class="mini-chips">${chips}</div>`:''}
+
+        ${a.name?`
+          <div class="mini-seller">
+            <span>👤</span>
+            <span>${esc(a.name)}</span>
+          </div>
+        `:''}
+
+        ${a.phone?`
+          <a class="mini-call" href="tel:${esc(phoneHref)}">
+            ☎ ${esc(a.phone)}
+          </a>
+        `:''}
+      </article>
+    `;
+  }).join('');
+
   mini.scrollTop=0;
   pager.style.display=pages>1?'flex':'none';
   info.textContent=adsPage+' / '+pages;
@@ -804,7 +1004,7 @@ async function loadAds(options={}){
     ads=normalizeAds(rows);
     if(!keepPage)adsPage=1;
     renderAds();
-    status.textContent=ads.length?'עודכן: '+ads.length+' מודעות פעילות':'';
+    status.textContent=ads.length?'עודכן: '+ads.length+' מודעות פעילות':'אין כרגע מודעות פעילות';
   }catch(e){
     console.error('Ads loading error:',e);
     ads=[];
