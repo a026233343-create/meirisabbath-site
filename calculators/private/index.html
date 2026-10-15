@@ -15,6 +15,12 @@
 <meta content="index, follow" name="robots"/>
 <meta content="#1c1c1c" name="theme-color"/>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<script>if(/[?&]embed=1(?:&|$)/.test(location.search))document.documentElement.className+=' is-embedded';</script>
+<style>/* בתוך עמוד המחשבונים (כרטיסיות) — בלי כותרת ופוטר כפולים */
+.is-embedded #meiri-global-nav,.is-embedded footer.site-footer{display:none!important}
+/* בטלפון: שדות הבחירה לא ירחיבו את המחשבון מעבר לרוחב המסך */
+.is-embedded .form-col,.is-embedded .results-col,.is-embedded .add-grid>*,.is-embedded .advanced-fields>*{min-width:0}
+.is-embedded select{min-width:0;max-width:100%}</style>
 <meta http-equiv="Content-Security-Policy" content="
 default-src 'self';
 script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://unpkg.com https://cdnjs.cloudflare.com;
