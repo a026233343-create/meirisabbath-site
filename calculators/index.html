@@ -7,7 +7,7 @@
   <title>מחשבוני צריכת חשמל ואגירה | מאירי שבת</title>
   <meta
     name="description"
-    content="עמוד בחירת מחשבונים: מחשבון מוסדות וסולארי ומחשבון צריכת חשמל לפרטיים."> <meta property="og:type" content="website"/> <meta property="og:site_name" content="מאירי שבת"/> <meta property="og:locale" content="he_IL"/> <meta property="og:title" content="מחשבוני צריכת חשמל ואגירה | מאירי שבת"/> <meta property="og:description" content="עמוד בחירת מחשבונים: מחשבון מוסדות וסולארי ומחשבון צריכת חשמל לפרטיים."/> <meta property="og:url" content="https://www.meirisabbath.co.il/calculators/"/> <meta property="og:image" content="https://meish.neocities.org/off-grid-home-energy-storage-solution.jpg"/> <meta name="twitter:card" content="summary_large_image"/>
+    content="המחשבונים של מאירי שבת בעמוד אחד: מחשבון מוסדות וסולארי ומחשבון צריכת חשמל לפרטיים."> <meta property="og:type" content="website"/> <meta property="og:site_name" content="מאירי שבת"/> <meta property="og:locale" content="he_IL"/> <meta property="og:title" content="מחשבוני צריכת חשמל ואגירה | מאירי שבת"/> <meta property="og:description" content="המחשבונים של מאירי שבת בעמוד אחד: מחשבון מוסדות וסולארי ומחשבון צריכת חשמל לפרטיים."/> <meta property="og:url" content="https://www.meirisabbath.co.il/calculators/"/> <meta property="og:image" content="https://meish.neocities.org/off-grid-home-energy-storage-solution.jpg"/> <meta name="twitter:card" content="summary_large_image"/>
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#fff8ef">
 
@@ -607,6 +607,178 @@
         width: 100%;
       }
     }
+
+    /* כרטיסיות המחשבונים */
+    .calc-stage {
+      margin-inline: calc(50% - min(660px, 50vw - 12px));
+      margin-top: 22px;
+    }
+
+    .calc-tabs {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      max-width: 780px;
+      margin: 0 auto 16px;
+      padding: 6px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: var(--card);
+      box-shadow: var(--shadow-soft);
+      scroll-margin-top: 84px;
+    }
+
+    .calc-tab {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      min-height: 66px;
+      padding: 10px 14px;
+      border: 0;
+      border-radius: 19px;
+      background: transparent;
+      color: var(--text);
+      font: inherit;
+      text-align: right;
+      cursor: pointer;
+      transition: background 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .calc-tab:hover {
+      background: var(--orange-soft);
+    }
+
+    .calc-tab[aria-selected="true"] {
+      background: linear-gradient(135deg, var(--orange), var(--orange-light));
+      box-shadow: 0 10px 22px rgba(255, 177, 95, 0.3);
+    }
+
+    .calc-tab:focus-visible {
+      outline: 3px solid var(--blue);
+      outline-offset: 2px;
+    }
+
+    .calc-tab-icon {
+      font-size: 27px;
+      line-height: 1;
+    }
+
+    .calc-tab-text b {
+      display: block;
+      font-size: 16.5px;
+      font-weight: 950;
+      line-height: 1.25;
+    }
+
+    .calc-tab-text small {
+      display: block;
+      margin-top: 2px;
+      color: var(--muted);
+      font-size: 12.5px;
+      font-weight: 700;
+    }
+
+    .calc-tab[aria-selected="true"] .calc-tab-text small {
+      color: #7a3f10;
+    }
+
+    .calc-panel {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--background-soft);
+      box-shadow: var(--shadow);
+    }
+
+    .calc-panel[hidden] {
+      display: none;
+    }
+
+    .calc-panel::before {
+      content: "טוען את המחשבון…";
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      color: var(--muted);
+      font-weight: 800;
+    }
+
+    .calc-frame {
+      position: relative;
+      z-index: 1;
+      display: block;
+      width: 100%;
+      height: calc(100vh - 150px);
+      height: calc(100dvh - 150px);
+      min-height: 620px;
+      border: 0;
+      background: transparent;
+    }
+
+    .calc-standalone {
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 13.5px;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .calc-standalone a {
+      color: #c2410c;
+      font-weight: 900;
+    }
+
+    @media (max-width: 880px) {
+      .calc-tabs {
+        scroll-margin-top: 120px;
+      }
+
+      .calc-frame {
+        height: calc(100vh - 128px);
+        height: calc(100dvh - 128px);
+        min-height: 560px;
+      }
+    }
+
+    @media (max-width: 540px) {
+      .calc-tabs {
+        gap: 6px;
+        padding: 5px;
+        border-radius: 20px;
+      }
+
+      .calc-tab {
+        flex-direction: column;
+        gap: 4px;
+        min-height: 78px;
+        padding: 9px 6px;
+        border-radius: 16px;
+        text-align: center;
+      }
+
+      .calc-tab-icon {
+        font-size: 24px;
+      }
+
+      .calc-tab-text b {
+        font-size: 14px;
+      }
+
+      .calc-tab-text small {
+        font-size: 11px;
+      }
+
+      .calc-tab-more {
+        display: none;
+      }
+
+      .calc-panel {
+        border-radius: 18px;
+      }
+    }
   </style>
 </head>
 
@@ -630,8 +802,8 @@
 
           <div class="dropdown-menu">
             <a href="/calculators/" aria-current="page">כל המחשבונים</a>
-            <a href="/calculators/institutions/">מחשבון מוסדות וסולארי</a>
-            <a href="/calculators/private/">מחשבון צריכה לפרטיים</a>
+            <a href="/calculators/#institutions">מחשבון מוסדות וסולארי</a>
+            <a href="/calculators/#private">מחשבון צריכה לפרטיים</a>
           </div>
         </details>
       </nav>
@@ -663,64 +835,73 @@
       <div class="section-heading">
         <h2 id="calculator-title">איזה חישוב מתאים לך?</h2>
         <p>
-          שני מסלולים פשוטים וברורים להתאמת מערכת אגירה לפי אופי השימוש.
+          בחרו כרטיסייה — המחשבון נפתח כאן בעמוד, בלי לעבור לעמוד אחר.
         </p>
       </div>
 
-      <div class="calculator-grid">
-        <a
-          class="calculator-card"
-          href="/calculators/institutions/"
-          aria-label="פתיחת מחשבון מוסדות וסולארי"
-        >
-          <div class="card-top">
-            <span class="card-icon" aria-hidden="true">🏢</span>
-            <span class="card-tag">למוסדות וקהילות</span>
-          </div>
+      <div class="calc-stage">
+        <div class="calc-tabs" role="tablist" aria-label="בחירת מחשבון">
+          <button
+            class="calc-tab"
+            id="tab-institutions"
+            type="button"
+            role="tab"
+            aria-selected="true"
+            aria-controls="panel-institutions"
+            data-tab="institutions"
+          >
+            <span class="calc-tab-icon" aria-hidden="true">🏢</span>
+            <span class="calc-tab-text">
+              <b>מחשבון מוסדות וסולארי</b>
+              <small>למוסדות וקהילות<span class="calc-tab-more"> · לפי נתוני צריכה</span></small>
+            </span>
+          </button>
 
-          <h3>מחשבון מוסדות וסולארי</h3>
+          <button
+            class="calc-tab"
+            id="tab-private"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            aria-controls="panel-private"
+            data-tab="private"
+            tabindex="-1"
+          >
+            <span class="calc-tab-icon" aria-hidden="true">🔋</span>
+            <span class="calc-tab-text">
+              <b>מחשבון צריכה לפרטיים</b>
+              <small>למשפחות ופרטיים<span class="calc-tab-more"> · לפי מכשירים</span></small>
+            </span>
+          </button>
+        </div>
 
-          <p>
-            מתאים למקום עם נתוני צריכה קיימים. מעלים קובץ, מזינים שטח
-            סולארי ונתונים משלימים, ומקבלים תמונת מערכת רחבה.
+        <div class="calc-panel" id="panel-institutions" role="tabpanel" aria-labelledby="tab-institutions">
+          <iframe
+            class="calc-frame"
+            title="מחשבון מוסדות וסולארי"
+            data-src="/calculators/institutions/?embed=1"
+          ></iframe>
+        </div>
+
+        <div class="calc-panel" id="panel-private" role="tabpanel" aria-labelledby="tab-private" hidden>
+          <iframe
+            class="calc-frame"
+            title="מחשבון צריכת חשמל לפרטיים"
+            data-src="/calculators/private/?embed=1"
+          ></iframe>
+        </div>
+
+        <noscript>
+          <p class="calc-standalone">
+            <a href="/calculators/institutions/">מחשבון מוסדות וסולארי</a> ·
+            <a href="/calculators/private/">מחשבון צריכה לפרטיים</a>
           </p>
+        </noscript>
 
-          <ul class="features">
-            <li>קריאת קובץ צריכה וחישוב לפי נתוני מונים.</li>
-            <li>בדיקת פוטנציאל ייצור סולארי ואגירה.</li>
-            <li>המלצה לגודל מערכת, עלות, חיסכון והחזר משוער.</li>
-          </ul>
-
-          <span class="card-spacer"></span>
-          <span class="card-button">פתח מחשבון מוסדות ←</span>
-        </a>
-
-        <a
-          class="calculator-card"
-          href="/calculators/private/"
-          aria-label="פתיחת מחשבון צריכת חשמל לפרטיים"
-        >
-          <div class="card-top">
-            <span class="card-icon" aria-hidden="true">🔋</span>
-            <span class="card-tag">למשפחות ופרטיים</span>
-          </div>
-
-          <h3>מחשבון צריכת חשמל לפרטיים</h3>
-
-          <p>
-            מתאים לחישוב מהיר לפי מכשירים. בוחרים מכשיר, מזינים שעות
-            שימוש וכמות, ומקבלים הערכת צריכת אנרגיה והמלצת מערכת.
-          </p>
-
-          <ul class="features">
-            <li>הוספת מכשירים נפוצים או הזנה ידנית.</li>
-            <li>חישוב kWh, מספר סוללות והספק ממיר מומלץ.</li>
-            <li>אפשרות ייצוא לתיעוד ב־PDF או Excel.</li>
-          </ul>
-
-          <span class="card-spacer"></span>
-          <span class="card-button">פתח מחשבון פרטיים ←</span>
-        </a>
+        <p class="calc-standalone">
+          מעדיפים מסך מלא?
+          <a href="/calculators/institutions/" data-standalone="institutions">פתיחת המחשבון בעמוד נפרד</a>
+        </p>
       </div>
 
       <section class="contact-box" aria-labelledby="contact-title">
@@ -775,6 +956,93 @@
             dropdown.removeAttribute("open");
           }
         });
+      }
+    })();
+  </script>
+
+  <script>
+    /* כרטיסיות המחשבונים */
+    (function () {
+      "use strict";
+
+      var tabs = Array.prototype.slice.call(document.querySelectorAll(".calc-tab"));
+      var tabList = document.querySelector(".calc-tabs");
+      var standalone = document.querySelector("[data-standalone]");
+      var dropdown = document.querySelector(".nav-dropdown");
+      if (!tabs.length) return;
+
+      var pages = {
+        institutions: "/calculators/institutions/",
+        private: "/calculators/private/"
+      };
+
+      function select(name, options) {
+        options = options || {};
+        var target = null;
+
+        tabs.forEach(function (tab) {
+          if (tab.getAttribute("data-tab") === name) target = tab;
+        });
+        if (!target) return false;
+
+        tabs.forEach(function (tab) {
+          var active = tab === target;
+          var panel = document.getElementById(tab.getAttribute("aria-controls"));
+          tab.setAttribute("aria-selected", active ? "true" : "false");
+          tab.tabIndex = active ? 0 : -1;
+          panel.hidden = !active;
+
+          if (active) {
+            var frame = panel.querySelector("iframe[data-src]");
+            if (frame && !frame.getAttribute("src")) {
+              frame.setAttribute("src", frame.getAttribute("data-src"));
+            }
+          }
+        });
+
+        if (standalone && pages[name]) standalone.setAttribute("href", pages[name]);
+        if (options.updateHash) {
+          try { history.replaceState(null, "", "#" + name); } catch (error) {}
+        }
+        if (options.focus) target.focus();
+        return true;
+      }
+
+      tabs.forEach(function (tab, index) {
+        tab.addEventListener("click", function () {
+          select(tab.getAttribute("data-tab"), { updateHash: true });
+        });
+
+        tab.addEventListener("keydown", function (event) {
+          var next = null;
+          /* בעברית הכרטיסייה הבאה נמצאת משמאל */
+          if (event.key === "ArrowLeft") next = tabs[(index + 1) % tabs.length];
+          if (event.key === "ArrowRight") next = tabs[(index - 1 + tabs.length) % tabs.length];
+          if (event.key === "Home") next = tabs[0];
+          if (event.key === "End") next = tabs[tabs.length - 1];
+
+          if (next) {
+            event.preventDefault();
+            select(next.getAttribute("data-tab"), { updateHash: true, focus: true });
+          }
+        });
+      });
+
+      function selectFromHash() {
+        return select((location.hash || "").replace("#", ""));
+      }
+
+      window.addEventListener("hashchange", function () {
+        if (selectFromHash()) {
+          if (dropdown) dropdown.removeAttribute("open");
+          tabList.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      });
+
+      if (selectFromHash()) {
+        tabList.scrollIntoView({ block: "start" });
+      } else {
+        select(tabs[0].getAttribute("data-tab"));
       }
     })();
   </script>
