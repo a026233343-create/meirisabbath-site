@@ -7,7 +7,7 @@
   <title>מחשבוני צריכת חשמל ואגירה | מאירי שבת</title>
   <meta
     name="description"
-    content="המחשבונים של מאירי שבת בעמוד אחד: מחשבון מוסדות וסולארי ומחשבון צריכת חשמל לפרטיים."> <meta property="og:type" content="website"/> <meta property="og:site_name" content="מאירי שבת"/> <meta property="og:locale" content="he_IL"/> <meta property="og:title" content="מחשבוני צריכת חשמל ואגירה | מאירי שבת"/> <meta property="og:description" content="המחשבונים של מאירי שבת בעמוד אחד: מחשבון מוסדות וסולארי ומחשבון צריכת חשמל לפרטיים."/> <meta property="og:url" content="https://www.meirisabbath.co.il/calculators/"/> <meta property="og:image" content="https://meish.neocities.org/off-grid-home-energy-storage-solution.jpg"/> <meta name="twitter:card" content="summary_large_image"/>
+    content="המחשבונים של מאירי שבת בעמוד אחד: אגירה בלבד, או סולארי + אגירה."> <meta property="og:type" content="website"/> <meta property="og:site_name" content="מאירי שבת"/> <meta property="og:locale" content="he_IL"/> <meta property="og:title" content="מחשבוני צריכת חשמל ואגירה | מאירי שבת"/> <meta property="og:description" content="המחשבונים של מאירי שבת בעמוד אחד: אגירה בלבד, או סולארי + אגירה."/> <meta property="og:url" content="https://www.meirisabbath.co.il/calculators/"/> <meta property="og:image" content="https://meish.neocities.org/off-grid-home-energy-storage-solution.jpg"/> <meta name="twitter:card" content="summary_large_image"/>
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#fff8ef">
 
@@ -802,8 +802,8 @@
 
           <div class="dropdown-menu">
             <a href="/calculators/" aria-current="page">כל המחשבונים</a>
-            <a href="/calculators/#institutions">מחשבון מוסדות וסולארי</a>
-            <a href="/calculators/#private">מחשבון צריכה לפרטיים</a>
+            <a href="/calculators/#private">אגירה בלבד</a>
+            <a href="/calculators/#institutions">סולארי + אגירה</a>
           </div>
         </details>
       </nav>
@@ -825,8 +825,8 @@
         </h1>
 
         <p>
-          בחרו את המחשבון המתאים: חישוב מקצועי למוסדות לפי נתוני צריכה,
-          או חישוב מהיר לפרטיים לפי מכשירים ושעות שימוש.
+          בחרו את סוג המערכת: אגירה בלבד — חישוב מהיר לפי מכשירים ושעות שימוש,
+          או סולארי + אגירה — חישוב לפי נתוני צריכה ופוטנציאל סולארי.
         </p>
       </div>
     </section>
@@ -843,64 +843,64 @@
         <div class="calc-tabs" role="tablist" aria-label="בחירת מחשבון">
           <button
             class="calc-tab"
-            id="tab-institutions"
+            id="tab-private"
             type="button"
             role="tab"
             aria-selected="true"
-            aria-controls="panel-institutions"
-            data-tab="institutions"
+            aria-controls="panel-private"
+            data-tab="private"
           >
-            <span class="calc-tab-icon" aria-hidden="true">🏢</span>
+            <span class="calc-tab-icon" aria-hidden="true">🔋</span>
             <span class="calc-tab-text">
-              <b>מחשבון מוסדות וסולארי</b>
-              <small>למוסדות וקהילות<span class="calc-tab-more"> · לפי נתוני צריכה</span></small>
+              <b>אגירה בלבד</b>
+              <small>מצברים וממיר<span class="calc-tab-more"> · לפי מכשירים ושעות שימוש</span></small>
             </span>
           </button>
 
           <button
             class="calc-tab"
-            id="tab-private"
+            id="tab-institutions"
             type="button"
             role="tab"
             aria-selected="false"
-            aria-controls="panel-private"
-            data-tab="private"
+            aria-controls="panel-institutions"
+            data-tab="institutions"
             tabindex="-1"
           >
-            <span class="calc-tab-icon" aria-hidden="true">🔋</span>
+            <span class="calc-tab-icon" aria-hidden="true">☀️</span>
             <span class="calc-tab-text">
-              <b>מחשבון צריכה לפרטיים</b>
-              <small>למשפחות ופרטיים<span class="calc-tab-more"> · לפי מכשירים</span></small>
+              <b>סולארי + אגירה</b>
+              <small>פאנלים ומצברים<span class="calc-tab-more"> · לפי נתוני צריכה</span></small>
             </span>
           </button>
         </div>
 
-        <div class="calc-panel" id="panel-institutions" role="tabpanel" aria-labelledby="tab-institutions">
+        <div class="calc-panel" id="panel-private" role="tabpanel" aria-labelledby="tab-private">
           <iframe
             class="calc-frame"
-            title="מחשבון מוסדות וסולארי"
-            data-src="/calculators/institutions/?embed=1"
+            title="מחשבון אגירה בלבד"
+            data-src="/calculators/private/?embed=1"
           ></iframe>
         </div>
 
-        <div class="calc-panel" id="panel-private" role="tabpanel" aria-labelledby="tab-private" hidden>
+        <div class="calc-panel" id="panel-institutions" role="tabpanel" aria-labelledby="tab-institutions" hidden>
           <iframe
             class="calc-frame"
-            title="מחשבון צריכת חשמל לפרטיים"
-            data-src="/calculators/private/?embed=1"
+            title="מחשבון סולארי + אגירה"
+            data-src="/calculators/institutions/?embed=1"
           ></iframe>
         </div>
 
         <noscript>
           <p class="calc-standalone">
-            <a href="/calculators/institutions/">מחשבון מוסדות וסולארי</a> ·
-            <a href="/calculators/private/">מחשבון צריכה לפרטיים</a>
+            <a href="/calculators/private/">אגירה בלבד</a> ·
+            <a href="/calculators/institutions/">סולארי + אגירה</a>
           </p>
         </noscript>
 
         <p class="calc-standalone">
           מעדיפים מסך מלא?
-          <a href="/calculators/institutions/" data-standalone="institutions">פתיחת המחשבון בעמוד נפרד</a>
+          <a href="/calculators/private/" data-standalone="private">פתיחת המחשבון בעמוד נפרד</a>
         </p>
       </div>
 
@@ -908,7 +908,7 @@
         <div>
           <h2 id="contact-title">לא בטוחים איזה מחשבון לבחור?</h2>
           <p>
-            אפשר להתחיל במחשבון הפרטיים לחישוב מהיר,
+            אפשר להתחיל ב״אגירה בלבד״ לחישוב מהיר,
             או לפנות לקבלת הכוונה לבחירת המסלול המתאים.
           </p>
         </div>
