@@ -905,6 +905,122 @@
         display: none;
       }
     }
+
+    /* לשוניות בסגנון דפדפן (כמו בכרום): פס לשוניות, והלשונית הפעילה מתחברת לעמוד */
+    .calc-tabs {
+      justify-content: flex-start;
+      align-items: flex-end;
+      gap: 2px;
+      padding: 8px 14px 0;
+      border-bottom: 0;
+      background: #f1e6d8;
+      box-shadow: none;
+    }
+
+    .calc-tab {
+      position: relative;
+      flex: 0 1 250px;
+      min-width: 0;
+      height: 40px;
+      min-height: 0;
+      padding: 0 16px;
+      gap: 9px;
+      justify-content: flex-start;
+      border-radius: 11px 11px 0 0;
+      background: transparent;
+      color: #5f4b3c;
+      box-shadow: none;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+
+    .calc-tab:hover {
+      background: rgba(255, 255, 255, 0.55);
+    }
+
+    .calc-tab[aria-selected="true"] {
+      z-index: 1;
+      background: #ffffff;
+      color: var(--text);
+      box-shadow: none;
+    }
+
+    .calc-tab[aria-selected="true"]::before,
+    .calc-tab[aria-selected="true"]::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      width: 11px;
+      height: 11px;
+      pointer-events: none;
+    }
+
+    .calc-tab[aria-selected="true"]::before {
+      left: -11px;
+      background: radial-gradient(circle at 0 0, transparent 11px, #ffffff 11.5px);
+    }
+
+    .calc-tab[aria-selected="true"]::after {
+      right: -11px;
+      background: radial-gradient(circle at 100% 0, transparent 11px, #ffffff 11.5px);
+    }
+
+    .calc-tab:focus-visible {
+      outline: 2px solid var(--blue);
+      outline-offset: -4px;
+    }
+
+    .calc-tab-icon {
+      font-size: 17px;
+    }
+
+    .calc-tab-text {
+      min-width: 0;
+    }
+
+    .calc-tab-text b {
+      overflow: hidden;
+      font-size: 14.5px;
+      font-weight: 800;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .calc-tab-text small {
+      display: none;
+    }
+
+    /* פס לבן דק מתחת ללשוניות, כמו סרגל הכלים בדפדפן */
+    .calc-panel {
+      border-top: 6px solid #ffffff;
+    }
+
+    .calc-frame {
+      border-top: 1px solid var(--line);
+    }
+
+    @media (max-width: 540px) {
+      .calc-tabs {
+        gap: 2px;
+        padding: 6px 8px 0;
+      }
+
+      .calc-tab {
+        flex: 1 1 0;
+        height: 40px;
+        min-height: 0;
+        padding: 0 10px;
+        justify-content: center;
+        border-radius: 10px 10px 0 0;
+      }
+
+      .calc-tab-icon {
+        font-size: 16px;
+      }
+
+      .calc-tab-text b {
+        font-size: 14px;
+      }
+    }
   </style>
 </head>
 
