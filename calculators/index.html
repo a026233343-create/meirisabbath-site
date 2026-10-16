@@ -1211,6 +1211,43 @@
         border-radius: 18px;
       }
     }
+
+    /* תקופת החזר: מקורות ההחזר */
+    .info-payback {
+      margin-top: 16px;
+      padding: 14px 16px;
+      border: 1px solid #f2d3a8;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #fffaf2 0%, #fff2e2 100%);
+    }
+
+    .info-payback h4 {
+      margin: 0 0 4px;
+      color: var(--text);
+      font-size: 16px;
+      font-weight: 950;
+    }
+
+    .info-payback p {
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.6;
+    }
+
+    .info-payback ol {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding-right: 22px;
+      line-height: 1.6;
+    }
+
+    .info-payback li::marker {
+      color: #b65d00;
+      font-weight: 900;
+    }
   </style>
 </head>
 
@@ -1279,7 +1316,7 @@
         <span class="calc-tab-icon" aria-hidden="true">☀️</span>
         <span class="calc-tab-text">
           <b>סולארי + אגירה</b>
-          <small>פאנלים ומצברים</small>
+          <small>כולל תקופת החזר</small>
         </span>
       </button>
 
@@ -1361,8 +1398,8 @@
           <section class="info-card" aria-labelledby="info-solar-title">
             <h3 id="info-solar-title"><span aria-hidden="true">☀️</span> סולארי + אגירה</h3>
             <p class="info-lead">
-              מערכת סולארית עם אגירה, לפי נתוני הצריכה בפועל. מתאים כשיש קובץ צריכה
-              או חשבונות חשמל.
+              מערכת סולארית עם אגירה, לפי נתוני הצריכה בפועל, כולל חישוב תקופת החזר
+              ההשקעה. מתאים כשיש קובץ צריכה או חשבונות חשמל.
             </p>
             <ol class="info-steps">
               <li>
@@ -1377,6 +1414,24 @@
                 עם עלות משוערת, חיסכון שנתי ותקופת החזר.
               </li>
             </ol>
+            <div class="info-payback">
+              <h4>תקופת החזר: מאיפה מגיע ההחזר?</h4>
+              <p>המחשבון מחשב תוך כמה זמן ההשקעה במערכת מחזירה את עצמה. ההחזר יכול להגיע מכמה מקורות:</p>
+              <ol>
+                <li>
+                  <b>ביחס לגנרטור:</b> החיסכון לעומת הפעלת גנרטור, בהוצאות על סולר,
+                  השכרה ותחזוקה.
+                </li>
+                <li>
+                  <b>מכירה לפי מונה תעו״ז:</b> עם מונה תעו״ז (תעריף עומס וזמן) טוענים את
+                  המצברים בשעות שבהן החשמל זול, ומשתמשים בחשמל או מוכרים אותו בשעות היקרות.
+                </li>
+                <li>
+                  <b>פאנלים סולאריים:</b> החשמל שהפאנלים מייצרים חוסך בחשבון החשמל,
+                  ואת העודפים אפשר למכור לרשת.
+                </li>
+              </ol>
+            </div>
             <button class="contact-button primary info-go" type="button" data-goto="institutions">
               לפתיחת המחשבון ←
             </button>
