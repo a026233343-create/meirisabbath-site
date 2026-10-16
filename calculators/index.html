@@ -1256,6 +1256,199 @@
         width: 100%;
       }
     }
+
+    /* אייקונים מונפשים */
+    .ai {
+      display: inline-block;
+      flex: none;
+      width: 1.25em;
+      height: 1.25em;
+      overflow: visible;
+      color: var(--blue);
+      vertical-align: -0.28em;
+    }
+
+    .calc-tab-icon {
+      display: inline-flex;
+    }
+
+    .calc-tab-icon .ai {
+      width: 21px;
+      height: 21px;
+    }
+
+    .info-card h3 {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .info-card h3 .ai {
+      width: 26px;
+      height: 26px;
+    }
+
+    .info-savings-list b {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .info-savings-list .ai {
+      width: 22px;
+      height: 22px;
+    }
+
+    .info-tools-title {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .ai-battery-fill {
+      transform-box: fill-box;
+      transform-origin: 0 50%;
+      animation: ai-charge 2.6s ease-in-out infinite;
+    }
+
+    .ai-sun-rays {
+      transform-box: view-box;
+      transform-origin: 12px 12px;
+      animation: ai-spin 14s linear infinite;
+    }
+
+    .ai-info-dot {
+      animation: ai-bounce 2.4s ease-in-out infinite;
+    }
+
+    .ai-bulb-glow {
+      transform-box: fill-box;
+      transform-origin: 50% 50%;
+      animation: ai-glow 2.8s ease-in-out infinite;
+    }
+
+    .ai-fuel-drop {
+      animation: ai-drip 2.2s ease-in infinite;
+    }
+
+    .ai-clock-min {
+      transform-box: view-box;
+      transform-origin: 12px 12px;
+      animation: ai-spin 5s linear infinite;
+    }
+
+    .ai-clock-hour {
+      transform-box: view-box;
+      transform-origin: 12px 12px;
+      animation: ai-spin 60s linear infinite;
+    }
+
+    .ai-gear-body {
+      transform-box: view-box;
+      transform-origin: 12px 12px;
+      animation: ai-spin 9s linear infinite;
+    }
+
+    @keyframes ai-spin {
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes ai-charge {
+      0% { transform: scaleX(0.12); fill: #f5a524; }
+      55% { fill: #2fbf71; }
+      75%, 100% { transform: scaleX(1); fill: #2fbf71; }
+    }
+
+    @keyframes ai-bounce {
+      0%, 55%, 100% { transform: translateY(0); }
+      25% { transform: translateY(-1.8px); }
+    }
+
+    @keyframes ai-glow {
+      0%, 100% { opacity: 0; transform: scale(0.55); }
+      50% { opacity: 0.5; transform: scale(1); }
+    }
+
+    @keyframes ai-drip {
+      0% { opacity: 0; transform: translateY(-2.5px); }
+      25% { opacity: 1; }
+      80%, 100% { opacity: 0; transform: translateY(2.5px); }
+    }
+
+    /* סימון הלשונית הפעילה: פס שזז בין הלשוניות */
+    .calc-tab,
+    .calc-tab:hover,
+    .calc-tab[aria-selected="true"] {
+      box-shadow: none;
+    }
+
+    .calc-tab-indicator {
+      position: absolute;
+      top: 8px;
+      left: 0;
+      z-index: 2;
+      width: 0;
+      height: 3px;
+      border-radius: 0 0 3px 3px;
+      background: linear-gradient(90deg, #f08a24, #ffb15f);
+      pointer-events: none;
+    }
+
+    .calc-tabs.is-ready .calc-tab-indicator {
+      transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), width 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    /* בלשוניות האחרות: ברק עדין שמושך את העין, עד שלוחצים על לשונית */
+    .calc-tab:not([aria-selected="true"])::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 12px;
+      left: 12px;
+      height: 3px;
+      border-radius: 0 0 3px 3px;
+      background: linear-gradient(90deg, rgba(243, 161, 76, 0) 0%, #f3a14c 50%, rgba(243, 161, 76, 0) 100%);
+      background-size: 220% 100%;
+      animation: tab-hint 2.8s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .calc-tabs.is-used .calc-tab:not([aria-selected="true"])::before {
+      opacity: 0.3;
+      animation: none;
+    }
+
+    .calc-tab:not([aria-selected="true"]):hover::before {
+      opacity: 1;
+      animation: none;
+    }
+
+    @keyframes tab-hint {
+      0% { background-position: 110% 0; opacity: 0.35; }
+      50% { opacity: 1; }
+      100% { background-position: -110% 0; opacity: 0.35; }
+    }
+
+    @media (max-width: 540px) {
+      .calc-tab-indicator {
+        top: 6px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .calc-tab-icon {
+        display: none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .ai *,
+      .calc-tab::before,
+      .calc-tab-indicator {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
   </style>
 </head>
 
@@ -1304,7 +1497,7 @@
         aria-controls="panel-private"
         data-tab="private"
       >
-        <span class="calc-tab-icon" aria-hidden="true">🔋</span>
+        <span class="calc-tab-icon" aria-hidden="true"><svg class="ai ai-battery" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="2.5" y="7" width="16.5" height="10" rx="2.4" fill="#fff" stroke="currentColor" stroke-width="1.8"/><rect x="19.6" y="10" width="2" height="4" rx=".7" fill="currentColor"/><rect class="ai-battery-fill" x="4.6" y="9.1" width="12.3" height="5.8" rx="1.2" fill="#2fbf71"/></svg></span>
         <span class="calc-tab-text">
           <b>אגירה בלבד</b>
           <small>מצברים וממיר</small>
@@ -1321,7 +1514,7 @@
         data-tab="institutions"
         tabindex="-1"
       >
-        <span class="calc-tab-icon" aria-hidden="true">☀️</span>
+        <span class="calc-tab-icon" aria-hidden="true"><svg class="ai ai-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g class="ai-sun-rays" fill="none" stroke="#f5a524" stroke-width="1.8" stroke-linecap="round"><path d="M12 2.4v2.3M12 19.3v2.3M2.4 12h2.3M19.3 12h2.3M5.2 5.2l1.6 1.6M17.2 17.2l1.6 1.6M5.2 18.8l1.6-1.6M17.2 6.8l1.6-1.6"/></g><circle cx="12" cy="12" r="4.4" fill="#ffc83d" stroke="#f5a524" stroke-width="1.2"/></svg></span>
         <span class="calc-tab-text">
           <b>סולארי + אגירה</b>
           <small>כולל תקופת החזר</small>
@@ -1338,7 +1531,7 @@
         data-tab="info"
         tabindex="-1"
       >
-        <span class="calc-tab-icon" aria-hidden="true">ℹ️</span>
+        <span class="calc-tab-icon" aria-hidden="true"><svg class="ai ai-info" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle class="ai-info-ring" cx="12" cy="12" r="9" fill="#e9f2f8" stroke="currentColor" stroke-width="1.8"/><path d="M12 10.6v6" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"/><circle class="ai-info-dot" cx="12" cy="7.3" r="1.3" fill="currentColor"/></svg></span>
         <span class="calc-tab-text">
           <b>הוראות ומידע</b>
           <small>איך משתמשים</small>
@@ -1370,24 +1563,24 @@
         </header>
 
         <section class="info-card info-savings" aria-labelledby="info-savings-title">
-          <h3 id="info-savings-title">💡 מה יכול להביא חיסכון?</h3>
+          <h3 id="info-savings-title"><svg class="ai ai-bulb" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle class="ai-bulb-glow" cx="12" cy="9.6" r="8.6" fill="#ffd36b"/><path d="M12 3.4a5.7 5.7 0 0 0-3.4 10.2c.6.5 1 1.3 1 2.1v.5h4.8v-.5c0-.8.4-1.6 1-2.1A5.7 5.7 0 0 0 12 3.4z" fill="#ffe08a" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9.6 18.6h4.8M10.4 21h3.2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg> מה יכול להביא חיסכון?</h3>
           <ul class="info-savings-list">
-            <li><b>⛽ גנרטור</b><span>חוסכים את הסולר, ההשכרה והתחזוקה של הגנרטור.</span></li>
-            <li><b>🕒 מונה תעו״ז</b><span>טוענים כשהחשמל זול, ומשתמשים או מוכרים כשהוא יקר.</span></li>
-            <li><b>☀️ פאנלים סולאריים</b><span>מייצרים חשמל מהגג וחוסכים בחשבון.</span></li>
+            <li><b><svg class="ai ai-fuel" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.8" y="3.6" width="10.4" height="16.8" rx="2.1" fill="#fff" stroke="currentColor" stroke-width="1.8"/><rect x="6.2" y="6.1" width="5.6" height="4.1" rx=".9" fill="#ffb15f"/><path d="M14.2 8.9h2a1.7 1.7 0 0 1 1.7 1.7v5.2a1.35 1.35 0 0 0 2.7 0V8.3l-2.3-2.3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path class="ai-fuel-drop" d="M9 12.6c-.95 1.25-1.45 2.1-1.45 2.75a1.45 1.45 0 0 0 2.9 0c0-.65-.5-1.5-1.45-2.75z" fill="#f08a24"/></svg> גנרטור</b><span>חוסכים את הסולר, ההשכרה והתחזוקה של הגנרטור.</span></li>
+            <li><b><svg class="ai ai-clock" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="#fff" stroke="currentColor" stroke-width="1.8"/><path class="ai-clock-hour" d="M12 12V8" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"/><path class="ai-clock-min" d="M12 12h4.8" fill="none" stroke="#f08a24" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="12" r="1.15" fill="currentColor"/></svg> מונה תעו״ז</b><span>טוענים כשהחשמל זול, ומשתמשים או מוכרים כשהוא יקר.</span></li>
+            <li><b><svg class="ai ai-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g class="ai-sun-rays" fill="none" stroke="#f5a524" stroke-width="1.8" stroke-linecap="round"><path d="M12 2.4v2.3M12 19.3v2.3M2.4 12h2.3M19.3 12h2.3M5.2 5.2l1.6 1.6M17.2 17.2l1.6 1.6M5.2 18.8l1.6-1.6M17.2 6.8l1.6-1.6"/></g><circle cx="12" cy="12" r="4.4" fill="#ffc83d" stroke="#f5a524" stroke-width="1.2"/></svg> פאנלים סולאריים</b><span>מייצרים חשמל מהגג וחוסכים בחשבון.</span></li>
           </ul>
           <p class="info-hint">המחשבון "סולארי + אגירה" מחשב את החיסכון מכל אחד מהם ואת תקופת ההחזר.</p>
         </section>
 
         <div class="info-grid">
           <section class="info-card" aria-labelledby="info-private-title">
-            <h3 id="info-private-title">🔋 אגירה בלבד</h3>
+            <h3 id="info-private-title"><svg class="ai ai-battery" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="2.5" y="7" width="16.5" height="10" rx="2.4" fill="#fff" stroke="currentColor" stroke-width="1.8"/><rect x="19.6" y="10" width="2" height="4" rx=".7" fill="currentColor"/><rect class="ai-battery-fill" x="4.6" y="9.1" width="12.3" height="5.8" rx="1.2" fill="#2fbf71"/></svg> אגירה בלבד</h3>
             <ol class="info-steps">
               <li>בוחרים מכשיר, כמה שעות ביום וכמה יחידות, ולוחצים "הוספה לחישוב".</li>
               <li>ככה מוסיפים כל מכשיר. בטבלה אפשר לשנות, לשכפל או למחוק.</li>
               <li>בצד רואים מיד: צריכה כוללת, ממיר מומלץ וכמה סוללות צריך.</li>
             </ol>
-            <h4 class="info-tools-title">⚙️ הגדרות וכלים</h4>
+            <h4 class="info-tools-title"><svg class="ai ai-gear" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g class="ai-gear-body" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="7.6" stroke-width="3.2" stroke-dasharray="2.9 3.07"/><circle cx="12" cy="12" r="5.6" stroke-width="1.8" fill="#fff"/><circle cx="12" cy="12" r="2" stroke-width="1.8"/></g></svg> הגדרות וכלים</h4>
             <ul class="info-tools">
               <li>מכשיר שלא ברשימה? <b>הזנה ידנית</b> של שם והספק.</li>
               <li><b>בדיקת סולארי:</b> שטח פנוי, אופן הנחת הפאנלים והכיוון, ומקבלים תפוקה משוערת.</li>
@@ -1397,7 +1590,7 @@
           </section>
 
           <section class="info-card" aria-labelledby="info-solar-title">
-            <h3 id="info-solar-title">☀️ סולארי + אגירה</h3>
+            <h3 id="info-solar-title"><svg class="ai ai-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g class="ai-sun-rays" fill="none" stroke="#f5a524" stroke-width="1.8" stroke-linecap="round"><path d="M12 2.4v2.3M12 19.3v2.3M2.4 12h2.3M19.3 12h2.3M5.2 5.2l1.6 1.6M17.2 17.2l1.6 1.6M5.2 18.8l1.6-1.6M17.2 6.8l1.6-1.6"/></g><circle cx="12" cy="12" r="4.4" fill="#ffc83d" stroke="#f5a524" stroke-width="1.2"/></svg> סולארי + אגירה</h3>
             <ol class="info-steps">
               <li><b>צריכה:</b> מעלים את קובץ ה-Excel מחברת החשמל, או מקלידים מהחשבונית.</li>
               <li><b>סולארי:</b> כמה שטח פנוי יש בגג לפאנלים.</li>
@@ -1405,7 +1598,7 @@
               <li><b>ההמלצה:</b> המערכת המומלצת, החיסכון מכל מקור ותקופת ההחזר.</li>
               <li><b>פירוט:</b> מה זוהה בקובץ הצריכה.</li>
             </ol>
-            <h4 class="info-tools-title">⚙️ הגדרות וכלים</h4>
+            <h4 class="info-tools-title"><svg class="ai ai-gear" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g class="ai-gear-body" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="7.6" stroke-width="3.2" stroke-dasharray="2.9 3.07"/><circle cx="12" cy="12" r="5.6" stroke-width="1.8" fill="#fff"/><circle cx="12" cy="12" r="2" stroke-width="1.8"/></g></svg> הגדרות וכלים</h4>
             <ul class="info-tools">
               <li><b>בסיס ההמלצה:</b> לפי איזו שבת לחשב: ממוצע, הגבוהה ביותר, קיץ או חורף.</li>
               <li><b>הזנה ידנית מתקדמת:</b> תעריפים, עלויות ויעילות, למי שרוצה לדייק.</li>
@@ -1462,7 +1655,22 @@
 
       var tabs = Array.prototype.slice.call(document.querySelectorAll(".calc-tab"));
       var dropdown = document.querySelector(".nav-dropdown");
+      var tabList = document.querySelector(".calc-tabs");
       if (!tabs.length) return;
+
+      /* פס שזז אל הלשונית הפעילה */
+      var indicator = document.createElement("span");
+      indicator.className = "calc-tab-indicator";
+      indicator.setAttribute("aria-hidden", "true");
+      tabList.appendChild(indicator);
+
+      function moveIndicator() {
+        var active = tabList.querySelector('.calc-tab[aria-selected="true"]');
+        if (!active) return;
+        var inset = 12;
+        indicator.style.width = Math.max(0, active.offsetWidth - inset * 2) + "px";
+        indicator.style.transform = "translateX(" + (active.offsetLeft + inset) + "px)";
+      }
 
       function select(name, options) {
         options = options || {};
@@ -1492,11 +1700,13 @@
           try { history.replaceState(null, "", "#" + name); } catch (error) {}
         }
         if (options.focus) target.focus();
+        moveIndicator();
         return true;
       }
 
       tabs.forEach(function (tab, index) {
         tab.addEventListener("click", function () {
+          tabList.classList.add("is-used");
           select(tab.getAttribute("data-tab"), { updateHash: true });
         });
 
@@ -1530,6 +1740,13 @@
       });
 
       if (!selectFromHash()) select(tabs[0].getAttribute("data-tab"));
+
+      window.addEventListener("resize", moveIndicator);
+      window.addEventListener("load", moveIndicator);
+      requestAnimationFrame(function () {
+        moveIndicator();
+        tabList.classList.add("is-ready");
+      });
     })();
   </script>
 </body>
