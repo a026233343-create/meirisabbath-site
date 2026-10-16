@@ -1021,6 +1021,196 @@
         font-size: 14px;
       }
     }
+
+    /* הקצוות המעוגלים של הלשונית הפעילה לא יבלטו מחוץ למסך */
+    .calc-tabs {
+      overflow: hidden;
+    }
+
+    /* לשונית הוראות ומידע */
+    .calc-info {
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      background: linear-gradient(180deg, #fffaf5 0%, #ffffff 100%);
+    }
+
+    .calc-info::before {
+      content: none;
+    }
+
+    .calc-info:focus-visible {
+      outline: 3px solid rgba(255, 177, 95, 0.45);
+      outline-offset: -3px;
+    }
+
+    .info-inner {
+      width: min(980px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 26px 0 44px;
+    }
+
+    .info-head {
+      margin-bottom: 18px;
+      text-align: center;
+    }
+
+    .info-head h2 {
+      margin: 12px 0 6px;
+      font-size: clamp(24px, 3vw, 32px);
+      font-weight: 950;
+      line-height: 1.2;
+    }
+
+    .info-head p {
+      max-width: 680px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-weight: 700;
+      line-height: 1.7;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .info-card {
+      padding: 20px 22px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: var(--card);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .info-card h3 {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 6px;
+      font-size: 20px;
+      font-weight: 950;
+    }
+
+    .info-lead {
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-weight: 700;
+      line-height: 1.6;
+    }
+
+    .info-steps {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      counter-reset: info-step;
+    }
+
+    .info-steps li {
+      position: relative;
+      padding-right: 36px;
+      line-height: 1.65;
+      counter-increment: info-step;
+    }
+
+    .info-steps li::before {
+      content: counter(info-step);
+      position: absolute;
+      top: 1px;
+      right: 0;
+      display: grid;
+      place-items: center;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--blue);
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .info-note {
+      margin: 14px 0 0;
+      padding: 10px 12px;
+      border: 1px dashed var(--orange-light);
+      border-radius: 12px;
+      background: var(--orange-soft);
+      color: #7a3f10;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.6;
+    }
+
+    .info-go {
+      margin-top: 16px;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .info-wide,
+    .info-contact {
+      margin-top: 16px;
+    }
+
+    .info-list {
+      display: grid;
+      gap: 8px;
+      margin: 8px 0 0;
+      padding-right: 20px;
+      line-height: 1.65;
+    }
+
+    .info-contact {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 16px;
+      background: linear-gradient(135deg, #ffffff 0%, #fff8ef 58%, #fff2e2 100%);
+    }
+
+    .info-contact p {
+      margin: 0;
+      color: var(--muted);
+      font-weight: 700;
+      line-height: 1.6;
+    }
+
+    .info-contact-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    @media (max-width: 760px) {
+      .info-grid,
+      .info-contact {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .calc-tab {
+        padding: 0 6px;
+      }
+
+      .calc-tab-icon {
+        display: none;
+      }
+
+      .info-inner {
+        width: calc(100% - 22px);
+        padding-top: 18px;
+      }
+
+      .info-card {
+        padding: 16px;
+        border-radius: 18px;
+      }
+    }
   </style>
 </head>
 
@@ -1092,6 +1282,23 @@
           <small>פאנלים ומצברים</small>
         </span>
       </button>
+
+      <button
+        class="calc-tab"
+        id="tab-info"
+        type="button"
+        role="tab"
+        aria-selected="false"
+        aria-controls="panel-info"
+        data-tab="info"
+        tabindex="-1"
+      >
+        <span class="calc-tab-icon" aria-hidden="true">ℹ️</span>
+        <span class="calc-tab-text">
+          <b>הוראות ומידע</b>
+          <small>איך משתמשים</small>
+        </span>
+      </button>
     </div>
 
     <div class="calc-panel" id="panel-private" role="tabpanel" aria-labelledby="tab-private">
@@ -1108,6 +1315,95 @@
         title="מחשבון סולארי + אגירה"
         data-src="/calculators/institutions/?embed=1"
       ></iframe>
+    </div>
+
+    <div class="calc-panel calc-info" id="panel-info" role="tabpanel" aria-labelledby="tab-info" tabindex="0" hidden>
+      <div class="info-inner">
+        <header class="info-head">
+          <span class="eyebrow">הוראות ומידע</span>
+          <h2>איך משתמשים במחשבונים</h2>
+          <p>
+            שני מחשבונים, לפי סוג המערכת. התוצאה היא הערכה ראשונית לגודל המערכת,
+            ואת ההתאמה הסופית והצעת המחיר עושים יחד עם נציג.
+          </p>
+        </header>
+
+        <div class="info-grid">
+          <section class="info-card" aria-labelledby="info-private-title">
+            <h3 id="info-private-title"><span aria-hidden="true">🔋</span> אגירה בלבד</h3>
+            <p class="info-lead">
+              מצברים וממיר, בלי פאנלים. החישוב נעשה לפי המכשירים שתרצו להפעיל ולפי שעות השימוש.
+            </p>
+            <ol class="info-steps">
+              <li>
+                בוחרים מכשיר מהרשימה, ומזינים כמה שעות ביום הוא יעבוד וכמה יחידות יש ממנו.
+                מכשיר שלא מופיע ברשימה אפשר להזין ידנית, עם שם והספק.
+              </li>
+              <li>
+                לוחצים "הוספה לחישוב". המכשיר נכנס לטבלה, ואפשר להוסיף עוד מכשירים
+                ולשנות שעות וכמות בכל רגע.
+              </li>
+              <li>
+                בצד מתעדכן הסיכום: צריכה כוללת (kWh), הספק ממיר מומלץ,
+                וכמה סוללות צריך מכל דגם.
+              </li>
+              <li>את הדוח שקיבלתם אפשר לשמור כקובץ PDF או Excel.</li>
+            </ol>
+            <p class="info-note">
+              <b>טיפ:</b> התחילו מהמכשירים שחייבים לעבוד, לפי השעות שבפועל.
+              תמיד אפשר להוסיף עוד בהמשך.
+            </p>
+            <button class="contact-button primary info-go" type="button" data-goto="private">
+              לפתיחת המחשבון ←
+            </button>
+          </section>
+
+          <section class="info-card" aria-labelledby="info-solar-title">
+            <h3 id="info-solar-title"><span aria-hidden="true">☀️</span> סולארי + אגירה</h3>
+            <p class="info-lead">
+              מערכת סולארית עם אגירה, לפי נתוני הצריכה בפועל. מתאים כשיש קובץ צריכה
+              או חשבונות חשמל.
+            </p>
+            <ol class="info-steps">
+              <li>
+                <b>צריכה:</b> מעלים קובץ צריכה (CSV או Excel), שהוא המסלול המדויק ביותר,
+                או מקלידים ידנית מתוך חשבונית חשמל את סך הקוט״ש ותאריכי החשבון.
+              </li>
+              <li>
+                <b>סולארי וגנרטור:</b> בשלבים הבאים משלימים את נתוני הגג ואת שאר הנתונים.
+              </li>
+              <li>
+                <b>ההמלצה ופירוט:</b> מקבלים המלצה מסכמת לגודל האגירה ולמערכת הסולארית,
+                עם עלות משוערת, חיסכון שנתי ותקופת החזר.
+              </li>
+            </ol>
+            <button class="contact-button primary info-go" type="button" data-goto="institutions">
+              לפתיחת המחשבון ←
+            </button>
+          </section>
+        </div>
+
+        <section class="info-card info-wide" aria-labelledby="info-notes-title">
+          <h3 id="info-notes-title">חשוב לדעת</h3>
+          <ul class="info-list">
+            <li>החישוב במחשבון "אגירה בלבד" כולל מקדם ביטחון של 10% בקיבולת השימושית של הסוללות.</li>
+            <li>המכשירים שהוספתם במחשבון "אגירה בלבד" נשמרים בדפדפן שלכם, כך שאפשר לחזור ולהמשיך מאותה נקודה.</li>
+            <li>אפשר לעבור בין הלשוניות בכל רגע, והנתונים שהזנתם בכל מחשבון נשארים.</li>
+          </ul>
+        </section>
+
+        <section class="info-card info-contact" aria-labelledby="info-contact-title">
+          <div>
+            <h3 id="info-contact-title">צריכים עזרה?</h3>
+            <p>לא בטוחים איזה מחשבון לבחור, או רוצים לעבור על התוצאה? נשמח לעזור.</p>
+          </div>
+          <div class="info-contact-actions">
+            <a class="contact-button primary" href="tel:0548444350">☎ 054-844-4350</a>
+            <a class="contact-button" href="tel:026233343">מרכזייה: 02-6233343</a>
+            <a class="contact-button" href="mailto:a026233343@gmail.com">✉ a026233343@gmail.com</a>
+          </div>
+        </section>
+      </div>
     </div>
 
     <noscript>
@@ -1198,6 +1494,12 @@
             event.preventDefault();
             select(next.getAttribute("data-tab"), { updateHash: true, focus: true });
           }
+        });
+      });
+
+      document.querySelectorAll("[data-goto]").forEach(function (button) {
+        button.addEventListener("click", function () {
+          select(button.getAttribute("data-goto"), { updateHash: true, focus: true });
         });
       });
 
